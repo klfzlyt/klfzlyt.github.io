@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://07lyt.com">
-  <title>Tag: 前端 | lyt</title>
+  <title>2个字符串的编辑距离 | lyt</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="lyt的个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="lyt">
-<meta property="og:url" content="http://07lyt.com/tags/前端/index.html">
+  <meta name="description" content="在react中，在render后的diff阶段，对一个列表进行了diff比较，react的实现比较高效，是o(n)量级，一种通用的diff是类似于求两个字符串的编辑距离(o(m*n))：https://en.wikipedia.org/wiki/Levenshtein_distancehttp://baike.baidu.com/link?url=rOG3kB6G7njSWazsCV5oEQbnq">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2个字符串的编辑距离">
+<meta property="og:url" content="http://07lyt.com/2017/06/04/diff的o(m*n)/index.html">
 <meta property="og:site_name" content="lyt">
-<meta property="og:description" content="lyt的个人博客">
+<meta property="og:description" content="在react中，在render后的diff阶段，对一个列表进行了diff比较，react的实现比较高效，是o(n)量级，一种通用的diff是类似于求两个字符串的编辑距离(o(m*n))：https://en.wikipedia.org/wiki/Levenshtein_distancehttp://baike.baidu.com/link?url=rOG3kB6G7njSWazsCV5oEQbnq">
+<meta property="og:updated_time" content="2017-06-11T10:18:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lyt">
-<meta name="twitter:description" content="lyt的个人博客">
+<meta name="twitter:title" content="2个字符串的编辑距离">
+<meta name="twitter:description" content="在react中，在render后的diff阶段，对一个列表进行了diff比较，react的实现比较高效，是o(n)量级，一种通用的diff是类似于求两个字符串的编辑距离(o(m*n))：https://en.wikipedia.org/wiki/Levenshtein_distancehttp://baike.baidu.com/link?url=rOG3kB6G7njSWazsCV5oEQbnq">
   
     <link rel="alternative" href="/atom.xml" title="lyt" type="application/atom+xml">
   
@@ -150,146 +152,159 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-diff的o(m*n)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/11/一个模板引擎的简单实现/" class="archive-article-date">
-  	<time datetime="2017-06-11T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/11/一个模板引擎的简单实现/">一个模板引擎的简单实现</a>
+    <h1 class="article-title" itemprop="name">
+      2个字符串的编辑距离
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/06/04/diff的o(m*n)/" class="archive-article-date">
+  	<time datetime="2017-06-04T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在react中，在render后的diff阶段，对一个列表进行了diff比较，react的实现比较高效，是o(n)量级，一种通用的diff是类似于求两个字符串的编辑距离(o(m*n))：<br><a href="https://en.wikipedia.org/wiki/Levenshtein_distance" target="_blank" rel="external">https://en.wikipedia.org/wiki/Levenshtein_distance</a><br><a href="http://baike.baidu.com/link?url=rOG3kB6G7njSWazsCV5oEQbnq0Ukb3_1sPc5QPrm8xR7IBP6dVQjOqEQruBZ_AVTizlUngxX2Itje37zTVoNyJA7M6YQkTwdRaQoVjoOsVnl7pgSuE9WxsbIviikm0Mz" target="_blank" rel="external">http://baike.baidu.com/link?url=rOG3kB6G7njSWazsCV5oEQbnq0Ukb3_1sPc5QPrm8xR7IBP6dVQjOqEQruBZ_AVTizlUngxX2Itje37zTVoNyJA7M6YQkTwdRaQoVjoOsVnl7pgSuE9WxsbIviikm0Mz</a></p>
+<p>动态规划解决思路：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> Utils</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">replareStr</span>(<span class="params">word1, pos, char</span>) </span>&#123;</div><div class="line">	<span class="keyword">let</span> newWord = <span class="string">''</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; word1.length; i++) &#123;</div><div class="line">		<span class="keyword">if</span> (i == pos) &#123;</div><div class="line">			newWord += char;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			newWord += word1[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> newWord;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">deleteStr</span>(<span class="params">word1, pos</span>) </span>&#123;</div><div class="line">	<span class="keyword">let</span> newWord = <span class="string">''</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; word1.length; i++) &#123;</div><div class="line">		<span class="keyword">if</span> (i == pos) &#123;</div><div class="line">			<span class="comment">// ddnewWord+=char;</span></div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			newWord += word1[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> newWord;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">insterStr</span>(<span class="params">word1, pos, char</span>) </span>&#123;</div><div class="line">	<span class="keyword">let</span> newWord = <span class="string">''</span>;</div><div class="line">	<span class="keyword">if</span> (pos &lt; <span class="number">0</span>) newWord += char;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; word1.length; i++) &#123;</div><div class="line">		newWord += word1[i];</div><div class="line">		<span class="keyword">if</span> (i == pos) &#123;</div><div class="line">			newWord += char;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> newWord;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 需要把word1 变到 word2 </div><div class="line"> * @param &#123;string&#125; word1</div><div class="line"> * @param &#123;string&#125; word2</div><div class="line"> * @return &#123;array&#125; 表示从word1 改变到 word2 中间要过渡的字符串组</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> minDistance = <span class="function"><span class="keyword">function</span>(<span class="params">word1, word2</span>) </span>&#123;</div><div class="line">	<span class="keyword">let</span> rowNumber = word1.length + <span class="number">1</span>;</div><div class="line">	<span class="keyword">let</span> columnNumber = word2.length + <span class="number">1</span>;</div><div class="line">	<span class="keyword">let</span> DP = [];</div><div class="line">	<span class="comment">/*</span></div><div class="line">    init dp</div><div class="line">    */</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; rowNumber; i++) &#123;</div><div class="line">		<span class="keyword">let</span> temp = <span class="built_in">Array</span>(columnNumber);</div><div class="line">		<span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; columnNumber; j++) &#123;</div><div class="line">				temp[j] = j;</div><div class="line">			&#125;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			temp[<span class="number">0</span>] = i;</div><div class="line">		&#125;</div><div class="line">		DP.push(temp);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; rowNumber; i++) &#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt; columnNumber; j++) &#123;</div><div class="line">			<span class="keyword">let</span> first, second, third;</div><div class="line">			<span class="keyword">if</span> (word1.charAt(i - <span class="number">1</span>) == word2.charAt(j - <span class="number">1</span>)) &#123;</div><div class="line">				first = DP[i - <span class="number">1</span>][j - <span class="number">1</span>];</div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line">				first = DP[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">			second = DP[i][j - <span class="number">1</span>] + <span class="number">1</span>;</div><div class="line">			third = DP[i - <span class="number">1</span>][j] + <span class="number">1</span>;</div><div class="line">			DP[i][j] = <span class="built_in">Math</span>.min(first, second, third);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">let</span> internalwords = [];</div><div class="line">	<span class="keyword">let</span> endRow = rowNumber - <span class="number">1</span>;</div><div class="line">	<span class="keyword">let</span> endColumn = columnNumber - <span class="number">1</span>;</div><div class="line">	<span class="keyword">let</span> numberOperation = DP[endRow][endColumn];</div><div class="line"></div><div class="line">	<span class="keyword">while</span> (numberOperation) &#123;</div><div class="line">		<span class="keyword">let</span> isOperated = <span class="literal">false</span>;</div><div class="line">		<span class="keyword">let</span> duijiao = <span class="literal">Infinity</span>;</div><div class="line">		<span class="keyword">let</span> above = <span class="literal">Infinity</span>;</div><div class="line">		<span class="keyword">let</span> left = <span class="literal">Infinity</span>;</div><div class="line">		<span class="keyword">if</span> (endRow - <span class="number">1</span> &lt; <span class="number">0</span>) &#123;</div><div class="line">			duijiao = <span class="literal">Infinity</span>;</div><div class="line">			above = <span class="literal">Infinity</span>;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">if</span> (endColumn - <span class="number">1</span> &gt;= <span class="number">0</span>) &#123;</div><div class="line">				duijiao = DP[endRow - <span class="number">1</span>][endColumn - <span class="number">1</span>];</div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line">				duijiao = <span class="literal">Infinity</span>;</div><div class="line">			&#125;</div><div class="line"></div><div class="line">			above = DP[endRow - <span class="number">1</span>][endColumn];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (endColumn - <span class="number">1</span> &lt; <span class="number">0</span>) &#123;</div><div class="line">			left = <span class="literal">Infinity</span>;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			left = DP[endRow][endColumn - <span class="number">1</span>];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">let</span> min = <span class="built_in">Math</span>.min(duijiao, above, left);</div><div class="line">		<span class="keyword">if</span> (min == duijiao) &#123;</div><div class="line">			isOperated = <span class="literal">true</span>;</div><div class="line">			endRow = endRow - <span class="number">1</span>;</div><div class="line">			endColumn = endColumn - <span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span> (duijiao &lt; numberOperation) &#123;</div><div class="line">				<span class="comment">//如果小于则替换，不小于不做操作</span></div><div class="line">				<span class="keyword">let</span> newword1 = word1;</div><div class="line">				<span class="keyword">let</span> tobechar = word2.charAt(endColumn);</div><div class="line">				internalwords.push((word1 = replareStr(newword1, endRow, tobechar)));</div><div class="line">			&#125;</div><div class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (min == above &amp;&amp; !isOperated) &#123;</div><div class="line">			<span class="comment">//删除above</span></div><div class="line">			isOperated = <span class="literal">true</span>;</div><div class="line">			endRow = endRow - <span class="number">1</span>;</div><div class="line">			internalwords.push((word1 = deleteStr(word1, endRow)));</div><div class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (min == left &amp;&amp; !isOperated) &#123;</div><div class="line">			<span class="comment">//向左添加</span></div><div class="line">			isOperated = <span class="literal">true</span>;</div><div class="line">			endColumn = endColumn - <span class="number">1</span>;</div><div class="line">			<span class="keyword">let</span> tobeinsertChar = word2.charAt(endColumn);</div><div class="line">			internalwords.push((word1 = insterStr(word1, endRow - <span class="number">1</span>, tobeinsertChar)));</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		numberOperation = DP[endRow][endColumn];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> internalwords;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">//let interwords = minDistance('sunday', 'saturday');</span></div><div class="line"><span class="comment">//let interwords = minDistance('sitting', 'kitten');</span></div><div class="line"><span class="keyword">let</span> interwords = minDistance(<span class="string">'a12234'</span>, <span class="string">'1234'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'interwords'</span>, interwords);</div><div class="line"><span class="comment">/*</span></div><div class="line">	2步</div><div class="line">	interwords (2) ["a1234", "1234"]</div><div class="line">*/</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://07lyt.com/2017/06/04/diff的o(m*n)/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/06/12/getBoundingClientRect/" class="archive-article-date">
-  	<time datetime="2016-06-12T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-12</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/12/getBoundingClientRect/">domAPI/css</a>
-    </h1>
+    <a href="/2017/05/28/react-redux/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          react-redux源码分析
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/11/一个模板引擎的简单实现/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">一个模板引擎的简单实现</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/06/12/不一样的前端手指操/" class="archive-article-date">
-  	<time datetime="2016-06-12T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/12/不一样的前端手指操/">不一样的前端手指操</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -312,9 +327,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
