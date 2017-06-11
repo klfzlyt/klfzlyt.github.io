@@ -6,14 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://07lyt.com">
-  <title>koa-generator解析 | lyt</title>
+  <title>koa-generator解析 | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="目录 引言 解析 讨论   1.引言 在koa中，存在着大量的中间件，koa并不绑定任何中间件，许多功能都要靠中间件来进行实现， @dp/node-server基于koa，koa-router作为koa的一个基础中间件，在很多web应用都有用到。在node-server中用到的==action==本质也是用到了koa-router，因此koa-router与我们的关系还是很紧密的，理解其原理对于我">
 <meta name="keywords" content="node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="koa-generator解析">
 <meta property="og:url" content="http://07lyt.com/2016/08/28/koa-generator解析/index.html">
-<meta property="og:site_name" content="lyt">
+<meta property="og:site_name" content="Vogel im Kafig">
 <meta property="og:description" content="目录 引言 解析 讨论   1.引言 在koa中，存在着大量的中间件，koa并不绑定任何中间件，许多功能都要靠中间件来进行实现， @dp/node-server基于koa，koa-router作为koa的一个基础中间件，在很多web应用都有用到。在node-server中用到的==action==本质也是用到了koa-router，因此koa-router与我们的关系还是很紧密的，理解其原理对于我">
 <meta property="og:image" content="http://7xs6k5.com1.z0.glb.clouddn.com/image/4/f6/18f563a1ceb27e642901777339de6.png">
 <meta property="og:image" content="http://7xs6k5.com1.z0.glb.clouddn.com/image/4/69/5573520e19c93ca1cfc3e263cbcc0.png">
@@ -33,7 +33,7 @@
 <meta name="twitter:description" content="目录 引言 解析 讨论   1.引言 在koa中，存在着大量的中间件，koa并不绑定任何中间件，许多功能都要靠中间件来进行实现， @dp/node-server基于koa，koa-router作为koa的一个基础中间件，在很多web应用都有用到。在node-server中用到的==action==本质也是用到了koa-router，因此koa-router与我们的关系还是很紧密的，理解其原理对于我">
 <meta name="twitter:image" content="http://7xs6k5.com1.z0.glb.clouddn.com/image/4/f6/18f563a1ceb27e642901777339de6.png">
   
-    <link rel="alternative" href="/atom.xml" title="lyt" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Vogel im Kafig" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -66,7 +66,7 @@
 		  <h1 class="header-author"><a href="/">lyt</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">uku</p>
+		<p class="header-subtitle">谁在用琵琶弹奏，一曲too young too simple</p>
 		
 
 		<nav class="header-menu">
@@ -96,11 +96,11 @@
 				
 					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
 					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+		        
+					<a class="bilibili" target="_blank" href="http://space.bilibili.com/6540521" title="bilibili"><i class="icon-bilibili"></i></a>
+		        
+					<a class="mail" target="_blank" href="/klfzlyt@outlook.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -124,7 +124,7 @@
 			  <h1 class="header-author js-header-author">lyt</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>uku<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>谁在用琵琶弹奏，一曲too young too simple<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -137,11 +137,11 @@
 					
 						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
 						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+			        
+						<a class="bilibili" target="_blank" href="http://space.bilibili.com/6540521" title="bilibili"><i class="icon-bilibili"></i></a>
+			        
+						<a class="mail" target="_blank" href="/klfzlyt@outlook.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -467,19 +467,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
               </li>
             
             <div class="clearfix"></div>
@@ -527,34 +527,6 @@
 
     
     	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
-        </ul>
   		
     	</section>
     

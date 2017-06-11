@@ -6,14 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://07lyt.com">
-  <title>动手实现一个简易HTML解析器 | lyt</title>
+  <title>动手实现一个简易HTML解析器 | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="在动手之前，先说说动机，之前看过浏览器工作原理的一系列文章，如：   chrome dom树构建源码解析 浏览器的工作原理：新式网络浏览器幕后揭秘  以及一些规范  html解析构建规范 css 规范  在了解了原理与一些规范之后就想要自己试试造个轮子，加深对浏览器的理解。在大致梳理好流程之后，有以下目录：  目录 概述 HTML解析篇 CSS解析篇 应用CSS样式到DOM中 事件系统   一.概">
 <meta name="keywords" content="前端基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动手实现一个简易HTML解析器">
 <meta property="og:url" content="http://07lyt.com/2017/04/19/动手实现一个简易HTML解析器/index.html">
-<meta property="og:site_name" content="lyt">
+<meta property="og:site_name" content="Vogel im Kafig">
 <meta property="og:description" content="在动手之前，先说说动机，之前看过浏览器工作原理的一系列文章，如：   chrome dom树构建源码解析 浏览器的工作原理：新式网络浏览器幕后揭秘  以及一些规范  html解析构建规范 css 规范  在了解了原理与一些规范之后就想要自己试试造个轮子，加深对浏览器的理解。在大致梳理好流程之后，有以下目录：  目录 概述 HTML解析篇 CSS解析篇 应用CSS样式到DOM中 事件系统   一.概">
 <meta property="og:image" content="http://p0.meituan.net/dpgroup/731d0d4fe3561d098a0abd9bad04323159173.jpg">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/de6325f8325f412823e708f962e3039f141915.png">
@@ -42,7 +42,7 @@
 <meta name="twitter:description" content="在动手之前，先说说动机，之前看过浏览器工作原理的一系列文章，如：   chrome dom树构建源码解析 浏览器的工作原理：新式网络浏览器幕后揭秘  以及一些规范  html解析构建规范 css 规范  在了解了原理与一些规范之后就想要自己试试造个轮子，加深对浏览器的理解。在大致梳理好流程之后，有以下目录：  目录 概述 HTML解析篇 CSS解析篇 应用CSS样式到DOM中 事件系统   一.概">
 <meta name="twitter:image" content="http://p0.meituan.net/dpgroup/731d0d4fe3561d098a0abd9bad04323159173.jpg">
   
-    <link rel="alternative" href="/atom.xml" title="lyt" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Vogel im Kafig" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -75,7 +75,7 @@
 		  <h1 class="header-author"><a href="/">lyt</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">uku</p>
+		<p class="header-subtitle">谁在用琵琶弹奏，一曲too young too simple</p>
 		
 
 		<nav class="header-menu">
@@ -105,11 +105,11 @@
 				
 					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
 					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+		        
+					<a class="bilibili" target="_blank" href="http://space.bilibili.com/6540521" title="bilibili"><i class="icon-bilibili"></i></a>
+		        
+					<a class="mail" target="_blank" href="/klfzlyt@outlook.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -133,7 +133,7 @@
 			  <h1 class="header-author js-header-author">lyt</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>uku<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>谁在用琵琶弹奏，一曲too young too simple<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -146,11 +146,11 @@
 					
 						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
 						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+			        
+						<a class="bilibili" target="_blank" href="http://space.bilibili.com/6540521" title="bilibili"><i class="icon-bilibili"></i></a>
+			        
+						<a class="mail" target="_blank" href="/klfzlyt@outlook.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -525,19 +525,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
               </li>
             
             <div class="clearfix"></div>
@@ -585,34 +585,6 @@
 
     
     	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
-        </ul>
   		
     	</section>
     
