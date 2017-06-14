@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://07lyt.com">
-  <title>Archives: 2017/5 | Vogel im Kafig</title>
+  <title>class语法糖分析 | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="lyt的个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Vogel im Kafig">
-<meta property="og:url" content="http://07lyt.com/archives/2017/05/index.html">
+  <meta name="description" content="class语法糖分析比较好奇class到es5 babel是怎么转换的 123456789101112131415161718192021222324252627282930313233 class Base &amp;#123;    constructor (name) &amp;#123;                this.name =  name    &amp;#125;        state=&amp;#1">
+<meta name="keywords" content="babel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="class语法糖分析">
+<meta property="og:url" content="http://07lyt.com/2017/06/14/class语法糖分析/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
-<meta property="og:description" content="lyt的个人博客">
+<meta property="og:description" content="class语法糖分析比较好奇class到es5 babel是怎么转换的 123456789101112131415161718192021222324252627282930313233 class Base &amp;#123;    constructor (name) &amp;#123;                this.name =  name    &amp;#125;        state=&amp;#1">
+<meta property="og:updated_time" content="2017-06-14T09:10:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vogel im Kafig">
-<meta name="twitter:description" content="lyt的个人博客">
+<meta name="twitter:title" content="class语法糖分析">
+<meta name="twitter:description" content="class语法糖分析比较好奇class到es5 babel是怎么转换的 123456789101112131415161718192021222324252627282930313233 class Base &amp;#123;    constructor (name) &amp;#123;                this.name =  name    &amp;#125;        state=&amp;#1">
   
     <link rel="alternative" href="/atom.xml" title="Vogel im Kafig" type="application/atom+xml">
   
@@ -150,60 +152,155 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-class语法糖分析" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/28/react-redux/" class="archive-article-date">
-  	<time datetime="2017-05-28T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/28/react-redux/">react-redux源码分析</a>
+    <h1 class="article-title" itemprop="name">
+      class语法糖分析
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/06/14/class语法糖分析/" class="archive-article-date">
+  	<time datetime="2017-06-14T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="class语法糖分析"><a href="#class语法糖分析" class="headerlink" title="class语法糖分析"></a>class语法糖分析</h2><p>比较好奇class到es5 babel是怎么转换的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"> <span class="class"><span class="keyword">class</span> <span class="title">Base</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span> (name) &#123;        </div><div class="line">        <span class="keyword">this</span>.name =  name</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    state=&#123;</div><div class="line">        <span class="attr">isMan</span>:<span class="literal">false</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    keepQuiet()&#123;</div><div class="line"></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'base---&gt;………………………………'</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    alert()&#123;</div><div class="line">        alert(<span class="string">'base---&gt;alert'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">child</span> <span class="keyword">extends</span> <span class="title">Base</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(name,age) &#123;</div><div class="line">        <span class="keyword">super</span>(name);</div><div class="line">        <span class="keyword">this</span>.age= age;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    buySomething=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'child buy'</span>)</div><div class="line">    &#125;</div><div class="line">    alert()&#123;</div><div class="line">        alert(<span class="string">'child-----&gt;alert'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">new</span> child(<span class="string">'titan'</span>,<span class="number">80</span>)</div></pre></td></tr></table></figure>
+<p>生成的代码如下：重点看下<code>_createClass</code>，<code>_inherits</code>方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div></pre></td><td class="code"><pre><div class="line">(<span class="string">'use strict'</span>);</div><div class="line"></div><div class="line"><span class="comment">//获得一个对象的某个属性</span></div><div class="line"><span class="comment">//prototype,'constructor',this</span></div><div class="line"><span class="keyword">var</span> _get = <span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params">_x, _x2, _x3</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> _again = <span class="literal">true</span>;</div><div class="line">	_function: <span class="keyword">while</span> (_again) &#123;</div><div class="line">		<span class="keyword">var</span> object = _x, property = _x2, receiver = _x3;</div><div class="line">		_again = <span class="literal">false</span>;</div><div class="line">		<span class="keyword">if</span> (object === <span class="literal">null</span>) object = <span class="built_in">Function</span>.prototype;</div><div class="line">		<span class="keyword">var</span> desc = <span class="built_in">Object</span>.getOwnPropertyDescriptor(object, property);</div><div class="line">		<span class="keyword">if</span> (desc === <span class="literal">undefined</span>) &#123;</div><div class="line">			<span class="keyword">var</span> parent = <span class="built_in">Object</span>.getPrototypeOf(object);</div><div class="line">			<span class="keyword">if</span> (parent === <span class="literal">null</span>) &#123;</div><div class="line">				<span class="keyword">return</span> <span class="literal">undefined</span>;</div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line">				_x = parent;</div><div class="line">				_x2 = property;</div><div class="line">				_x3 = receiver;</div><div class="line">				_again = <span class="literal">true</span>;</div><div class="line">				desc = parent = <span class="literal">undefined</span>;</div><div class="line">				<span class="keyword">continue</span> _function;</div><div class="line">			&#125;</div><div class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">'value'</span> <span class="keyword">in</span> desc) &#123;</div><div class="line">            <span class="comment">//这个desc.value是Base的构造函数</span></div><div class="line">			<span class="keyword">return</span> desc.value;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">//这个应该是只针对可读的</span></div><div class="line">			<span class="keyword">var</span> getter = desc.get;</div><div class="line">			<span class="keyword">if</span> (getter === <span class="literal">undefined</span>) &#123;</div><div class="line">				<span class="keyword">return</span> <span class="literal">undefined</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">return</span> getter.call(receiver);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> _createClass = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">defineProperties</span>(<span class="params">target, props</span>) </span>&#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; props.length; i++) &#123;</div><div class="line">			<span class="keyword">var</span> descriptor = props[i];</div><div class="line">			descriptor.enumerable = descriptor.enumerable || <span class="literal">false</span>;</div><div class="line">			descriptor.configurable = <span class="literal">true</span>;</div><div class="line">			<span class="keyword">if</span> (<span class="string">'value'</span> <span class="keyword">in</span> descriptor) descriptor.writable = <span class="literal">true</span>;</div><div class="line">			<span class="built_in">Object</span>.defineProperty(target, descriptor.key, descriptor);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">    <span class="comment">//闭包</span></div><div class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">Constructor, protoProps, staticProps</span>) </span>&#123;</div><div class="line">        <span class="comment">//真正的构造执行的地方</span></div><div class="line">        <span class="comment">//定义原型属性</span></div><div class="line">        <span class="comment">//传入的protoProps是一个对象，babel都会生成对应的key,value属性</span></div><div class="line">		<span class="keyword">if</span> (protoProps) defineProperties(Constructor.prototype, protoProps);</div><div class="line">        <span class="comment">//定义静态属性，直接挂载在Constructor上</span></div><div class="line">		<span class="keyword">if</span> (staticProps) defineProperties(Constructor, staticProps);</div><div class="line">		<span class="keyword">return</span> Constructor;</div><div class="line">	&#125;;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_inherits</span>(<span class="params">subClass, superClass</span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> superClass !== <span class="string">'function'</span> &amp;&amp; superClass !== <span class="literal">null</span>) &#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Super expression must either be null or a function, not '</span> + <span class="keyword">typeof</span> superClass);</div><div class="line">	&#125;</div><div class="line">    <span class="comment">//创建一个空对象，对象的__proto__指向superClass.prototype，传统继承模式</span></div><div class="line">    <span class="comment">/*</span></div><div class="line">        create 的第二个参数：</div><div class="line">                    propertiesObject</div><div class="line">            可选。该参数对象是一组属性与值，该对象的属性名称将是新创建的对象的属性名称，值是属性描述符（这些属性描述符的结构与Object.defineProperties()的第二个参数一样）。注意：该参数对象不能是 undefined，另外只有该对象中自身拥有的可枚举的属性才有效，也就是说该对象的原型链上属性是无效的。</div><div class="line">            prototype上有constructor属性</div><div class="line">    */</div><div class="line"></div><div class="line">	subClass.prototype = <span class="built_in">Object</span>.create(superClass &amp;&amp; superClass.prototype, &#123;</div><div class="line">		<span class="attr">constructor</span>: &#123; <span class="attr">value</span>: subClass, <span class="attr">enumerable</span>: <span class="literal">false</span>, <span class="attr">writable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span> &#125;,</div><div class="line">	&#125;);</div><div class="line"></div><div class="line">    <span class="comment">//getPrototypeOf  ------   setPrototypeOf</span></div><div class="line">	<span class="keyword">if</span> (superClass)</div><div class="line">		<span class="built_in">Object</span>.setPrototypeOf ? <span class="built_in">Object</span>.setPrototypeOf(subClass, superClass) : (subClass.__proto__ = superClass);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_classCallCheck</span>(<span class="params">instance, Constructor</span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> (!(instance <span class="keyword">instanceof</span> Constructor)) &#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Cannot call a class as a function'</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Base = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">Base</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">		_classCallCheck(<span class="keyword">this</span>, Base);</div><div class="line"></div><div class="line">		<span class="keyword">this</span>.state = &#123;</div><div class="line">			<span class="attr">isMan</span>: <span class="literal">false</span>,</div><div class="line">		&#125;;</div><div class="line"></div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	_createClass(Base, [</div><div class="line">		&#123;</div><div class="line">			<span class="attr">key</span>: <span class="string">'keepQuiet'</span>,</div><div class="line">			<span class="attr">value</span>: <span class="function"><span class="keyword">function</span> <span class="title">keepQuiet</span>(<span class="params"></span>) </span>&#123;</div><div class="line">				<span class="built_in">console</span>.log(<span class="string">'base---&gt;………………………………'</span>);</div><div class="line">			&#125;,</div><div class="line">		&#125;,</div><div class="line">		&#123;</div><div class="line">			<span class="attr">key</span>: <span class="string">'alert'</span>,</div><div class="line">			<span class="attr">value</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">_alert</span>) </span>&#123;</div><div class="line">				<span class="function"><span class="keyword">function</span> <span class="title">alert</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="comment">//递归情况</span></div><div class="line">					<span class="keyword">return</span> _alert.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">				&#125;</div><div class="line"></div><div class="line">				alert.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">					<span class="keyword">return</span> _alert.toString();</div><div class="line">				&#125;;</div><div class="line"></div><div class="line">				<span class="keyword">return</span> alert;</div><div class="line">			&#125;)(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">				alert(<span class="string">'base---&gt;alert'</span>);</div><div class="line">			&#125;),</div><div class="line">		&#125;,</div><div class="line">	]);</div><div class="line"></div><div class="line">	<span class="keyword">return</span> Base;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line"><span class="keyword">var</span> child = (<span class="function"><span class="keyword">function</span>(<span class="params">_Base</span>) </span>&#123;</div><div class="line">    <span class="comment">//继承Base</span></div><div class="line">	_inherits(child, _Base);</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">child</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">		_classCallCheck(<span class="keyword">this</span>, child);</div><div class="line">        </div><div class="line">        <span class="comment">/*</span></div><div class="line">            _get(Object.getPrototypeOf(child.prototype), 'constructor', this)</div><div class="line">            得到Base的构造函数，通过call注入this得到父类的属性，name</div><div class="line">        */</div><div class="line">		_get(<span class="built_in">Object</span>.getPrototypeOf(child.prototype), <span class="string">'constructor'</span>, <span class="keyword">this</span>).call(<span class="keyword">this</span>, name);</div><div class="line"></div><div class="line">        <span class="comment">//箭头函数在这声明</span></div><div class="line">		<span class="keyword">this</span>.buySomething = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">			<span class="built_in">console</span>.log(<span class="string">'child buy'</span>);</div><div class="line">		&#125;;</div><div class="line"></div><div class="line">		<span class="keyword">this</span>.age = age;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">    <span class="comment">//在自己的原型上，覆盖了父类的alert</span></div><div class="line">	_createClass(child, [</div><div class="line">		&#123;</div><div class="line">			<span class="attr">key</span>: <span class="string">'alert'</span>,</div><div class="line">			<span class="attr">value</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">_alert2</span>) </span>&#123;</div><div class="line">				<span class="function"><span class="keyword">function</span> <span class="title">alert</span>(<span class="params"></span>) </span>&#123;</div><div class="line">					<span class="keyword">return</span> _alert2.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">				&#125;</div><div class="line"></div><div class="line">				alert.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">					<span class="keyword">return</span> _alert2.toString();</div><div class="line">				&#125;;</div><div class="line"></div><div class="line">				<span class="keyword">return</span> alert;</div><div class="line">			&#125;)(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">				alert(<span class="string">'child-----&gt;alert'</span>);</div><div class="line">			&#125;),</div><div class="line">		&#125;,</div><div class="line">	]);</div><div class="line"></div><div class="line">	<span class="keyword">return</span> child;</div><div class="line">&#125;)(Base);</div><div class="line"></div><div class="line"><span class="keyword">new</span> child(<span class="string">'titan'</span>, <span class="number">80</span>);</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">babel</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://07lyt.com/2017/06/14/class语法糖分析/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/06/14/diff算法的简单实现/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          diff算法的简单实现
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -226,8 +323,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
