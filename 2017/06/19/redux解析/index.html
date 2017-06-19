@@ -22,11 +22,11 @@
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/541ee8ea83621400e5839c133d6cbf2b98559.jpg">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/dd3aef4a5486560cdd00b577211beb44342595.jpg">
 <meta property="og:image" content="http://7xs6k5.com1.z0.glb.clouddn.com/image/4/f6/18f563a1ceb27e642901777339de6.png">
-<meta property="og:image" content="https://pic3.zhimg.com/9c456d5d211602e9d742262c2bf45762_b.png">
-<meta property="og:image" content="https://pic3.zhimg.com/v2-e5b8f433fec45c09260759fb12e90bb6_b.png">
+<meta property="og:image" content="http://p0.meituan.net/dpgroup/4b5454e3619e5ace557c889a13b1cb7324199.png">
+<meta property="og:image" content="http://p1.meituan.net/dpgroup/7211a167e08e9a4652024ca5657cca2652797.png">
 <meta property="og:image" content="http://p0.meituan.net/dpgroup/6bb2b292fc3ecf18d8dfc53c0ee35751312809.jpg">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/bb911adcd680f23c66de07f503175839129845.jpg">
-<meta property="og:updated_time" content="2017-06-19T11:25:22.000Z">
+<meta property="og:updated_time" content="2017-06-19T11:32:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redux源码分析及实现">
 <meta name="twitter:description" content="redux源码解析在介绍redux源码前，先来提几个问题：  dispatch做了什么  订阅状态改变是怎么实现的？ 状态树是怎样产生的？ dispatch出去的action是怎么过中间件的？ 中间是怎么串起来的，执行顺序是如何的？ 为什么源码中不用for来设计中间件? 中间件的设计是否对应了哪种设计模式？           中间件compose为什么要从后往前包装，得到的新dispatc">
@@ -259,13 +259,13 @@
 <p>我们的compose好像接受了额外参数？没关系，我们科里化它就好<br><code>R.curry(compose)</code></p>
 <p>最后是redux自身的compose:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">compose</span>(<span class="params">...funcs</span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> (funcs.length === <span class="number">0</span>) &#123;</div><div class="line">		<span class="keyword">return</span> <span class="function"><span class="params">arg</span> =&gt;</span> arg</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (funcs.length === <span class="number">1</span>) &#123;</div><div class="line">		<span class="keyword">return</span> funcs[<span class="number">0</span>]</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">const</span> last = funcs[funcs.length - <span class="number">1</span>]</div><div class="line">	<span class="keyword">const</span> rest = funcs.slice(<span class="number">0</span>, <span class="number">-1</span>)</div><div class="line">	<span class="comment">//把从最后一个开始计算的结果依次往前传递</span></div><div class="line">	<span class="keyword">return</span> <span class="function">(<span class="params">...args</span>) =&gt;</span> rest.reduceRight(<span class="function">(<span class="params">composed, f</span>) =&gt;</span> f(composed), last(...args))</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>那么源码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dispatch = compose(...chain)(store.dispatch)</div></pre></td></tr></table></figure></p>
-<p>就很清楚了，如下图，我们包装了老的<code>dispatch</code>,得到了一个新的<code>dispatch</code>,调用这个新的<code>dispatch</code>，就顺次执行了中间件中的函数，对开发来说这个新的<code>dispatch</code>是透明的<br><img src="https://pic3.zhimg.com/9c456d5d211602e9d742262c2bf45762_b.png" alt="fe"></p>
+<p>就很清楚了，如下图，我们包装了老的<code>dispatch</code>,得到了一个新的<code>dispatch</code>,调用这个新的<code>dispatch</code>，就顺次执行了中间件中的函数，对开发来说这个新的<code>dispatch</code>是透明的<br><img src="http://p0.meituan.net/dpgroup/4b5454e3619e5ace557c889a13b1cb7324199.png" alt="fe"></p>
 <blockquote>
 <p>值得一提的是redux的applyMiddleware叫做<br>(<a href="https://github.com/reactjs/redux/blob/cdaa3e81ffdf49e25ce39eeed37affc8f0c590f7/docs/higher-order-stores.md" target="_blank" rel="external">higher-order store</a>)<br>其他的 higher-order store还有devTools等，看下面一个例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> newCreateStore = compose(</div><div class="line">  applyMiddleware(m1, m2, m3),</div><div class="line">  devTools,</div><div class="line">  createStore</div><div class="line">);</div></pre></td></tr></table></figure></p>
 </blockquote>
 <p>我们通过<code>applyMiddleware</code>,<code>devTools</code>把原有createStore的能力提升了</p>
-<h3 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h3><p>小心在中间件中<code>dispatch(action)</code><br>如下图，可能有死循环<br><img src="https://pic3.zhimg.com/v2-e5b8f433fec45c09260759fb12e90bb6_b.png" alt="fds"> </p>
-<p>设计不好一不小心就爆栈，假如在中间件中dispatch(action)，这个action又重头开始依次经过中间件，遇到这个中间件，又重头开始，形成死循环。<br><img src="//p0.meituan.net/dpgroup/6bb2b292fc3ecf18d8dfc53c0ee35751312809.jpg" alt=""><br>所以一般的建议是：</p>
+<h3 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h3><p>小心在中间件中<code>dispatch(action)</code><br>如下图，可能有死循环<br><img src="http://p1.meituan.net/dpgroup/7211a167e08e9a4652024ca5657cca2652797.png" alt="fds"> </p>
+<p>设计不好一不小心就爆栈，假如在中间件中dispatch(action)，这个action又重头开始依次经过中间件，遇到这个中间件，又重头开始，形成死循环。<br><img src="http://p0.meituan.net/dpgroup/6bb2b292fc3ecf18d8dfc53c0ee35751312809.jpg" alt=""><br>所以一般的建议是：</p>
 <ul>
 <li>最好清楚dispatch action的路径</li>
 <li>像thunk-middleware一样注入dispatch给业务，中间件不关心dispatch</li>
@@ -510,11 +510,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">babel</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">babel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -526,11 +526,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redux</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
