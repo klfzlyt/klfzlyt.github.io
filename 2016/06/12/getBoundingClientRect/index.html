@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://07lyt.com">
   <title>domAPI/css | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离其bottom为盒模型下边缘与视口顶端的距离 text-shadow: h-shadow v-shadow blur color;水平方向，垂直方向">
+  <meta name="description" content="javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call by shareref:https://github.com/nodejh/nodejh.github.io/issues/32 getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离其bottom为盒模型下边缘与视口顶端的距离 text-shadow: h-shadow v-shad">
 <meta name="keywords" content="前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="domAPI/css">
 <meta property="og:url" content="http://07lyt.com/2016/06/12/getBoundingClientRect/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
-<meta property="og:description" content="getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离其bottom为盒模型下边缘与视口顶端的距离 text-shadow: h-shadow v-shadow blur color;水平方向，垂直方向">
-<meta property="og:updated_time" content="2017-05-28T15:14:52.000Z">
+<meta property="og:description" content="javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call by shareref:https://github.com/nodejh/nodejh.github.io/issues/32 getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离其bottom为盒模型下边缘与视口顶端的距离 text-shadow: h-shadow v-shad">
+<meta property="og:updated_time" content="2017-06-19T03:56:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="domAPI/css">
-<meta name="twitter:description" content="getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离其bottom为盒模型下边缘与视口顶端的距离 text-shadow: h-shadow v-shadow blur color;水平方向，垂直方向">
+<meta name="twitter:description" content="javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call by shareref:https://github.com/nodejh/nodejh.github.io/issues/32 getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离其bottom为盒模型下边缘与视口顶端的距离 text-shadow: h-shadow v-shad">
   
     <link rel="alternative" href="/atom.xml" title="Vogel im Kafig" type="application/atom+xml">
   
@@ -172,8 +172,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离<br>其bottom为盒模型下边缘与视口顶端的距离</p>
+        <p>javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call by share<br>ref:<a href="https://github.com/nodejh/nodejh.github.io/issues/32" target="_blank" rel="external">https://github.com/nodejh/nodejh.github.io/issues/32</a></p>
+<p>getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离<br>其bottom为盒模型下边缘与视口顶端的距离</p>
 <p>text-shadow: h-shadow v-shadow blur color;<br>水平方向，垂直方向</p>
+<p>Object.getOwnPropertyNames()方法返回一个由指定对象的所有自身属性的属性名（包括不可枚举属性）组成的数组。</p>
+<p>Object.getOwnPropertyNames 返回一个数组，该数组对元素是 obj 自身拥有的枚举或不可枚举属性名称字符串。 数组中枚举属性的顺序与通过 for…in 循环（或 Object.keys）迭代该对象属性时一致。 数组中不可枚举属性的顺序未定义。</p>
+<p>下面的例子演示了该方法不会获取到原型链上的属性：</p>
+<p>function ParentClass() {}<br>ParentClass.prototype.inheritedMethod = function() {};</p>
+<p>function ChildClass() {<br>  this.prop = 5;<br>  this.method = function() {};<br>}</p>
+<p>ChildClass.prototype = new ParentClass;<br>ChildClass.prototype.prototypeMethod = function() {};</p>
+<p>console.log(<br>  Object.getOwnPropertyNames(<br>    new ChildClass()  // [“prop”, “method”]<br>  )<br>);</p>
 
       
 
@@ -384,15 +392,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">babel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -400,7 +400,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
