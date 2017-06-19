@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://07lyt.com">
-  <title>Archives: 2016/8 | Vogel im Kafig</title>
+  <title>Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="lyt的个人博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Vogel im Kafig">
-<meta property="og:url" content="http://07lyt.com/archives/2016/08/index.html">
+<meta property="og:url" content="http://07lyt.com/page/2/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
 <meta property="og:description" content="lyt的个人博客">
 <meta name="twitter:card" content="summary">
@@ -152,58 +152,107 @@
           <div id="js-content" class="content-ll">
             
   
-  
+    <article id="post-不一样的前端手指操" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/28/koa-generator解析/" class="archive-article-date">
-  	<time datetime="2016-08-28T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/28/koa-generator解析/">koa-generator解析</a>
+      <a class="article-title" href="/2016/06/12/不一样的前端手指操/">不一样的前端手指操</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2016/06/12/不一样的前端手指操/" class="archive-article-date">
+  	<time datetime="2016-06-12T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>看见题目可能有点好奇，不过看下去你就知道什么叫手指操了~</p>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
+<li><a href="#intro">引言</a></li>
+<li><a href="#thory">原理</a></li>
+<li><a href="#lib">核心库</a></li>
+<li><a href="#impl">实现</a><ul>
+<li><a href="#keyframe">关键帧/图片调整</a></li>
+<li><a href="#spritesheet">spritesheet </a></li>
+<li><a href="#progressbar">progressbar</a></li>
+</ul>
+</li>
+<li><a href="#problem">可能会遇到的问题</a></li>
+<li><a href="#tool">相关工具</a></li>
+<li><a href="#visit">访问地址</a>     </li>
+</ul>
+<ul>
+<li><h5 id="写在前面（特别注意）"><a href="#写在前面（特别注意）" class="headerlink" title="写在前面（特别注意）"></a><strong>写在前面（特别注意）</strong></h5>在移动端上做动画，一定不能用<strong><em>top</em></strong>,<strong><em>bottom</em></strong>,<strong><em>background-position</em></strong>等元素做动画,不管是JS动画还是CSS动画。主要是浏览器重排，重绘，合成等，只能用4个(需要加<strong>translateZ(0)</strong>开启GPU加速)：<strong>translate</strong>,<strong>scale</strong>,<strong>opacity</strong>,<strong>rotate</strong>。<br>详细资料参考：<blockquote>
+<ul>
+<li><a href="http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/">高性能动画</a></li>
+<li><a href="https://docs.google.com/spreadsheets/d/1Hvi0nu2wG3oQ51XRHtMv-A_ZlidnwUYwgQsPQUg1R2s/pub?single=true&amp;gid=0&amp;output=html">各CSS元素渲染情况</a></li>
+<li><a href="https://github.com/AlloyTeam/Mars/blob/master/performance/css-property-animation-performance.md">高性能 Mobile Web 开发</a></li>
+<li><a href="http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/">Rendering: repaint, reflow/relayout, restyle</a>       </li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><a name="intro"></a>          </p>
+<ul>
+<li><h5 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h5>毕业季没事做，一直都对视差滚动感兴趣，感觉很新鲜（虽然现在已经不火了）不过还是决定试试看，先看看效果。<ul>
+<li><strong>片段演示（<a href="#visit">完整版访问地址在最后</a>）</strong><br><a href="http://www.cnblogs.com/07lyt/p/5582231.html#3451493">片段演示</a></li>
+</ul>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2016/06/12/不一样的前端手指操/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/06/12/不一样的前端手指操/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
+  
 
 
           </div>
@@ -225,9 +274,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
+		isHome: true,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

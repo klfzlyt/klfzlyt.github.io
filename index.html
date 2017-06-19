@@ -152,6 +152,95 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-redux解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/19/redux解析/">redux源码分析及实现</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/19/redux解析/" class="archive-article-date">
+  	<time datetime="2017-06-19T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="redux源码解析"><a href="#redux源码解析" class="headerlink" title="redux源码解析"></a>redux源码解析</h1><p>在介绍redux源码前，先来提几个问题：</p>
+<ol>
+<li>dispatch做了什么 </li>
+<li>订阅状态改变是怎么实现的？</li>
+<li>状态树是怎样产生的？</li>
+<li>dispatch出去的action是怎么过中间件的？</li>
+<li>中间是怎么串起来的，执行顺序是如何的？<ul>
+<li>为什么源码中不用for来设计中间件?</li>
+<li>中间件的设计是否对应了哪种设计模式？        </li>
+</ul>
+</li>
+<li>中间件compose为什么要从后往前包装，得到的新dispatch为什么又是从前到后的？</li>
+<li>假如2个store,哪些部分是独立的？哪些部分是可复用的？</li>
+</ol>
+<h3 id="源码赏析"><a href="#源码赏析" class="headerlink" title="源码赏析"></a>源码赏析</h3><p>先回答第一第二个问题</p>
+<ol>
+<li>dispatch做了什么 </li>
+<li>订阅状态改变是怎么实现的？</li>
+</ol>
+<p><strong>dispatch只做了两件很微小的工作:</strong></p>
+<blockquote>
+<ol>
+<li><strong>根据之前state生成新state（执行reducer/一般为rootreducer）</strong></li>
+<li><strong>触发订阅函数</strong></li>
+</ol>
+</blockquote>
+        
+          <a class="article-more-a" href="/2017/06/19/redux解析/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/19/redux解析/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-class语法糖分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -852,102 +941,10 @@
 
 
   
-    <article id="post-不一样的前端手指操" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/12/不一样的前端手指操/">不一样的前端手指操</a>
-    </h1>
-  
-
-        
-        <a href="/2016/06/12/不一样的前端手指操/" class="archive-article-date">
-  	<time datetime="2016-06-12T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>看见题目可能有点好奇，不过看下去你就知道什么叫手指操了~</p>
-<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
-<li><a href="#intro">引言</a></li>
-<li><a href="#thory">原理</a></li>
-<li><a href="#lib">核心库</a></li>
-<li><a href="#impl">实现</a><ul>
-<li><a href="#keyframe">关键帧/图片调整</a></li>
-<li><a href="#spritesheet">spritesheet </a></li>
-<li><a href="#progressbar">progressbar</a></li>
-</ul>
-</li>
-<li><a href="#problem">可能会遇到的问题</a></li>
-<li><a href="#tool">相关工具</a></li>
-<li><a href="#visit">访问地址</a>     </li>
-</ul>
-<ul>
-<li><h5 id="写在前面（特别注意）"><a href="#写在前面（特别注意）" class="headerlink" title="写在前面（特别注意）"></a><strong>写在前面（特别注意）</strong></h5>在移动端上做动画，一定不能用<strong><em>top</em></strong>,<strong><em>bottom</em></strong>,<strong><em>background-position</em></strong>等元素做动画,不管是JS动画还是CSS动画。主要是浏览器重排，重绘，合成等，只能用4个(需要加<strong>translateZ(0)</strong>开启GPU加速)：<strong>translate</strong>,<strong>scale</strong>,<strong>opacity</strong>,<strong>rotate</strong>。<br>详细资料参考：<blockquote>
-<ul>
-<li><a href="http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/">高性能动画</a></li>
-<li><a href="https://docs.google.com/spreadsheets/d/1Hvi0nu2wG3oQ51XRHtMv-A_ZlidnwUYwgQsPQUg1R2s/pub?single=true&amp;gid=0&amp;output=html">各CSS元素渲染情况</a></li>
-<li><a href="https://github.com/AlloyTeam/Mars/blob/master/performance/css-property-animation-performance.md">高性能 Mobile Web 开发</a></li>
-<li><a href="http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/">Rendering: repaint, reflow/relayout, restyle</a>       </li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<p><a name="intro"></a>          </p>
-<ul>
-<li><h5 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h5>毕业季没事做，一直都对视差滚动感兴趣，感觉很新鲜（虽然现在已经不火了）不过还是决定试试看，先看看效果。<ul>
-<li><strong>片段演示（<a href="#visit">完整版访问地址在最后</a>）</strong><br><a href="http://www.cnblogs.com/07lyt/p/5582231.html#3451493">片段演示</a></li>
-</ul>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2016/06/12/不一样的前端手指操/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/06/12/不一样的前端手指操/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -1045,15 +1042,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
