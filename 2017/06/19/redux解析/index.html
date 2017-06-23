@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://07lyt.com">
-  <title>redux源码分析及实现 | Vogel im Kafig</title>
+  <title>redux源码分析及自己实现 | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="在介绍redux源码前，先来提几个问题：  dispatch做了什么  订阅状态改变是怎么实现的？ 状态树是怎样产生的？ dispatch出去的action是怎么过中间件的？ 中间是怎么串起来的，执行顺序是如何的？ 为什么源码中不用for来设计中间件? 中间件的设计是否对应了哪种设计模式？           中间件compose为什么要从后往前包装，得到的新dispatch为什么又是从前到">
 <meta name="keywords" content="前端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="redux源码分析及实现">
+<meta property="og:title" content="redux源码分析及自己实现">
 <meta property="og:url" content="http://07lyt.com/2017/06/19/redux解析/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
 <meta property="og:description" content="在介绍redux源码前，先来提几个问题：  dispatch做了什么  订阅状态改变是怎么实现的？ 状态树是怎样产生的？ dispatch出去的action是怎么过中间件的？ 中间是怎么串起来的，执行顺序是如何的？ 为什么源码中不用for来设计中间件? 中间件的设计是否对应了哪种设计模式？           中间件compose为什么要从后往前包装，得到的新dispatch为什么又是从前到">
@@ -26,9 +26,9 @@
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/7211a167e08e9a4652024ca5657cca2652797.png">
 <meta property="og:image" content="http://p0.meituan.net/dpgroup/6bb2b292fc3ecf18d8dfc53c0ee35751312809.jpg">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/bb911adcd680f23c66de07f503175839129845.jpg">
-<meta property="og:updated_time" content="2017-06-19T11:50:55.000Z">
+<meta property="og:updated_time" content="2017-06-23T08:22:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redux源码分析及实现">
+<meta name="twitter:title" content="redux源码分析及自己实现">
 <meta name="twitter:description" content="在介绍redux源码前，先来提几个问题：  dispatch做了什么  订阅状态改变是怎么实现的？ 状态树是怎样产生的？ dispatch出去的action是怎么过中间件的？ 中间是怎么串起来的，执行顺序是如何的？ 为什么源码中不用for来设计中间件? 中间件的设计是否对应了哪种设计模式？           中间件compose为什么要从后往前包装，得到的新dispatch为什么又是从前到">
 <meta name="twitter:image" content="http://p1.meituan.net/dpgroup/f682793c7a074d11e1e211f9d7abb241477890.jpg">
   
@@ -171,7 +171,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      redux源码分析及实现
+      redux源码分析及自己实现
     </h1>
   
 
@@ -297,6 +297,8 @@
 <li><p>得到的新dispatch为什么又是从前到后的？<br>因为最后一个包装的在最外层，因而可以先得到执行，从而得到从前到后的效果。</p>
 </li>
 <li><p>假如2个store,哪些部分是独立的？哪些部分是可复用的？<br>除了中间件可以复用，其他都是独立的。</p>
+<p><a href="http://cn.redux.js.org/docs/faq/Performance.html" target="_blank" rel="external">http://cn.redux.js.org/docs/faq/Performance.html</a></p>
+<p><a href="http://redux.js.org/docs/recipes/ImplementingUndoHistory.html" target="_blank" rel="external">http://redux.js.org/docs/recipes/ImplementingUndoHistory.html</a></p>
 </li>
 </ul>
 
@@ -513,15 +515,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">babel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,11 +523,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,7 +535,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
               </li>
             
             <div class="clearfix"></div>

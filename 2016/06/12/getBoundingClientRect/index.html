@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://07lyt.com">
   <title>domAPI/css | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call by shareref:https://github.com/nodejh/nodejh.github.io/issues/32 getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离其bottom为盒模型下边缘与视口顶端的距离 text-shadow: h-shadow v-shad">
+  <meta name="description" content="Reselect 解决selector中计算量过大的问题 multireducer 解决state中多个list导致state过大的问题（拆分list到state） reducer enhance —- 高阶reducer acdlite/redux-actions 是actionCreactor的工厂方法 javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call b">
 <meta name="keywords" content="前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="domAPI/css">
 <meta property="og:url" content="http://07lyt.com/2016/06/12/getBoundingClientRect/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
-<meta property="og:description" content="javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call by shareref:https://github.com/nodejh/nodejh.github.io/issues/32 getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离其bottom为盒模型下边缘与视口顶端的距离 text-shadow: h-shadow v-shad">
-<meta property="og:updated_time" content="2017-06-19T03:56:44.000Z">
+<meta property="og:description" content="Reselect 解决selector中计算量过大的问题 multireducer 解决state中多个list导致state过大的问题（拆分list到state） reducer enhance —- 高阶reducer acdlite/redux-actions 是actionCreactor的工厂方法 javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call b">
+<meta property="og:updated_time" content="2017-06-23T06:06:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="domAPI/css">
-<meta name="twitter:description" content="javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call by shareref:https://github.com/nodejh/nodejh.github.io/issues/32 getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离其bottom为盒模型下边缘与视口顶端的距离 text-shadow: h-shadow v-shad">
+<meta name="twitter:description" content="Reselect 解决selector中计算量过大的问题 multireducer 解决state中多个list导致state过大的问题（拆分list到state） reducer enhance —- 高阶reducer acdlite/redux-actions 是actionCreactor的工厂方法 javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call b">
   
     <link rel="alternative" href="/atom.xml" title="Vogel im Kafig" type="application/atom+xml">
   
@@ -172,7 +172,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call by share<br>ref:<a href="https://github.com/nodejh/nodejh.github.io/issues/32" target="_blank" rel="external">https://github.com/nodejh/nodejh.github.io/issues/32</a></p>
+        <p>Reselect 解决selector中计算量过大的问题</p>
+<p>multireducer 解决state中多个list导致state过大的问题（拆分list到state）</p>
+<p>reducer enhance —- 高阶reducer</p>
+<p>acdlite/redux-actions 是actionCreactor的工厂方法</p>
+<p>javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call by share<br>ref:<a href="https://github.com/nodejh/nodejh.github.io/issues/32" target="_blank" rel="external">https://github.com/nodejh/nodejh.github.io/issues/32</a></p>
 <p>getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离<br>其bottom为盒模型下边缘与视口顶端的距离</p>
 <p>text-shadow: h-shadow v-shadow blur color;<br>水平方向，垂直方向</p>
 <p>Object.getOwnPropertyNames()方法返回一个由指定对象的所有自身属性的属性名（包括不可枚举属性）组成的数组。</p>
@@ -182,6 +186,9 @@
 <p>function ChildClass() {<br>  this.prop = 5;<br>  this.method = function() {};<br>}</p>
 <p>ChildClass.prototype = new ParentClass;<br>ChildClass.prototype.prototypeMethod = function() {};</p>
 <p>console.log(<br>  Object.getOwnPropertyNames(<br>    new ChildClass()  // [“prop”, “method”]<br>  )<br>);</p>
+<p>1.jquery.dotdotdot</p>
+<p>2：<br>.header{<br>  overflow : hidden;<br>  text-overflow: ellipsis;<br>  display: -webkit-box;<br>  -webkit-line-clamp: 2;<br>  -webkit-box-orient: vertical;<br>}</p>
+<p>单行<br>overflow: hidden;<br>white-space: nowrap;<br>text-overflow: ellipsis;</p>
 
       
 
@@ -286,18 +293,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2016/06/12/不一样的前端手指操/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          不一样的前端手指操
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/08/28/koa-generator解析/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">koa-generator解析</div>
+    <a href="/2016/06/12/不一样的前端手指操/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">不一样的前端手指操</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -401,15 +399,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">babel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -417,11 +407,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -429,7 +419,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
               </li>
             
             <div class="clearfix"></div>
