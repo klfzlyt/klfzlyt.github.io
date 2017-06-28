@@ -6,32 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://07lyt.com">
-  <title>koa-generator解析 | Vogel im Kafig</title>
+  <title>JavaScript中存在纯函数吗？ | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录 引言 解析 讨论   1.引言 在koa中，存在着大量的中间件，koa并不绑定任何中间件，许多功能都要靠中间件来进行实现， @dp/node-server基于koa，koa-router作为koa的一个基础中间件，在很多web应用都有用到。在node-server中用到的==action==本质也是用到了koa-router，因此koa-router与我们的关系还是很紧密的，理解其原理对于我">
-<meta name="keywords" content="node">
+  <meta name="description" content="JavaScript中存在纯函数吗?(自译) https://hackernoon.com/do-pure-functions-exist-in-javascript-b128ed5f0ed2 什么是纯函数？满足下面两个条件：">
+<meta name="keywords" content="自译">
 <meta property="og:type" content="article">
-<meta property="og:title" content="koa-generator解析">
-<meta property="og:url" content="http://07lyt.com/2016/08/28/koa-generator解析/index.html">
+<meta property="og:title" content="JavaScript中存在纯函数吗？">
+<meta property="og:url" content="http://07lyt.com/2017/06/12/javascript纯函数/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
-<meta property="og:description" content="目录 引言 解析 讨论   1.引言 在koa中，存在着大量的中间件，koa并不绑定任何中间件，许多功能都要靠中间件来进行实现， @dp/node-server基于koa，koa-router作为koa的一个基础中间件，在很多web应用都有用到。在node-server中用到的==action==本质也是用到了koa-router，因此koa-router与我们的关系还是很紧密的，理解其原理对于我">
-<meta property="og:image" content="http://7xs6k5.com1.z0.glb.clouddn.com/image/4/f6/18f563a1ceb27e642901777339de6.png">
-<meta property="og:image" content="http://7xs6k5.com1.z0.glb.clouddn.com/image/4/69/5573520e19c93ca1cfc3e263cbcc0.png">
-<meta property="og:image" content="http://7xs6k5.com1.z0.glb.clouddn.com/image/3/62/e0998228ea90be503b8fa4bdb6d79.png">
-<meta property="og:image" content="http://7xs6k5.com1.z0.glb.clouddn.com/image/d/d5/1b84aacb28ba199f03c3dbe0593dc.png">
-<meta property="og:image" content="http://7xs6k5.com1.z0.glb.clouddn.com/image/e/0a/8aba59b6f76d6fe15a9ed11b056b9.png">
-<meta property="og:image" content="http://7xs6k5.com1.z0.glb.clouddn.com/image/9/ce/b4e986b19bafc6c7eb83f223d6d4e.png">
-<meta property="og:image" content="http://7xs6k5.com1.z0.glb.clouddn.com/image/d/08/b458da8100312b1695fcaf4ad0265.png">
-<meta property="og:image" content="http://7xs6k5.com1.z0.glb.clouddn.com/image/f/0d/a10f4e50c379831af9ddf6263b7dd.png">
-<meta property="og:image" content="http://7xs6k5.com1.z0.glb.clouddn.com/image/f/39/71873f28d3fd8e1fd7a0668fe8388.png">
-<meta property="og:image" content="http://7xs6k5.com1.z0.glb.clouddn.com/image/6/91/08eec4eb320a7c877246f51563d21.png">
-<meta property="og:image" content="http://7xs6k5.com1.z0.glb.clouddn.com/image/6/63/48509a66927aa7094fe02657a9425.png">
-<meta property="og:image" content="http://7xs6k5.com1.z0.glb.clouddn.com/image/2/17/8ce11349638426ad32372f506bbc3.png">
-<meta property="og:updated_time" content="2017-05-28T16:06:25.000Z">
+<meta property="og:description" content="JavaScript中存在纯函数吗?(自译) https://hackernoon.com/do-pure-functions-exist-in-javascript-b128ed5f0ed2 什么是纯函数？满足下面两个条件：">
+<meta property="og:updated_time" content="2017-06-28T03:20:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="koa-generator解析">
-<meta name="twitter:description" content="目录 引言 解析 讨论   1.引言 在koa中，存在着大量的中间件，koa并不绑定任何中间件，许多功能都要靠中间件来进行实现， @dp/node-server基于koa，koa-router作为koa的一个基础中间件，在很多web应用都有用到。在node-server中用到的==action==本质也是用到了koa-router，因此koa-router与我们的关系还是很紧密的，理解其原理对于我">
-<meta name="twitter:image" content="http://7xs6k5.com1.z0.glb.clouddn.com/image/4/f6/18f563a1ceb27e642901777339de6.png">
+<meta name="twitter:title" content="JavaScript中存在纯函数吗？">
+<meta name="twitter:description" content="JavaScript中存在纯函数吗?(自译) https://hackernoon.com/do-pure-functions-exist-in-javascript-b128ed5f0ed2 什么是纯函数？满足下面两个条件：">
   
     <link rel="alternative" href="/atom.xml" title="Vogel im Kafig" type="application/atom+xml">
   
@@ -166,81 +153,66 @@
                                 <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
                             </div>
                             <div id="js-content" class="content-ll">
-                                <article id="post-koa-generator解析" class="article article-type-post " itemscope itemprop="blogPost">
+                                <article id="post-javascript纯函数" class="article article-type-post " itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
   
     <h1 class="article-title" itemprop="name">
-      koa-generator解析
+      JavaScript中存在纯函数吗？
     </h1>
   
 
                     
-                        <a href="/2016/08/28/koa-generator解析/" class="archive-article-date">
-  	<time datetime="2016-08-28T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-28</time>
+                        <a href="/2017/06/12/javascript纯函数/" class="archive-article-date">
+  	<time datetime="2017-06-12T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-12</time>
 </a>
                             
             </header>
             
                 <div class="article-entry" itemprop="articleBody">
                     
-                                        <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
-<li><a href="#intro">引言</a></li>
-<li><a href="#analyse">解析</a></li>
-<li><a href="#end">讨论</a></li>
-</ul>
-<p><div id="intro"></div></p>
-<h3 id="1-引言"><a href="#1-引言" class="headerlink" title="1.引言"></a>1.引言</h3><hr>
-<p>在koa中，存在着大量的中间件，koa并不绑定任何中间件，许多功能都要靠中间件来进行实现， @dp/node-server基于koa，koa-router作为koa的一个基础中间件，在很多web应用都有用到。在node-server中用到的==action==本质也是用到了koa-router，因此koa-router与我们的关系还是很紧密的，理解其原理对于我们写action有一定帮助。</p>
-<h4 id="1-1-回顾"><a href="#1-1-回顾" class="headerlink" title="1.1 回顾"></a>1.1 回顾</h4><h5 id="co-generator"><a href="#co-generator" class="headerlink" title="co+generator"></a>co+generator</h5><ul>
-<li><a href="http://koa.bootcss.com/" target="_blank" rel="external">koa</a>通过co来组合不同的generator,使得我们的中间件可以串行化执行，并提供downstrem，upstream回溯的能力。</li>
-<li>co这个库，将我们的异步操作都串行化，koa中间件执行核心，即是先把所有generator fuction反复包装，然后调用co.wrap同步化</li>
-<li>在<strong>图1</strong>中，橙色的箭头表示<code>yield</code>一个generator function或者是<code>yield</code>一个generator的点，通过co，我们得以递归的执行generator或者generator function。虚线的箭头表示控制权的交出与交回，绿色表示控制权在不在本函数内部，一个请求的经过所有中间件的时间等于图1中最下面的长条的时间。<br>在最后一个中间件之后不存在我们注册的中间件，yield会将控制权交给一个<code>noop</code>空的generator function。如果之前还有yield非generator的点，co会将相关array,object,thunkfunction转为promise,统一对promise进行处理，并等待promise的resolve，期间控制权在node中，直到resolve之后控制权才交回我们的函数。<br><img src="http://7xs6k5.com1.z0.glb.clouddn.com/image/4/f6/18f563a1ceb27e642901777339de6.png" alt="第一部分"><center>图1·co+generator 过程</center>
-
+                                        <h3 id="JavaScript中存在纯函数吗-自译"><a href="#JavaScript中存在纯函数吗-自译" class="headerlink" title="JavaScript中存在纯函数吗?(自译)"></a>JavaScript中存在纯函数吗?(自译)</h3><p> <a href="https://hackernoon.com/do-pure-functions-exist-in-javascript-b128ed5f0ed2" target="_blank" rel="external">https://hackernoon.com/do-pure-functions-exist-in-javascript-b128ed5f0ed2</a></p>
+<h3 id="什么是纯函数？"><a href="#什么是纯函数？" class="headerlink" title="什么是纯函数？"></a>什么是纯函数？</h3><p>满足下面两个条件：<br><a id="more"></a><br>1) The function returns exactly the same result every time it’s called with the same set of arguments.<br>2) Evaluation of the function does not modify some state outside its scope nor has an observable interaction with the outside world besides returning a value. (No side effects.)</p>
+<p>Sometimes, a third condition is added: ‘Relies on no external mutable state.’ This, in fact, is redundant as such dependency on mutable variable would inevitably lead to breaking the first condition, too.</p>
+<p>有下面四个函数</p>
+<ul>
+<li>doubleA</li>
+<li>doubleB</li>
+<li>doubleC</li>
+<li>doubleD<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// A: Simple multiplication</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doubleA</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> n * <span class="number">2</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// B: With a variable</span></div><div class="line"><span class="keyword">var</span> two = <span class="number">2</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doubleB</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> n * two</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// C: With a helper function</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getTwo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doubleC</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> n * getTwo()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// D: Mapping an array</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doubleD</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> arr.map(<span class="function"><span class="params">n</span> =&gt;</span> n * <span class="number">2</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h6 id="相关代码片段"><a href="#相关代码片段" class="headerlink" title="相关代码片段"></a>相关代码片段</h6><p>每app.use一次加入一个中间件generator function到<code>this.middleware</code>这个数组中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">app.use = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span> (!<span class="keyword">this</span>.experimental) &#123;</div><div class="line">    <span class="comment">// es7 async functions are not allowed,</span></div><div class="line">    <span class="comment">// so we have to make sure that `fn` is a generator function</span></div><div class="line">    assert(fn &amp;&amp; <span class="string">'GeneratorFunction'</span> == fn.constructor.name, <span class="string">'app.use() requires a generator function'</span>);</div><div class="line">  &#125;</div><div class="line">  debug(<span class="string">'use %s'</span>, fn._name || fn.name || <span class="string">'-'</span>);</div><div class="line">  <span class="keyword">this</span>.middleware.push(fn);<span class="comment">///////////加入一个中间件</span></div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>反复包装的过程，不断的将得到的generator作为参赛传递到==下一个 generator==中:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">compose</span>(<span class="params">middleware</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> *(<span class="params">next</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span> (!next) next = noop();</div><div class="line"></div><div class="line">    <span class="keyword">var</span> i = middleware.length;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (i--) &#123;</div><div class="line">      next = middleware[i].call(<span class="keyword">this</span>, next);<span class="comment">//反复包装</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">yield</span> *next;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">app.callback = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> fn = <span class="keyword">this</span>.experimental</div><div class="line">    ? compose_es7(<span class="keyword">this</span>.middleware)</div><div class="line">    : co.wrap(compose(<span class="keyword">this</span>.middleware));</div><div class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</div><div class="line">  <span class="keyword">if</span> (!<span class="keyword">this</span>.listeners(<span class="string">'error'</span>).length) <span class="keyword">this</span>.on(<span class="string">'error'</span>, <span class="keyword">this</span>.onerror);</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">    res.statusCode = <span class="number">404</span>;</div><div class="line">    <span class="keyword">var</span> ctx = self.createContext(req, res);</div><div class="line">    onFinished(res, ctx.onerror);</div><div class="line">    fn.call(ctx).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">      respond.call(ctx);<span class="comment">//通过co执行中间件,执行完成在respond中处理this.body</span></div><div class="line">    &#125;).catch(ctx.onerror);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p><div id="analyse"></div></p>
-<h3 id="2-koa-router解析"><a href="#2-koa-router解析" class="headerlink" title="2.koa-router解析"></a>2.koa-router解析</h3><hr>
-<p>中间件一般都分为注册和执行2个阶段，一般我们只用关心注册的阶段，在执行阶段，执行的控制流完全交给了co，我们只提供了执行的实现，执行的时机由co把控。</p>
-<h5 id="2-2-koa-router用法"><a href="#2-2-koa-router用法" class="headerlink" title="2.2 koa-router用法"></a>2.2 koa-router用法</h5><ol>
-<li><code>router.get(&#39;/&#39;, function *(next) {…})</code> HTTP动词注册</li>
-<li><code>router.use(&#39;/&#39;, function *(next) {…})</code> 路径匹配注册</li>
-<li><code>router.register(&#39;/&#39;,[&#39;GET&#39;,&#39;POST&#39;],function *(next){…})</code> 多HTTP方法注册</li>
-<li><code>router.param(&#39;param&#39;,function *(next){…})</code> 命名参数注册<br>对于1，2两种注册方法，其本质是调用了3这个注册方法，对于4注册方法，是与其它注册方法不同的另外一种注册方法。</li>
+<p>大多数人认为doubleB不纯，doubleA, doubleC, doubleD 为纯函数.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">doubleB(<span class="number">1</span>) <span class="comment">// -&gt; 2</span></div><div class="line">two = <span class="number">3</span></div><div class="line">doubleB(<span class="number">1</span>) <span class="comment">// -&gt; 3</span></div></pre></td></tr></table></figure>
+<p>可以知道doubleB不纯</p>
+<h3 id="然而事实上：上述4个函数都不纯？"><a href="#然而事实上：上述4个函数都不纯？" class="headerlink" title="然而事实上：上述4个函数都不纯？"></a>然而事实上：上述4个函数都不纯？</h3><p>为什么？</p>
+<ol>
+<li>对于doubleC</li>
 </ol>
-<h5 id="2-3-koa-router数据结构"><a href="#2-3-koa-router数据结构" class="headerlink" title="2.3 koa-router数据结构"></a>2.3 koa-router数据结构</h5><p>图2展示了koa-router 的内部数据结构，<code>Router</code>作为我们直接使用的对象，暴露register等方法，图2中<code>Router</code>对象的stack属性作为一个集合保存了多个<code>Layer</code>,每个<code>Layer</code>保存了本层的注册路径，并引用了多个中间件generator function，在我们的应用中，即为<code>Action</code>。在图3中，展示了一个<code>Router</code>拥有4个<code>Layer</code>的情况。<br><img src="http://7xs6k5.com1.z0.glb.clouddn.com/image/4/69/5573520e19c93ca1cfc3e263cbcc0.png" alt="数据结构"></p>
-<center>图2·koa-router中间件类图</center><br><img src="http://7xs6k5.com1.z0.glb.clouddn.com/image/3/62/e0998228ea90be503b8fa4bdb6d79.png" alt="数据结构"><br><center>图3·Router进行了4次注册的情况</center>
-
-<h5 id="2-4-koa-router注册中间件流程"><a href="#2-4-koa-router注册中间件流程" class="headerlink" title="2.4 koa-router注册中间件流程"></a>2.4 koa-router注册中间件流程</h5><p>一开始的GET,POST,PUT等HTTP动词都是调用了register方法，包括@dp/node-server里面的注册，也是直接调用了register进行路由注册,以register为例，图4中用户一开始调用register,会在Router中创建一个<code>Layer</code>对象，之后再使用<code>layer</code>的param进行命名参数注册，最后将得到的<code>layer</code>加入队列。<br><img src="http://7xs6k5.com1.z0.glb.clouddn.com/image/d/d5/1b84aacb28ba199f03c3dbe0593dc.png" alt=""></p>
-<center>图4·koa-router注册顺序图</center>
-
-<h6 id="koa-router注册中间件相关片段"><a href="#koa-router注册中间件相关片段" class="headerlink" title="koa-router注册中间件相关片段"></a>koa-router注册中间件相关片段</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">Router.prototype.register = <span class="function"><span class="keyword">function</span> (<span class="params">path, methods, middleware, opts</span>) </span>&#123;</div><div class="line">  opts = opts || &#123;&#125;;</div><div class="line">  <span class="keyword">var</span> stack = <span class="keyword">this</span>.stack;</div><div class="line">  <span class="comment">//-------------&gt; create route</span></div><div class="line">  <span class="keyword">var</span> route = <span class="keyword">new</span> Layer(path, methods, middleware, &#123;</div><div class="line">    <span class="attr">end</span>: opts.end === <span class="literal">false</span> ? opts.end : <span class="literal">true</span>,</div><div class="line">    <span class="attr">name</span>: opts.name,</div><div class="line">    <span class="attr">sensitive</span>: opts.sensitive || <span class="keyword">this</span>.opts.sensitive || <span class="literal">false</span>,</div><div class="line">    <span class="attr">strict</span>: opts.strict || <span class="keyword">this</span>.opts.strict || <span class="literal">false</span>,</div><div class="line">    <span class="attr">prefix</span>: opts.prefix || <span class="keyword">this</span>.opts.prefix || <span class="string">""</span>,</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.opts.prefix) &#123;</div><div class="line">    route.setPrefix(<span class="keyword">this</span>.opts.prefix);</div><div class="line">  &#125;</div><div class="line">  <span class="comment">//-------------&gt; add parameter middleware</span></div><div class="line">  <span class="built_in">Object</span>.keys(<span class="keyword">this</span>.params).forEach(<span class="function"><span class="keyword">function</span> (<span class="params">param</span>) </span>&#123;</div><div class="line">    route.param(param, <span class="keyword">this</span>.params[param]);</div><div class="line">  &#125;, <span class="keyword">this</span>);</div><div class="line">     <span class="comment">/*</span></div><div class="line">     ……………………</div><div class="line">    */</div><div class="line">  <span class="comment">//-------------&gt; 加入stack中，增加了一个Layer</span></div><div class="line">    stack.some(<span class="function"><span class="keyword">function</span> (<span class="params">m, i</span>) </span>&#123;</div><div class="line">      <span class="keyword">if</span> (!m.methods.length &amp;&amp; i === stack.length - <span class="number">1</span>) &#123;</div><div class="line">        <span class="keyword">return</span> stack.push(route);</div><div class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (m.methods.length) &#123;</div><div class="line">        <span class="keyword">if</span> (stack[i - <span class="number">1</span>]) &#123;</div><div class="line">          <span class="keyword">return</span> stack.splice(i, <span class="number">0</span>, route);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          <span class="keyword">return</span> stack.unshift(route);</div><div class="line">        &#125;   </div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> route;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h6 id="2-4-1-koa-router注册过程分解"><a href="#2-4-1-koa-router注册过程分解" class="headerlink" title="2.4.1 koa-router注册过程分解"></a>2.4.1 koa-router注册过程分解</h6><p>1.<code>router.register(&#39;/dp/ac4&#39;,[&#39;GET&#39;,&#39;POST&#39;],function *(next){…})</code><br>在这一步，我们注册’/dp/ac4’这个路径，注册get,post方法，router的数据结构会如图5红色部分所示变化。<br><img src="http://7xs6k5.com1.z0.glb.clouddn.com/image/e/0a/8aba59b6f76d6fe15a9ed11b056b9.png" alt="register1"></p>
-<p><center>图5·注册一个非命名参数情形</center></p>
-<hr>
-<p>2.<code>router.param(&#39;user&#39;,function *(next){…})</code><br>在这一步注册了一个命名参数中间件，这时koa-router会在所有layer中检查是否有对应命名参数的<code>layer</code>已经注册，如图6，在第三个layer中，注册了<code>user</code>命名参数，其会新增一个action的引用,指向新增加的命名参数中间件，即为图中的红色部分。在执行阶段，如果路径匹配，这个action就会得到执行。<br><img src="http://7xs6k5.com1.z0.glb.clouddn.com/image/9/ce/b4e986b19bafc6c7eb83f223d6d4e.png" alt="register2"></p>
-<p><center>图6·注册一个命名参数的情形</center></p>
-<hr>
-<p>3.<code>router.register(&#39;/dp/:user&#39;,[&#39;GET&#39;,&#39;POST&#39;],function *(next){…})</code><br>在这一步注册了一个带命名参数和路径的<code>Layer</code>，这时koa-router会在所有命名参数中检查是否有对应命名参数中间件已经注册，如图7中的==user==命名参数，如果已经有过注册，即会执行红色部分的注册过程，将引用指向已经注册过的命名参数中间件。<br><img src="http://7xs6k5.com1.z0.glb.clouddn.com/image/d/08/b458da8100312b1695fcaf4ad0265.png" alt="register3"></p>
-<p><center>图7·注册一个带命名参数和路径的情形</center></p>
-<hr>
-<h5 id="2-5-koa-router中间件执行流程"><a href="#2-5-koa-router中间件执行流程" class="headerlink" title="2.5 koa-router中间件执行流程"></a>2.5 koa-router中间件执行流程</h5><p>在注册完成以后，每来一个请求，就会进行中间件的执行，在请求到达我们的中间件之前，koa-router会依赖Path-to-RegExp进行路由路径的正则匹配，如图8所示，我们之前注册的路径通过红色部分的Path-to-RegExp组件将会转换为相应的正则表达式保存在各个<code>Layer</code>中，之后对于请求的路径，即会进行如图8所示的正则匹配，并获得相应的匹配结果。<br><img src="http://7xs6k5.com1.z0.glb.clouddn.com/image/f/0d/a10f4e50c379831af9ddf6263b7dd.png" alt="action2"></p>
-<p><center>图8·中间件执行前的处理</center><br>在请求实际得到处理之前，会将所有符合请求路径与方法都匹配的路径筛选出，并进行中间件包装，包装过程与app.callback中的包装过程类似，每次传递generator到下一个中间件中，当所有<code>Layer</code>包装完成后，koa-router会交出控制权，由co来执行中间件函数。<br><img src="http://7xs6k5.com1.z0.glb.clouddn.com/image/f/39/71873f28d3fd8e1fd7a0668fe8388.png" alt="action1"></p>
-<p><center>图9·中间件执行前的处理</center><br>图10中，如果HTTP的请求路径为’dp/ac1’，koa-router会将所有layer的路径进行正则匹配，如图，第一，二个匹配成功，在匹配完成之后，进行中间的包装过程，这个过程还会产生命名参数，包装过程从最后一个layer的最后一个action开始包装，依次传递generator，最后在包装完第一个layer的第一个action后得到一个generator，之后便可以将这个generator交于co来控制执行。<br><img src="http://7xs6k5.com1.z0.glb.clouddn.com/image/6/91/08eec4eb320a7c877246f51563d21.png" alt="action"></p>
-<p><center>图10·中间件执行前的包装过程</center><br>图11中，展示了有2个action（图中红色）匹配路径与方法的情况，在最下面的执行过程的白色部分，koa-router进行了中间件的包装，在包装完成之后，即橙色部分yield交出控制权，控制权交到了第一个action中，第一个action在执行完成或者执行中途，同样yield next在橙色部分将控制权交出到下一个action中，下一个action同样yield next将控制权交于相对于koa-router下一个中间件，之后控制权返回可以执行action剩余的动作。<br><img src="http://7xs6k5.com1.z0.glb.clouddn.com/image/6/63/48509a66927aa7094fe02657a9425.png" alt="action3"></p>
-<p><center>图11·注册中间件执行过程</center></p>
-<h6 id="相关代码片段-1"><a href="#相关代码片段-1" class="headerlink" title="相关代码片段"></a>相关代码片段</h6><p>每次执行koa-router中间件的过程即是执行dispatch这个generator function的过程<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">  <span class="keyword">var</span> dispatch = <span class="function"><span class="keyword">function</span> *<span class="title">dispatch</span>(<span class="params">next</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> path = router.opts.routerPath || <span class="keyword">this</span>.routerPath || <span class="keyword">this</span>.path;<span class="comment">//获得请求路径</span></div><div class="line">    <span class="keyword">var</span> matched = router.match(path, <span class="keyword">this</span>.method);</div><div class="line"><span class="comment">//对本router中的layer进行匹配，得到匹配结果</span></div><div class="line">    <span class="keyword">var</span> layer, i, ii;</div><div class="line"><span class="comment">//加入上下文matched属性</span></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.matched) &#123;</div><div class="line">      <span class="keyword">this</span>.matched.push.apply(<span class="keyword">this</span>.matched, matched.path);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">this</span>.matched = matched.path;</div><div class="line">    &#125;</div><div class="line"><span class="comment">//pathAndMethod为路径和HTTP方法都匹配的所有layer</span></div><div class="line">    <span class="keyword">if</span> (matched.pathAndMethod.length) &#123;</div><div class="line">      i = matched.pathAndMethod.length;</div><div class="line">      <span class="keyword">var</span> mostSpecificPath = matched.pathAndMethod[matched.pathAndMethod.length - <span class="number">1</span>].path</div><div class="line">      <span class="keyword">this</span>._matchedRoute = mostSpecificPath</div><div class="line"></div><div class="line">      <span class="keyword">while</span> (matched.route &amp;&amp; i--) &#123;</div><div class="line">        layer = matched.pathAndMethod[i];<span class="comment">//从最后一个layer开始压缩</span></div><div class="line">        ii = layer.stack.length;</div><div class="line">        <span class="keyword">this</span>.captures = layer.captures(path, <span class="keyword">this</span>.captures);<span class="comment">//构造上下文captures属性</span></div><div class="line">        <span class="keyword">this</span>.params = layer.params(path, <span class="keyword">this</span>.captures, <span class="keyword">this</span>.params);<span class="comment">//构造上下文命名参数</span></div><div class="line">        <span class="keyword">while</span> (ii--) &#123;</div><div class="line"><span class="comment">//对当前layer中所有的中间件进行压缩，从最后一个开始，压缩过程类似app.callback中compose的压缩过程，即不断的将generator传递</span></div><div class="line">          <span class="keyword">if</span> (layer.stack[ii].constructor.name === <span class="string">'GeneratorFunction'</span>) &#123;</div><div class="line">            next = layer.stack[ii].call(<span class="keyword">this</span>, next);</div><div class="line">          &#125; <span class="keyword">else</span> &#123;</div><div class="line">            next = <span class="built_in">Promise</span>.resolve(layer.stack[ii].call(<span class="keyword">this</span>, next));</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"><span class="comment">//交出控制权</span></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> next.next === <span class="string">'function'</span>) &#123;</div><div class="line">      <span class="keyword">yield</span> *next;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">yield</span> next;</div><div class="line">    &#125;</div><div class="line">  &#125;;</div></pre></td></tr></table></figure></p>
-<p><div id="end"></div></p>
-<h3 id="3-讨论"><a href="#3-讨论" class="headerlink" title="3.讨论"></a>3.讨论</h3><p>我们的项目中的action，通常是一个generator function，==有一些接口没有写yield next==，由于我们的koa-router在@dp/node-server中是最后一个注册的中间件，所以不进行yield next影响也不大，但个人建议还是写yield next，如果今后在路由之后有进行this.body的处理，即koa-router不是最后一个中间件的情况，如果不写yield next，之后的中间件将会得不到执行；对于现在koa-router是最后一个中间件，即便写了yield next，控制流也会进入到一个内容为空的==noop==函数中，之后立即返回，对于执行逻辑不造成影响，所以建议还是在每一个action中写yield next~~。</p>
-<p>参考资料：<br><br>co: <a href="https://github.com/tj/co" target="_blank" rel="external">https://github.com/tj/co</a><br>koa: <a href="http://koa.bootcss.com/" target="_blank" rel="external">http://koa.bootcss.com/</a><br>koa-router: <a href="https://github.com/alexmingoia/koa-router" target="_blank" rel="external">https://github.com/alexmingoia/koa-router</a><br>path-to-regexp: <a href="https://github.com/pillarjs/path-to-regexp" target="_blank" rel="external">https://github.com/pillarjs/path-to-regexp</a></p>
-<hr>
-<p><img src="http://7xs6k5.com1.z0.glb.clouddn.com/image/2/17/8ce11349638426ad32372f506bbc3.png" alt="end"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">doubleC(<span class="number">1</span>) <span class="comment">// -&gt; 2</span></div><div class="line">getTwo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">3</span> &#125;</div><div class="line">doubleC(<span class="number">1</span>) <span class="comment">// -&gt; 3</span></div></pre></td></tr></table></figure>
+<ol>
+<li>对于doubleD </li>
+</ol>
+<p>“Map, filter, reduce. Repeat.”在函数式编程中是核心的数据变换方法，在用到他们的时候应该谨慎</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">doubleD([<span class="number">1</span>]) <span class="comment">// -&gt; [2]</span></div><div class="line"><span class="built_in">Array</span>.prototype.map = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [<span class="number">3</span>]</div><div class="line">&#125;</div><div class="line">doubleD([<span class="number">1</span>]) <span class="comment">// -&gt; [3]</span></div></pre></td></tr></table></figure>
+<p>两次调用结果不一致，因而doubleD也不纯。</p>
+<ol>
+<li>doubleA </li>
+</ol>
+<p>乘法操作符是纯的？？？</p>
+<p>有个不常用的点：JavaScript also calls valueOf method of an object when it expects a number (or a boolean, or a function). What’s left is to make this function return different value each time it is invoked. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = &#123;</div><div class="line">  <span class="attr">valueOf</span>: <span class="built_in">Math</span>.random</div><div class="line">&#125;</div><div class="line">doubleA(o) <span class="comment">// -&gt; 1.7709942335937932</span></div><div class="line">doubleA(o) <span class="comment">// -&gt; 1.2600863386367704</span></div></pre></td></tr></table></figure>
+<p>因而 doubleA不纯</p>
+<p>#### 到底什么是纯函数？</p>
+<p>没有绝对的定义，一个函数可能在一个项目里纯，在其他项目里不纯</p>
+<h3 id="备注："><a href="#备注：" class="headerlink" title="备注："></a>备注：</h3><p>一些阻止上述小伎俩的手段：<br>对于doubleB：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> doubleB = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> two = <span class="number">2</span></div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> n * two</div><div class="line">  &#125;</div><div class="line">&#125;)()</div></pre></td></tr></table></figure></p>
+<p>或是</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> two = <span class="number">2</span></div><div class="line"><span class="keyword">const</span> doubleB = <span class="function">(<span class="params">n</span>) =&gt;</span> n * two</div></pre></td></tr></table></figure>
+<p>对于doubleA</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doubleA</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> n !== <span class="string">'number'</span>) <span class="keyword">return</span> <span class="literal">NaN</span></div><div class="line">  <span class="keyword">return</span> n * <span class="number">2</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>总之不要忘记保证一个函数真正的为纯函数</p>
 
                                             
 
@@ -275,7 +247,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">自译</a>
         		</li>
       		
 		</ul>
@@ -331,7 +303,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://07lyt.com/2016/08/28/koa-generator解析/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://07lyt.com/2017/06/12/javascript纯函数/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -345,18 +317,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/06/12/不一样的前端手指操/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/04/diff的o(m*n)/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          不一样的前端手指操
+          2个字符串的编辑距离（Levenshtein_distance）
         
       </div>
     </a>
   
   
-    <a href="/2016/11/28/webpack1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">webpack v1 概览</div>
+    <a href="/2017/06/14/diff算法的简单实现/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">diff算法的简单实现</div>
       <i class="icon-circle-right"></i>
     </a>
   
