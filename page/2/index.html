@@ -153,6 +153,127 @@
                             <div id="js-content" class="content-ll">
                                 
   
+    <article id="post-webpack1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/28/webpack1/">webpack v1 概览</a>
+    </h1>
+  
+
+                    
+                        <a href="/2016/11/28/webpack1/" class="archive-article-date">
+  	<time datetime="2016-11-28T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-28</time>
+</a>
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                        <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ol>
+<li>Webpack简介</li>
+<li>Webpack常用概念</li>
+<li>Webpack运行时</li>
+<li>Webpack使用</li>
+<li>Webpack进阶</li>
+<li>通灵塔webpack编译优化（Dll/DllReference）</li>
+</ol>
+<hr>
+<h3 id="1-Webpack-简介"><a href="#1-Webpack-简介" class="headerlink" title="1. Webpack 简介"></a>1. Webpack 简介</h3><p>Webpack 是德国开发者 Tobias Koppers 开发的模块加载器。核心的理念是，视各种资源，例如JS（含JSX）、coffee、样式（含less/sass）、图片等都作为模块，来使用和处理。<br><img src="http://p0.meituan.net/dpgroup/f78661bef717cf2cc2c2e5158f196384368389.png" alt="webpack"></p>
+<h3 id="webpack-config-js-配置"><a href="#webpack-config-js-配置" class="headerlink" title="webpack.config.js 配置"></a>webpack.config.js 配置</h3><p>1.<strong>entry</strong><br>2.<strong>output</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</div><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">"../../"</span>);</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">entry</span>: &#123;</div><div class="line">    <span class="attr">main</span>: <span class="string">"./example"</span>,</div><div class="line">    <span class="attr">common</span>: [<span class="string">"./vendor"</span>] <span class="comment">// optional</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">output</span>: &#123;</div><div class="line">    <span class="attr">path</span>: path.join(__dirname, <span class="string">"js"</span>),</div><div class="line">    <span class="attr">filename</span>: <span class="string">"[name].chunkhash.js"</span>,</div><div class="line">    <span class="attr">chunkFilename</span>: <span class="string">"[chunkhash].js"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">plugins</span>: [</div><div class="line">    <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">      <span class="attr">names</span>: [<span class="string">"common"</span>]</div><div class="line">    &#125;)</div><div class="line">  ]</div><div class="line"> &#125;;</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="2-Webpack-常用概念"><a href="#2-Webpack-常用概念" class="headerlink" title="2. Webpack 常用概念"></a>2. Webpack 常用概念</h3><ol>
+<li>模块(module)</li>
+<li>chunk</li>
+<li>资源(assets)</li>
+<li>loader(资源加载)</li>
+<li>plugin</li>
+<li>代码分割</li>
+</ol>
+<hr>
+<h4 id="2-1-模块"><a href="#2-1-模块" class="headerlink" title="2.1 模块"></a>2.1 模块</h4><p>模块间依赖关系网(js,css,png,node_module)</p>
+<p><img src="http://p1.meituan.net/dpgroup/b41b6c0d667f6dc1235ed93c43b3a9f9649848.png" alt="modules"></p>
+<hr>
+<p>模块使用CommonJs管理，每个模块有一个模块id,一般情况下id为数字，但可以使用插件换成文件具体路径，以下<br>为id为184的模块</p>
+<pre><code>/* 184 */
+/***/ function(module, exports, __webpack_require__) {
+
+
+  var Core = __webpack_require__(185);
+  var NativeCore = __webpack_require__(194);
+  var Network = __webpack_require__(196);
+  var Promise = __webpack_require__(188);
+
+  Core.prototype._mixin(Core.prototype, NativeCore);
+  Core.prototype._mixin(Core.prototype, Network);
+  Core.prototype.all = function(list){
+    return Promise.all(list);
+  };
+  module.exports = Core;
+
+
+/***/ },
+</code></pre><hr>
+<h4 id="2-2-chunk"><a href="#2-2-chunk" class="headerlink" title="2.2 chunk"></a>2.2 chunk</h4><ul>
+<li>上图打包成chunk之后得到3个chunk</li>
+<li>chunk是一个或多个源文件的集合，可以是js,css,png等，表现为一个数组，装载这些文件.<br>chunk有父子概念， 多个chunk也可以包含同一个module模块.<br><img src="http://p0.meituan.net/dpgroup/bdec532507526e4b101e78ff3ef64cc8235544.jpeg" alt="chunk"></li>
+<li>一般来说每个entry产生一个chunk,但可以借助插件来改变chunk的依赖情况（后续commonplugin会涉及），父子chunk的表现为chunk执行前置后置的关系</li>
+<li>网状的modules最后经过webpack整理最后会表现为一个chunk有一个modules数组，这个数组全是module,且由webpack理清了网状依赖关系<br>一个chunk有多个module,平行的module<br><img src="http://p1.meituan.net/dpgroup/71e52a5970a606c6f5afb63f7444c801862437.jpeg" alt=""></li>
+</ul>
+<hr>
+<p>每个chunk也有一个唯一的id,并且有对应的flag</p>
+<ol>
+<li>entry:runtime</li>
+<li>initial:优化chunk</li>
+<li>render:normal chunk 没有runtime<br><img src="http://p0.meituan.net/dpgroup/bdec532507526e4b101e78ff3ef64cc8235544.jpeg" alt="chunk">
+                            
+                                <a class="article-more-a" href="/2016/11/28/webpack1/#more">
+                                    more >></a>
+                                
+                                    
+
+                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                        
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2016/11/28/webpack1/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+
+            
+
+                        
+
+                                                
+  
     <article id="post-koa-generator解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -217,84 +338,6 @@
                             
                                 <p class="article-more-link">
                                     <a class="article-more-a" href="/2016/08/28/koa-generator解析/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
-    <article id="post-getBoundingClientRect" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/12/getBoundingClientRect/">domAPI/css</a>
-    </h1>
-  
-
-                    
-                        <a href="/2016/06/12/getBoundingClientRect/" class="archive-article-date">
-  	<time datetime="2016-06-12T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-12</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                                        <p>Reselect 解决selector中计算量过大的问题</p>
-<p>multireducer 解决state中多个list导致state过大的问题（拆分list到state）</p>
-<p>reducer enhance —- 高阶reducer</p>
-<p>acdlite/redux-actions 是actionCreactor的工厂方法</p>
-<p>javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call by share<br>ref:<a href="https://github.com/nodejh/nodejh.github.io/issues/32" target="_blank" rel="external">https://github.com/nodejh/nodejh.github.io/issues/32</a></p>
-<p>getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离<br>其bottom为盒模型下边缘与视口顶端的距离</p>
-<p>text-shadow: h-shadow v-shadow blur color;<br>水平方向，垂直方向</p>
-<p>Object.getOwnPropertyNames()方法返回一个由指定对象的所有自身属性的属性名（包括不可枚举属性）组成的数组。</p>
-<p>Object.getOwnPropertyNames 返回一个数组，该数组对元素是 obj 自身拥有的枚举或不可枚举属性名称字符串。 数组中枚举属性的顺序与通过 for…in 循环（或 Object.keys）迭代该对象属性时一致。 数组中不可枚举属性的顺序未定义。</p>
-<p>下面的例子演示了该方法不会获取到原型链上的属性：</p>
-<p>function ParentClass() {}<br>ParentClass.prototype.inheritedMethod = function() {};</p>
-<p>function ChildClass() {<br>  this.prop = 5;<br>  this.method = function() {};<br>}</p>
-<p>ChildClass.prototype = new ParentClass;<br>ChildClass.prototype.prototypeMethod = function() {};</p>
-<p>console.log(<br>  Object.getOwnPropertyNames(<br>    new ChildClass()  // [“prop”, “method”]<br>  )<br>);</p>
-<p>1.jquery.dotdotdot</p>
-<p>2：<br>.header{<br>  overflow : hidden;<br>  text-overflow: ellipsis;<br>  display: -webkit-box;<br>  -webkit-line-clamp: 2;<br>  -webkit-box-orient: vertical;<br>}</p>
-<p>单行<br>overflow: hidden;<br>white-space: nowrap;<br>text-overflow: ellipsis;</p>
-
-                                            
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2016/06/12/getBoundingClientRect/">
                                         展开全文 >></a>
                                 </p>
                                 
@@ -409,6 +452,84 @@
 
                                                 
   
+    <article id="post-getBoundingClientRect" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/12/getBoundingClientRect/">domAPI/css</a>
+    </h1>
+  
+
+                    
+                        <a href="/2016/06/12/getBoundingClientRect/" class="archive-article-date">
+  	<time datetime="2016-06-12T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-12</time>
+</a>
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                                        <p>Reselect 解决selector中计算量过大的问题</p>
+<p>multireducer 解决state中多个list导致state过大的问题（拆分list到state）</p>
+<p>reducer enhance —- 高阶reducer</p>
+<p>acdlite/redux-actions 是actionCreactor的工厂方法</p>
+<p>javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call by share<br>ref:<a href="https://github.com/nodejh/nodejh.github.io/issues/32" target="_blank" rel="external">https://github.com/nodejh/nodejh.github.io/issues/32</a></p>
+<p>getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离<br>其bottom为盒模型下边缘与视口顶端的距离</p>
+<p>text-shadow: h-shadow v-shadow blur color;<br>水平方向，垂直方向</p>
+<p>Object.getOwnPropertyNames()方法返回一个由指定对象的所有自身属性的属性名（包括不可枚举属性）组成的数组。</p>
+<p>Object.getOwnPropertyNames 返回一个数组，该数组对元素是 obj 自身拥有的枚举或不可枚举属性名称字符串。 数组中枚举属性的顺序与通过 for…in 循环（或 Object.keys）迭代该对象属性时一致。 数组中不可枚举属性的顺序未定义。</p>
+<p>下面的例子演示了该方法不会获取到原型链上的属性：</p>
+<p>function ParentClass() {}<br>ParentClass.prototype.inheritedMethod = function() {};</p>
+<p>function ChildClass() {<br>  this.prop = 5;<br>  this.method = function() {};<br>}</p>
+<p>ChildClass.prototype = new ParentClass;<br>ChildClass.prototype.prototypeMethod = function() {};</p>
+<p>console.log(<br>  Object.getOwnPropertyNames(<br>    new ChildClass()  // [“prop”, “method”]<br>  )<br>);</p>
+<p>1.jquery.dotdotdot</p>
+<p>2：<br>.header{<br>  overflow : hidden;<br>  text-overflow: ellipsis;<br>  display: -webkit-box;<br>  -webkit-line-clamp: 2;<br>  -webkit-box-orient: vertical;<br>}</p>
+<p>单行<br>overflow: hidden;<br>white-space: nowrap;<br>text-overflow: ellipsis;</p>
+
+                                            
+
+                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                        
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2016/06/12/getBoundingClientRect/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+
+            
+
+                        
+
+                                                
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
@@ -506,6 +627,22 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
               </li>
              
@@ -518,23 +655,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">

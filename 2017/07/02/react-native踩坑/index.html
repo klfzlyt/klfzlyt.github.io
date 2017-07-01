@@ -6,17 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://07lyt.com">
-  <title>Tag: node | Vogel im Kafig</title>
+  <title>react-native踩坑之旅 | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="lyt的个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Vogel im Kafig">
-<meta property="og:url" content="http://07lyt.com/tags/node/index.html">
+  <meta name="description" content="mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上 expo可以跑起来，但是原理还不大清楚 那些示例项目android ios该怎么运行？react-native run-ios/android? expo的应用怎么打包？ 跑expo的应用在android上需要下个google play store，再搜索expo下，翻墙用的蓝灯，试了好多root软件都是，一键ro">
+<meta name="keywords" content="react-native">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-native踩坑之旅">
+<meta property="og:url" content="http://07lyt.com/2017/07/02/react-native踩坑/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
-<meta property="og:description" content="lyt的个人博客">
+<meta property="og:description" content="mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上 expo可以跑起来，但是原理还不大清楚 那些示例项目android ios该怎么运行？react-native run-ios/android? expo的应用怎么打包？ 跑expo的应用在android上需要下个google play store，再搜索expo下，翻墙用的蓝灯，试了好多root软件都是，一键ro">
+<meta property="og:image" content="http://p1.meituan.net/dpgroup/9a2bf7836454fd7a16891061c83e079568682.jpg">
+<meta property="og:image" content="http://p1.meituan.net/dpgroup/2e46d2407fe6853a82a2187d05fd8d8d23932.jpg">
+<meta property="og:image" content="http://p1.meituan.net/dpgroup/81345c9a5627d294b390f4d21cc3df5d41824.jpg">
+<meta property="og:updated_time" content="2017-07-01T17:31:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vogel im Kafig">
-<meta name="twitter:description" content="lyt的个人博客">
+<meta name="twitter:title" content="react-native踩坑之旅">
+<meta name="twitter:description" content="mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上 expo可以跑起来，但是原理还不大清楚 那些示例项目android ios该怎么运行？react-native run-ios/android? expo的应用怎么打包？ 跑expo的应用在android上需要下个google play store，再搜索expo下，翻墙用的蓝灯，试了好多root软件都是，一键ro">
+<meta name="twitter:image" content="http://p1.meituan.net/dpgroup/9a2bf7836454fd7a16891061c83e079568682.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Vogel im Kafig" type="application/atom+xml">
   
@@ -151,62 +157,200 @@
                                 <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
                             </div>
                             <div id="js-content" class="content-ll">
-                                
+                                <article id="post-react-native踩坑" class="article article-type-post " itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/28/koa-generator解析/" class="archive-article-date">
-  	<time datetime="2016-08-28T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/28/koa-generator解析/">koa-generator解析</a>
+    <h1 class="article-title" itemprop="name">
+      react-native踩坑之旅
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+                    
+                        <a href="/2017/07/02/react-native踩坑/" class="archive-article-date">
+  	<time datetime="2017-07-02T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-02</time>
+</a>
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                                        <p>mac上<br>1.最新的官方demo，要求xcode8.3.3<br>系统要求10.12及以上</p>
+<p>expo可以跑起来，但是原理还不大清楚</p>
+<p>那些示例项目android ios该怎么运行？<code>react-native run-ios/android</code>?</p>
+<p>expo的应用怎么打包？</p>
+<p>跑expo的应用在android上需要下个google play store，再搜索expo下，翻墙用的蓝灯，试了好多root软件都是，一键root</p>
+<p>expo 的应用不能装apk么，都是内嵌到那个expo应用里的？</p>
+<p>expo可以再ios模拟器跑，但是好像好慢的样子？<br>通过create-react-native-app AwesomeProject<br> 那个cli创建的项目，啥都没有ios android文件夹都没有,执行了yarn start之后 也产生了.expo文件<br>那么如何部署？<br>通过create-react-native-app<br>出来的项目，执行<code>yarn start</code>得到一个二维码，用expo能扫开，很方便.<br>通过<code>yarn run android</code>连上真机的话，即为进行了真机debug,如果不连真机的话，得到一个这样的错<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Error</span> running adb: No Android device found. Please connect a device and follow the instructions here to enable USB debugging:</div><div class="line">https:<span class="comment">//developer.android.com/studio/run/device.html#developer-device-options. If you are using Genymotion go to Settings -&gt; ADB, select "Use custom Android SDK tools", and point it at your Android SDK directory.</span></div></pre></td></tr></table></figure></p>
+<p>进行yarn run ios：会打开模拟器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ react-native-scripts ios</div><div class="line">00:32:00: Starting packager...</div><div class="line">00:32:11: Starting simulator...</div><div class="line">Found Xcode 7.3.0, which is older than the recommended Xcode 8.2.0.</div></pre></td></tr></table></figure></p>
+<p>我已经装了xcode 8.3.3为什么有这个提示？<br>而且文件结构永远没有ios,android文件，用的是expo<br><a id="more"></a></p>
+<hr>
+<p>如果这样初始项目<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native init AwesomeProject</div></pre></td></tr></table></figure></p>
+<p>会有ios android文件夹，npm 还会自动install?<br>执行<code>react-native run-ios</code><br>得到build failed 结果，<br><strong>但是</strong>通过xcode打开项目，进行run，却能正常打开模拟器，打开项目，通过命令就报错：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">** BUILD FAILED **</div><div class="line"></div><div class="line"></div><div class="line">The following build commands failed:</div><div class="line"></div><div class="line">	CompileC /Users/liyangtao/testProject/AwesomeProject/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTTabBarItem.o Views/RCTTabBarItem.m normal x86_64 objective-c com.apple.compilers.llvm.clang<span class="number">.1</span>_0.compiler</div><div class="line">(<span class="number">1</span> failure)</div><div class="line"></div><div class="line">Installing build/Build/Products/Debug-iphonesimulator/AwesomeProject.app</div><div class="line">An error was encountered processing the command (domain=NSPOSIXErrorDomain, code=<span class="number">2</span>):</div><div class="line">Failed to install the requested application</div><div class="line">An application bundle was not found at the provided path.</div><div class="line">Provide a valid path to the desired application bundle.</div><div class="line">Print: Entry, <span class="string">":CFBundleIdentifier"</span>, Does Not Exist</div><div class="line"></div><div class="line">Command failed: <span class="regexp">/usr/</span>libexec/PlistBuddy -c Print:CFBundleIdentifier build/Build/Products/Debug-iphonesimulator/AwesomeProject.app/Info.plist</div><div class="line">Print: Entry, <span class="string">":CFBundleIdentifier"</span>, Does Not Exist</div></pre></td></tr></table></figure></p>
+<p>还有貌似我在任何文件件都能执行<code>react-native</code><br>如果<code>react-native run-android</code>那么<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Downloading https:<span class="comment">//services.gradle.org/distributions/gradle-2.14.1-all.zip</span></div></pre></td></tr></table></figure></p>
+<p>都会去下载一次，好慢，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; java.lang.UnsupportedClassVersionError: com/android/build/gradle/AppPlugin : Unsupported major.minor version 52.0</div></pre></td></tr></table></figure></p>
+<p>而且会有这个错误</p>
+<p>问题：<br>react-native-cli是啥？<br>local-cli是啥？<br>react-native-cli为什么要全局装？<br>react-native为什么要局部装？<br>装的版本有什么要求么<br>（遇到一个坑，在很老的项目中，react-native包含了react,之后分离了）<br>eject是个啥？<br><code>react-native upgrade</code>能干啥？<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">react-native init AwesomeProject</div><div class="line">cd AwesomeProject</div><div class="line">react-native run-ios</div></pre></td></tr></table></figure></p>
+<p>这样得到的应用是有ios文件么？</p>
+<h2 id="mac-android指南"><a href="#mac-android指南" class="headerlink" title="mac android指南"></a>mac android指南</h2><h3 id="一-准备工作：-http-reactnative-cn-docs-0-45-getting-started-html-content-："><a href="#一-准备工作：-http-reactnative-cn-docs-0-45-getting-started-html-content-：" class="headerlink" title="一.准备工作：(http://reactnative.cn/docs/0.45/getting-started.html#content)："></a>一.准备工作：(<a href="http://reactnative.cn/docs/0.45/getting-started.html#content)：" target="_blank" rel="external">http://reactnative.cn/docs/0.45/getting-started.html#content)：</a></h3><ol>
+<li>去<a href="https://developer.android.com/studio/install.html" target="_blank" rel="external">https://developer.android.com/studio/install.html</a><br>下载最新的android studio</li>
+</ol>
+<p>android studio有去下载android sdk的能力，只要翻墙就可以用android studio去下载sdk</p>
+<p>android studio的6.0必装，对应的是sdk 23</p>
+<blockquote>
+<p>然后在Android 6.0 &gt; (Marshmallow)中勾选Google &gt; APIs、Android SDK Platform 23</p>
+</blockquote>
+<p>装好后要设置ANDROID_HOME环境变量<br>再把工具路径<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools</div></pre></td></tr></table></figure></p>
+<p>加入环境变量</p>
+<h3 id="二-如何调试-真机"><a href="#二-如何调试-真机" class="headerlink" title="二.如何调试(真机)"></a>二.如何调试(真机)</h3><p>我的调试机型 vivo android 5.1.1</p>
+<p>用exop mac客户端可以调试<br>（这个客户端似乎不需要xcode 或者android sdk）用这个客户端建立的项目只有一个.expo文件夹，没有我们的ios,android文件夹</p>
+<p>exop像是一个壳客户端,</p>
+<hr>
+<p>在android 5.0以上，要执行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb reverse tcp:<span class="number">8081</span> tcp:<span class="number">8081</span></div></pre></td></tr></table></figure></p>
+<p>不然localhost认不出来<br>之后执行<code>react-native run-android</code>即可调试，<br>调试具有热启动的能力，远程debugger能力（不得不感叹很强大），下面是一些截图：</p>
+<p><img src="http://p1.meituan.net/dpgroup/9a2bf7836454fd7a16891061c83e079568682.jpg" alt=""></p>
+<p><img src="http://p1.meituan.net/dpgroup/2e46d2407fe6853a82a2187d05fd8d8d23932.jpg" alt=""><br>还有类似于看dom的功能<br><img src="http://p1.meituan.net/dpgroup/81345c9a5627d294b390f4d21cc3df5d41824.jpg" alt=""></p>
+<p>ps:<br>Genymotion自己装的有 但没有试过</p>
+<h3 id="三-之后是打包APK的过程"><a href="#三-之后是打包APK的过程" class="headerlink" title="三.之后是打包APK的过程"></a>三.之后是打包APK的过程</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">10000</span></div></pre></td></tr></table></figure>
+<p>用上面的命令生成一个keystore文件，<br>这个文件使用来签名用的，好像是个二进制文件，这个文件好像是java jdk的能力,引用：</p>
+<blockquote>
+<p>这条命令会要求你输入密钥库（keystore）和对应密钥的密码，然后设置一些发行相关的信息。最后它会生成一个叫做my-release-key.keystore的密钥库文件。</p>
+<p>在运行上面这条语句之后，密钥库里应该已经生成了一个单独的密钥，有效期为10000天。–alias参数后面的别名是你将来为应用签名时所需要用到的，所以记得记录这个别名。</p>
+</blockquote>
+<p>还要生成一个Profile文件：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">编辑~<span class="regexp">/.gradle/g</span>radle.properties（没有这个文件你就创建一个），添加如下的代码（注意把其中的****替换为相应密码）</div><div class="line">注意：~表示用户目录，比如windows上可能是C:\Users\用户名，而mac上可能是/Users/用户名。</div><div class="line"></div><div class="line">MYAPP_RELEASE_STORE_FILE=my-release-key.keystore</div><div class="line">MYAPP_RELEASE_KEY_ALIAS=my-key-alias</div><div class="line">MYAPP_RELEASE_STORE_PASSWORD=*****</div><div class="line">MYAPP_RELEASE_KEY_PASSWORD=*****</div></pre></td></tr></table></figure></p>
+<p>之后把生成的文件拷贝到android/app(是app!)<br>下，不要拷贝到anroid文件夹下，<br>另外有2个build.gradle文件，要注意，复制的这段代码要去掉省略号，要复制到子build.gradle中，根build.gradle不用管</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">android &#123;</div><div class="line">    ...</div><div class="line">    defaultConfig &#123; ... &#125;</div><div class="line">    signingConfigs &#123;</div><div class="line">        release &#123;</div><div class="line">            storeFile file(MYAPP_RELEASE_STORE_FILE)</div><div class="line">            storePassword MYAPP_RELEASE_STORE_PASSWORD</div><div class="line">            keyAlias MYAPP_RELEASE_KEY_ALIAS</div><div class="line">            keyPassword MYAPP_RELEASE_KEY_PASSWORD</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            ...</div><div class="line">            signingConfig signingConfigs.release</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>之后在android文件中执行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./gradlew assembleRelease</div></pre></td></tr></table></figure></p>
+<p>即可获得打包好的apk了</p>
+
+                                            
+
+                                                
+                                                    <div class="page-reward">
+                                                        <a href="javascript:;" class="page-reward-btn tooltip-top">
+                                                            <div class="tooltip tooltip-east">
+                                                                <span class="tooltip-item">
+              赏
+            </span>
+                                                                <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                                                                
+                                                    </div>
+                                                    </span>
+                                                    </span>
+                                                    </span>
+                </div>
+                </a>
+    </div>
+    
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">react-native</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+                        
 
+                            
+
+                                    
+                                        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://07lyt.com/2017/07/02/react-native踩坑/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+                                            
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
 </article>
-  
-  
-    </div></section>
-  
 
     
+<nav id="article-nav">
+  
+    <a href="/2017/06/19/redux解析/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          redux源码分析及自己实现
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
+        
 
+            
+
+                        
+                            
+                                        <div class="duoshuo"></div>
+                                        
+                                            
+
+                                                
                             </div>
                         </div>
                     </div>
@@ -231,9 +375,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
