@@ -174,7 +174,7 @@
             
                 <div class="article-entry" itemprop="articleBody">
                     
-                        <p>(<a href="http://reactnative.cn/docs/0.45/upgrading.html">http://reactnative.cn/docs/0.45/upgrading.html</a>)</p>
+                        <p>(<a href="http://reactnative.cn/docs/0.45/upgrading.html" target="_blank" rel="external">http://reactnative.cn/docs/0.45/upgrading.html</a>)</p>
 <p>mac上<br>1.最新的官方demo，要求xcode8.3.3<br>系统要求10.12及以上</p>
 <p>expo可以跑起来，但是原理还不大清楚</p>
 <p>那些示例项目android ios该怎么运行？<code>react-native run-ios/android</code>?</p>
@@ -469,7 +469,7 @@
             
                 <div class="article-entry" itemprop="articleBody">
                     
-                        <h3 id="JavaScript中存在纯函数吗-自译"><a href="#JavaScript中存在纯函数吗-自译" class="headerlink" title="JavaScript中存在纯函数吗?(自译)"></a>JavaScript中存在纯函数吗?(自译)</h3><p> <a href="https://hackernoon.com/do-pure-functions-exist-in-javascript-b128ed5f0ed2">https://hackernoon.com/do-pure-functions-exist-in-javascript-b128ed5f0ed2</a></p>
+                        <h3 id="JavaScript中存在纯函数吗-自译"><a href="#JavaScript中存在纯函数吗-自译" class="headerlink" title="JavaScript中存在纯函数吗?(自译)"></a>JavaScript中存在纯函数吗?(自译)</h3><p> <a href="https://hackernoon.com/do-pure-functions-exist-in-javascript-b128ed5f0ed2" target="_blank" rel="external">https://hackernoon.com/do-pure-functions-exist-in-javascript-b128ed5f0ed2</a></p>
 <h3 id="什么是纯函数？"><a href="#什么是纯函数？" class="headerlink" title="什么是纯函数？"></a>什么是纯函数？</h3><p>满足下面两个条件：<br>
                             
                                 <a class="article-more-a" href="/2017/06/12/javascript纯函数/#more">
@@ -537,7 +537,7 @@
                     
                         <p>在react中，在render后的diff阶段，对一个列表进行了diff比较，react的实现比较高效，是o(n)量级，一种通用的diff是类似于求两个字符串的编辑距离(o(m*n)),参考：</p>
 <blockquote>
-<p><a href="https://en.wikipedia.org/wiki/Levenshtein_distance">https://en.wikipedia.org/wiki/Levenshtein_distance</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Levenshtein_distance" target="_blank" rel="external">https://en.wikipedia.org/wiki/Levenshtein_distance</a></p>
 </blockquote>
 <p>比如要计算cafe和coffee的编辑距离，cafe→caffe→coffe→coffee，要经过3次转变。</p>
 <p>动态规划解决思路：<br>
@@ -608,7 +608,7 @@
                         <h2 id="react-redux-4-4-5"><a href="#react-redux-4-4-5" class="headerlink" title="react-redux(4.4.5)"></a>react-redux(4.4.5)</h2><p>react-reudx 5.0+的版本已经进行了比较大的重构，这里主要介绍v4的版本</p>
 <h3 id="provider"><a href="#provider" class="headerlink" title="provider"></a>provider</h3><p>provider主要做了传递store的事情，通过在parent组件内，使用getChildContext方法，这个方法可以把相应的属性隐式往下传，子组件及子组件的子组件都可以获得此属性</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Provider</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  getChildContext() &#123;</div><div class="line">    <span class="keyword">return</span> &#123; <span class="attr">store</span>: <span class="keyword">this</span>.store &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(props, context) &#123;</div><div class="line">    <span class="keyword">super</span>(props, context)</div><div class="line">    <span class="keyword">this</span>.store = props.store</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> Children.only(<span class="keyword">this</span>.props.children)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>从Provider的代码中可以看到在构造函数初始化的时候将store赋了值，之后通过getChildContext将值往下传递<br>还要注意<code>childContextTypes</code>需要声明出用到的属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</div><div class="line">Index.childContextTypes=&#123;</div><div class="line">	name: React.PropTypes.string.isRequired</div><div class="line">&#125;</div><div class="line">*/</span></div><div class="line">Provider.childContextTypes = &#123;</div><div class="line">  <span class="attr">store</span>: storeShape.isRequired</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>从Provider的代码中可以看到在构造函数初始化的时候将store赋了值，之后通过getChildContext将值往下传递<br>还要注意<code>childContextTypes</code>需要声明出用到的属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">Index.childContextTypes=&#123;</div><div class="line">	name: React.PropTypes.string.isRequired</div><div class="line">&#125;</div><div class="line">*/</div><div class="line">Provider.childContextTypes = &#123;</div><div class="line">  <span class="attr">store</span>: storeShape.isRequired</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
                             
                                 <a class="article-more-a" href="/2017/05/28/react-redux/#more">
                                     more >></a>
@@ -660,7 +660,7 @@
                 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/28/webpack流程/">webpack流程</a>
+      <a class="article-title" href="/2017/04/28/webpack流程/">webpack内部流程</a>
     </h1>
   
 
@@ -676,8 +676,8 @@
                         <h3 id="webpack的一切都建立在其插件机制之上"><a href="#webpack的一切都建立在其插件机制之上" class="headerlink" title="webpack的一切都建立在其插件机制之上"></a>webpack的一切都建立在其插件机制之上</h3><h4 id="webpack是什么？"><a href="#webpack是什么？" class="headerlink" title="webpack是什么？"></a>webpack是什么？</h4><p><img src="http://p1.meituan.net/dpgroup/c048c5bc511979147aa5cb086bfb8d2239047.png" alt=""></p>
 <p>webpack 类似C++,java中的编译器，有编译，链接的能力 </p>
 <p>那么为什么是编译器？ </p>
-<p> webpack也需要做词法分析，语法分析，也需要把代码合起来</p>
-<h2 id="注意webapck的语法分析重点分析require即为依赖的分析，要区分babel是对整个业务代码的分析"><a href="#注意webapck的语法分析重点分析require即为依赖的分析，要区分babel是对整个业务代码的分析" class="headerlink" title="注意webapck的语法分析重点分析require即为依赖的分析，要区分babel是对整个业务代码的分析"></a>注意webapck的语法分析重点分析<strong>require即为依赖的分析</strong>，要区分babel是对整个业务代码的分析</h2>
+<p> webpack也需要做词法分析，语法分析，也需要把代码合起来<br>注意webapck的语法分析重点分析<strong>require即为依赖的分析</strong>，要区分babel是对整个业务代码的分析</p>
+<h2 id="webpack是基于node的能力的"><a href="#webpack是基于node的能力的" class="headerlink" title="webpack是基于node的能力的"></a>webpack是基于node的能力的</h2>
                             
                                 <a class="article-more-a" href="/2017/04/28/webpack流程/#more">
                                     more >></a>
@@ -744,13 +744,13 @@
                     
                         <p>在动手之前，先说说动机，之前看过浏览器工作原理的一系列文章，如： </p>
 <ol>
-<li><a href="http://yincheng.site/build-dom">chrome dom树构建源码解析</a></li>
-<li><a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/">浏览器的工作原理：新式网络浏览器幕后揭秘</a></li>
+<li><a href="http://yincheng.site/build-dom" target="_blank" rel="external">chrome dom树构建源码解析</a></li>
+<li><a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/" target="_blank" rel="external">浏览器的工作原理：新式网络浏览器幕后揭秘</a></li>
 </ol>
 <p>以及一些规范</p>
 <ol>
-<li><a href="https://www.w3.org/TR/html5/syntax.html#the-stack-of-open-elements">html解析构建规范</a></li>
-<li><a href="https://www.w3.org/TR/CSS2/grammar.html">css 规范</a></li>
+<li><a href="https://www.w3.org/TR/html5/syntax.html#the-stack-of-open-elements" target="_blank" rel="external">html解析构建规范</a></li>
+<li><a href="https://www.w3.org/TR/CSS2/grammar.html" target="_blank" rel="external">css 规范</a></li>
 </ol>
 <p>在了解了原理与一些规范之后就想要自己试试造个轮子，加深对浏览器的理解。在大致梳理好流程之后，有以下目录：</p>
 <hr>
@@ -986,11 +986,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1010,11 +1010,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redux</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -6,15 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://07lyt.com">
-  <title>webpack流程 | Vogel im Kafig</title>
+  <title>webpack内部流程 | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="webpack的一切都建立在其插件机制之上webpack是什么？ webpack 类似C++,java中的编译器，有编译，链接的能力  那么为什么是编译器？   webpack也需要做词法分析，语法分析，也需要把代码合起来 注意webapck的语法分析重点分析require即为依赖的分析，要区分babel是对整个业务代码的分析">
+  <meta name="description" content="webpack的一切都建立在其插件机制之上webpack是什么？ webpack 类似C++,java中的编译器，有编译，链接的能力  那么为什么是编译器？   webpack也需要做词法分析，语法分析，也需要把代码合起来注意webapck的语法分析重点分析require即为依赖的分析，要区分babel是对整个业务代码的分析 webpack是基于node的能力的">
 <meta name="keywords" content="基础工具">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webpack流程">
+<meta property="og:title" content="webpack内部流程">
 <meta property="og:url" content="http://07lyt.com/2017/04/28/webpack流程/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
-<meta property="og:description" content="webpack的一切都建立在其插件机制之上webpack是什么？ webpack 类似C++,java中的编译器，有编译，链接的能力  那么为什么是编译器？   webpack也需要做词法分析，语法分析，也需要把代码合起来 注意webapck的语法分析重点分析require即为依赖的分析，要区分babel是对整个业务代码的分析">
+<meta property="og:description" content="webpack的一切都建立在其插件机制之上webpack是什么？ webpack 类似C++,java中的编译器，有编译，链接的能力  那么为什么是编译器？   webpack也需要做词法分析，语法分析，也需要把代码合起来注意webapck的语法分析重点分析require即为依赖的分析，要区分babel是对整个业务代码的分析 webpack是基于node的能力的">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/c048c5bc511979147aa5cb086bfb8d2239047.png">
 <meta property="og:image" content="http://p0.meituan.net/dpgroup/fe6a3a12e407e13aa74e57612b29c6f780336.png">
 <meta property="og:image" content="http://img.alicdn.com/tps/TB1GVGFNXXXXXaTapXXXXXXXXXX-4436-4244.jpg">
@@ -23,10 +23,10 @@
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNbRwgw1fa8w58kxspj30bs0m9wgi.jpg">
 <meta property="og:image" content="https://sfault-image.b0.upaiyun.com/257/666/2576661044-58735466843de_articlex">
 <meta property="og:image" content="http://p0.meituan.net/dpgroup/c527baf97e04d3e9c09aa1135398259271949.png">
-<meta property="og:updated_time" content="2017-07-02T15:08:54.000Z">
+<meta property="og:updated_time" content="2017-07-02T15:24:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webpack流程">
-<meta name="twitter:description" content="webpack的一切都建立在其插件机制之上webpack是什么？ webpack 类似C++,java中的编译器，有编译，链接的能力  那么为什么是编译器？   webpack也需要做词法分析，语法分析，也需要把代码合起来 注意webapck的语法分析重点分析require即为依赖的分析，要区分babel是对整个业务代码的分析">
+<meta name="twitter:title" content="webpack内部流程">
+<meta name="twitter:description" content="webpack的一切都建立在其插件机制之上webpack是什么？ webpack 类似C++,java中的编译器，有编译，链接的能力  那么为什么是编译器？   webpack也需要做词法分析，语法分析，也需要把代码合起来注意webapck的语法分析重点分析require即为依赖的分析，要区分babel是对整个业务代码的分析 webpack是基于node的能力的">
 <meta name="twitter:image" content="http://p1.meituan.net/dpgroup/c048c5bc511979147aa5cb086bfb8d2239047.png">
   
     <link rel="alternative" href="/atom.xml" title="Vogel im Kafig" type="application/atom+xml">
@@ -169,7 +169,7 @@
                 
   
     <h1 class="article-title" itemprop="name">
-      webpack流程
+      webpack内部流程
     </h1>
   
 
@@ -185,8 +185,8 @@
                                         <h3 id="webpack的一切都建立在其插件机制之上"><a href="#webpack的一切都建立在其插件机制之上" class="headerlink" title="webpack的一切都建立在其插件机制之上"></a>webpack的一切都建立在其插件机制之上</h3><h4 id="webpack是什么？"><a href="#webpack是什么？" class="headerlink" title="webpack是什么？"></a>webpack是什么？</h4><p><img src="http://p1.meituan.net/dpgroup/c048c5bc511979147aa5cb086bfb8d2239047.png" alt=""></p>
 <p>webpack 类似C++,java中的编译器，有编译，链接的能力 </p>
 <p>那么为什么是编译器？ </p>
-<p> webpack也需要做词法分析，语法分析，也需要把代码合起来</p>
-<h2 id="注意webapck的语法分析重点分析require即为依赖的分析，要区分babel是对整个业务代码的分析"><a href="#注意webapck的语法分析重点分析require即为依赖的分析，要区分babel是对整个业务代码的分析" class="headerlink" title="注意webapck的语法分析重点分析require即为依赖的分析，要区分babel是对整个业务代码的分析"></a>注意webapck的语法分析重点分析<strong>require即为依赖的分析</strong>，要区分babel是对整个业务代码的分析</h2><a id="more"></a>
+<p> webpack也需要做词法分析，语法分析，也需要把代码合起来<br>注意webapck的语法分析重点分析<strong>require即为依赖的分析</strong>，要区分babel是对整个业务代码的分析</p>
+<h2 id="webpack是基于node的能力的"><a href="#webpack是基于node的能力的" class="headerlink" title="webpack是基于node的能力的"></a>webpack是基于node的能力的</h2><a id="more"></a>
 <p>下图是webpack的整个框架流程，可以看到有complation,compiler</p>
 <p><img src="http://p0.meituan.net/dpgroup/fe6a3a12e407e13aa74e57612b29c6f780336.png" alt="f"></p>
 <p>更详细的这张阿里博客的图很能说明问题<br><img src="http://img.alicdn.com/tps/TB1GVGFNXXXXXaTapXXXXXXXXXX-4436-4244.jpg" alt="流程图"><br>地址：<a href="http://taobaofed.org/blog/2016/08/24/react-key/" target="_blank" rel="external">http://taobaofed.org/blog/2016/08/24/react-key/</a><br>已经说的非常详细了</p>
@@ -433,11 +433,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -457,11 +457,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redux</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
               </li>
              
               <li class="article-tag-list-item">
