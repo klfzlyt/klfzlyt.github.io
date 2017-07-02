@@ -9,6 +9,7 @@
   <title>Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="lyt的个人博客">
+<meta name="keywords" content="前端 js 程序员 音乐">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Vogel im Kafig">
 <meta property="og:url" content="http://07lyt.com/index.html">
@@ -173,7 +174,8 @@
             
                 <div class="article-entry" itemprop="articleBody">
                     
-                        <p>mac上<br>1.最新的官方demo，要求xcode8.3.3<br>系统要求10.12及以上</p>
+                        <p>(<a href="http://reactnative.cn/docs/0.45/upgrading.html">http://reactnative.cn/docs/0.45/upgrading.html</a>)</p>
+<p>mac上<br>1.最新的官方demo，要求xcode8.3.3<br>系统要求10.12及以上</p>
 <p>expo可以跑起来，但是原理还不大清楚</p>
 <p>那些示例项目android ios该怎么运行？<code>react-native run-ios/android</code>?</p>
 <p>expo的应用怎么打包？</p>
@@ -651,6 +653,75 @@
 
                                                 
   
+    <article id="post-webpack流程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/28/webpack流程/">webpack流程</a>
+    </h1>
+  
+
+                    
+                        <a href="/2017/04/28/webpack流程/" class="archive-article-date">
+  	<time datetime="2017-04-28T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-28</time>
+</a>
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                        <h3 id="webpack的一切都建立在其插件机制之上"><a href="#webpack的一切都建立在其插件机制之上" class="headerlink" title="webpack的一切都建立在其插件机制之上"></a>webpack的一切都建立在其插件机制之上</h3><h4 id="webpack是什么？"><a href="#webpack是什么？" class="headerlink" title="webpack是什么？"></a>webpack是什么？</h4><p><img src="http://p1.meituan.net/dpgroup/c048c5bc511979147aa5cb086bfb8d2239047.png" alt=""></p>
+<p>webpack 类似C++,java中的编译器，有编译，链接的能力 </p>
+<p>那么为什么是编译器？ </p>
+<p> webpack也需要做词法分析，语法分析，也需要把代码合起来</p>
+<h2 id="注意webapck的语法分析重点分析require即为依赖的分析，要区分babel是对整个业务代码的分析"><a href="#注意webapck的语法分析重点分析require即为依赖的分析，要区分babel是对整个业务代码的分析" class="headerlink" title="注意webapck的语法分析重点分析require即为依赖的分析，要区分babel是对整个业务代码的分析"></a>注意webapck的语法分析重点分析<strong>require即为依赖的分析</strong>，要区分babel是对整个业务代码的分析</h2>
+                            
+                                <a class="article-more-a" href="/2017/04/28/webpack流程/#more">
+                                    more >></a>
+                                
+                                    
+
+                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                        
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2017/04/28/webpack流程/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+
+            
+
+                        
+
+                                                
+  
     <article id="post-动手实现一个简易HTML解析器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -814,76 +885,6 @@
 
                                                 
   
-    <article id="post-自己实现clonedeep" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/14/自己实现clonedeep/">自己实现lodash/cloneDeep</a>
-    </h1>
-  
-
-                    
-                        <a href="/2016/12/14/自己实现clonedeep/" class="archive-article-date">
-  	<time datetime="2016-12-14T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-14</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <h3 id="lodash之cloneDeep的实现"><a href="#lodash之cloneDeep的实现" class="headerlink" title="lodash之cloneDeep的实现"></a>lodash之cloneDeep的实现</h3><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>先回顾一下浅拷贝<br><img src="http://p0.meituan.net/dpgroup/9d5d2a98381895c92101521c779dd88b52421.png" alt=""><br>如图所示，浅拷贝是新建立了一个对象，但是对象每个key还是引用了之前的。<br>而我们的深拷贝需要开辟所有的内存区域<br><img src="http:////p1.meituan.net/dpgroup/8fcb3603ce1676152630d2f27dffe2d542972.png" alt=""></p>
-<p>↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓</p>
-<p><img src="http://p0.meituan.net/dpgroup/da9554618959e748328baf9f5534335d43523.png" alt=""><br>如图所示，要把上图中的对象深拷贝为下面的对象。</p>
-<p><strong>其实对于这种对象，用用递归就能简单实现</strong>。</p>
-<p><strong>但是要注意</strong><br>对于下图的循环引用<br><img src="http://p0.meituan.net/dpgroup/a204b16b78019139dcaad5c2c4e138f550010.png" alt=""><br>↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓<br><img src="http://p1.meituan.net/dpgroup/09a449fa74e7c5dd4826d96978ff6b7f50506.png" alt=""></p>
-<p>如果要递归来拷贝的话，那么得要加一些逻辑，不然一个递归将无限进行下去，因为这里面的路径有一个环。<br><br>参考lodash,我们用一个hashMap保存每个<strong>对象有没有被Copy过</strong><br><img src="http://p1.meituan.net/dpgroup/6d41a3b5c06fc4973f57b8e0c6cf604055993.png" alt=""><br>由于对象作为key,可以用symbol，也可以用其他手段实现，这里我们用stack,stack每个元素为一个array pair来实现，当然这种实现不唯一。</p>
-                            
-                                <a class="article-more-a" href="/2016/12/14/自己实现clonedeep/#more">
-                                    more >></a>
-                                
-                                    
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2016/12/14/自己实现clonedeep/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -985,11 +986,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1009,11 +1010,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redux</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="http://07lyt.com">
   <title>react-native踩坑之旅 | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上 expo可以跑起来，但是原理还不大清楚 那些示例项目android ios该怎么运行？react-native run-ios/android? expo的应用怎么打包？ 跑expo的应用在android上需要下个google play store，再搜索expo下，翻墙用的蓝灯，试了好多root软件都是，一键ro">
+  <meta name="description" content="(http://reactnative.cn/docs/0.45/upgrading.html) mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上 expo可以跑起来，但是原理还不大清楚 那些示例项目android ios该怎么运行？react-native run-ios/android? expo的应用怎么打包？ 跑expo的应用在android上需要下个go">
 <meta name="keywords" content="react-native">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react-native踩坑之旅">
 <meta property="og:url" content="http://07lyt.com/2017/07/02/react-native踩坑/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
-<meta property="og:description" content="mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上 expo可以跑起来，但是原理还不大清楚 那些示例项目android ios该怎么运行？react-native run-ios/android? expo的应用怎么打包？ 跑expo的应用在android上需要下个google play store，再搜索expo下，翻墙用的蓝灯，试了好多root软件都是，一键ro">
+<meta property="og:description" content="(http://reactnative.cn/docs/0.45/upgrading.html) mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上 expo可以跑起来，但是原理还不大清楚 那些示例项目android ios该怎么运行？react-native run-ios/android? expo的应用怎么打包？ 跑expo的应用在android上需要下个go">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/9a2bf7836454fd7a16891061c83e079568682.jpg">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/2e46d2407fe6853a82a2187d05fd8d8d23932.jpg">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/81345c9a5627d294b390f4d21cc3df5d41824.jpg">
-<meta property="og:updated_time" content="2017-07-01T17:32:09.000Z">
+<meta property="og:updated_time" content="2017-07-02T08:37:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-native踩坑之旅">
-<meta name="twitter:description" content="mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上 expo可以跑起来，但是原理还不大清楚 那些示例项目android ios该怎么运行？react-native run-ios/android? expo的应用怎么打包？ 跑expo的应用在android上需要下个google play store，再搜索expo下，翻墙用的蓝灯，试了好多root软件都是，一键ro">
+<meta name="twitter:description" content="(http://reactnative.cn/docs/0.45/upgrading.html) mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上 expo可以跑起来，但是原理还不大清楚 那些示例项目android ios该怎么运行？react-native run-ios/android? expo的应用怎么打包？ 跑expo的应用在android上需要下个go">
 <meta name="twitter:image" content="http://p1.meituan.net/dpgroup/9a2bf7836454fd7a16891061c83e079568682.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Vogel im Kafig" type="application/atom+xml">
@@ -177,7 +177,8 @@
             
                 <div class="article-entry" itemprop="articleBody">
                     
-                                        <p>mac上<br>1.最新的官方demo，要求xcode8.3.3<br>系统要求10.12及以上</p>
+                                        <p>(<a href="http://reactnative.cn/docs/0.45/upgrading.html" target="_blank" rel="external">http://reactnative.cn/docs/0.45/upgrading.html</a>)</p>
+<p>mac上<br>1.最新的官方demo，要求xcode8.3.3<br>系统要求10.12及以上</p>
 <p>expo可以跑起来，但是原理还不大清楚</p>
 <p>那些示例项目android ios该怎么运行？<code>react-native run-ios/android</code>?</p>
 <p>expo的应用怎么打包？</p>
@@ -189,10 +190,20 @@
 <hr>
 <p>如果这样初始项目<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native init AwesomeProject</div></pre></td></tr></table></figure></p>
 <p>会有ios android文件夹，npm 还会自动install?<br>执行<code>react-native run-ios</code><br>得到build failed 结果，<br><strong>但是</strong>通过xcode打开项目，进行run，却能正常打开模拟器，打开项目，通过命令就报错：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">** BUILD FAILED **</div><div class="line"></div><div class="line"></div><div class="line">The following build commands failed:</div><div class="line"></div><div class="line">	CompileC /Users/liyangtao/testProject/AwesomeProject/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTTabBarItem.o Views/RCTTabBarItem.m normal x86_64 objective-c com.apple.compilers.llvm.clang<span class="number">.1</span>_0.compiler</div><div class="line">(<span class="number">1</span> failure)</div><div class="line"></div><div class="line">Installing build/Build/Products/Debug-iphonesimulator/AwesomeProject.app</div><div class="line">An error was encountered processing the command (domain=NSPOSIXErrorDomain, code=<span class="number">2</span>):</div><div class="line">Failed to install the requested application</div><div class="line">An application bundle was not found at the provided path.</div><div class="line">Provide a valid path to the desired application bundle.</div><div class="line">Print: Entry, <span class="string">":CFBundleIdentifier"</span>, Does Not Exist</div><div class="line"></div><div class="line">Command failed: <span class="regexp">/usr/</span>libexec/PlistBuddy -c Print:CFBundleIdentifier build/Build/Products/Debug-iphonesimulator/AwesomeProject.app/Info.plist</div><div class="line">Print: Entry, <span class="string">":CFBundleIdentifier"</span>, Does Not Exist</div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">lsof -n -i4TCP:<span class="number">8081</span></div><div class="line">kill - <span class="number">9</span> xxxx</div></pre></td></tr></table></figure>
+<p>(issuse:<a href="https://github.com/facebook/react-native/issues/7308#issuecomment-219597774" target="_blank" rel="external">https://github.com/facebook/react-native/issues/7308#issuecomment-219597774</a>)<br>有可能跟react-native的版本有关</p>
+<blockquote>
+<p>从0.24版本开始，react-native还需要额外安装react模块，且对react的版本有严格要求，高于或低于某个范围都不可以。本文无法在这里列出所有react native和对应的react模块版本要求，只能提醒读者先尝试执行npm install，然后注意观察安装过程中的报错信息，例如require react@某.某.某版本, but none was installed，然后根据这样的提示，执行npm install react@某.某.某版本 –save。</p>
+</blockquote>
 <p>还有貌似我在任何文件件都能执行<code>react-native</code><br>如果<code>react-native run-android</code>那么<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Downloading https:<span class="comment">//services.gradle.org/distributions/gradle-2.14.1-all.zip</span></div></pre></td></tr></table></figure></p>
 <p>都会去下载一次，好慢，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; java.lang.UnsupportedClassVersionError: com/android/build/gradle/AppPlugin : Unsupported major.minor version 52.0</div></pre></td></tr></table></figure></p>
-<p>而且会有这个错误</p>
-<p>问题：<br>react-native-cli是啥？<br>local-cli是啥？<br>react-native-cli为什么要全局装？<br>react-native为什么要局部装？<br>装的版本有什么要求么<br>（遇到一个坑，在很老的项目中，react-native包含了react,之后分离了）<br>eject是个啥？<br><code>react-native upgrade</code>能干啥？<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">react-native init AwesomeProject</div><div class="line">cd AwesomeProject</div><div class="line">react-native run-ios</div></pre></td></tr></table></figure></p>
+<p>而且会有这个错误<br>解决办法是：<br>我的jdk是1.7的，升级为1.8就好了<br>(<a href="https://stackoverflow.com/questions/42874971/react-native-build-error-android-java-lang-unsupportedclassversionerror-com-a" target="_blank" rel="external">https://stackoverflow.com/questions/42874971/react-native-build-error-android-java-lang-unsupportedclassversionerror-com-a</a>)<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">up vote</div><div class="line">6</div><div class="line">down vote</div><div class="line">accepted</div><div class="line">At last figured out the problem</div><div class="line"></div><div class="line">check $JAVA_HOME</div><div class="line"></div><div class="line">Need JDK 1.8 to work</div><div class="line"></div><div class="line">Install Java JDK 1.8 and change the JAVA_HOME</div><div class="line"></div><div class="line">edit ~/.bashrc and add JDK 1.8 path as JAVA_HOME</div><div class="line"></div><div class="line">export JAVA_HOME=/usr/lib/jvm/java-8-oracle/jre/</div><div class="line"></div><div class="line">and source ~/.bashrc close the current terminal window/tab and run</div><div class="line"></div><div class="line">react-native run-android</div></pre></td></tr></table></figure></p>
+<p>问题：<br>react-native-cli是啥？<br>local-cli是啥？<br>react-native-cli为什么要全局装？<br>react-native为什么要局部装？<br>装的版本有什么要求么<br>（遇到一个坑，在很老的项目中，react-native包含了react,之后分离了）<br>eject是个啥？<br><code>react-native upgrade</code>能干啥？<br>答： </p>
+<blockquote>
+<p>新版本的npm包通常还会包含一些动态生成的文件，这些文件是在运行react-native init创建新项目时生成的，比如iOS和Android的项目文件。为了使老项目的项目文件也能得到更新（不重新init），你需要在命令行中运行：</p>
+</blockquote>
+<p>$ react-native upgrade<br>这一命令会检查最新的项目模板，然后进行如下操作：</p>
+<p>如果是新添加的文件，则直接创建。<br>如果文件和当前版本的文件相同，则跳过。<br>如果文件和当前版本的文件不同，则会提示你一些选项：查看两者的不同，选择保留你的版本或是用新的模板覆盖。你可以按下h键来查看所有可以使用的命令。<br>译注：如果你有修改原生代码，那么在使用upgrade升级前，先备份，再覆盖。覆盖完成后，使用比对工具找出差异，将你之前修改的代码逐步搬运到新文件中。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">react-native init AwesomeProject</div><div class="line">cd AwesomeProject</div><div class="line">react-native run-ios</div></pre></td></tr></table></figure></p>
 <p>这样得到的应用是有ios文件么？</p>
 <h2 id="mac-android指南"><a href="#mac-android指南" class="headerlink" title="mac android指南"></a>mac android指南</h2><h3 id="一-准备工作：-http-reactnative-cn-docs-0-45-getting-started-html-content-："><a href="#一-准备工作：-http-reactnative-cn-docs-0-45-getting-started-html-content-：" class="headerlink" title="一.准备工作：(http://reactnative.cn/docs/0.45/getting-started.html#content)："></a>一.准备工作：(<a href="http://reactnative.cn/docs/0.45/getting-started.html#content)：" target="_blank" rel="external">http://reactnative.cn/docs/0.45/getting-started.html#content)：</a></h3><ol>
 <li>去<a href="https://developer.android.com/studio/install.html" target="_blank" rel="external">https://developer.android.com/studio/install.html</a><br>下载最新的android studio</li>
@@ -224,6 +235,14 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">android &#123;</div><div class="line">    ...</div><div class="line">    defaultConfig &#123; ... &#125;</div><div class="line">    signingConfigs &#123;</div><div class="line">        release &#123;</div><div class="line">            storeFile file(MYAPP_RELEASE_STORE_FILE)</div><div class="line">            storePassword MYAPP_RELEASE_STORE_PASSWORD</div><div class="line">            keyAlias MYAPP_RELEASE_KEY_ALIAS</div><div class="line">            keyPassword MYAPP_RELEASE_KEY_PASSWORD</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            ...</div><div class="line">            signingConfig signingConfigs.release</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">...</div></pre></td></tr></table></figure>
 <p>之后在android文件中执行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./gradlew assembleRelease</div></pre></td></tr></table></figure></p>
 <p>即可获得打包好的apk了</p>
+<p>ignite:</p>
+<p><a href="https://github.com/infinitered/ignite" target="_blank" rel="external">https://github.com/infinitered/ignite</a></p>
+<blockquote>
+<p>ps:有些库要求不同版本的android build tool</p>
+</blockquote>
+<p>android-building-from-source:</p>
+<p><a href="https://facebook.github.io/react-native/docs/android-building-from-source.html" target="_blank" rel="external">https://facebook.github.io/react-native/docs/android-building-from-source.html</a></p>
+<p>如何run 0.38的官方android例子 ：(看样子是要build)<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Running the examples on Android</div><div class="line"></div><div class="line">Note that you'll need the Android NDK installed, see prerequisites.</div><div class="line"></div><div class="line">./gradlew :Examples:Movies:android:app:installDebug</div><div class="line"># Start the packager in a separate shell (make sure you ran npm install):</div><div class="line">./packager/packager.sh</div><div class="line"># Open the Movies app in your emulator</div></pre></td></tr></table></figure></p>
 
                                             
 
@@ -328,15 +347,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/06/19/redux解析/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          redux源码分析及自己实现
-        
-      </div>
-    </a>
   
+    <a href="/2017/06/19/redux解析/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">redux源码分析及自己实现</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -445,11 +460,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -469,11 +484,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redux</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">

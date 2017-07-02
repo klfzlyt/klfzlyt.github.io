@@ -9,6 +9,7 @@
   <title>Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="lyt的个人博客">
+<meta name="keywords" content="前端 js 程序员 音乐">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Vogel im Kafig">
 <meta property="og:url" content="http://07lyt.com/page/2/index.html">
@@ -152,6 +153,212 @@
                             </div>
                             <div id="js-content" class="content-ll">
                                 
+  
+    <article id="post-截图实践" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/20/截图实践/">截图实践</a>
+    </h1>
+  
+
+                    
+                        <a href="/2017/02/20/截图实践/" class="archive-article-date">
+  	<time datetime="2017-02-20T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-20</time>
+</a>
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                                        <p>一.概述<br>二.phantomjs实现<br>三.前端canvans实现</p>
+<p>一.概述<br>背景：通过元旦等运营活动，活动屏幕截图并分享到微信朋友圈，回流率较高。传统截图方式时手机同时按2个键，一是会把手机状态栏截图，二是截图操作不是处于活动流程中，需要提示用户。<br>注意：需求是截屏得到一个图片的URL（不是得到一个可以展示的img标签）这决定了一种canvas的实现无法做到兼容<br>截屏通常的形式有工具和浏览器能力2种，如下：</p>
+<p>1.利用浏览器需要利用到canvas的能力，canvas.drawImg方法即可吧图片绘制到canvas中，但是还需要把canvas数据换成blob，模拟文件上传。<br>2.后端形式需要利用到具体的工具，phantomjs作为微型浏览器，也是用js触发执行，与node场景吻合，快速实现</p>
+<p>二.phantomJs后端实现</p>
+<p>phantomJs 不是node,是微型浏览器<br>通过键盘鼠标交互为传统的与浏览器交互，我们通过用指令的方式可以与phantomjs交互，相比常用浏览器，phantomJs少了绘制和合成的阶段，如下绿色部分</p>
+<p>phantomJs的使用很简单，下面是一个简单的例子，以链接形式打开页面，还可以直接给HTML字符打开页面：详细使用可以查看phantomjs API<br>/github.js</p>
+<ol>
+<li>var page = require(‘webpage’).create();</li>
+<li>page.open(‘<a href="http://github.com/" target="_blank" rel="external">http://github.com/</a>‘, function() {</li>
+<li>page.render(‘github.png’);</li>
+<li>phantom.exit();</li>
+<li>});</li>
+</ol>
+<p>$ phantomjs github.js<br>在使用时，我们使用phantom包，这个包作为桥接，桥接了phantomjs，但要注意执行环境的区别，如下:</p>
+<p>//todo 插入部分phantom 代码</p>
+<p>一.<br>const cssStr=<code>@font-face {
+            font-family: &quot;STXihei&quot;;
+            src: url(&quot;http://127.0.0.1:8080/misc/getfont&quot;);
+        }
+        body { font-family: &quot;STXihei&quot;, serif }</code>;<br>function evaluateJS(page){<br>    return page.evaluate(function () {<br>                //这里能否使用cssStr变量？<br>            })<br>}</p>
+<p>二.<br>const cssStr=<code>@font-face {
+        font-family: &quot;STXihei&quot;;
+        src: url(&quot;http://127.0.0.1:8080/misc/getfont&quot;);
+        }
+        body { font-family: &quot;STXihei&quot;, serif }</code>;<br>function evaluateJS(page){<br>        return page.evaluate(function (cssStr) {},cssStr)<br>}<br>两套环境体现在：一中的代码无法获取cssStr变量，需要用二中的方式，将变量序列化出去获得。<br>然后最后我们没有使用phantomjs，主要是是三个原因:<br>静态页面（直出内容是空白，前端把控时机）<br>console.log(‘screenshot’)<br>检测页面dom出现<br>前端post整个HTML片段<br>字库（机器没有字库，每次遇到新机器都要装字体）<br>慢（主要原因） 慢是最主要的原因</p>
+<p>从下图可看到，一个phantom过程需要花费的路径</p>
+<p>打印出时间，基本要花费3S或以上</p>
+<p>鉴于以上原因，舍弃了phantomjs的方案</p>
+<p>三.前端canvas实现<br>思路：把dom画在canvas上，然后canvas导出blob,模拟文件上传，把blob传到后端。<br>遇到canvas画图，就有一个跨域，或者是污染的说法，什么是“被污染”的 canvas?<br>尽管不通过 CORS 就可以在画布中使用图片（ctx.drawImage(domImg, 0, 0);），但是这会污染画布。一旦画布被污染，你就无法读取其数据。例如，你不能再使用画布的 toBlob(), toDataURL() 或 getImageData() 方法，调用它们会抛出安全错误。<br>下面是几种会污染canvas的情况，如果画在canvas中的img的域满足一下几种的话：<br>blob:<a href="http://localhost:6334/2a99e4f1-2009-4d9d-9812-83122eefe90d" target="_blank" rel="external">http://localhost:6334/2a99e4f1-2009-4d9d-9812-83122eefe90d</a> (协议不同)<br><a href="http://xxxxx" target="_blank" rel="external">http://xxxxx</a> (不同域)<br><a href="https://xxx" target="_blank" rel="external">https://xxx</a> (不同域)<br>svg带foreignObject带html标签 (仅限Safari，普通svg不会污染)         由于html带有交互性质，比如visited过的link，出于安全考虑，Safari把这个数据导出禁止了，也可以理解为污染了canvas<br>那么canvas就会被污染</p>
+<p>对于ctx.drawImage( img, 0, 0 )会污染的唯一解决办法    (让 canvas.toBlob(), canvas.toDataURL()不报错)：<br>img加载时需要有crossorigin<br>1.<img crossorigin="anonymous" src="//p0.meitu……"><br>2.var img = new Image();<br>  img.crossOrigin=”anonymous”;（已经加载好的dom无效）<br>图片请求可以跨域（Access-Control-Allow-Headers)<br>有crossorigin属性的图片src必须是http(s)<br>(ios error : Cross-origin image load denied by Cross-Origin Resource Sharing policy。ios认为crossorigin必须和http(s)关联)<br>画在canvas的图片为base64无交互格式图片<br>所以有一种把dom画在canvas上的方案就不符合，因为污染了canvas<br>这种方案是利用svg的能力<br>原理：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas</a></p>
+<pre><code>var canvas = document.getElementById(&apos;canvas&apos;);
+var ctx = canvas.getContext(&apos;2d&apos;);
+
+var data = &apos;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;&apos; +
+&apos;&lt;foreignObject width=&quot;100%&quot; height=&quot;100%&quot;&gt;&apos; +
+&apos;&lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot; style=&quot;font-size:40px&quot;&gt;&apos; + //html
+&apos;&lt;em&gt;I&lt;/em&gt; like&apos; +  //html
+&apos;&lt;span style=&quot;color:white; text-shadow:0 0 2px blue;&quot;&gt;&apos; + //html
+&apos;cheese&lt;/span&gt;&apos; + //html
+&apos;&lt;/div&gt;&apos; + //html
+&apos;&lt;/foreignObject&gt;&apos; +
+&apos;&lt;/svg&gt;&apos;;
+
+var DOMURL = window.URL || window.webkitURL || window;
+
+var img = new Image();
+var svgBlob = new Blob([data], {type: &apos;image/svg+xml;charset=utf-8&apos;});
+var base64 = fileReader.readAsDataURL(svgBlob)
+</code></pre><p>//data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcm……==</p>
+<pre><code>img.onload = function () {
+    ctx.drawImage(img, 0, 0);//(手动加粗)
+    canvas.toDataURL()//（ios 受阻碍）由于是blob协议，污染了canvas 这种svg图片是有交互的（html标签）
+}
+img.src = base64;//(手动加粗)
+</code></pre><p>svg带foreignObject带html标签(仅限Safari，普通svg不会污染)ios调用toDataURL受阻<br>插播一下rasterizeHTML的内联化实现<br>如何把css文本转换为cssSheet(不污染本文档)?<br>    var rulesForCssTextFromBrowser = function (styleContent) {<br>        var doc = document.implementation.createHTMLDocument(“”),<br>        styleElement = document.createElement(“style”),<br>        rules;</p>
+<pre><code>    styleElement.textContent = styleContent;
+    // the style will only be parsed once it is added to a document
+    doc.body.appendChild(styleElement);
+    rules = styleElement.sheet.cssRules;
+
+    return Array.prototype.slice.call(rules);
+};
+</code></pre><p>另一种实现：<br>利用 html2canvas，这个库是纯计算dom，并用canvas API 绘制DOM，只要把图片都以base64形式传递给这个库，canvas就不会被污染<br>纯canvas API绘制DOM（DOM需可见，因为要getComputedStyle, html2canvas）<br>如图，先深度优先拿到所有图片dom，然后人工转base64，最后上传</p>
+<p>前端如要要截图的的话可以使用组件：<br>             组件使用如下：<br>         npm install @dp/screenshot</p>
+<pre><code>import {screenshot} from @dp/screenshot
+
+
+var container = document.getElementById(&apos;container&apos;);
+var ins = new screenshot();
+ins.draw(container, {
+    logDuration:true,
+}, function (err,res) {
+    console.log(res);
+});
+</code></pre><p>组件运用建议，对于能用img标签写的尽量用img标签写，并加上crossorigin属性 形如<br><img crossorigin="anonymous" src="//p0.meituan……"><br>这样可以减少对图片的ajax请求，减少截屏耗时<br>如果要试试后端截图，链接如下：<br><a href="http://m.dianping.com/misc/screenshot?activityUrl=https://itbilu.com/nodejs/core/NJGRdjgU.html" target="_blank" rel="external">http://m.dianping.com/misc/screenshot?activityUrl=https://itbilu.com/nodejs/core/NJGRdjgU.html</a></p>
+
+                                            
+
+                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                        
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2017/02/20/截图实践/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+
+            
+
+                        
+
+                                                
+  
+    <article id="post-自己实现clonedeep" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/14/自己实现clonedeep/">自己实现lodash/cloneDeep</a>
+    </h1>
+  
+
+                    
+                        <a href="/2016/12/14/自己实现clonedeep/" class="archive-article-date">
+  	<time datetime="2016-12-14T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-14</time>
+</a>
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                        <h3 id="lodash之cloneDeep的实现"><a href="#lodash之cloneDeep的实现" class="headerlink" title="lodash之cloneDeep的实现"></a>lodash之cloneDeep的实现</h3><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>先回顾一下浅拷贝<br><img src="http://p0.meituan.net/dpgroup/9d5d2a98381895c92101521c779dd88b52421.png" alt=""><br>如图所示，浅拷贝是新建立了一个对象，但是对象每个key还是引用了之前的。<br>而我们的深拷贝需要开辟所有的内存区域<br><img src="http:////p1.meituan.net/dpgroup/8fcb3603ce1676152630d2f27dffe2d542972.png" alt=""></p>
+<p>↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓</p>
+<p><img src="http://p0.meituan.net/dpgroup/da9554618959e748328baf9f5534335d43523.png" alt=""><br>如图所示，要把上图中的对象深拷贝为下面的对象。</p>
+<p><strong>其实对于这种对象，用用递归就能简单实现</strong>。</p>
+<p><strong>但是要注意</strong><br>对于下图的循环引用<br><img src="http://p0.meituan.net/dpgroup/a204b16b78019139dcaad5c2c4e138f550010.png" alt=""><br>↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓<br><img src="http://p1.meituan.net/dpgroup/09a449fa74e7c5dd4826d96978ff6b7f50506.png" alt=""></p>
+<p>如果要递归来拷贝的话，那么得要加一些逻辑，不然一个递归将无限进行下去，因为这里面的路径有一个环。<br><br>参考lodash,我们用一个hashMap保存每个<strong>对象有没有被Copy过</strong><br><img src="http://p1.meituan.net/dpgroup/6d41a3b5c06fc4973f57b8e0c6cf604055993.png" alt=""><br>由于对象作为key,可以用symbol，也可以用其他手段实现，这里我们用stack,stack每个元素为一个array pair来实现，当然这种实现不唯一。</p>
+                            
+                                <a class="article-more-a" href="/2016/12/14/自己实现clonedeep/#more">
+                                    more >></a>
+                                
+                                    
+
+                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                        
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2016/12/14/自己实现clonedeep/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+
+            
+
+                        
+
+                                                
   
     <article id="post-webpack1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
@@ -631,11 +838,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -655,11 +862,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redux</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">
