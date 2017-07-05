@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="http://07lyt.com">
   <title>react-native踩坑之旅 | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="(http://reactnative.cn/docs/0.45/upgrading.html) mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上 expo可以跑起来，但是原理还不大清楚 那些示例项目android ios该怎么运行？react-native run-ios/android? expo的应用怎么打包？ 跑expo的应用在android上需要下个go">
+  <meta name="description" content="(http://reactnative.cn/docs/0.45/upgrading.html) mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上">
 <meta name="keywords" content="react-native">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react-native踩坑之旅">
 <meta property="og:url" content="http://07lyt.com/2017/07/02/react-native踩坑/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
-<meta property="og:description" content="(http://reactnative.cn/docs/0.45/upgrading.html) mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上 expo可以跑起来，但是原理还不大清楚 那些示例项目android ios该怎么运行？react-native run-ios/android? expo的应用怎么打包？ 跑expo的应用在android上需要下个go">
+<meta property="og:description" content="(http://reactnative.cn/docs/0.45/upgrading.html) mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/9a2bf7836454fd7a16891061c83e079568682.jpg">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/2e46d2407fe6853a82a2187d05fd8d8d23932.jpg">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/81345c9a5627d294b390f4d21cc3df5d41824.jpg">
-<meta property="og:updated_time" content="2017-07-02T08:37:43.000Z">
+<meta property="og:updated_time" content="2017-07-05T08:50:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-native踩坑之旅">
-<meta name="twitter:description" content="(http://reactnative.cn/docs/0.45/upgrading.html) mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上 expo可以跑起来，但是原理还不大清楚 那些示例项目android ios该怎么运行？react-native run-ios/android? expo的应用怎么打包？ 跑expo的应用在android上需要下个go">
+<meta name="twitter:description" content="(http://reactnative.cn/docs/0.45/upgrading.html) mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上">
 <meta name="twitter:image" content="http://p1.meituan.net/dpgroup/9a2bf7836454fd7a16891061c83e079568682.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Vogel im Kafig" type="application/atom+xml">
@@ -179,6 +179,7 @@
                     
                                         <p>(<a href="http://reactnative.cn/docs/0.45/upgrading.html" target="_blank" rel="external">http://reactnative.cn/docs/0.45/upgrading.html</a>)</p>
 <p>mac上<br>1.最新的官方demo，要求xcode8.3.3<br>系统要求10.12及以上</p>
+<a id="more"></a>
 <p>expo可以跑起来，但是原理还不大清楚</p>
 <p>那些示例项目android ios该怎么运行？<code>react-native run-ios/android</code>?</p>
 <p>expo的应用怎么打包？</p>
@@ -186,7 +187,7 @@
 <p>expo 的应用不能装apk么，都是内嵌到那个expo应用里的？</p>
 <p>expo可以再ios模拟器跑，但是好像好慢的样子？<br>通过create-react-native-app AwesomeProject<br> 那个cli创建的项目，啥都没有ios android文件夹都没有,执行了yarn start之后 也产生了.expo文件<br>那么如何部署？<br>通过create-react-native-app<br>出来的项目，执行<code>yarn start</code>得到一个二维码，用expo能扫开，很方便.<br>通过<code>yarn run android</code>连上真机的话，即为进行了真机debug,如果不连真机的话，得到一个这样的错<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Error</span> running adb: No Android device found. Please connect a device and follow the instructions here to enable USB debugging:</div><div class="line">https:<span class="comment">//developer.android.com/studio/run/device.html#developer-device-options. If you are using Genymotion go to Settings -&gt; ADB, select "Use custom Android SDK tools", and point it at your Android SDK directory.</span></div></pre></td></tr></table></figure></p>
 <p>进行yarn run ios：会打开模拟器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ react-native-scripts ios</div><div class="line">00:32:00: Starting packager...</div><div class="line">00:32:11: Starting simulator...</div><div class="line">Found Xcode 7.3.0, which is older than the recommended Xcode 8.2.0.</div></pre></td></tr></table></figure></p>
-<p>我已经装了xcode 8.3.3为什么有这个提示？<br>而且文件结构永远没有ios,android文件，用的是expo<br><a id="more"></a></p>
+<p>我已经装了xcode 8.3.3为什么有这个提示？<br>而且文件结构永远没有ios,android文件，用的是expo<br><!--more--></p>
 <hr>
 <p>如果这样初始项目<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native init AwesomeProject</div></pre></td></tr></table></figure></p>
 <p>会有ios android文件夹，npm 还会自动install?<br>执行<code>react-native run-ios</code><br>得到build failed 结果，<br><strong>但是</strong>通过xcode打开项目，进行run，却能正常打开模拟器，打开项目，通过命令就报错：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">** BUILD FAILED **</div><div class="line"></div><div class="line"></div><div class="line">The following build commands failed:</div><div class="line"></div><div class="line">	CompileC /Users/liyangtao/testProject/AwesomeProject/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTTabBarItem.o Views/RCTTabBarItem.m normal x86_64 objective-c com.apple.compilers.llvm.clang<span class="number">.1</span>_0.compiler</div><div class="line">(<span class="number">1</span> failure)</div><div class="line"></div><div class="line">Installing build/Build/Products/Debug-iphonesimulator/AwesomeProject.app</div><div class="line">An error was encountered processing the command (domain=NSPOSIXErrorDomain, code=<span class="number">2</span>):</div><div class="line">Failed to install the requested application</div><div class="line">An application bundle was not found at the provided path.</div><div class="line">Provide a valid path to the desired application bundle.</div><div class="line">Print: Entry, <span class="string">":CFBundleIdentifier"</span>, Does Not Exist</div><div class="line"></div><div class="line">Command failed: <span class="regexp">/usr/</span>libexec/PlistBuddy -c Print:CFBundleIdentifier build/Build/Products/Debug-iphonesimulator/AwesomeProject.app/Info.plist</div><div class="line">Print: Entry, <span class="string">":CFBundleIdentifier"</span>, Does Not Exist</div></pre></td></tr></table></figure></p>
@@ -347,6 +348,15 @@
     
 <nav id="article-nav">
   
+    <a href="/2017/07/04/graphql/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
   
     <a href="/2017/06/19/redux解析/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">redux源码分析及自己实现</div>
@@ -468,6 +478,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -476,19 +490,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
               </li>
              
               <li class="article-tag-list-item">

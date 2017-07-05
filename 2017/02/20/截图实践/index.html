@@ -8,20 +8,24 @@
   <link rel="dns-prefetch" href="http://07lyt.com">
   <title>截图实践 | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一.概述二.phantomjs实现三.前端canvans实现 一.概述背景：通过元旦等运营活动，活动屏幕截图并分享到微信朋友圈，回流率较高。传统截图方式时手机同时按2个键，一是会把手机状态栏截图，二是截图操作不是处于活动流程中，需要提示用户。注意：需求是截屏得到一个图片的URL（不是得到一个可以展示的img标签）这决定了一种canvas的实现无法做到兼容截屏通常的形式有工具和浏览器能力2种，如下：">
+  <meta name="description" content="一.概述二.phantomjs实现三.前端canvans实现 一.概述背景：在运营活动中发现，通过截图分享得到的回流率较高。传统截图方式时手机同时按2个键，一是会把手机状态栏截图，二是截图操作不是处于活动流程中，需要提示用户。注意：需求是截屏得到一个图片的URL（不是得到一个可以展示的img标签）这决定了一种canvas的实现无法做到兼容截屏通常的形式有工具和浏览器能力2种，如下：1.利用浏览器需">
 <meta name="keywords" content="前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="截图实践">
 <meta property="og:url" content="http://07lyt.com/2017/02/20/截图实践/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
-<meta property="og:description" content="一.概述二.phantomjs实现三.前端canvans实现 一.概述背景：通过元旦等运营活动，活动屏幕截图并分享到微信朋友圈，回流率较高。传统截图方式时手机同时按2个键，一是会把手机状态栏截图，二是截图操作不是处于活动流程中，需要提示用户。注意：需求是截屏得到一个图片的URL（不是得到一个可以展示的img标签）这决定了一种canvas的实现无法做到兼容截屏通常的形式有工具和浏览器能力2种，如下：">
-<meta property="og:image" content="http://p0.meitu��/">
-<meta property="og:image" content="http://p0.meituan��/">
-<meta property="og:updated_time" content="2017-07-02T15:19:31.000Z">
+<meta property="og:description" content="一.概述二.phantomjs实现三.前端canvans实现 一.概述背景：在运营活动中发现，通过截图分享得到的回流率较高。传统截图方式时手机同时按2个键，一是会把手机状态栏截图，二是截图操作不是处于活动流程中，需要提示用户。注意：需求是截屏得到一个图片的URL（不是得到一个可以展示的img标签）这决定了一种canvas的实现无法做到兼容截屏通常的形式有工具和浏览器能力2种，如下：1.利用浏览器需">
+<meta property="og:image" content="http://p0.meituan.net/dpgroup/0942ccb39a2f10ef4834d6033a4d27a544458.png">
+<meta property="og:image" content="http://p0.meituan.net/dpgroup/a71bde72278fbe9c0a671d1abc199c8526013.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/818663/201702/818663-20170219102055972-1698939102.png">
+<meta property="og:image" content="http://p0.meituan.net/dpgroup/c105d82a7a94b935227b828c9633583e19295.png">
+<meta property="og:image" content="http://p0.meituan.net/dpgroup/736d6d3209f9bdebbc5e468b30574f1150001.png">
+<meta property="og:image" content="http://p0.meituan.net/dpgroup/90b207c8beeb2e29720063be1ddfd35497465.png">
+<meta property="og:updated_time" content="2017-07-05T08:50:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="截图实践">
-<meta name="twitter:description" content="一.概述二.phantomjs实现三.前端canvans实现 一.概述背景：通过元旦等运营活动，活动屏幕截图并分享到微信朋友圈，回流率较高。传统截图方式时手机同时按2个键，一是会把手机状态栏截图，二是截图操作不是处于活动流程中，需要提示用户。注意：需求是截屏得到一个图片的URL（不是得到一个可以展示的img标签）这决定了一种canvas的实现无法做到兼容截屏通常的形式有工具和浏览器能力2种，如下：">
-<meta name="twitter:image" content="http://p0.meitu��/">
+<meta name="twitter:description" content="一.概述二.phantomjs实现三.前端canvans实现 一.概述背景：在运营活动中发现，通过截图分享得到的回流率较高。传统截图方式时手机同时按2个键，一是会把手机状态栏截图，二是截图操作不是处于活动流程中，需要提示用户。注意：需求是截屏得到一个图片的URL（不是得到一个可以展示的img标签）这决定了一种canvas的实现无法做到兼容截屏通常的形式有工具和浏览器能力2种，如下：1.利用浏览器需">
+<meta name="twitter:image" content="http://p0.meituan.net/dpgroup/0942ccb39a2f10ef4834d6033a4d27a544458.png">
   
     <link rel="alternative" href="/atom.xml" title="Vogel im Kafig" type="application/atom+xml">
   
@@ -177,80 +181,36 @@
                 <div class="article-entry" itemprop="articleBody">
                     
                                         <p>一.概述<br>二.phantomjs实现<br>三.前端canvans实现</p>
-<p>一.概述<br>背景：通过元旦等运营活动，活动屏幕截图并分享到微信朋友圈，回流率较高。传统截图方式时手机同时按2个键，一是会把手机状态栏截图，二是截图操作不是处于活动流程中，需要提示用户。<br>注意：需求是截屏得到一个图片的URL（不是得到一个可以展示的img标签）这决定了一种canvas的实现无法做到兼容<br>截屏通常的形式有工具和浏览器能力2种，如下：</p>
-<p>1.利用浏览器需要利用到canvas的能力，canvas.drawImg方法即可吧图片绘制到canvas中，但是还需要把canvas数据换成blob，模拟文件上传。<br>2.后端形式需要利用到具体的工具，phantomjs作为微型浏览器，也是用js触发执行，与node场景吻合，快速实现</p>
-<p>二.phantomJs后端实现</p>
-<p>phantomJs 不是node,是微型浏览器<br>通过键盘鼠标交互为传统的与浏览器交互，我们通过用指令的方式可以与phantomjs交互，相比常用浏览器，phantomJs少了绘制和合成的阶段，如下绿色部分</p>
-<p>phantomJs的使用很简单，下面是一个简单的例子，以链接形式打开页面，还可以直接给HTML字符打开页面：详细使用可以查看phantomjs API<br>/github.js</p>
+<h3 id="一-概述"><a href="#一-概述" class="headerlink" title="一.概述"></a>一.概述</h3><p>背景：在运营活动中发现，通过截图分享得到的回流率较高。传统截图方式时手机同时按2个键，一是会把手机状态栏截图，二是截图操作不是处于活动流程中，需要提示用户。<br>注意：需求是截屏得到一个图片的URL（不是得到一个可以展示的img标签）这决定了一种canvas的实现无法做到兼容<br>截屏通常的形式有工具和浏览器能力2种，如下：<br><img src="http://p0.meituan.net/dpgroup/0942ccb39a2f10ef4834d6033a4d27a544458.png" alt=""><br>1.利用浏览器需要利用到canvas的能力，canvas.drawImg方法即可吧图片绘制到canvas中，但是还需要把canvas数据换成blob，模拟文件上传。<br>2.后端形式需要利用到具体的工具，phantomjs作为微型浏览器，也是用js触发执行，与node场景吻合，快速实现</p>
+<a id="more"></a>
+<h3 id="二-phantomJs后端实现"><a href="#二-phantomJs后端实现" class="headerlink" title="二.phantomJs后端实现"></a>二.phantomJs后端实现</h3><p>对于程序员来说，命令式交互也是一种交互，如下：<br><img src="http://p0.meituan.net/dpgroup/a71bde72278fbe9c0a671d1abc199c8526013.png" alt=""><br>phantomJs 不是node,是微型浏览器<br>通过键盘鼠标交互为传统的与浏览器交互，我们通过用指令的方式可以与phantomjs交互，相比常用浏览器，phantomJs少了绘制和合成的阶段，如下绿色部分<br><img src="http://images2015.cnblogs.com/blog/818663/201702/818663-20170219102055972-1698939102.png" alt=""><br>phantomJs的使用很简单，下面是一个简单的例子，以链接形式打开页面，还可以直接给HTML字符打开页面：详细使用可以查看phantomjs API<br>/github.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> <span class="keyword">var</span> page = <span class="built_in">require</span>(<span class="string">'webpage'</span>).create();</div><div class="line"><span class="number">2.</span> page.open(<span class="string">'http://github.com/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"><span class="number">3.</span> page.render(<span class="string">'github.png'</span>);</div><div class="line"><span class="number">4.</span> phantom.exit();</div><div class="line"><span class="number">5.</span> &#125;);</div><div class="line"> </div><div class="line">$ phantomjs github.js</div></pre></td></tr></table></figure></p>
+<p>在使用时，我们使用phantom包，这个包作为桥接，桥接了phantomjs，但要注意执行环境的区别，如下:<br><img src="http://p0.meituan.net/dpgroup/c105d82a7a94b935227b828c9633583e19295.png" alt=""><br>phantom包的使用比较简单，只要注意环境区别就行。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> instance;</div><div class="line">  <span class="keyword">let</span> page;</div><div class="line">  <span class="comment">/*</span></div><div class="line">  创建实例</div><div class="line">   */</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">      instance = <span class="keyword">yield</span> phantom.create();</div><div class="line">      page = <span class="keyword">yield</span> instance.createPage();</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">catch</span>(e)&#123;</div><div class="line">      <span class="keyword">this</span>.logger.error(<span class="string">'init error'</span>,e)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">let</span> pageCreate = <span class="string">`创建page实例用时<span class="subst">$&#123;+(<span class="keyword">new</span> <span class="built_in">Date</span>())-startTime&#125;</span>ms`</span>;</div><div class="line">  <span class="keyword">let</span> pageCreateTime = +(<span class="keyword">new</span> <span class="built_in">Date</span>());</div><div class="line">  Time.pageCreate=pageCreate;</div><div class="line"></div><div class="line">  <span class="comment">/*</span></div><div class="line">  phantom 页面 事件 注册</div><div class="line">   */</div><div class="line">  <span class="keyword">yield</span>  page.on(<span class="string">'onConsoleMessage'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'CC'</span>,msg);</div><div class="line">      sendEvent(msg,logs)</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">yield</span>  page.on(<span class="string">'onResourceRequested'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">requestData, networkRequest</span>) </span>&#123;</div><div class="line"></div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">yield</span>  page.on(<span class="string">'onResourceReceived'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line"></div><div class="line">      <span class="keyword">if</span>(response &amp;&amp; response.url == <span class="string">'http://127.0.0.1:8080/misc/getfont'</span> &amp;&amp; response.stage == <span class="string">'end'</span>)&#123;</div><div class="line">          isFontCssLoaded = <span class="literal">true</span>;</div><div class="line">          fontCssCb &amp;&amp; fontCssCb(<span class="string">'success'</span>)</div><div class="line">      &#125;</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">yield</span> page.on(<span class="string">'onLoadFinished'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">status</span>)</span>&#123;</div><div class="line">      <span class="keyword">if</span>(status == <span class="string">'success'</span>) &#123;</div><div class="line">          isFinishedLoaded = <span class="literal">true</span>;</div><div class="line">          finishedCb &amp;&amp; finishedCb(status)</div><div class="line">      &#125;</div><div class="line">  &#125;);</div><div class="line"></div><div class="line"></div><div class="line">  <span class="comment">//转移cookie</span></div><div class="line">  <span class="keyword">yield</span> transferCookie.call(<span class="keyword">this</span>,page);</div><div class="line"></div><div class="line">  …………………………</div></pre></td></tr></table></figure></p>
+<p>小问题，下面的<code>cssStr</code>变量1，2能取到么<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">一.</div><div class="line">const cssStr=<span class="string">`</span></div><div class="line">        @font-face &#123;</div><div class="line">            font-family: "STXihei";</div><div class="line">            src: url("http://127.0.0.1:8080/misc/getfont");</div><div class="line">        &#125;</div><div class="line">        body &#123; font-family: "STXihei", serif &#125;</div><div class="line">`;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">evaluateJS</span>(<span class="params">page</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> page.evaluate(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="comment">//这里能否使用cssStr变量？</span></div><div class="line">            &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">二.</div><div class="line">const cssStr=<span class="string">`</span></div><div class="line">        @font-face &#123;</div><div class="line">        font-family: "STXihei";</div><div class="line">        src: url("http://127.0.0.1:8080/misc/getfont");</div><div class="line">        &#125;</div><div class="line">        body &#123; font-family: "STXihei", serif &#125;</div><div class="line">`;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">evaluateJS</span>(<span class="params">page</span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> page.evaluate(<span class="function"><span class="keyword">function</span> (<span class="params">cssStr</span>) </span>&#123;&#125;,cssStr)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>两套环境体现在：一中的代码无法获取cssStr变量，需要用二中的方式，将变量序列化出去获得。<br>然后最后我们没有使用phantomjs。</p>
+<p>主要是是几个原因:</p>
 <ol>
-<li>var page = require(‘webpage’).create();</li>
-<li>page.open(‘<a href="http://github.com/" target="_blank" rel="external">http://github.com/</a>‘, function() {</li>
-<li>page.render(‘github.png’);</li>
-<li>phantom.exit();</li>
-<li>});</li>
+<li>静态页面（直出内容是空白，前端把控时机）<br>console.log(‘screenshot’)</li>
+<li>检测页面dom出现</li>
+<li>前端post整个HTML片段<br>字库（机器没有字库，每次遇到新机器都要装字体）</li>
+<li>慢（主要原因） 慢是最主要的原因</li>
+<li>phantom不建议用在生产环境</li>
 </ol>
-<p>$ phantomjs github.js<br>在使用时，我们使用phantom包，这个包作为桥接，桥接了phantomjs，但要注意执行环境的区别，如下:</p>
-<p>//todo 插入部分phantom 代码</p>
-<p>一.<br>const cssStr=<code>@font-face {
-            font-family: &quot;STXihei&quot;;
-            src: url(&quot;http://127.0.0.1:8080/misc/getfont&quot;);
-        }
-        body { font-family: &quot;STXihei&quot;, serif }</code>;<br>function evaluateJS(page){<br>    return page.evaluate(function () {<br>                //这里能否使用cssStr变量？<br>            })<br>}</p>
-<p>二.<br>const cssStr=<code>@font-face {
-        font-family: &quot;STXihei&quot;;
-        src: url(&quot;http://127.0.0.1:8080/misc/getfont&quot;);
-        }
-        body { font-family: &quot;STXihei&quot;, serif }</code>;<br>function evaluateJS(page){<br>        return page.evaluate(function (cssStr) {},cssStr)<br>}<br>两套环境体现在：一中的代码无法获取cssStr变量，需要用二中的方式，将变量序列化出去获得。<br>然后最后我们没有使用phantomjs，主要是是三个原因:<br>静态页面（直出内容是空白，前端把控时机）<br>console.log(‘screenshot’)<br>检测页面dom出现<br>前端post整个HTML片段<br>字库（机器没有字库，每次遇到新机器都要装字体）<br>慢（主要原因） 慢是最主要的原因</p>
-<p>从下图可看到，一个phantom过程需要花费的路径</p>
-<p>打印出时间，基本要花费3S或以上</p>
+<p>从下图可看到，一个phantom过程需要花费的路径<br><img src="http://p0.meituan.net/dpgroup/736d6d3209f9bdebbc5e468b30574f1150001.png" alt=""></p>
+<p>打印出时间，基本要花费3S或以上<br><img src="http://p0.meituan.net/dpgroup/90b207c8beeb2e29720063be1ddfd35497465.png" alt=""></p>
 <p>鉴于以上原因，舍弃了phantomjs的方案</p>
-<p>三.前端canvas实现<br>思路：把dom画在canvas上，然后canvas导出blob,模拟文件上传，把blob传到后端。<br>遇到canvas画图，就有一个跨域，或者是污染的说法，什么是“被污染”的 canvas?<br>尽管不通过 CORS 就可以在画布中使用图片（ctx.drawImage(domImg, 0, 0);），但是这会污染画布。一旦画布被污染，你就无法读取其数据。例如，你不能再使用画布的 toBlob(), toDataURL() 或 getImageData() 方法，调用它们会抛出安全错误。<br>下面是几种会污染canvas的情况，如果画在canvas中的img的域满足一下几种的话：<br>blob:<a href="http://localhost:6334/2a99e4f1-2009-4d9d-9812-83122eefe90d" target="_blank" rel="external">http://localhost:6334/2a99e4f1-2009-4d9d-9812-83122eefe90d</a> (协议不同)<br><a href="http://xxxxx" target="_blank" rel="external">http://xxxxx</a> (不同域)<br><a href="https://xxx" target="_blank" rel="external">https://xxx</a> (不同域)<br>svg带foreignObject带html标签 (仅限Safari，普通svg不会污染)         由于html带有交互性质，比如visited过的link，出于安全考虑，Safari把这个数据导出禁止了，也可以理解为污染了canvas<br>那么canvas就会被污染</p>
-<p>对于ctx.drawImage( img, 0, 0 )会污染的唯一解决办法    (让 canvas.toBlob(), canvas.toDataURL()不报错)：<br>img加载时需要有crossorigin<br>1.<img crossorigin="anonymous" src="//p0.meitu……"><br>2.var img = new Image();<br>  img.crossOrigin=”anonymous”;（已经加载好的dom无效）<br>图片请求可以跨域（Access-Control-Allow-Headers)<br>有crossorigin属性的图片src必须是http(s)<br>(ios error : Cross-origin image load denied by Cross-Origin Resource Sharing policy。ios认为crossorigin必须和http(s)关联)<br>画在canvas的图片为base64无交互格式图片<br>所以有一种把dom画在canvas上的方案就不符合，因为污染了canvas<br>这种方案是利用svg的能力<br>原理：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas</a></p>
-<pre><code>var canvas = document.getElementById(&apos;canvas&apos;);
-var ctx = canvas.getContext(&apos;2d&apos;);
-
-var data = &apos;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;&apos; +
-&apos;&lt;foreignObject width=&quot;100%&quot; height=&quot;100%&quot;&gt;&apos; +
-&apos;&lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot; style=&quot;font-size:40px&quot;&gt;&apos; + //html
-&apos;&lt;em&gt;I&lt;/em&gt; like&apos; +  //html
-&apos;&lt;span style=&quot;color:white; text-shadow:0 0 2px blue;&quot;&gt;&apos; + //html
-&apos;cheese&lt;/span&gt;&apos; + //html
-&apos;&lt;/div&gt;&apos; + //html
-&apos;&lt;/foreignObject&gt;&apos; +
-&apos;&lt;/svg&gt;&apos;;
-
-var DOMURL = window.URL || window.webkitURL || window;
-
-var img = new Image();
-var svgBlob = new Blob([data], {type: &apos;image/svg+xml;charset=utf-8&apos;});
-var base64 = fileReader.readAsDataURL(svgBlob)
-</code></pre><p>//data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcm……==</p>
-<pre><code>img.onload = function () {
-    ctx.drawImage(img, 0, 0);//(手动加粗)
-    canvas.toDataURL()//（ios 受阻碍）由于是blob协议，污染了canvas 这种svg图片是有交互的（html标签）
-}
-img.src = base64;//(手动加粗)
-</code></pre><p>svg带foreignObject带html标签(仅限Safari，普通svg不会污染)ios调用toDataURL受阻<br>插播一下rasterizeHTML的内联化实现<br>如何把css文本转换为cssSheet(不污染本文档)?<br>    var rulesForCssTextFromBrowser = function (styleContent) {<br>        var doc = document.implementation.createHTMLDocument(“”),<br>        styleElement = document.createElement(“style”),<br>        rules;</p>
-<pre><code>    styleElement.textContent = styleContent;
-    // the style will only be parsed once it is added to a document
-    doc.body.appendChild(styleElement);
-    rules = styleElement.sheet.cssRules;
-
-    return Array.prototype.slice.call(rules);
-};
-</code></pre><p>另一种实现：<br>利用 html2canvas，这个库是纯计算dom，并用canvas API 绘制DOM，只要把图片都以base64形式传递给这个库，canvas就不会被污染<br>纯canvas API绘制DOM（DOM需可见，因为要getComputedStyle, html2canvas）<br>如图，先深度优先拿到所有图片dom，然后人工转base64，最后上传</p>
-<p>前端如要要截图的的话可以使用组件：<br>             组件使用如下：<br>         npm install @dp/screenshot</p>
-<pre><code>import {screenshot} from @dp/screenshot
-
-
-var container = document.getElementById(&apos;container&apos;);
-var ins = new screenshot();
-ins.draw(container, {
-    logDuration:true,
-}, function (err,res) {
-    console.log(res);
-});
-</code></pre><p>组件运用建议，对于能用img标签写的尽量用img标签写，并加上crossorigin属性 形如<br><img crossorigin="anonymous" src="//p0.meituan……"><br>这样可以减少对图片的ajax请求，减少截屏耗时<br>如果要试试后端截图，链接如下：<br><a href="http://m.dianping.com/misc/screenshot?activityUrl=https://itbilu.com/nodejs/core/NJGRdjgU.html" target="_blank" rel="external">http://m.dianping.com/misc/screenshot?activityUrl=https://itbilu.com/nodejs/core/NJGRdjgU.html</a></p>
+<h3 id="三-前端canvas实现"><a href="#三-前端canvas实现" class="headerlink" title="三.前端canvas实现"></a>三.前端canvas实现</h3><p>思路：把dom画在canvas上，然后canvas导出blob,模拟文件上传，把blob传到后端。<br>遇到canvas画图，就有一个跨域，或者是污染的说法，什么是“被污染”的 canvas?<br>尽管不通过 CORS 就可以在画布中使用图片（ctx.drawImage(domImg, 0, 0);），但是这会污染画布。一旦画布被污染，你就无法读取其数据。例如，你不能再使用画布的 toBlob(), toDataURL() 或 getImageData() 方法，调用它们会抛出安全错误。<br>下面是几种会污染canvas的情况，如果画在canvas中的img的域满足一下几种的话：</p>
+<ul>
+<li>blob:<a href="http://localhost:6334/2a99e4f1-2009-4d9d-9812-83122eefe90d" target="_blank" rel="external">http://localhost:6334/2a99e4f1-2009-4d9d-9812-83122eefe90d</a> (协议不同)</li>
+<li><a href="http://xxxxx" target="_blank" rel="external">http://xxxxx</a> (不同域)</li>
+<li><a href="https://xxx" target="_blank" rel="external">https://xxx</a> (不同域)</li>
+<li>svg带foreignObject带html标签 (仅限Safari，普通svg不会污染)         由于html带有交互性质，比如visited过的link，出于安全考虑，Safari把这个数据导出禁止了，也可以理解为污染了canvas<br>那么canvas就会被污染</li>
+</ul>
+<p>对于ctx.drawImage( img, 0, 0 )会污染的唯一解决办法    (让 canvas.toBlob(), canvas.toDataURL()不报错)：<br>img加载时需要有crossorigin</p>
+<ol>
+<li><figure class="highlight plain"><figcaption><span>crossorigin="anonymous" src="//p0.meitu……" >```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">2. var img = new Image();</div><div class="line">  img.crossOrigin=&quot;anonymous&quot;;（已经加载好的dom无效）</div><div class="line">    &gt; ps: 图片请求可以跨域（Access-Control-Allow-Headers)</div><div class="line">    有crossorigin属性的图片src必须是http(s)</div><div class="line">    (ios error : Cross-origin image load denied by Cross-Origin Resource Sharing policy。ios认为crossorigin必须和http(s)关联)</div><div class="line">4. 画在canvas的图片为base64无交互格式图片</div><div class="line">    所以有一种把dom画在canvas上的方案就不符合，因为污染了canvas，即为svg有交互行为被阻止了</div><div class="line"></div><div class="line">有一种方案是利用svg的能力</div><div class="line">原理：https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas</div><div class="line">如下</div><div class="line">```js</div><div class="line">        var canvas = document.getElementById(&apos;canvas&apos;);</div><div class="line">        var ctx = canvas.getContext(&apos;2d&apos;);</div><div class="line"></div><div class="line">        var data = &apos;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;&apos; +</div><div class="line">        &apos;&lt;foreignObject width=&quot;100%&quot; height=&quot;100%&quot;&gt;&apos; +</div><div class="line">        &apos;&lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot; style=&quot;font-size:40px&quot;&gt;&apos; + //html</div><div class="line">        &apos;&lt;em&gt;I&lt;/em&gt; like&apos; +  //html</div><div class="line">        &apos;&lt;span style=&quot;color:white; text-shadow:0 0 2px blue;&quot;&gt;&apos; + //html</div><div class="line">        &apos;cheese&lt;/span&gt;&apos; + //html</div><div class="line">        &apos;&lt;/div&gt;&apos; + //html</div><div class="line">        &apos;&lt;/foreignObject&gt;&apos; +</div><div class="line">        &apos;&lt;/svg&gt;&apos;;</div><div class="line"></div><div class="line">        var DOMURL = window.URL || window.webkitURL || window;</div><div class="line"></div><div class="line">        var img = new Image();</div><div class="line">        var svgBlob = new Blob([data], &#123;type: &apos;image/svg+xml;charset=utf-8&apos;&#125;);</div><div class="line">        var base64 = fileReader.readAsDataURL(svgBlob)</div><div class="line">//data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcm……==</div><div class="line"></div><div class="line">        img.onload = function () &#123;</div><div class="line">            ctx.drawImage(img, 0, 0);//(手动加粗)</div><div class="line">            canvas.toDataURL()//（ios 受阻碍）由于是blob协议，污染了canvas 这种svg图片是有交互的（html标签）</div><div class="line">        &#125;</div><div class="line">        img.src = base64;//(手动加粗)</div><div class="line">```        </div><div class="line">svg带foreignObject带html标签(仅限Safari，普通svg不会污染)ios调用toDataURL受阻（因为带了交互行为了）</div><div class="line"></div><div class="line">插播一下rasterizeHTML的内联化实现</div><div class="line">如何把css文本转换为cssSheet(不污染本文档)?</div><div class="line">```js</div><div class="line">    var rulesForCssTextFromBrowser = function (styleContent) &#123;</div><div class="line">        var doc = document.implementation.createHTMLDocument(&quot;&quot;),</div><div class="line">        styleElement = document.createElement(&quot;style&quot;),</div><div class="line">        rules;</div><div class="line"></div><div class="line">        styleElement.textContent = styleContent;</div><div class="line">        // the style will only be parsed once it is added to a document</div><div class="line">        doc.body.appendChild(styleElement);</div><div class="line">        rules = styleElement.sheet.cssRules;</div><div class="line"></div><div class="line">        return Array.prototype.slice.call(rules);</div><div class="line">    &#125;;</div><div class="line">```    </div><div class="line">#### 另一种实现：</div><div class="line">利用 html2canvas，这个库是纯计算dom，并用canvas API 绘制DOM，只要把图片都以base64形式传递给这个库，canvas就不会被污染</div><div class="line">纯canvas API绘制DOM（DOM需可见，因为要getComputedStyle, html2canvas）</div><div class="line">如图，先深度优先拿到所有图片dom，然后人工转base64，最后上传</div><div class="line">![](http://p1.meituan.net/dpgroup/74ab39ee26e5a7ef334638acb6e8ff1075678.png)</div><div class="line"></div><div class="line">组件内部使用，暂不开源</div><div class="line"></div><div class="line">对于一些开发建议:对于能用img标签写的尽量用img标签写，并加上crossorigin属性 形如:</div><div class="line">```js</div><div class="line">&lt;img crossorigin=&quot;anonymous&quot; src=&quot;//p0.meituan……&quot; &gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样可以减少对图片的ajax请求，减少截屏耗时</p>
 
                                             
 
@@ -485,6 +445,10 @@ ins.draw(container, {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -493,19 +457,15 @@ ins.draw(container, {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
               </li>
              
               <li class="article-tag-list-item">

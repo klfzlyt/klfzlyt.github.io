@@ -154,6 +154,71 @@
                             <div id="js-content" class="content-ll">
                                 
   
+    <article id="post-一个模板引擎的简单实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/11/一个模板引擎的简单实现/">一个模板引擎的简单实现</a>
+    </h1>
+  
+
+                    
+                        <a href="/2017/03/11/一个模板引擎的简单实现/" class="archive-article-date">
+  	<time datetime="2017-03-11T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-11</time>
+</a>
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                        <p>模板引擎在后端直出，前端渲染都应用广泛，知道其原理对于理解渲染会很有帮助，比如ejs,dot,react的jsx解析到creatElement等，下面是一个简易的实现:<br>
+                            
+                                <a class="article-more-a" href="/2017/03/11/一个模板引擎的简单实现/#more">
+                                    more >></a>
+                                
+                                    
+
+                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                        
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2017/03/11/一个模板引擎的简单实现/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+
+            
+
+                        
+
+                                                
+  
     <article id="post-截图实践" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -174,83 +239,13 @@
             
                 <div class="article-entry" itemprop="articleBody">
                     
-                                        <p>一.概述<br>二.phantomjs实现<br>三.前端canvans实现</p>
-<p>一.概述<br>背景：通过元旦等运营活动，活动屏幕截图并分享到微信朋友圈，回流率较高。传统截图方式时手机同时按2个键，一是会把手机状态栏截图，二是截图操作不是处于活动流程中，需要提示用户。<br>注意：需求是截屏得到一个图片的URL（不是得到一个可以展示的img标签）这决定了一种canvas的实现无法做到兼容<br>截屏通常的形式有工具和浏览器能力2种，如下：</p>
-<p>1.利用浏览器需要利用到canvas的能力，canvas.drawImg方法即可吧图片绘制到canvas中，但是还需要把canvas数据换成blob，模拟文件上传。<br>2.后端形式需要利用到具体的工具，phantomjs作为微型浏览器，也是用js触发执行，与node场景吻合，快速实现</p>
-<p>二.phantomJs后端实现</p>
-<p>phantomJs 不是node,是微型浏览器<br>通过键盘鼠标交互为传统的与浏览器交互，我们通过用指令的方式可以与phantomjs交互，相比常用浏览器，phantomJs少了绘制和合成的阶段，如下绿色部分</p>
-<p>phantomJs的使用很简单，下面是一个简单的例子，以链接形式打开页面，还可以直接给HTML字符打开页面：详细使用可以查看phantomjs API<br>/github.js</p>
-<ol>
-<li>var page = require(‘webpage’).create();</li>
-<li>page.open(‘<a href="http://github.com/" target="_blank" rel="external">http://github.com/</a>‘, function() {</li>
-<li>page.render(‘github.png’);</li>
-<li>phantom.exit();</li>
-<li>});</li>
-</ol>
-<p>$ phantomjs github.js<br>在使用时，我们使用phantom包，这个包作为桥接，桥接了phantomjs，但要注意执行环境的区别，如下:</p>
-<p>//todo 插入部分phantom 代码</p>
-<p>一.<br>const cssStr=<code>@font-face {
-            font-family: &quot;STXihei&quot;;
-            src: url(&quot;http://127.0.0.1:8080/misc/getfont&quot;);
-        }
-        body { font-family: &quot;STXihei&quot;, serif }</code>;<br>function evaluateJS(page){<br>    return page.evaluate(function () {<br>                //这里能否使用cssStr变量？<br>            })<br>}</p>
-<p>二.<br>const cssStr=<code>@font-face {
-        font-family: &quot;STXihei&quot;;
-        src: url(&quot;http://127.0.0.1:8080/misc/getfont&quot;);
-        }
-        body { font-family: &quot;STXihei&quot;, serif }</code>;<br>function evaluateJS(page){<br>        return page.evaluate(function (cssStr) {},cssStr)<br>}<br>两套环境体现在：一中的代码无法获取cssStr变量，需要用二中的方式，将变量序列化出去获得。<br>然后最后我们没有使用phantomjs，主要是是三个原因:<br>静态页面（直出内容是空白，前端把控时机）<br>console.log(‘screenshot’)<br>检测页面dom出现<br>前端post整个HTML片段<br>字库（机器没有字库，每次遇到新机器都要装字体）<br>慢（主要原因） 慢是最主要的原因</p>
-<p>从下图可看到，一个phantom过程需要花费的路径</p>
-<p>打印出时间，基本要花费3S或以上</p>
-<p>鉴于以上原因，舍弃了phantomjs的方案</p>
-<p>三.前端canvas实现<br>思路：把dom画在canvas上，然后canvas导出blob,模拟文件上传，把blob传到后端。<br>遇到canvas画图，就有一个跨域，或者是污染的说法，什么是“被污染”的 canvas?<br>尽管不通过 CORS 就可以在画布中使用图片（ctx.drawImage(domImg, 0, 0);），但是这会污染画布。一旦画布被污染，你就无法读取其数据。例如，你不能再使用画布的 toBlob(), toDataURL() 或 getImageData() 方法，调用它们会抛出安全错误。<br>下面是几种会污染canvas的情况，如果画在canvas中的img的域满足一下几种的话：<br>blob:<a href="http://localhost:6334/2a99e4f1-2009-4d9d-9812-83122eefe90d" target="_blank" rel="external">http://localhost:6334/2a99e4f1-2009-4d9d-9812-83122eefe90d</a> (协议不同)<br><a href="http://xxxxx" target="_blank" rel="external">http://xxxxx</a> (不同域)<br><a href="https://xxx" target="_blank" rel="external">https://xxx</a> (不同域)<br>svg带foreignObject带html标签 (仅限Safari，普通svg不会污染)         由于html带有交互性质，比如visited过的link，出于安全考虑，Safari把这个数据导出禁止了，也可以理解为污染了canvas<br>那么canvas就会被污染</p>
-<p>对于ctx.drawImage( img, 0, 0 )会污染的唯一解决办法    (让 canvas.toBlob(), canvas.toDataURL()不报错)：<br>img加载时需要有crossorigin<br>1.<img crossorigin="anonymous" src="//p0.meitu……"><br>2.var img = new Image();<br>  img.crossOrigin=”anonymous”;（已经加载好的dom无效）<br>图片请求可以跨域（Access-Control-Allow-Headers)<br>有crossorigin属性的图片src必须是http(s)<br>(ios error : Cross-origin image load denied by Cross-Origin Resource Sharing policy。ios认为crossorigin必须和http(s)关联)<br>画在canvas的图片为base64无交互格式图片<br>所以有一种把dom画在canvas上的方案就不符合，因为污染了canvas<br>这种方案是利用svg的能力<br>原理：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas</a></p>
-<pre><code>var canvas = document.getElementById(&apos;canvas&apos;);
-var ctx = canvas.getContext(&apos;2d&apos;);
-
-var data = &apos;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;&apos; +
-&apos;&lt;foreignObject width=&quot;100%&quot; height=&quot;100%&quot;&gt;&apos; +
-&apos;&lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot; style=&quot;font-size:40px&quot;&gt;&apos; + //html
-&apos;&lt;em&gt;I&lt;/em&gt; like&apos; +  //html
-&apos;&lt;span style=&quot;color:white; text-shadow:0 0 2px blue;&quot;&gt;&apos; + //html
-&apos;cheese&lt;/span&gt;&apos; + //html
-&apos;&lt;/div&gt;&apos; + //html
-&apos;&lt;/foreignObject&gt;&apos; +
-&apos;&lt;/svg&gt;&apos;;
-
-var DOMURL = window.URL || window.webkitURL || window;
-
-var img = new Image();
-var svgBlob = new Blob([data], {type: &apos;image/svg+xml;charset=utf-8&apos;});
-var base64 = fileReader.readAsDataURL(svgBlob)
-</code></pre><p>//data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcm……==</p>
-<pre><code>img.onload = function () {
-    ctx.drawImage(img, 0, 0);//(手动加粗)
-    canvas.toDataURL()//（ios 受阻碍）由于是blob协议，污染了canvas 这种svg图片是有交互的（html标签）
-}
-img.src = base64;//(手动加粗)
-</code></pre><p>svg带foreignObject带html标签(仅限Safari，普通svg不会污染)ios调用toDataURL受阻<br>插播一下rasterizeHTML的内联化实现<br>如何把css文本转换为cssSheet(不污染本文档)?<br>    var rulesForCssTextFromBrowser = function (styleContent) {<br>        var doc = document.implementation.createHTMLDocument(“”),<br>        styleElement = document.createElement(“style”),<br>        rules;</p>
-<pre><code>    styleElement.textContent = styleContent;
-    // the style will only be parsed once it is added to a document
-    doc.body.appendChild(styleElement);
-    rules = styleElement.sheet.cssRules;
-
-    return Array.prototype.slice.call(rules);
-};
-</code></pre><p>另一种实现：<br>利用 html2canvas，这个库是纯计算dom，并用canvas API 绘制DOM，只要把图片都以base64形式传递给这个库，canvas就不会被污染<br>纯canvas API绘制DOM（DOM需可见，因为要getComputedStyle, html2canvas）<br>如图，先深度优先拿到所有图片dom，然后人工转base64，最后上传</p>
-<p>前端如要要截图的的话可以使用组件：<br>             组件使用如下：<br>         npm install @dp/screenshot</p>
-<pre><code>import {screenshot} from @dp/screenshot
-
-
-var container = document.getElementById(&apos;container&apos;);
-var ins = new screenshot();
-ins.draw(container, {
-    logDuration:true,
-}, function (err,res) {
-    console.log(res);
-});
-</code></pre><p>组件运用建议，对于能用img标签写的尽量用img标签写，并加上crossorigin属性 形如<br><img crossorigin="anonymous" src="//p0.meituan……"><br>这样可以减少对图片的ajax请求，减少截屏耗时<br>如果要试试后端截图，链接如下：<br><a href="http://m.dianping.com/misc/screenshot?activityUrl=https://itbilu.com/nodejs/core/NJGRdjgU.html" target="_blank" rel="external">http://m.dianping.com/misc/screenshot?activityUrl=https://itbilu.com/nodejs/core/NJGRdjgU.html</a></p>
-
-                                            
+                        <p>一.概述<br>二.phantomjs实现<br>三.前端canvans实现</p>
+<h3 id="一-概述"><a href="#一-概述" class="headerlink" title="一.概述"></a>一.概述</h3><p>背景：在运营活动中发现，通过截图分享得到的回流率较高。传统截图方式时手机同时按2个键，一是会把手机状态栏截图，二是截图操作不是处于活动流程中，需要提示用户。<br>注意：需求是截屏得到一个图片的URL（不是得到一个可以展示的img标签）这决定了一种canvas的实现无法做到兼容<br>截屏通常的形式有工具和浏览器能力2种，如下：<br><img src="http://p0.meituan.net/dpgroup/0942ccb39a2f10ef4834d6033a4d27a544458.png" alt=""><br>1.利用浏览器需要利用到canvas的能力，canvas.drawImg方法即可吧图片绘制到canvas中，但是还需要把canvas数据换成blob，模拟文件上传。<br>2.后端形式需要利用到具体的工具，phantomjs作为微型浏览器，也是用js触发执行，与node场景吻合，快速实现</p>
+                            
+                                <a class="article-more-a" href="/2017/02/20/截图实践/#more">
+                                    more >></a>
+                                
+                                    
 
                                                 
         </div>
@@ -562,6 +557,84 @@ ins.draw(container, {
 
                                                 
   
+    <article id="post-getBoundingClientRect" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/12/getBoundingClientRect/">domAPI/css</a>
+    </h1>
+  
+
+                    
+                        <a href="/2016/06/12/getBoundingClientRect/" class="archive-article-date">
+  	<time datetime="2016-06-12T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-12</time>
+</a>
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                                        <p>Reselect 解决selector中计算量过大的问题</p>
+<p>multireducer 解决state中多个list导致state过大的问题（拆分list到state）</p>
+<p>reducer enhance —- 高阶reducer</p>
+<p>acdlite/redux-actions 是actionCreactor的工厂方法</p>
+<p>javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call by share<br>ref:<a href="https://github.com/nodejh/nodejh.github.io/issues/32" target="_blank" rel="external">https://github.com/nodejh/nodejh.github.io/issues/32</a></p>
+<p>getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离<br>其bottom为盒模型下边缘与视口顶端的距离</p>
+<p>text-shadow: h-shadow v-shadow blur color;<br>水平方向，垂直方向</p>
+<p>Object.getOwnPropertyNames()方法返回一个由指定对象的所有自身属性的属性名（包括不可枚举属性）组成的数组。</p>
+<p>Object.getOwnPropertyNames 返回一个数组，该数组对元素是 obj 自身拥有的枚举或不可枚举属性名称字符串。 数组中枚举属性的顺序与通过 for…in 循环（或 Object.keys）迭代该对象属性时一致。 数组中不可枚举属性的顺序未定义。</p>
+<p>下面的例子演示了该方法不会获取到原型链上的属性：</p>
+<p>function ParentClass() {}<br>ParentClass.prototype.inheritedMethod = function() {};</p>
+<p>function ChildClass() {<br>  this.prop = 5;<br>  this.method = function() {};<br>}</p>
+<p>ChildClass.prototype = new ParentClass;<br>ChildClass.prototype.prototypeMethod = function() {};</p>
+<p>console.log(<br>  Object.getOwnPropertyNames(<br>    new ChildClass()  // [“prop”, “method”]<br>  )<br>);</p>
+<p>1.jquery.dotdotdot</p>
+<p>2：<br>.header{<br>  overflow : hidden;<br>  text-overflow: ellipsis;<br>  display: -webkit-box;<br>  -webkit-line-clamp: 2;<br>  -webkit-box-orient: vertical;<br>}</p>
+<p>单行<br>overflow: hidden;<br>white-space: nowrap;<br>text-overflow: ellipsis;</p>
+
+                                            
+
+                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                        
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2016/06/12/getBoundingClientRect/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+
+            
+
+                        
+
+                                                
+  
     <article id="post-不一样的前端手指操" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -642,84 +715,6 @@ ins.draw(container, {
                             
                                 <p class="article-more-link">
                                     <a class="article-more-a" href="/2016/06/12/不一样的前端手指操/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
-    <article id="post-getBoundingClientRect" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/12/getBoundingClientRect/">domAPI/css</a>
-    </h1>
-  
-
-                    
-                        <a href="/2016/06/12/getBoundingClientRect/" class="archive-article-date">
-  	<time datetime="2016-06-12T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-12</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                                        <p>Reselect 解决selector中计算量过大的问题</p>
-<p>multireducer 解决state中多个list导致state过大的问题（拆分list到state）</p>
-<p>reducer enhance —- 高阶reducer</p>
-<p>acdlite/redux-actions 是actionCreactor的工厂方法</p>
-<p>javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call by share<br>ref:<a href="https://github.com/nodejh/nodejh.github.io/issues/32" target="_blank" rel="external">https://github.com/nodejh/nodejh.github.io/issues/32</a></p>
-<p>getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离<br>其bottom为盒模型下边缘与视口顶端的距离</p>
-<p>text-shadow: h-shadow v-shadow blur color;<br>水平方向，垂直方向</p>
-<p>Object.getOwnPropertyNames()方法返回一个由指定对象的所有自身属性的属性名（包括不可枚举属性）组成的数组。</p>
-<p>Object.getOwnPropertyNames 返回一个数组，该数组对元素是 obj 自身拥有的枚举或不可枚举属性名称字符串。 数组中枚举属性的顺序与通过 for…in 循环（或 Object.keys）迭代该对象属性时一致。 数组中不可枚举属性的顺序未定义。</p>
-<p>下面的例子演示了该方法不会获取到原型链上的属性：</p>
-<p>function ParentClass() {}<br>ParentClass.prototype.inheritedMethod = function() {};</p>
-<p>function ChildClass() {<br>  this.prop = 5;<br>  this.method = function() {};<br>}</p>
-<p>ChildClass.prototype = new ParentClass;<br>ChildClass.prototype.prototypeMethod = function() {};</p>
-<p>console.log(<br>  Object.getOwnPropertyNames(<br>    new ChildClass()  // [“prop”, “method”]<br>  )<br>);</p>
-<p>1.jquery.dotdotdot</p>
-<p>2：<br>.header{<br>  overflow : hidden;<br>  text-overflow: ellipsis;<br>  display: -webkit-box;<br>  -webkit-line-clamp: 2;<br>  -webkit-box-orient: vertical;<br>}</p>
-<p>单行<br>overflow: hidden;<br>white-space: nowrap;<br>text-overflow: ellipsis;</p>
-
-                                            
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2016/06/12/getBoundingClientRect/">
                                         展开全文 >></a>
                                 </p>
                                 
@@ -846,6 +841,10 @@ ins.draw(container, {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -854,19 +853,15 @@ ins.draw(container, {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
               </li>
              
               <li class="article-tag-list-item">
