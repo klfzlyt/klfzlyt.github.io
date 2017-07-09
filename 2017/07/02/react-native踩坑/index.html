@@ -8,21 +8,22 @@
   <link rel="dns-prefetch" href="http://07lyt.com">
   <title>react-native踩坑之旅 | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="(http://reactnative.cn/docs/0.45/upgrading.html) mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上">
+  <meta name="description" content="2017-07-09更新：做了个TODO的小demo,用的内部的组内的redux业务框架，如下：总结下：调试利器：RN debuger在mac上开ios模拟器，拥有跟页面调试基本一致的体验。初步发现的一些三方包：  https://github.com/crazycodeboy/react-native-check-box  https://github.com/sunnylqm/react-na">
 <meta name="keywords" content="react-native">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react-native踩坑之旅">
 <meta property="og:url" content="http://07lyt.com/2017/07/02/react-native踩坑/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
-<meta property="og:description" content="(http://reactnative.cn/docs/0.45/upgrading.html) mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上">
+<meta property="og:description" content="2017-07-09更新：做了个TODO的小demo,用的内部的组内的redux业务框架，如下：总结下：调试利器：RN debuger在mac上开ios模拟器，拥有跟页面调试基本一致的体验。初步发现的一些三方包：  https://github.com/crazycodeboy/react-native-check-box  https://github.com/sunnylqm/react-na">
+<meta property="og:image" content="http://p0.meituan.net/dpgroup/a40c889447c718495475548592821db3926229.jpg">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/9a2bf7836454fd7a16891061c83e079568682.jpg">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/2e46d2407fe6853a82a2187d05fd8d8d23932.jpg">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/81345c9a5627d294b390f4d21cc3df5d41824.jpg">
-<meta property="og:updated_time" content="2017-07-05T08:50:23.000Z">
+<meta property="og:updated_time" content="2017-07-09T07:36:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-native踩坑之旅">
-<meta name="twitter:description" content="(http://reactnative.cn/docs/0.45/upgrading.html) mac上1.最新的官方demo，要求xcode8.3.3系统要求10.12及以上">
-<meta name="twitter:image" content="http://p1.meituan.net/dpgroup/9a2bf7836454fd7a16891061c83e079568682.jpg">
+<meta name="twitter:description" content="2017-07-09更新：做了个TODO的小demo,用的内部的组内的redux业务框架，如下：总结下：调试利器：RN debuger在mac上开ios模拟器，拥有跟页面调试基本一致的体验。初步发现的一些三方包：  https://github.com/crazycodeboy/react-native-check-box  https://github.com/sunnylqm/react-na">
+<meta name="twitter:image" content="http://p0.meituan.net/dpgroup/a40c889447c718495475548592821db3926229.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Vogel im Kafig" type="application/atom+xml">
   
@@ -177,15 +178,58 @@
             
                 <div class="article-entry" itemprop="articleBody">
                     
-                                        <p>(<a href="http://reactnative.cn/docs/0.45/upgrading.html" target="_blank" rel="external">http://reactnative.cn/docs/0.45/upgrading.html</a>)</p>
+                                        <p>2017-07-09更新：<br>做了个TODO的小demo,用的内部的组内的redux业务框架，如下：<br><img src="http://p0.meituan.net/dpgroup/a40c889447c718495475548592821db3926229.jpg" alt=""><br>总结下：<br>调试利器：<a href="https://github.com/jhen0409/react-native-debugger/tree/master/npm-package" target="_blank" rel="external">RN debuger</a><br>在mac上开ios模拟器，拥有跟页面调试基本一致的体验。<br>初步发现的一些三方包：</p>
+<ol>
+<li><a href="https://github.com/crazycodeboy/react-native-check-box" target="_blank" rel="external">https://github.com/crazycodeboy/react-native-check-box</a> </li>
+<li><a href="https://github.com/sunnylqm/react-native-storage" target="_blank" rel="external">https://github.com/sunnylqm/react-native-storage</a></li>
+<li><a href="https://github.com/sconxu/react-native-checkbox" target="_blank" rel="external">https://github.com/sconxu/react-native-checkbox</a></li>
+<li><a href="https://github.com/FaridSafi/react-native-gifted-listview" target="_blank" rel="external">https://github.com/FaridSafi/react-native-gifted-listview</a></li>
+<li><a href="https://github.com/jaysoo/react-native-parallax-scroll-view" target="_blank" rel="external">https://github.com/jaysoo/react-native-parallax-scroll-view</a></li>
+<li><a href="https://github.com/ldn0x7dc/react-native-media-kit" target="_blank" rel="external">https://github.com/ldn0x7dc/react-native-media-kit</a></li>
+<li><a href="https://github.com/tlenclos/react-native-audio-streaming" target="_blank" rel="external">https://github.com/tlenclos/react-native-audio-streaming</a></li>
+<li><a href="https://github.com/zmxv/react-native-sound" target="_blank" rel="external">https://github.com/zmxv/react-native-sound</a></li>
+<li><a href="https://github.com/oblador/react-native-vector-icons" target="_blank" rel="external">https://github.com/oblador/react-native-vector-icons</a></li>
+<li><a href="https://github.com/react-native-material-design/react-native-material-design" target="_blank" rel="external">https://github.com/react-native-material-design/react-native-material-design</a></li>
+<li><a href="https://github.com/react-native-material-design/react-native-material-design" target="_blank" rel="external">https://github.com/react-native-material-design/react-native-material-design</a></li>
+<li><a href="https://github.com/halilb/react-native-textinput-effects" target="_blank" rel="external">https://github.com/halilb/react-native-textinput-effects</a></li>
+</ol>
+<h3 id="如何调试-真机"><a href="#如何调试-真机" class="headerlink" title="如何调试(真机)"></a>如何调试(真机)</h3><p>我的调试机型 vivo android 5.1.1</p>
+<p>用exop mac客户端可以调试<br>（这个客户端似乎不需要xcode 或者android sdk）用这个客户端建立的项目只有一个.expo文件夹，没有我们的ios,android文件夹</p>
+<p>exop像是一个壳客户端,</p>
+<hr>
+<p>在android 5.0以上，要执行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb reverse tcp:<span class="number">8081</span> tcp:<span class="number">8081</span></div></pre></td></tr></table></figure></p>
+<p>不然localhost认不出来<br>之后执行<code>react-native run-android</code>即可调试，<br>调试具有热启动的能力，远程debugger能力（不得不感叹很强大），下面是一些截图：</p>
+<p><img src="http://p1.meituan.net/dpgroup/9a2bf7836454fd7a16891061c83e079568682.jpg" alt=""></p>
+<p><img src="http://p1.meituan.net/dpgroup/2e46d2407fe6853a82a2187d05fd8d8d23932.jpg" alt=""><br>还有类似于看dom的功能<br><img src="http://p1.meituan.net/dpgroup/81345c9a5627d294b390f4d21cc3df5d41824.jpg" alt=""></p>
+<p>ps:<br>Genymotion自己装的有 但没有试过</p>
+<h3 id="之后是打包APK的过程"><a href="#之后是打包APK的过程" class="headerlink" title="之后是打包APK的过程"></a>之后是打包APK的过程</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">10000</span></div></pre></td></tr></table></figure>
+<p>用上面的命令生成一个keystore文件，<br>这个文件使用来签名用的，好像是个二进制文件，这个文件好像是java jdk的能力,引用：</p>
+<blockquote>
+<p>这条命令会要求你输入密钥库（keystore）和对应密钥的密码，然后设置一些发行相关的信息。最后它会生成一个叫做my-release-key.keystore的密钥库文件。</p>
+<p>在运行上面这条语句之后，密钥库里应该已经生成了一个单独的密钥，有效期为10000天。–alias参数后面的别名是你将来为应用签名时所需要用到的，所以记得记录这个别名。</p>
+</blockquote>
+<p>还要生成一个Profile文件：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">编辑~<span class="regexp">/.gradle/g</span>radle.properties（没有这个文件你就创建一个），添加如下的代码（注意把其中的****替换为相应密码）</div><div class="line">注意：~表示用户目录，比如windows上可能是C:\Users\用户名，而mac上可能是/Users/用户名。</div><div class="line"></div><div class="line">MYAPP_RELEASE_STORE_FILE=my-release-key.keystore</div><div class="line">MYAPP_RELEASE_KEY_ALIAS=my-key-alias</div><div class="line">MYAPP_RELEASE_STORE_PASSWORD=*****</div><div class="line">MYAPP_RELEASE_KEY_PASSWORD=*****</div></pre></td></tr></table></figure></p>
+<p>之后把生成的文件拷贝到android/app(是app!)<br>下，不要拷贝到anroid文件夹下，<br>另外有2个build.gradle文件，要注意，复制的这段代码要去掉省略号，要复制到子build.gradle中，根build.gradle不用管</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">android &#123;</div><div class="line">    ...</div><div class="line">    defaultConfig &#123; ... &#125;</div><div class="line">    signingConfigs &#123;</div><div class="line">        release &#123;</div><div class="line">            storeFile file(MYAPP_RELEASE_STORE_FILE)</div><div class="line">            storePassword MYAPP_RELEASE_STORE_PASSWORD</div><div class="line">            keyAlias MYAPP_RELEASE_KEY_ALIAS</div><div class="line">            keyPassword MYAPP_RELEASE_KEY_PASSWORD</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            ...</div><div class="line">            signingConfig signingConfigs.release</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>之后在android文件中执行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./gradlew assembleRelease</div></pre></td></tr></table></figure></p>
+<p>即可获得打包好的apk了</p>
+<p>ignite:</p>
+<p><a href="https://github.com/infinitered/ignite" target="_blank" rel="external">https://github.com/infinitered/ignite</a></p>
+<blockquote>
+<p>ps:有些库要求不同版本的android build tool</p>
+</blockquote>
+<p>android-building-from-source:</p>
+<p><a href="https://facebook.github.io/react-native/docs/android-building-from-source.html" target="_blank" rel="external">https://facebook.github.io/react-native/docs/android-building-from-source.html</a></p>
+<p>如何run 0.38的官方android例子 ：(看样子是要build)<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Running the examples on Android</div><div class="line"></div><div class="line">Note that you'll need the Android NDK installed, see prerequisites.</div><div class="line"></div><div class="line">./gradlew :Examples:Movies:android:app:installDebug</div><div class="line"># Start the packager in a separate shell (make sure you ran npm install):</div><div class="line">./packager/packager.sh</div><div class="line"># Open the Movies app in your emulator</div></pre></td></tr></table></figure></p>
+<h3 id="下面是一些问题记录，有些没解决有些解决了"><a href="#下面是一些问题记录，有些没解决有些解决了" class="headerlink" title="下面是一些问题记录，有些没解决有些解决了"></a>下面是一些问题记录，有些没解决有些解决了</h3><p>官方文档：(<a href="http://reactnative.cn/docs/0.45/upgrading.html" target="_blank" rel="external">http://reactnative.cn/docs/0.45/upgrading.html</a>)</p>
 <p>mac上<br>1.最新的官方demo，要求xcode8.3.3<br>系统要求10.12及以上</p>
 <a id="more"></a>
-<p>expo可以跑起来，但是原理还不大清楚</p>
+<p>官方用的expo，这个工具我理解是提供了一个供应用运行的app容器。</p>
 <p>那些示例项目android ios该怎么运行？<code>react-native run-ios/android</code>?</p>
-<p>expo的应用怎么打包？</p>
+<p>expo的应用怎么打包？目前都是运行在特定的expo那个应用上的</p>
 <p>跑expo的应用在android上需要下个google play store，再搜索expo下，翻墙用的蓝灯，试了好多root软件都是，一键root</p>
 <p>expo 的应用不能装apk么，都是内嵌到那个expo应用里的？</p>
-<p>expo可以再ios模拟器跑，但是好像好慢的样子？<br>通过create-react-native-app AwesomeProject<br> 那个cli创建的项目，啥都没有ios android文件夹都没有,执行了yarn start之后 也产生了.expo文件<br>那么如何部署？<br>通过create-react-native-app<br>出来的项目，执行<code>yarn start</code>得到一个二维码，用expo能扫开，很方便.<br>通过<code>yarn run android</code>连上真机的话，即为进行了真机debug,如果不连真机的话，得到一个这样的错<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Error</span> running adb: No Android device found. Please connect a device and follow the instructions here to enable USB debugging:</div><div class="line">https:<span class="comment">//developer.android.com/studio/run/device.html#developer-device-options. If you are using Genymotion go to Settings -&gt; ADB, select "Use custom Android SDK tools", and point it at your Android SDK directory.</span></div></pre></td></tr></table></figure></p>
+<p>expo可以在ios模拟器跑，但是好像好慢的样子？<br>通过create-react-native-app AwesomeProject<br> 那个cli创建的项目，啥都没有ios android文件夹都没有,执行了yarn start之后 也产生了.expo文件<br>那么如何部署？<br>通过create-react-native-app<br>出来的项目，执行<code>yarn start</code>得到一个二维码，用expo能扫开，很方便.<br>通过<code>yarn run android</code>连上真机的话，即为进行了真机debug,如果不连真机的话，得到一个这样的错<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Error</span> running adb: No Android device found. Please connect a device and follow the instructions here to enable USB debugging:</div><div class="line">https:<span class="comment">//developer.android.com/studio/run/device.html#developer-device-options. If you are using Genymotion go to Settings -&gt; ADB, select "Use custom Android SDK tools", and point it at your Android SDK directory.</span></div></pre></td></tr></table></figure></p>
 <p>进行yarn run ios：会打开模拟器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ react-native-scripts ios</div><div class="line">00:32:00: Starting packager...</div><div class="line">00:32:11: Starting simulator...</div><div class="line">Found Xcode 7.3.0, which is older than the recommended Xcode 8.2.0.</div></pre></td></tr></table></figure></p>
 <p>我已经装了xcode 8.3.3为什么有这个提示？<br>而且文件结构永远没有ios,android文件，用的是expo<br><!--more--></p>
 <hr>
@@ -216,34 +260,6 @@
 </blockquote>
 <p>装好后要设置ANDROID_HOME环境变量<br>再把工具路径<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools</div></pre></td></tr></table></figure></p>
 <p>加入环境变量</p>
-<h3 id="二-如何调试-真机"><a href="#二-如何调试-真机" class="headerlink" title="二.如何调试(真机)"></a>二.如何调试(真机)</h3><p>我的调试机型 vivo android 5.1.1</p>
-<p>用exop mac客户端可以调试<br>（这个客户端似乎不需要xcode 或者android sdk）用这个客户端建立的项目只有一个.expo文件夹，没有我们的ios,android文件夹</p>
-<p>exop像是一个壳客户端,</p>
-<hr>
-<p>在android 5.0以上，要执行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb reverse tcp:<span class="number">8081</span> tcp:<span class="number">8081</span></div></pre></td></tr></table></figure></p>
-<p>不然localhost认不出来<br>之后执行<code>react-native run-android</code>即可调试，<br>调试具有热启动的能力，远程debugger能力（不得不感叹很强大），下面是一些截图：</p>
-<p><img src="http://p1.meituan.net/dpgroup/9a2bf7836454fd7a16891061c83e079568682.jpg" alt=""></p>
-<p><img src="http://p1.meituan.net/dpgroup/2e46d2407fe6853a82a2187d05fd8d8d23932.jpg" alt=""><br>还有类似于看dom的功能<br><img src="http://p1.meituan.net/dpgroup/81345c9a5627d294b390f4d21cc3df5d41824.jpg" alt=""></p>
-<p>ps:<br>Genymotion自己装的有 但没有试过</p>
-<h3 id="三-之后是打包APK的过程"><a href="#三-之后是打包APK的过程" class="headerlink" title="三.之后是打包APK的过程"></a>三.之后是打包APK的过程</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">10000</span></div></pre></td></tr></table></figure>
-<p>用上面的命令生成一个keystore文件，<br>这个文件使用来签名用的，好像是个二进制文件，这个文件好像是java jdk的能力,引用：</p>
-<blockquote>
-<p>这条命令会要求你输入密钥库（keystore）和对应密钥的密码，然后设置一些发行相关的信息。最后它会生成一个叫做my-release-key.keystore的密钥库文件。</p>
-<p>在运行上面这条语句之后，密钥库里应该已经生成了一个单独的密钥，有效期为10000天。–alias参数后面的别名是你将来为应用签名时所需要用到的，所以记得记录这个别名。</p>
-</blockquote>
-<p>还要生成一个Profile文件：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">编辑~<span class="regexp">/.gradle/g</span>radle.properties（没有这个文件你就创建一个），添加如下的代码（注意把其中的****替换为相应密码）</div><div class="line">注意：~表示用户目录，比如windows上可能是C:\Users\用户名，而mac上可能是/Users/用户名。</div><div class="line"></div><div class="line">MYAPP_RELEASE_STORE_FILE=my-release-key.keystore</div><div class="line">MYAPP_RELEASE_KEY_ALIAS=my-key-alias</div><div class="line">MYAPP_RELEASE_STORE_PASSWORD=*****</div><div class="line">MYAPP_RELEASE_KEY_PASSWORD=*****</div></pre></td></tr></table></figure></p>
-<p>之后把生成的文件拷贝到android/app(是app!)<br>下，不要拷贝到anroid文件夹下，<br>另外有2个build.gradle文件，要注意，复制的这段代码要去掉省略号，要复制到子build.gradle中，根build.gradle不用管</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">android &#123;</div><div class="line">    ...</div><div class="line">    defaultConfig &#123; ... &#125;</div><div class="line">    signingConfigs &#123;</div><div class="line">        release &#123;</div><div class="line">            storeFile file(MYAPP_RELEASE_STORE_FILE)</div><div class="line">            storePassword MYAPP_RELEASE_STORE_PASSWORD</div><div class="line">            keyAlias MYAPP_RELEASE_KEY_ALIAS</div><div class="line">            keyPassword MYAPP_RELEASE_KEY_PASSWORD</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            ...</div><div class="line">            signingConfig signingConfigs.release</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">...</div></pre></td></tr></table></figure>
-<p>之后在android文件中执行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./gradlew assembleRelease</div></pre></td></tr></table></figure></p>
-<p>即可获得打包好的apk了</p>
-<p>ignite:</p>
-<p><a href="https://github.com/infinitered/ignite" target="_blank" rel="external">https://github.com/infinitered/ignite</a></p>
-<blockquote>
-<p>ps:有些库要求不同版本的android build tool</p>
-</blockquote>
-<p>android-building-from-source:</p>
-<p><a href="https://facebook.github.io/react-native/docs/android-building-from-source.html" target="_blank" rel="external">https://facebook.github.io/react-native/docs/android-building-from-source.html</a></p>
-<p>如何run 0.38的官方android例子 ：(看样子是要build)<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Running the examples on Android</div><div class="line"></div><div class="line">Note that you'll need the Android NDK installed, see prerequisites.</div><div class="line"></div><div class="line">./gradlew :Examples:Movies:android:app:installDebug</div><div class="line"># Start the packager in a separate shell (make sure you ran npm install):</div><div class="line">./packager/packager.sh</div><div class="line"># Open the Movies app in your emulator</div></pre></td></tr></table></figure></p>
 
                                             
 
@@ -347,15 +363,6 @@
 
     
 <nav id="article-nav">
-  
-    <a href="/2017/07/05/graphql/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          graphql开坑
-        
-      </div>
-    </a>
   
   
     <a href="/2017/06/19/redux解析/" id="article-nav-older" class="article-nav-link-wrap">
@@ -470,14 +477,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">graphql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
@@ -486,7 +485,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -494,7 +497,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
