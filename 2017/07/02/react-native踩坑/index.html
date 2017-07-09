@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/9a2bf7836454fd7a16891061c83e079568682.jpg">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/2e46d2407fe6853a82a2187d05fd8d8d23932.jpg">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/81345c9a5627d294b390f4d21cc3df5d41824.jpg">
-<meta property="og:updated_time" content="2017-07-09T07:36:24.000Z">
+<meta property="og:updated_time" content="2017-07-09T07:41:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-native踩坑之旅">
 <meta name="twitter:description" content="2017-07-09更新：做了个TODO的小demo,用的内部的组内的redux业务框架，如下：总结下：调试利器：RN debuger在mac上开ios模拟器，拥有跟页面调试基本一致的体验。初步发现的一些三方包：  https://github.com/crazycodeboy/react-native-check-box  https://github.com/sunnylqm/react-na">
@@ -193,6 +193,16 @@
 <li><a href="https://github.com/react-native-material-design/react-native-material-design" target="_blank" rel="external">https://github.com/react-native-material-design/react-native-material-design</a></li>
 <li><a href="https://github.com/halilb/react-native-textinput-effects" target="_blank" rel="external">https://github.com/halilb/react-native-textinput-effects</a></li>
 </ol>
+<h2 id="关于mac-android指南"><a href="#关于mac-android指南" class="headerlink" title="关于mac android指南"></a>关于mac android指南</h2><h3 id="准备工作：-http-reactnative-cn-docs-0-45-getting-started-html-content-："><a href="#准备工作：-http-reactnative-cn-docs-0-45-getting-started-html-content-：" class="headerlink" title="准备工作：(http://reactnative.cn/docs/0.45/getting-started.html#content)："></a>准备工作：(<a href="http://reactnative.cn/docs/0.45/getting-started.html#content)：" target="_blank" rel="external">http://reactnative.cn/docs/0.45/getting-started.html#content)：</a></h3><ol>
+<li>去<a href="https://developer.android.com/studio/install.html" target="_blank" rel="external">https://developer.android.com/studio/install.html</a><br>下载最新的android studio</li>
+</ol>
+<p>android studio有去下载android sdk的能力，只要翻墙就可以用android studio去下载sdk</p>
+<p>android studio的6.0必装，对应的是sdk 23</p>
+<blockquote>
+<p>然后在Android 6.0 &gt; (Marshmallow)中勾选Google &gt; APIs、Android SDK Platform 23</p>
+</blockquote>
+<p>装好后要设置ANDROID_HOME环境变量<br>再把工具路径<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools</div></pre></td></tr></table></figure></p>
+<p>加入环境变量</p>
 <h3 id="如何调试-真机"><a href="#如何调试-真机" class="headerlink" title="如何调试(真机)"></a>如何调试(真机)</h3><p>我的调试机型 vivo android 5.1.1</p>
 <p>用exop mac客户端可以调试<br>（这个客户端似乎不需要xcode 或者android sdk）用这个客户端建立的项目只有一个.expo文件夹，没有我们的ios,android文件夹</p>
 <p>exop像是一个壳客户端,</p>
@@ -250,16 +260,6 @@
 <p>$ react-native upgrade<br>这一命令会检查最新的项目模板，然后进行如下操作：</p>
 <p>如果是新添加的文件，则直接创建。<br>如果文件和当前版本的文件相同，则跳过。<br>如果文件和当前版本的文件不同，则会提示你一些选项：查看两者的不同，选择保留你的版本或是用新的模板覆盖。你可以按下h键来查看所有可以使用的命令。<br>译注：如果你有修改原生代码，那么在使用upgrade升级前，先备份，再覆盖。覆盖完成后，使用比对工具找出差异，将你之前修改的代码逐步搬运到新文件中。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">react-native init AwesomeProject</div><div class="line">cd AwesomeProject</div><div class="line">react-native run-ios</div></pre></td></tr></table></figure></p>
 <p>这样得到的应用是有ios文件么？</p>
-<h2 id="mac-android指南"><a href="#mac-android指南" class="headerlink" title="mac android指南"></a>mac android指南</h2><h3 id="一-准备工作：-http-reactnative-cn-docs-0-45-getting-started-html-content-："><a href="#一-准备工作：-http-reactnative-cn-docs-0-45-getting-started-html-content-：" class="headerlink" title="一.准备工作：(http://reactnative.cn/docs/0.45/getting-started.html#content)："></a>一.准备工作：(<a href="http://reactnative.cn/docs/0.45/getting-started.html#content)：" target="_blank" rel="external">http://reactnative.cn/docs/0.45/getting-started.html#content)：</a></h3><ol>
-<li>去<a href="https://developer.android.com/studio/install.html" target="_blank" rel="external">https://developer.android.com/studio/install.html</a><br>下载最新的android studio</li>
-</ol>
-<p>android studio有去下载android sdk的能力，只要翻墙就可以用android studio去下载sdk</p>
-<p>android studio的6.0必装，对应的是sdk 23</p>
-<blockquote>
-<p>然后在Android 6.0 &gt; (Marshmallow)中勾选Google &gt; APIs、Android SDK Platform 23</p>
-</blockquote>
-<p>装好后要设置ANDROID_HOME环境变量<br>再把工具路径<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools</div></pre></td></tr></table></figure></p>
-<p>加入环境变量</p>
 
                                             
 
@@ -473,6 +473,10 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">babel</a>
               </li>
              
@@ -485,19 +489,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">自译</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
               </li>
              
               <li class="article-tag-list-item">
