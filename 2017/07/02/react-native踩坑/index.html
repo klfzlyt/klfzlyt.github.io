@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="http://07lyt.com">
   <title>react-native踩坑之旅 | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2017-07-09更新：做了个TODO的小demo,用的内部的组内的redux业务框架，如下：总结下：调试利器：RN debuger在mac上开ios模拟器，拥有跟页面调试基本一致的体验。初步发现的一些三方包：  https://github.com/crazycodeboy/react-native-check-box  https://github.com/sunnylqm/react-na">
+  <meta name="description" content="2017-07-20更新:在本地化的时候遇到点问题，如果没有本地话过的话，get key内部throw的错无法catch到 2017-07-09更新：做了个TODO的小demo,用的内部的组内的redux业务框架，如下：总结下：调试利器：RN debuger在mac上开ios模拟器，拥有跟页面调试基本一致的体验。初步发现的一些三方包：  https://github.com/crazycodebo">
 <meta name="keywords" content="react-native">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react-native踩坑之旅">
 <meta property="og:url" content="http://07lyt.com/2017/07/02/react-native踩坑/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
-<meta property="og:description" content="2017-07-09更新：做了个TODO的小demo,用的内部的组内的redux业务框架，如下：总结下：调试利器：RN debuger在mac上开ios模拟器，拥有跟页面调试基本一致的体验。初步发现的一些三方包：  https://github.com/crazycodeboy/react-native-check-box  https://github.com/sunnylqm/react-na">
+<meta property="og:description" content="2017-07-20更新:在本地化的时候遇到点问题，如果没有本地话过的话，get key内部throw的错无法catch到 2017-07-09更新：做了个TODO的小demo,用的内部的组内的redux业务框架，如下：总结下：调试利器：RN debuger在mac上开ios模拟器，拥有跟页面调试基本一致的体验。初步发现的一些三方包：  https://github.com/crazycodebo">
 <meta property="og:image" content="http://p0.meituan.net/dpgroup/a40c889447c718495475548592821db3926229.jpg">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/9a2bf7836454fd7a16891061c83e079568682.jpg">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/2e46d2407fe6853a82a2187d05fd8d8d23932.jpg">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/81345c9a5627d294b390f4d21cc3df5d41824.jpg">
-<meta property="og:updated_time" content="2017-07-09T07:41:15.000Z">
+<meta property="og:updated_time" content="2017-07-20T03:30:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-native踩坑之旅">
-<meta name="twitter:description" content="2017-07-09更新：做了个TODO的小demo,用的内部的组内的redux业务框架，如下：总结下：调试利器：RN debuger在mac上开ios模拟器，拥有跟页面调试基本一致的体验。初步发现的一些三方包：  https://github.com/crazycodeboy/react-native-check-box  https://github.com/sunnylqm/react-na">
+<meta name="twitter:description" content="2017-07-20更新:在本地化的时候遇到点问题，如果没有本地话过的话，get key内部throw的错无法catch到 2017-07-09更新：做了个TODO的小demo,用的内部的组内的redux业务框架，如下：总结下：调试利器：RN debuger在mac上开ios模拟器，拥有跟页面调试基本一致的体验。初步发现的一些三方包：  https://github.com/crazycodebo">
 <meta name="twitter:image" content="http://p0.meituan.net/dpgroup/a40c889447c718495475548592821db3926229.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Vogel im Kafig" type="application/atom+xml">
@@ -178,7 +178,8 @@
             
                 <div class="article-entry" itemprop="articleBody">
                     
-                                        <p>2017-07-09更新：<br>做了个TODO的小demo,用的内部的组内的redux业务框架，如下：<br><img src="http://p0.meituan.net/dpgroup/a40c889447c718495475548592821db3926229.jpg" alt=""><br>总结下：<br>调试利器：<a href="https://github.com/jhen0409/react-native-debugger/tree/master/npm-package" target="_blank" rel="external">RN debuger</a><br>在mac上开ios模拟器，拥有跟页面调试基本一致的体验。<br>初步发现的一些三方包：</p>
+                                        <p>2017-07-20更新:<br>在本地化的时候遇到点问题，如果没有本地话过的话，get key内部throw的错无法catch到</p>
+<p>2017-07-09更新：<br>做了个TODO的小demo,用的内部的组内的redux业务框架，如下：<br><img src="http://p0.meituan.net/dpgroup/a40c889447c718495475548592821db3926229.jpg" alt=""><br>总结下：<br>调试利器：<a href="https://github.com/jhen0409/react-native-debugger/tree/master/npm-package" target="_blank" rel="external">RN debuger</a><br>在mac上开ios模拟器，拥有跟页面调试基本一致的体验。<br>初步发现的一些三方包：</p>
 <ol>
 <li><a href="https://github.com/crazycodeboy/react-native-check-box" target="_blank" rel="external">https://github.com/crazycodeboy/react-native-check-box</a> </li>
 <li><a href="https://github.com/sunnylqm/react-native-storage" target="_blank" rel="external">https://github.com/sunnylqm/react-native-storage</a></li>
@@ -260,6 +261,10 @@
 <p>$ react-native upgrade<br>这一命令会检查最新的项目模板，然后进行如下操作：</p>
 <p>如果是新添加的文件，则直接创建。<br>如果文件和当前版本的文件相同，则跳过。<br>如果文件和当前版本的文件不同，则会提示你一些选项：查看两者的不同，选择保留你的版本或是用新的模板覆盖。你可以按下h键来查看所有可以使用的命令。<br>译注：如果你有修改原生代码，那么在使用upgrade升级前，先备份，再覆盖。覆盖完成后，使用比对工具找出差异，将你之前修改的代码逐步搬运到新文件中。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">react-native init AwesomeProject</div><div class="line">cd AwesomeProject</div><div class="line">react-native run-ios</div></pre></td></tr></table></figure></p>
 <p>这样得到的应用是有ios文件么？</p>
+<p>ps aux | grep react-native</p>
+<p>不要随意关app，<br>调试可以删掉app重来</p>
+<p>android无法naitive debug??</p>
+<p>cp ./gradle.properties /Users/liyangtao/work/dux-rn/duxRnTest/android/app</p>
 
                                             
 
@@ -473,15 +478,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">babel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,15 +506,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
               </li>
             
             <div class="clearfix"></div>
