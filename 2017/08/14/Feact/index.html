@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://07lyt.com">
-  <title>Vogel im Kafig</title>
+  <title>React内部机制（实现一个Feact） | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="lyt的个人博客">
-<meta name="keywords" content="前端 js 程序员 音乐">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Vogel im Kafig">
-<meta property="og:url" content="http://07lyt.com/index.html">
+  <meta name="description" content="下面的文章介绍了React的内部机制，在此注释并解释下。 原文地址：http://www.mattgreer.org/articles/react-internals-part-three-basic-updating/ 待提问分析 1234567891011121314151617181920212223242526272829303132333435363738394041424344454">
+<meta name="keywords" content="React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React内部机制（实现一个Feact）">
+<meta property="og:url" content="http://07lyt.com/2017/08/14/Feact/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
-<meta property="og:description" content="lyt的个人博客">
+<meta property="og:description" content="下面的文章介绍了React的内部机制，在此注释并解释下。 原文地址：http://www.mattgreer.org/articles/react-internals-part-three-basic-updating/ 待提问分析 1234567891011121314151617181920212223242526272829303132333435363738394041424344454">
+<meta property="og:updated_time" content="2017-08-14T13:12:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vogel im Kafig">
-<meta name="twitter:description" content="lyt的个人博客">
+<meta name="twitter:title" content="React内部机制（实现一个Feact）">
+<meta name="twitter:description" content="下面的文章介绍了React的内部机制，在此注释并解释下。 原文地址：http://www.mattgreer.org/articles/react-internals-part-three-basic-updating/ 待提问分析 1234567891011121314151617181920212223242526272829303132333435363738394041424344454">
   
     <link rel="alternative" href="/atom.xml" title="Vogel im Kafig" type="application/atom+xml">
   
@@ -152,16 +153,14 @@
                                 <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
                             </div>
                             <div id="js-content" class="content-ll">
-                                
-  
-    <article id="post-Feact" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+                                <article id="post-Feact" class="article article-type-post " itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/14/Feact/">React内部机制（实现一个Feact）</a>
+    <h1 class="article-title" itemprop="name">
+      React内部机制（实现一个Feact）
     </h1>
   
 
@@ -181,6 +180,27 @@
                                             
 
                                                 
+                                                    <div class="page-reward">
+                                                        <a href="javascript:;" class="page-reward-btn tooltip-top">
+                                                            <div class="tooltip tooltip-east">
+                                                                <span class="tooltip-item">
+              赏
+            </span>
+                                                                <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                                                                
+                                                    </div>
+                                                    </span>
+                                                    </span>
+                                                    </span>
+                </div>
+                </a>
+    </div>
+    
         </div>
         <div class="article-info article-info-index">
             
@@ -199,744 +219,86 @@
                         
 
                             
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2017/08/14/Feact/">
-                                        展开全文 >></a>
-                                </p>
-                                
 
                                     
+                                        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://07lyt.com/2017/08/14/Feact/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+                                            
                                                 <div class="clearfix"></div>
         </div>
         </div>
 </article>
 
-
-            
-
-                        
-
-                                                
+    
+<nav id="article-nav">
   
-    <article id="post-react-native踩坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
+  
+    <a href="/2017/07/02/react-native踩坑/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">react-native踩坑之旅</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
         
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/02/react-native踩坑/">react-native踩坑之旅</a>
-    </h1>
-  
-
-                    
-                        <a href="/2017/07/02/react-native踩坑/" class="archive-article-date">
-  	<time datetime="2017-07-02T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-02</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <p>2017-07-20更新:<br>在本地化的时候遇到点问题，如果没有本地话过的话，get key内部throw的错无法catch到</p>
-<p>2017-07-09更新：<br>做了个TODO的小demo,用的内部的组内的redux业务框架，如下：<br><img src="http://p0.meituan.net/dpgroup/a40c889447c718495475548592821db3926229.jpg" alt=""><br>总结下：<br>调试利器：<a href="https://github.com/jhen0409/react-native-debugger/tree/master/npm-package" target="_blank" rel="external">RN debuger</a><br>在mac上开ios模拟器，拥有跟页面调试基本一致的体验。<br>初步发现的一些三方包：</p>
-<ol>
-<li><a href="https://github.com/crazycodeboy/react-native-check-box" target="_blank" rel="external">https://github.com/crazycodeboy/react-native-check-box</a> </li>
-<li><a href="https://github.com/sunnylqm/react-native-storage" target="_blank" rel="external">https://github.com/sunnylqm/react-native-storage</a></li>
-<li><a href="https://github.com/sconxu/react-native-checkbox" target="_blank" rel="external">https://github.com/sconxu/react-native-checkbox</a></li>
-<li><a href="https://github.com/FaridSafi/react-native-gifted-listview" target="_blank" rel="external">https://github.com/FaridSafi/react-native-gifted-listview</a></li>
-<li><a href="https://github.com/jaysoo/react-native-parallax-scroll-view" target="_blank" rel="external">https://github.com/jaysoo/react-native-parallax-scroll-view</a></li>
-<li><a href="https://github.com/ldn0x7dc/react-native-media-kit" target="_blank" rel="external">https://github.com/ldn0x7dc/react-native-media-kit</a></li>
-<li><a href="https://github.com/tlenclos/react-native-audio-streaming" target="_blank" rel="external">https://github.com/tlenclos/react-native-audio-streaming</a></li>
-<li><a href="https://github.com/zmxv/react-native-sound" target="_blank" rel="external">https://github.com/zmxv/react-native-sound</a></li>
-<li><a href="https://github.com/oblador/react-native-vector-icons" target="_blank" rel="external">https://github.com/oblador/react-native-vector-icons</a></li>
-<li><a href="https://github.com/react-native-material-design/react-native-material-design" target="_blank" rel="external">https://github.com/react-native-material-design/react-native-material-design</a></li>
-<li><a href="https://github.com/react-native-material-design/react-native-material-design" target="_blank" rel="external">https://github.com/react-native-material-design/react-native-material-design</a></li>
-<li><a href="https://github.com/halilb/react-native-textinput-effects" target="_blank" rel="external">https://github.com/halilb/react-native-textinput-effects</a></li>
-</ol>
-<h2 id="关于mac-android指南"><a href="#关于mac-android指南" class="headerlink" title="关于mac android指南"></a>关于mac android指南</h2><h3 id="准备工作：-http-reactnative-cn-docs-0-45-getting-started-html-content-："><a href="#准备工作：-http-reactnative-cn-docs-0-45-getting-started-html-content-：" class="headerlink" title="准备工作：(http://reactnative.cn/docs/0.45/getting-started.html#content)："></a>准备工作：(<a href="http://reactnative.cn/docs/0.45/getting-started.html#content)：" target="_blank" rel="external">http://reactnative.cn/docs/0.45/getting-started.html#content)：</a></h3><ol>
-<li>去<a href="https://developer.android.com/studio/install.html" target="_blank" rel="external">https://developer.android.com/studio/install.html</a><br>下载最新的android studio</li>
-</ol>
-<p>android studio有去下载android sdk的能力，只要翻墙就可以用android studio去下载sdk</p>
-<p>android studio的6.0必装，对应的是sdk 23</p>
-<blockquote>
-<p>然后在Android 6.0 &gt; (Marshmallow)中勾选Google &gt; APIs、Android SDK Platform 23</p>
-</blockquote>
-<p>装好后要设置ANDROID_HOME环境变量<br>再把工具路径<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools</div></pre></td></tr></table></figure></p>
-<p>加入环境变量</p>
-<h3 id="如何调试-真机"><a href="#如何调试-真机" class="headerlink" title="如何调试(真机)"></a>如何调试(真机)</h3><p>我的调试机型 vivo android 5.1.1</p>
-<p>用exop mac客户端可以调试<br>（这个客户端似乎不需要xcode 或者android sdk）用这个客户端建立的项目只有一个.expo文件夹，没有我们的ios,android文件夹</p>
-<p>exop像是一个壳客户端,</p>
-<hr>
-<p>在android 5.0以上，要执行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb reverse tcp:<span class="number">8081</span> tcp:<span class="number">8081</span></div></pre></td></tr></table></figure></p>
-<p>不然localhost认不出来<br>之后执行<code>react-native run-android</code>即可调试，<br>调试具有热启动的能力，远程debugger能力（不得不感叹很强大），下面是一些截图：</p>
-<p><img src="http://p1.meituan.net/dpgroup/9a2bf7836454fd7a16891061c83e079568682.jpg" alt=""></p>
-<p><img src="http://p1.meituan.net/dpgroup/2e46d2407fe6853a82a2187d05fd8d8d23932.jpg" alt=""><br>还有类似于看dom的功能<br><img src="http://p1.meituan.net/dpgroup/81345c9a5627d294b390f4d21cc3df5d41824.jpg" alt=""></p>
-<p>ps:<br>Genymotion自己装的有 但没有试过</p>
-<h3 id="之后是打包APK的过程"><a href="#之后是打包APK的过程" class="headerlink" title="之后是打包APK的过程"></a>之后是打包APK的过程</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">10000</span></div></pre></td></tr></table></figure>
-<p>用上面的命令生成一个keystore文件，<br>这个文件使用来签名用的，好像是个二进制文件，这个文件好像是java jdk的能力,引用：</p>
-<blockquote>
-<p>这条命令会要求你输入密钥库（keystore）和对应密钥的密码，然后设置一些发行相关的信息。最后它会生成一个叫做my-release-key.keystore的密钥库文件。</p>
-<p>在运行上面这条语句之后，密钥库里应该已经生成了一个单独的密钥，有效期为10000天。–alias参数后面的别名是你将来为应用签名时所需要用到的，所以记得记录这个别名。</p>
-</blockquote>
-<p>还要生成一个Profile文件：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">编辑~<span class="regexp">/.gradle/g</span>radle.properties（没有这个文件你就创建一个），添加如下的代码（注意把其中的****替换为相应密码）</div><div class="line">注意：~表示用户目录，比如windows上可能是C:\Users\用户名，而mac上可能是/Users/用户名。</div><div class="line"></div><div class="line">MYAPP_RELEASE_STORE_FILE=my-release-key.keystore</div><div class="line">MYAPP_RELEASE_KEY_ALIAS=my-key-alias</div><div class="line">MYAPP_RELEASE_STORE_PASSWORD=*****</div><div class="line">MYAPP_RELEASE_KEY_PASSWORD=*****</div></pre></td></tr></table></figure></p>
-<p>之后把生成的文件拷贝到android/app(是app!)<br>下，不要拷贝到anroid文件夹下，<br>另外有2个build.gradle文件，要注意，复制的这段代码要去掉省略号，要复制到子build.gradle中，根build.gradle不用管</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">android &#123;</div><div class="line">    ...</div><div class="line">    defaultConfig &#123; ... &#125;</div><div class="line">    signingConfigs &#123;</div><div class="line">        release &#123;</div><div class="line">            storeFile file(MYAPP_RELEASE_STORE_FILE)</div><div class="line">            storePassword MYAPP_RELEASE_STORE_PASSWORD</div><div class="line">            keyAlias MYAPP_RELEASE_KEY_ALIAS</div><div class="line">            keyPassword MYAPP_RELEASE_KEY_PASSWORD</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            ...</div><div class="line">            signingConfig signingConfigs.release</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">...</div></pre></td></tr></table></figure>
-<p>之后在android文件中执行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./gradlew assembleRelease</div></pre></td></tr></table></figure></p>
-<p>即可获得打包好的apk了</p>
-<p>ignite:</p>
-<p><a href="https://github.com/infinitered/ignite" target="_blank" rel="external">https://github.com/infinitered/ignite</a></p>
-<blockquote>
-<p>ps:有些库要求不同版本的android build tool</p>
-</blockquote>
-<p>android-building-from-source:</p>
-<p><a href="https://facebook.github.io/react-native/docs/android-building-from-source.html" target="_blank" rel="external">https://facebook.github.io/react-native/docs/android-building-from-source.html</a></p>
-<p>如何run 0.38的官方android例子 ：(看样子是要build)<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Running the examples on Android</div><div class="line"></div><div class="line">Note that you'll need the Android NDK installed, see prerequisites.</div><div class="line"></div><div class="line">./gradlew :Examples:Movies:android:app:installDebug</div><div class="line"># Start the packager in a separate shell (make sure you ran npm install):</div><div class="line">./packager/packager.sh</div><div class="line"># Open the Movies app in your emulator</div></pre></td></tr></table></figure></p>
-<h3 id="下面是一些问题记录，有些没解决有些解决了"><a href="#下面是一些问题记录，有些没解决有些解决了" class="headerlink" title="下面是一些问题记录，有些没解决有些解决了"></a>下面是一些问题记录，有些没解决有些解决了</h3><p>官方文档：(<a href="http://reactnative.cn/docs/0.45/upgrading.html" target="_blank" rel="external">http://reactnative.cn/docs/0.45/upgrading.html</a>)</p>
-<p>mac上<br>1.最新的官方demo，要求xcode8.3.3<br>系统要求10.12及以上</p>
-                            
-                                <a class="article-more-a" href="/2017/07/02/react-native踩坑/#more">
-                                    more >></a>
-                                
-                                    
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">react-native</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2017/07/02/react-native踩坑/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
 
             
 
                         
-
-                                                
-  
-    <article id="post-redux解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/19/redux解析/">redux源码分析及自己实现</a>
-    </h1>
-  
-
-                    
-                        <a href="/2017/06/19/redux解析/" class="archive-article-date">
-  	<time datetime="2017-06-19T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
-</a>
                             
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <p>在介绍redux源码前，先来提几个问题：</p>
-<ol>
-<li>dispatch做了什么 </li>
-<li>订阅状态改变是怎么实现的？</li>
-<li>状态树是怎样产生的？</li>
-<li>dispatch出去的action是怎么过中间件的？</li>
-<li>中间是怎么串起来的，执行顺序是如何的？<ul>
-<li>为什么源码中不用for来设计中间件?</li>
-<li>中间件的设计是否对应了哪种设计模式？        </li>
-</ul>
-</li>
-<li>中间件compose为什么要从后往前包装，得到的新dispatch为什么又是从前到后的？</li>
-<li>假如2个store,哪些部分是独立的？哪些部分是可复用的？</li>
-</ol>
-<h3 id="源码赏析"><a href="#源码赏析" class="headerlink" title="源码赏析"></a>源码赏析</h3><p>先回答第一第二个问题</p>
-<ol>
-<li>dispatch做了什么 </li>
-<li>订阅状态改变是怎么实现的？</li>
-</ol>
-<p><strong>dispatch只做了两件很微小的工作:</strong></p>
-<blockquote>
-<ol>
-<li><strong>根据之前state生成新state（执行reducer/一般为rootreducer）</strong></li>
-<li><strong>触发订阅函数</strong></li>
-</ol>
-</blockquote>
-                            
-                                <a class="article-more-a" href="/2017/06/19/redux解析/#more">
-                                    more >></a>
-                                
-                                    
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2017/06/19/redux解析/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
-    <article id="post-class语法糖分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/14/class语法糖分析/">class语法糖分析</a>
-    </h1>
-  
-
-                    
-                        <a href="/2017/06/14/class语法糖分析/" class="archive-article-date">
-  	<time datetime="2017-06-14T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-14</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                                        <h2 id="class语法糖分析"><a href="#class语法糖分析" class="headerlink" title="class语法糖分析"></a>class语法糖分析</h2><p>比较好奇class到es5 babel是怎么转换的</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"> <span class="class"><span class="keyword">class</span> <span class="title">Base</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span> (name) &#123;        </div><div class="line">        <span class="keyword">this</span>.name =  name</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    state=&#123;</div><div class="line">        <span class="attr">isMan</span>:<span class="literal">false</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    keepQuiet()&#123;</div><div class="line"></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'base---&gt;………………………………'</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    alert()&#123;</div><div class="line">        alert(<span class="string">'base---&gt;alert'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&lt;!--more--&gt;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">child</span> <span class="keyword">extends</span> <span class="title">Base</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(name,age) &#123;</div><div class="line">        <span class="keyword">super</span>(name);</div><div class="line">        <span class="keyword">this</span>.age= age;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    buySomething=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'child buy'</span>)</div><div class="line">    &#125;</div><div class="line">    alert()&#123;</div><div class="line">        alert(<span class="string">'child-----&gt;alert'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">new</span> child(<span class="string">'titan'</span>,<span class="number">80</span>)</div></pre></td></tr></table></figure>
-<p>生成的代码如下：重点看下<code>_createClass</code>，<code>_inherits</code>方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div></pre></td><td class="code"><pre><div class="line">(<span class="string">'use strict'</span>);</div><div class="line"></div><div class="line"><span class="comment">//获得一个对象的某个属性</span></div><div class="line"><span class="comment">//prototype,'constructor',this</span></div><div class="line"><span class="keyword">var</span> _get = <span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params">_x, _x2, _x3</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> _again = <span class="literal">true</span>;</div><div class="line">	_function: <span class="keyword">while</span> (_again) &#123;</div><div class="line">		<span class="keyword">var</span> object = _x, property = _x2, receiver = _x3;</div><div class="line">		_again = <span class="literal">false</span>;</div><div class="line">		<span class="keyword">if</span> (object === <span class="literal">null</span>) object = <span class="built_in">Function</span>.prototype;</div><div class="line">		<span class="keyword">var</span> desc = <span class="built_in">Object</span>.getOwnPropertyDescriptor(object, property);</div><div class="line">		<span class="keyword">if</span> (desc === <span class="literal">undefined</span>) &#123;</div><div class="line">			<span class="keyword">var</span> parent = <span class="built_in">Object</span>.getPrototypeOf(object);</div><div class="line">			<span class="keyword">if</span> (parent === <span class="literal">null</span>) &#123;</div><div class="line">				<span class="keyword">return</span> <span class="literal">undefined</span>;</div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line">				_x = parent;</div><div class="line">				_x2 = property;</div><div class="line">				_x3 = receiver;</div><div class="line">				_again = <span class="literal">true</span>;</div><div class="line">				desc = parent = <span class="literal">undefined</span>;</div><div class="line">				<span class="keyword">continue</span> _function;</div><div class="line">			&#125;</div><div class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">'value'</span> <span class="keyword">in</span> desc) &#123;</div><div class="line">            <span class="comment">//这个desc.value是Base的构造函数</span></div><div class="line">			<span class="keyword">return</span> desc.value;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">//这个应该是只针对可读的</span></div><div class="line">			<span class="keyword">var</span> getter = desc.get;</div><div class="line">			<span class="keyword">if</span> (getter === <span class="literal">undefined</span>) &#123;</div><div class="line">				<span class="keyword">return</span> <span class="literal">undefined</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">return</span> getter.call(receiver);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> _createClass = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">defineProperties</span>(<span class="params">target, props</span>) </span>&#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; props.length; i++) &#123;</div><div class="line">			<span class="keyword">var</span> descriptor = props[i];</div><div class="line">			descriptor.enumerable = descriptor.enumerable || <span class="literal">false</span>;</div><div class="line">			descriptor.configurable = <span class="literal">true</span>;</div><div class="line">			<span class="keyword">if</span> (<span class="string">'value'</span> <span class="keyword">in</span> descriptor) descriptor.writable = <span class="literal">true</span>;</div><div class="line">			<span class="built_in">Object</span>.defineProperty(target, descriptor.key, descriptor);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">    <span class="comment">//闭包</span></div><div class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">Constructor, protoProps, staticProps</span>) </span>&#123;</div><div class="line">        <span class="comment">//真正的构造执行的地方</span></div><div class="line">        <span class="comment">//定义原型属性</span></div><div class="line">        <span class="comment">//传入的protoProps是一个对象，babel都会生成对应的key,value属性</span></div><div class="line">		<span class="keyword">if</span> (protoProps) defineProperties(Constructor.prototype, protoProps);</div><div class="line">        <span class="comment">//定义静态属性，直接挂载在Constructor上</span></div><div class="line">		<span class="keyword">if</span> (staticProps) defineProperties(Constructor, staticProps);</div><div class="line">		<span class="keyword">return</span> Constructor;</div><div class="line">	&#125;;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_inherits</span>(<span class="params">subClass, superClass</span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> superClass !== <span class="string">'function'</span> &amp;&amp; superClass !== <span class="literal">null</span>) &#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Super expression must either be null or a function, not '</span> + <span class="keyword">typeof</span> superClass);</div><div class="line">	&#125;</div><div class="line">    <span class="comment">//创建一个空对象，对象的__proto__指向superClass.prototype，传统继承模式</span></div><div class="line">    <span class="comment">/*</span></div><div class="line">        create 的第二个参数：</div><div class="line">                    propertiesObject</div><div class="line">            可选。该参数对象是一组属性与值，该对象的属性名称将是新创建的对象的属性名称，值是属性描述符（这些属性描述符的结构与Object.defineProperties()的第二个参数一样）。注意：该参数对象不能是 undefined，另外只有该对象中自身拥有的可枚举的属性才有效，也就是说该对象的原型链上属性是无效的。</div><div class="line">            prototype上有constructor属性</div><div class="line">    */</div><div class="line"></div><div class="line">	subClass.prototype = <span class="built_in">Object</span>.create(superClass &amp;&amp; superClass.prototype, &#123;</div><div class="line">		<span class="attr">constructor</span>: &#123; <span class="attr">value</span>: subClass, <span class="attr">enumerable</span>: <span class="literal">false</span>, <span class="attr">writable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span> &#125;,</div><div class="line">	&#125;);</div><div class="line"></div><div class="line">    <span class="comment">//getPrototypeOf  ------   setPrototypeOf</span></div><div class="line">	<span class="keyword">if</span> (superClass)</div><div class="line">		<span class="built_in">Object</span>.setPrototypeOf ? <span class="built_in">Object</span>.setPrototypeOf(subClass, superClass) : (subClass.__proto__ = superClass);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_classCallCheck</span>(<span class="params">instance, Constructor</span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> (!(instance <span class="keyword">instanceof</span> Constructor)) &#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Cannot call a class as a function'</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Base = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">Base</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">		_classCallCheck(<span class="keyword">this</span>, Base);</div><div class="line"></div><div class="line">		<span class="keyword">this</span>.state = &#123;</div><div class="line">			<span class="attr">isMan</span>: <span class="literal">false</span>,</div><div class="line">		&#125;;</div><div class="line"></div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	_createClass(Base, [</div><div class="line">		&#123;</div><div class="line">			<span class="attr">key</span>: <span class="string">'keepQuiet'</span>,</div><div class="line">			<span class="attr">value</span>: <span class="function"><span class="keyword">function</span> <span class="title">keepQuiet</span>(<span class="params"></span>) </span>&#123;</div><div class="line">				<span class="built_in">console</span>.log(<span class="string">'base---&gt;………………………………'</span>);</div><div class="line">			&#125;,</div><div class="line">		&#125;,</div><div class="line">		&#123;</div><div class="line">			<span class="attr">key</span>: <span class="string">'alert'</span>,</div><div class="line">			<span class="attr">value</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">_alert</span>) </span>&#123;</div><div class="line">				<span class="function"><span class="keyword">function</span> <span class="title">alert</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="comment">//递归情况</span></div><div class="line">					<span class="keyword">return</span> _alert.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">				&#125;</div><div class="line"></div><div class="line">				alert.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">					<span class="keyword">return</span> _alert.toString();</div><div class="line">				&#125;;</div><div class="line"></div><div class="line">				<span class="keyword">return</span> alert;</div><div class="line">			&#125;)(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">				alert(<span class="string">'base---&gt;alert'</span>);</div><div class="line">			&#125;),</div><div class="line">		&#125;,</div><div class="line">	]);</div><div class="line"></div><div class="line">	<span class="keyword">return</span> Base;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line"><span class="keyword">var</span> child = (<span class="function"><span class="keyword">function</span>(<span class="params">_Base</span>) </span>&#123;</div><div class="line">    <span class="comment">//继承Base</span></div><div class="line">	_inherits(child, _Base);</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">child</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">		_classCallCheck(<span class="keyword">this</span>, child);</div><div class="line">        </div><div class="line">        <span class="comment">/*</span></div><div class="line">            _get(Object.getPrototypeOf(child.prototype), 'constructor', this)</div><div class="line">            得到Base的构造函数，通过call注入this得到父类的属性，name</div><div class="line">        */</div><div class="line">		_get(<span class="built_in">Object</span>.getPrototypeOf(child.prototype), <span class="string">'constructor'</span>, <span class="keyword">this</span>).call(<span class="keyword">this</span>, name);</div><div class="line"></div><div class="line">        <span class="comment">//箭头函数在这声明</span></div><div class="line">		<span class="keyword">this</span>.buySomething = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">			<span class="built_in">console</span>.log(<span class="string">'child buy'</span>);</div><div class="line">		&#125;;</div><div class="line"></div><div class="line">		<span class="keyword">this</span>.age = age;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">    <span class="comment">//在自己的原型上，覆盖了父类的alert</span></div><div class="line">	_createClass(child, [</div><div class="line">		&#123;</div><div class="line">			<span class="attr">key</span>: <span class="string">'alert'</span>,</div><div class="line">			<span class="attr">value</span>: (<span class="function"><span class="keyword">function</span>(<span class="params">_alert2</span>) </span>&#123;</div><div class="line">				<span class="function"><span class="keyword">function</span> <span class="title">alert</span>(<span class="params"></span>) </span>&#123;</div><div class="line">					<span class="keyword">return</span> _alert2.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">				&#125;</div><div class="line"></div><div class="line">				alert.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">					<span class="keyword">return</span> _alert2.toString();</div><div class="line">				&#125;;</div><div class="line"></div><div class="line">				<span class="keyword">return</span> alert;</div><div class="line">			&#125;)(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">				alert(<span class="string">'child-----&gt;alert'</span>);</div><div class="line">			&#125;),</div><div class="line">		&#125;,</div><div class="line">	]);</div><div class="line"></div><div class="line">	<span class="keyword">return</span> child;</div><div class="line">&#125;)(Base);</div><div class="line"></div><div class="line"><span class="keyword">new</span> child(<span class="string">'titan'</span>, <span class="number">80</span>);</div></pre></td></tr></table></figure></p>
-
+                                        <div class="duoshuo"></div>
+                                        
                                             
 
                                                 
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">babel</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2017/06/14/class语法糖分析/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
-    <article id="post-diff算法的简单实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/14/diff算法的简单实现/">diff算法的简单实现</a>
-    </h1>
-  
-
-                    
-                        <a href="/2017/06/14/diff算法的简单实现/" class="archive-article-date">
-  	<time datetime="2017-06-14T09:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-14</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> diffchange = diffList([&#123; <span class="attr">key</span>: <span class="number">1</span> &#125;, &#123; <span class="attr">key</span>: <span class="number">2</span> &#125;], [&#123; <span class="attr">key</span>: <span class="number">33</span> &#125;, &#123; <span class="attr">key</span>: <span class="number">1</span> &#125;, &#123; <span class="attr">key</span>: <span class="number">3</span> &#125;], <span class="string">'key'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'diffchange'</span>, diffchange);</div></pre></td></tr></table></figure>
-<p><img src="http://p1.meituan.net/dpgroup/0fe09be029636b209f5c40ac9f14484c128522.jpg" alt="img"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">第一步 add：[&#123;<span class="attr">key</span>:<span class="number">33</span>&#125;,&#123; <span class="attr">key</span>: <span class="number">1</span> &#125;, &#123; <span class="attr">key</span>: <span class="number">2</span> &#125;]</div><div class="line">第二步 add：[&#123;<span class="attr">key</span>:<span class="number">33</span>&#125;,&#123; <span class="attr">key</span>: <span class="number">1</span> &#125;,&#123; <span class="attr">key</span>: <span class="number">3</span> &#125;, &#123; <span class="attr">key</span>: <span class="number">2</span> &#125;],</div><div class="line">第三步 remove：[&#123;<span class="attr">key</span>:<span class="number">33</span>&#125;,&#123; <span class="attr">key</span>: <span class="number">1</span> &#125;,&#123; <span class="attr">key</span>: <span class="number">3</span> &#125;]</div></pre></td></tr></table></figure>
-                            
-                                <a class="article-more-a" href="/2017/06/14/diff算法的简单实现/#more">
-                                    more >></a>
-                                
-                                    
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2017/06/14/diff算法的简单实现/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
-    <article id="post-javascript纯函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/12/javascript纯函数/">JavaScript中存在纯函数吗？</a>
-    </h1>
-  
-
-                    
-                        <a href="/2017/06/12/javascript纯函数/" class="archive-article-date">
-  	<time datetime="2017-06-12T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-12</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <h3 id="JavaScript中存在纯函数吗-自译"><a href="#JavaScript中存在纯函数吗-自译" class="headerlink" title="JavaScript中存在纯函数吗?(自译)"></a>JavaScript中存在纯函数吗?(自译)</h3><p> <a href="https://hackernoon.com/do-pure-functions-exist-in-javascript-b128ed5f0ed2" target="_blank" rel="external">https://hackernoon.com/do-pure-functions-exist-in-javascript-b128ed5f0ed2</a></p>
-<h3 id="什么是纯函数？"><a href="#什么是纯函数？" class="headerlink" title="什么是纯函数？"></a>什么是纯函数？</h3><p>满足下面两个条件：<br>
-                            
-                                <a class="article-more-a" href="/2017/06/12/javascript纯函数/#more">
-                                    more >></a>
-                                
-                                    
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">自译</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2017/06/12/javascript纯函数/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
-    <article id="post-diff的o(m*n)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/04/diff的o(m*n)/">2个字符串的编辑距离（Levenshtein_distance）</a>
-    </h1>
-  
-
-                    
-                        <a href="/2017/06/04/diff的o(m*n)/" class="archive-article-date">
-  	<time datetime="2017-06-04T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-04</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <p>在react中，在render后的diff阶段，对一个列表进行了diff比较，react的实现比较高效，是o(n)量级，一种通用的diff是类似于求两个字符串的编辑距离(o(m*n)),参考：</p>
-<blockquote>
-<p><a href="https://en.wikipedia.org/wiki/Levenshtein_distance" target="_blank" rel="external">https://en.wikipedia.org/wiki/Levenshtein_distance</a></p>
-</blockquote>
-<p>比如要计算cafe和coffee的编辑距离，cafe→caffe→coffe→coffee，要经过3次转变。</p>
-<p>动态规划解决思路：<br>
-                            
-                                <a class="article-more-a" href="/2017/06/04/diff的o(m*n)/#more">
-                                    more >></a>
-                                
-                                    
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法 动态规划</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2017/06/04/diff的o(m*n)/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
-    <article id="post-react-redux" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/28/react-redux/">react-redux源码分析</a>
-    </h1>
-  
-
-                    
-                        <a href="/2017/05/28/react-redux/" class="archive-article-date">
-  	<time datetime="2017-05-28T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-28</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <h2 id="react-redux-4-4-5"><a href="#react-redux-4-4-5" class="headerlink" title="react-redux(4.4.5)"></a>react-redux(4.4.5)</h2><p>react-reudx 5.0+的版本已经进行了比较大的重构，这里主要介绍v4的版本</p>
-<h3 id="provider"><a href="#provider" class="headerlink" title="provider"></a>provider</h3><p>provider主要做了传递store的事情，通过在parent组件内，使用getChildContext方法，这个方法可以把相应的属性隐式往下传，子组件及子组件的子组件都可以获得此属性</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Provider</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  getChildContext() &#123;</div><div class="line">    <span class="keyword">return</span> &#123; <span class="attr">store</span>: <span class="keyword">this</span>.store &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(props, context) &#123;</div><div class="line">    <span class="keyword">super</span>(props, context)</div><div class="line">    <span class="keyword">this</span>.store = props.store</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> Children.only(<span class="keyword">this</span>.props.children)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>从Provider的代码中可以看到在构造函数初始化的时候将store赋了值，之后通过getChildContext将值往下传递<br>还要注意<code>childContextTypes</code>需要声明出用到的属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">Index.childContextTypes=&#123;</div><div class="line">	name: React.PropTypes.string.isRequired</div><div class="line">&#125;</div><div class="line">*/</div><div class="line">Provider.childContextTypes = &#123;</div><div class="line">  <span class="attr">store</span>: storeShape.isRequired</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-                            
-                                <a class="article-more-a" href="/2017/05/28/react-redux/#more">
-                                    more >></a>
-                                
-                                    
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2017/05/28/react-redux/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
-    <article id="post-webpack流程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/28/webpack流程/">webpack内部流程</a>
-    </h1>
-  
-
-                    
-                        <a href="/2017/04/28/webpack流程/" class="archive-article-date">
-  	<time datetime="2017-04-28T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-28</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <h3 id="webpack的一切都建立在其插件机制之上"><a href="#webpack的一切都建立在其插件机制之上" class="headerlink" title="webpack的一切都建立在其插件机制之上"></a>webpack的一切都建立在其插件机制之上</h3><h4 id="webpack是什么？"><a href="#webpack是什么？" class="headerlink" title="webpack是什么？"></a>webpack是什么？</h4><p><img src="http://p1.meituan.net/dpgroup/c048c5bc511979147aa5cb086bfb8d2239047.png" alt=""></p>
-<p>webpack 类似C++,java中的编译器，有编译，链接的能力 </p>
-<p>那么为什么是编译器？ </p>
-<p> webpack也需要做词法分析，语法分析，也需要把代码合起来<br>注意webapck的语法分析重点分析<strong>require即为依赖的分析</strong>，要区分babel是对整个业务代码的分析</p>
-<h2 id="webpack是基于node的能力的"><a href="#webpack是基于node的能力的" class="headerlink" title="webpack是基于node的能力的"></a>webpack是基于node的能力的</h2>
-                            
-                                <a class="article-more-a" href="/2017/04/28/webpack流程/#more">
-                                    more >></a>
-                                
-                                    
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2017/04/28/webpack流程/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
-    <article id="post-动手实现一个简易HTML解析器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/19/动手实现一个简易HTML解析器/">动手实现一个简易HTML解析器</a>
-    </h1>
-  
-
-                    
-                        <a href="/2017/04/19/动手实现一个简易HTML解析器/" class="archive-article-date">
-  	<time datetime="2017-04-19T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-19</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <p>在动手之前，先说说动机，之前看过浏览器工作原理的一系列文章，如： </p>
-<ol>
-<li><a href="http://yincheng.site/build-dom" target="_blank" rel="external">chrome dom树构建源码解析</a></li>
-<li><a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/" target="_blank" rel="external">浏览器的工作原理：新式网络浏览器幕后揭秘</a></li>
-</ol>
-<p>以及一些规范</p>
-<ol>
-<li><a href="https://www.w3.org/TR/html5/syntax.html#the-stack-of-open-elements" target="_blank" rel="external">html解析构建规范</a></li>
-<li><a href="https://www.w3.org/TR/CSS2/grammar.html" target="_blank" rel="external">css 规范</a></li>
-</ol>
-<p>在了解了原理与一些规范之后就想要自己试试造个轮子，加深对浏览器的理解。在大致梳理好流程之后，有以下目录：</p>
-<hr>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ol>
-<li><a href="#intro">概述</a></li>
-<li><a href="#1">HTML解析篇</a></li>
-<li><a href="#2">CSS解析篇</a></li>
-<li><a href="#3">应用CSS样式到DOM中</a></li>
-<li><a href="#4">事件系统</a></li>
-</ol>
-<hr>
-<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一.概述"></a>一.概述</h2><p>在浏览器中，我们的类有以下的继承关系，如一个div dom 继承自HTMLElemnt,HTMLElemnt继承自Element等。为了方便起见，将一些重要的如dispatchEvent等方法，children，parent，attributes等属性都纳入HTMLElement中。并且依照css object model，构造cssom对象。<br><img src="//p0.meituan.net/dpgroup/731d0d4fe3561d098a0abd9bad04323159173.jpg" alt="图1 node关系"></p>
-<p>因而实现下面的类，并实现manager来管理，即可实现一个简易的解析器。<br><img src="//p1.meituan.net/dpgroup/de6325f8325f412823e708f962e3039f141915.png" alt="图2 类概览"></p>
-<hr>
-<h2 id="二-HTML解析篇"><a href="#二-HTML解析篇" class="headerlink" title="二.HTML解析篇"></a>二.HTML解析篇</h2><p>解析html标签，最先想到的是正则，但是用正则可以解析，但是有几个问题：</p>
-<ol>
-<li><strong>如何建立dom树的父子关系</strong></li>
-<li><strong>如何建立dom树的兄弟关系</strong></li>
-<li><strong>如何实现getElementById方法</strong></li>
-<li><strong>纯文本节点怎么解析</strong></li>
-<li><strong>innerHTML该怎么做</strong></li>
-<li><strong>innerText该怎么做</strong></li>
-<li><strong>addEventListener该怎么做</strong></li>
-<li><strong>怎么构造attributeNode</strong></li>
-</ol>
-                            
-                                <a class="article-more-a" href="/2017/04/19/动手实现一个简易HTML解析器/#more">
-                                    more >></a>
-                                
-                                    
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2017/04/19/动手实现一个简易HTML解析器/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
-
-
                             </div>
                         </div>
                     </div>
@@ -960,8 +322,8 @@
             <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
