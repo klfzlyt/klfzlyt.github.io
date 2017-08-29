@@ -196,7 +196,7 @@
 <p>本文基于上述文章思路分几个步骤实现react<br>一. 初始挂载<br>二. setState状态变更<br>三. 事件实现</p>
 <h2 id="一-初始挂载"><a href="#一-初始挂载" class="headerlink" title="一. 初始挂载"></a>一. 初始挂载</h2><p>初始挂载有一系列问题：<br>1 React.creatElement创建了什么？<br>1 ReactDom.render做了什么？<br>1 初始生命周期是怎么实现的？<br>2 组件是怎么挂载的？<br>3 虚拟dom是怎么实现的？<br>6 怎么挂载一个列表或者是一个有多个children的元素？</p>
 <p>先来看一个例子：</p>
-<div><script async src="//jsrun.net/KSYKp/embed/js,html,result/light/"></script></div>
+<div><script async src="//en.jsrun.net/KSYKp/embed/all/light/"></script></div>
 
 <p>首先jsx经过babel转换为React.creatElement</p>
 <p>我们先看React.creatElement创建了什么？<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">createElement(type, props, ...children) &#123;</div><div class="line">      <span class="keyword">const</span> element = &#123;</div><div class="line">          type,</div><div class="line">          <span class="attr">props</span>: props || &#123;&#125;,</div><div class="line">      &#125;;</div><div class="line"></div><div class="line">      <span class="keyword">if</span> (props &amp;&amp; props.key) &#123;</div><div class="line">          element.key = props.key;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span> (children) &#123;</div><div class="line">          element.props.children = children;</div><div class="line">      &#125;</div><div class="line">      <span class="comment">//返回一个对象 </span></div><div class="line">      <span class="comment">//返回一个element，代表虚拟Object</span></div><div class="line">      <span class="keyword">return</span> element;</div><div class="line">  &#125;,</div></pre></td></tr></table></figure></p>
@@ -1057,7 +1057,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
+                <a href="javascript:void(0)" class="js-tag color1">babel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1065,7 +1065,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">babel</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1097,11 +1097,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
+                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
               </li>
             
             <div class="clearfix"></div>

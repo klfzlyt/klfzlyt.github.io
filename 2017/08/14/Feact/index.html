@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://p0.meituan.net/dpgroup/26d1168b5b44d272ccf6c64be1d42402393679.jpg">
 <meta property="og:image" content="https://p1.meituan.net/dpgroup/d0848188b728ee30d378b7dbbdb19feb175331.jpg">
 <meta property="og:image" content="http://p0.meituan.net/dpgroup/833c2178f2528bd42dfeecff1b36612a73003.jpg">
-<meta property="og:updated_time" content="2017-08-29T04:31:12.000Z">
+<meta property="og:updated_time" content="2017-08-29T08:57:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React简单实现之Feact---探寻React内部机制">
 <meta name="twitter:description" content="下面的文章介绍了React的内部机制，本文的一部分参考了文章中的实现。 嫌麻烦可以点开跳到最后实现部分  原文地址： http://www.mattgreer.org/articles/react-internals-part-three-basic-updating/  在读过上述文章后，对react的机制有了个大致的了解，感谢作者，但是其实现有一些局限在于没有实现creatElement">
@@ -199,7 +199,7 @@
 <p>本文基于上述文章思路分几个步骤实现react<br>一. 初始挂载<br>二. setState状态变更<br>三. 事件实现</p>
 <h2 id="一-初始挂载"><a href="#一-初始挂载" class="headerlink" title="一. 初始挂载"></a>一. 初始挂载</h2><p>初始挂载有一系列问题：<br>1 React.creatElement创建了什么？<br>1 ReactDom.render做了什么？<br>1 初始生命周期是怎么实现的？<br>2 组件是怎么挂载的？<br>3 虚拟dom是怎么实现的？<br>6 怎么挂载一个列表或者是一个有多个children的元素？</p>
 <p>先来看一个例子：</p>
-<div><script async src="//jsrun.net/KSYKp/embed/js,html,result/light/"></script></div>
+<div><script async src="//en.jsrun.net/KSYKp/embed/all/light/"></script></div>
 
 <p>首先jsx经过babel转换为React.creatElement</p>
 <p>我们先看React.creatElement创建了什么？<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">createElement(type, props, ...children) &#123;</div><div class="line">      <span class="keyword">const</span> element = &#123;</div><div class="line">          type,</div><div class="line">          <span class="attr">props</span>: props || &#123;&#125;,</div><div class="line">      &#125;;</div><div class="line"></div><div class="line">      <span class="keyword">if</span> (props &amp;&amp; props.key) &#123;</div><div class="line">          element.key = props.key;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span> (children) &#123;</div><div class="line">          element.props.children = children;</div><div class="line">      &#125;</div><div class="line">      <span class="comment">//返回一个对象 </span></div><div class="line">      <span class="comment">//返回一个element，代表虚拟Object</span></div><div class="line">      <span class="keyword">return</span> element;</div><div class="line">  &#125;,</div></pre></td></tr></table></figure></p>
@@ -257,7 +257,7 @@
 <blockquote>
 <p>事实上，react的事件分发是在一个事务中的，所以在这个事务中做出的任何setState操作都会缓存，在事务结束的时候进行统一更新.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ReactEventEmitter = &#123;</div><div class="line">    <span class="attr">listenerBank</span>: &#123;&#125;,</div><div class="line"></div><div class="line">    <span class="attr">putListener</span>: <span class="function"><span class="keyword">function</span> <span class="title">putListener</span>(<span class="params">id, registrationName, listener</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> bankForRegistrationName = <span class="keyword">this</span>.listenerBank[registrationName] || (<span class="keyword">this</span>.listenerBank[registrationName] = &#123;&#125;);</div><div class="line"></div><div class="line">        bankForRegistrationName[id] = listener;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    <span class="attr">getListener</span>: <span class="function"><span class="keyword">function</span> <span class="title">getListener</span>(<span class="params">id, registrationName</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.listenerBank[registrationName][id];</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    <span class="attr">trapBubbledEvent</span>: <span class="function"><span class="keyword">function</span> <span class="title">trapBubbledEvent</span>(<span class="params">topLevelEventType, element</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> eventMap = &#123;</div><div class="line">            <span class="attr">onClick</span>: <span class="string">'click'</span>,</div><div class="line">        &#125;;</div><div class="line">        <span class="keyword">var</span> baseEventType = eventMap[topLevelEventType];</div><div class="line">        element.addEventListener(baseEventType, <span class="keyword">this</span>.dispatchEvent.bind(<span class="keyword">this</span>, topLevelEventType));</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    <span class="attr">dispatchEvent</span>: <span class="function"><span class="keyword">function</span> <span class="title">dispatchEvent</span>(<span class="params">eventType, event</span>) </span>&#123;</div><div class="line">        <span class="comment">//这个是原生事件</span></div><div class="line">        event.preventDefault();</div><div class="line">        <span class="keyword">let</span> internalInst = FeactInstanceMap.get(event.target);</div><div class="line">        <span class="comment">//    var id = internalInst._rootNodeID;</span></div><div class="line">        <span class="comment">//先默认实现一个bubbule的事件系统</span></div><div class="line">        <span class="keyword">var</span> parentArray = [];</div><div class="line">        <span class="keyword">var</span> listenArray = [];</div><div class="line">        <span class="keyword">var</span> parent = internalInst;</div><div class="line">        <span class="keyword">while</span> (parent) &#123;</div><div class="line">            parentArray.push(parent);</div><div class="line">            parent = parent._hostParent;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; parentArray.length; i++) &#123;</div><div class="line">            <span class="keyword">let</span> instID = parentArray[i]._rootNodeID;</div><div class="line">            <span class="keyword">let</span> handler = <span class="keyword">this</span>.getListener(instID, eventType);</div><div class="line">            handler &amp;&amp; listenArray.push(handler);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; listenArray.length; i++) &#123;</div><div class="line">            listenArray[i](event);</div><div class="line">        &#125;    </div><div class="line">    &#125;,</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 </blockquote>
-<h3 id="最终代码："><a href="#最终代码：" class="headerlink" title="最终代码："></a>最终代码：</h3><div id="jumpend"><br><script async src="//jsrun.net/iuYKp/embed/js,html,result/light/"></script></div>    
+<h3 id="最终代码："><a href="#最终代码：" class="headerlink" title="最终代码："></a>最终代码：</h3><div id="jumpend"><br><script async src="//en.jsrun.net/iuYKp/embed/all/light/"></script></div>    
 
                                             
 
@@ -471,7 +471,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
+                <a href="javascript:void(0)" class="js-tag color1">babel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,7 +479,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">babel</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -511,11 +511,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
+                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
               </li>
             
             <div class="clearfix"></div>
