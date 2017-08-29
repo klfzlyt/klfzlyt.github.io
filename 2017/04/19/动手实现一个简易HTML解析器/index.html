@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://07lyt.com">
   <title>动手实现一个简易HTML解析器 | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在动手之前，先说说动机，之前看过浏览器工作原理的一系列文章，如：   chrome dom树构建源码解析 浏览器的工作原理：新式网络浏览器幕后揭秘  以及一些规范  html解析构建规范 css 规范  在了解了原理与一些规范之后就想要自己试试造个轮子，加深对浏览器的理解。在大致梳理好流程之后，有以下目录：  目录 概述 HTML解析篇 CSS解析篇 应用CSS样式到DOM中 事件系统   一.概">
+  <meta name="description" content="在动手之前，先说说动机，之前看过浏览器工作原理的一系列文章，如：   chrome dom树构建源码解析 浏览器的工作原理：新式网络浏览器幕后揭秘  以及一些规范  html解析构建规范 css 规范  在了解了原理与一些规范之后就想要自己试试造个轮子，加深对浏览器的理解。在大致梳理好流程之后，有以下目录：  目录 概述 HTML解析篇 CSS解析篇 应用CSS样式到DOM中 事件系统  可以先看">
 <meta name="keywords" content="前端基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动手实现一个简易HTML解析器">
 <meta property="og:url" content="http://07lyt.com/2017/04/19/动手实现一个简易HTML解析器/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
-<meta property="og:description" content="在动手之前，先说说动机，之前看过浏览器工作原理的一系列文章，如：   chrome dom树构建源码解析 浏览器的工作原理：新式网络浏览器幕后揭秘  以及一些规范  html解析构建规范 css 规范  在了解了原理与一些规范之后就想要自己试试造个轮子，加深对浏览器的理解。在大致梳理好流程之后，有以下目录：  目录 概述 HTML解析篇 CSS解析篇 应用CSS样式到DOM中 事件系统   一.概">
+<meta property="og:description" content="在动手之前，先说说动机，之前看过浏览器工作原理的一系列文章，如：   chrome dom树构建源码解析 浏览器的工作原理：新式网络浏览器幕后揭秘  以及一些规范  html解析构建规范 css 规范  在了解了原理与一些规范之后就想要自己试试造个轮子，加深对浏览器的理解。在大致梳理好流程之后，有以下目录：  目录 概述 HTML解析篇 CSS解析篇 应用CSS样式到DOM中 事件系统  可以先看">
 <meta property="og:image" content="http://p0.meituan.net/dpgroup/731d0d4fe3561d098a0abd9bad04323159173.jpg">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/de6325f8325f412823e708f962e3039f141915.png">
 <meta property="og:image" content="http://p1.meituan.net/dpgroup/905528efeb365baa6e66c7ec75ce291347443.png">
@@ -36,10 +36,10 @@
 <meta property="og:image" content="http://p0.meituan.net/dpgroup/6c68614a2d7e7753795f97417e7fcc6632159.png">
 <meta property="og:image" content="http://pic1.zhimg.com/v2-35c29bd029f5997ffdfb60dcd5023fac_b.png">
 <meta property="og:image" content="https://javascript.info/article/bubbling-and-capturing/eventflow@2x.png">
-<meta property="og:updated_time" content="2017-05-28T16:06:20.000Z">
+<meta property="og:updated_time" content="2017-08-29T08:51:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动手实现一个简易HTML解析器">
-<meta name="twitter:description" content="在动手之前，先说说动机，之前看过浏览器工作原理的一系列文章，如：   chrome dom树构建源码解析 浏览器的工作原理：新式网络浏览器幕后揭秘  以及一些规范  html解析构建规范 css 规范  在了解了原理与一些规范之后就想要自己试试造个轮子，加深对浏览器的理解。在大致梳理好流程之后，有以下目录：  目录 概述 HTML解析篇 CSS解析篇 应用CSS样式到DOM中 事件系统   一.概">
+<meta name="twitter:description" content="在动手之前，先说说动机，之前看过浏览器工作原理的一系列文章，如：   chrome dom树构建源码解析 浏览器的工作原理：新式网络浏览器幕后揭秘  以及一些规范  html解析构建规范 css 规范  在了解了原理与一些规范之后就想要自己试试造个轮子，加深对浏览器的理解。在大致梳理好流程之后，有以下目录：  目录 概述 HTML解析篇 CSS解析篇 应用CSS样式到DOM中 事件系统  可以先看">
 <meta name="twitter:image" content="http://p0.meituan.net/dpgroup/731d0d4fe3561d098a0abd9bad04323159173.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Vogel im Kafig" type="application/atom+xml">
@@ -214,6 +214,9 @@
 <li><a href="#3">应用CSS样式到DOM中</a></li>
 <li><a href="#4">事件系统</a></li>
 </ol>
+<p>可以先看看效果</p>
+<div><br><script async src="//en.jsrun.net/SSYKp/embed/all/light/"></script></div>
+
 <hr>
 <h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一.概述"></a>一.概述</h2><p>在浏览器中，我们的类有以下的继承关系，如一个div dom 继承自HTMLElemnt,HTMLElemnt继承自Element等。为了方便起见，将一些重要的如dispatchEvent等方法，children，parent，attributes等属性都纳入HTMLElement中。并且依照css object model，构造cssom对象。<br><img src="//p0.meituan.net/dpgroup/731d0d4fe3561d098a0abd9bad04323159173.jpg" alt="图1 node关系"></p>
 <p>因而实现下面的类，并实现manager来管理，即可实现一个简易的解析器。<br><img src="//p1.meituan.net/dpgroup/de6325f8325f412823e708f962e3039f141915.png" alt="图2 类概览"></p>
@@ -521,11 +524,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,7 +536,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,11 +556,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redux</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
               </li>
              
               <li class="article-tag-list-item">
