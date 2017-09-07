@@ -154,6 +154,107 @@
                             <div id="js-content" class="content-ll">
                                 
   
+    <article id="post-动手实现一个简易HTML解析器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/19/动手实现一个简易HTML解析器/">动手实现一个简易HTML解析器</a>
+    </h1>
+  
+
+                    
+                        <a href="/2017/04/19/动手实现一个简易HTML解析器/" class="archive-article-date">
+  	<time datetime="2017-04-19T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-19</time>
+</a>
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                        <p>在动手之前，先说说动机，之前看过浏览器工作原理的一系列文章，如： </p>
+<ol>
+<li><a href="http://yincheng.site/build-dom" target="_blank" rel="external">chrome dom树构建源码解析</a></li>
+<li><a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/" target="_blank" rel="external">浏览器的工作原理：新式网络浏览器幕后揭秘</a></li>
+</ol>
+<p>以及一些规范</p>
+<ol>
+<li><a href="https://www.w3.org/TR/html5/syntax.html#the-stack-of-open-elements" target="_blank" rel="external">html解析构建规范</a></li>
+<li><a href="https://www.w3.org/TR/CSS2/grammar.html" target="_blank" rel="external">css 规范</a></li>
+</ol>
+<p>在了解了原理与一些规范之后就想要自己试试造个轮子，加深对浏览器的理解。在大致梳理好流程之后，有以下目录：</p>
+<hr>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ol>
+<li><a href="#intro">概述</a></li>
+<li><a href="#1">HTML解析篇</a></li>
+<li><a href="#2">CSS解析篇</a></li>
+<li><a href="#3">应用CSS样式到DOM中</a></li>
+<li><a href="#4">事件系统</a></li>
+</ol>
+<p>可以先看看效果</p>
+<div><br><script async src="//en.jsrun.net/SSYKp/embed/all/light/"></script></div>
+
+<hr>
+<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一.概述"></a>一.概述</h2><p>在浏览器中，我们的类有以下的继承关系，如一个div dom 继承自HTMLElemnt,HTMLElemnt继承自Element等。为了方便起见，将一些重要的如dispatchEvent等方法，children，parent，attributes等属性都纳入HTMLElement中。并且依照css object model，构造cssom对象。<br><img src="//p0.meituan.net/dpgroup/731d0d4fe3561d098a0abd9bad04323159173.jpg" alt="图1 node关系"></p>
+<p>因而实现下面的类，并实现manager来管理，即可实现一个简易的解析器。<br><img src="//p1.meituan.net/dpgroup/de6325f8325f412823e708f962e3039f141915.png" alt="图2 类概览"></p>
+<hr>
+<h2 id="二-HTML解析篇"><a href="#二-HTML解析篇" class="headerlink" title="二.HTML解析篇"></a>二.HTML解析篇</h2><p>解析html标签，最先想到的是正则，但是用正则可以解析，但是有几个问题：</p>
+<ol>
+<li><strong>如何建立dom树的父子关系</strong></li>
+<li><strong>如何建立dom树的兄弟关系</strong></li>
+<li><strong>如何实现getElementById方法</strong></li>
+<li><strong>纯文本节点怎么解析</strong></li>
+<li><strong>innerHTML该怎么做</strong></li>
+<li><strong>innerText该怎么做</strong></li>
+<li><strong>addEventListener该怎么做</strong></li>
+<li><strong>怎么构造attributeNode</strong></li>
+</ol>
+                            
+                                <a class="article-more-a" href="/2017/04/19/动手实现一个简易HTML解析器/#more">
+                                    more >></a>
+                                
+                                    
+
+                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                        
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2017/04/19/动手实现一个简易HTML解析器/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+
+            
+
+                        
+
+                                                
+  
     <article id="post-一个模板引擎的简单实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -899,15 +1000,23 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">babel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">babel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模式 mvvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -923,19 +1032,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">react-native</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redux</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">
