@@ -186,13 +186,15 @@
 
 <p>我们在<code>proxys</code>中加入一个<code>observebal</code>被观察者，并利用get，在get中加入观察者，而观察者，挂载在类Observebal的静态属性上，并在我们实例化一个<code>Observer</code>时，进行调用get，这样，当我们执行以下代码时，一个<code>Observebal</code>的实例就会得到他们对应的观察者（例子中为2个）,因而我们执行<code>model.a = 22222;</code>时，<code>console.log(&#39;observer1&#39;, value);</code>便会通过<code>notify</code>得到触发.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> model = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;</div><div class="line"><span class="keyword">let</span> observal = <span class="keyword">new</span> Observebal(model);</div><div class="line"><span class="comment">//监听a属性变化</span></div><div class="line">Observebal.observer = <span class="keyword">new</span> Observer(model, <span class="string">'a'</span>, value =&gt; &#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'observer1'</span>, value);</div><div class="line">&#125;);</div><div class="line"><span class="comment">//监听b属性变化</span></div><div class="line">Observebal.observer = <span class="keyword">new</span> Observer(model, <span class="string">'b'</span>, value =&gt; &#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'observer2'</span>, value);</div><div class="line">&#125;);</div><div class="line">model.a = <span class="number">22222</span>;</div></pre></td></tr></table></figure></p>
 <p>这里的get写法很妙，不断的覆盖不断的取值，感觉<code>_.get</code>似乎应该也是类似实现<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">getter(vm, expr) &#123;</div><div class="line">	<span class="keyword">var</span> exps = expr.split(<span class="string">'.'</span>);</div><div class="line">	<span class="comment">//只要不进行ob.xxx的修改就可以了，指针重新覆盖</span></div><div class="line">	<span class="keyword">let</span> obj = vm;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = exps.length; i &lt; len; i++) &#123;</div><div class="line">		<span class="keyword">if</span> (!obj) <span class="keyword">return</span>;</div><div class="line">		obj = obj[exps[i]];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> obj;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="指令编辑器"><a href="#指令编辑器" class="headerlink" title="指令编辑器"></a>指令编辑器</h3><p>接下来只需要实现一个指令编辑器就可以，我们的思路是<br>实现数据到ui的通知我们的思路是:<br>数据变化—–&gt;回调函数（引用有真实dom的闭包）—–&gt;利用dom api改变dom<br>指令编辑器的作用就是执行2面两步</p>
-<p>当然还欠缺数组指令等，不过实现思路类似<br>最终代码如下：</p>
+<h3 id="指令编辑器"><a href="#指令编辑器" class="headerlink" title="指令编辑器"></a>指令编辑器</h3><p>接下来只需要实现一个指令编辑器就可以，我们的思路是<br>实现数据到ui的通知我们的思路是:<br>数据变化—–&gt;回调函数（引用有真实dom的闭包）—–&gt;利用dom api改变dom<br>指令编辑器的作用就是执行后面两步，我们可以利用这个思路，先拿到dom的引用，这里拿取<br>dom引用的办法有很多，要不是利用模板字符串转换成dom,从而可以进行遍历，要不是直接写在页面中<br>，让html初始化了dom,然后我们再进行更改。我们最关键的一步就是我们遍历dom树，拿到了每个dom结点的<br>引用，之后解析dom结点上的指令，之后做一个闭包函数，函数内引用这个dom节点，把这个函数作为<strong>相应指令对应观察者</strong>的回调函数，并在这个函数内部进行dom的更新（由于已经有dom的引用）,就可以完成最关键的一步：数据到ui的更新<br>对于<code>ob.a.b.c</code>的赋值，可以有以下过程，对于get，反复执行getter,且更新指针，对于setter,取到<code>最后一个.后</code>,再执行真正的赋值。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">getVmVal(vm, exp) &#123;</div><div class="line">	<span class="keyword">var</span> val = vm;</div><div class="line">	exp = exp.split(<span class="string">'.'</span>);</div><div class="line">	exp.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">k</span>) </span>&#123;</div><div class="line">     <span class="comment">//反复更新指针，反复执行getter，不执行setter</span></div><div class="line">		val = val[k];</div><div class="line">	&#125;);</div><div class="line">	<span class="keyword">return</span> val;</div><div class="line">&#125;</div><div class="line">setVmVal(vm, exp, newValue) &#123;</div><div class="line">	<span class="keyword">var</span> val = vm;</div><div class="line">	exp = exp.split(<span class="string">'.'</span>);</div><div class="line">	exp.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">k, i</span>) </span>&#123;</div><div class="line">		<span class="comment">// 非最后一个key，更新val的值</span></div><div class="line">		<span class="keyword">if</span> (i &lt; exp.length - <span class="number">1</span>) &#123;</div><div class="line">       <span class="comment">//反复执行getter</span></div><div class="line">			val = val[k];</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">       <span class="comment">//最后再执行setter</span></div><div class="line">			val[k] = newValue;</div><div class="line">		&#125;</div><div class="line">	&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>还有一个是<code>mvvm</code>对象的设置，对于以下代码，我们mvvm中的model部分是data属性字段，vm作为承接v和m的部分，也起到一定逻辑处理的角色<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> MVVM(&#123;</div><div class="line">           <span class="attr">ele</span>: <span class="built_in">document</span>.getElementById(<span class="string">'mvvm-app'</span>),</div><div class="line">           <span class="attr">data</span>: &#123;</div><div class="line">               <span class="attr">someStr</span>: <span class="string">'hello '</span>,</div><div class="line">               <span class="attr">className</span>: <span class="string">'btn'</span>,</div><div class="line">               <span class="attr">htmlStr</span>: <span class="string">'&lt;span style="color: #f00;"&gt;red&lt;/span&gt;'</span>,</div><div class="line">               <span class="attr">child</span>: &#123;</div><div class="line">                   <span class="attr">htmlStr</span>: <span class="string">'few'</span>,</div><div class="line">                   <span class="attr">someStr</span>: <span class="string">'World !'</span></div><div class="line">               &#125;</div><div class="line">           &#125;,</div><div class="line"></div><div class="line">           <span class="attr">computed</span>: &#123;</div><div class="line">               <span class="attr">getHelloWord</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">                   <span class="keyword">return</span> <span class="keyword">this</span>.someStr + <span class="keyword">this</span>.child.someStr;</div><div class="line">               &#125;</div><div class="line">           &#125;,</div><div class="line"></div><div class="line">           <span class="attr">methods</span>: &#123;</div><div class="line">               <span class="attr">clickBtn</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">                   <span class="keyword">var</span> randomStrArr = [<span class="string">'childOne'</span>, <span class="string">'childTwo'</span>, <span class="string">'childThree'</span>];</div><div class="line">                   <span class="keyword">this</span>.child.someStr = randomStrArr[<span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="number">3</span>)];</div><div class="line">                   <span class="keyword">this</span>.child.htmlStr = randomStrArr[<span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="number">3</span>)];</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;);</div></pre></td></tr></table></figure></p>
+<p>MVVM通过一定的代理手段，将data字段映射到vm实例之上，目的是在<code>methods,computed</code>函数中，通过this(vm实例)能访问<code>model</code>的值,对于<code>computed</code>，用defineProperty，将<code>computed</code>中的所有字段也映射到vm实例中，最后有个非常重要的点:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//命令数据为可以观察的</span></div><div class="line"><span class="keyword">new</span> Observebal(data);</div></pre></td></tr></table></figure></p>
+<p>需要对model部分的数据进行观察，这样，通过代理<code>model</code>的<code>key</code>到实例的<code>key</code>后，每次<code>vm.xx</code>都会进行getter,每次<code>vm.xx = xxx</code>都会进行setter，要注意<code>defineProperty</code>的getter,和setter都需要用引用，以防止循环调用<br>最终代码如下：</p>
 <script async src="//en.jsrun.net/IYiKp/embed/all/light/"></script>
 
 
 
-
+<p>感谢文章，部分代码参考以下文章：</p>
 <blockquote>
 <p><a href="https://github.com/DMQ/mvvm" target="_blank" rel="external">https://github.com/DMQ/mvvm</a><br><a href="https://zhuanlan.zhihu.com/p/24475845" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/24475845</a></p>
 </blockquote>
@@ -1039,19 +1041,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">babel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1059,7 +1049,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">babel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1067,7 +1057,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">自译</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1075,19 +1073,23 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">自译</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
               </li>
             
             <div class="clearfix"></div>
