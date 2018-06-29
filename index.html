@@ -154,6 +154,72 @@
                             <div id="js-content" class="content-ll">
                                 
   
+    <article id="post-pylon" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/02/pylon/">pylon</a>
+    </h1>
+  
+
+                    
+                        <a href="/2018/05/02/pylon/" class="archive-article-date">
+  	<time datetime="2018-05-02T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-02</time>
+</a>
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                                        <p><a href="https://github.com/PylonFE/Pylon" target="_blank" rel="external">https://github.com/PylonFE/Pylon</a><br>做了一个工具，用于分析项目依赖关系，分析文件结构，分析循环引用，查看指定依赖规则等</p>
+<p>名称取自星际争霸神族水晶塔，意在为项目提供支持</p>
+<p>ts项目分析工具</p>
+<p>demo:<br><img src="http://p1.meituan.net/dpgroup/7979e2d96f33ad2dd3bb01dacbec0ad84932521.gif" alt=""></p>
+<p>useage:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install pylonn</div><div class="line">or</div><div class="line">yarn add pylonn</div><div class="line">then</div><div class="line">dependence -p ./src</div></pre></td></tr></table></figure>
+                                            
+
+                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                        
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2018/05/02/pylon/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+
+            
+
+                        
+
+                                                
+  
     <article id="post-用js实现一门简单语言" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -924,74 +990,6 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
 
                                                 
   
-    <article id="post-react-redux" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/28/react-redux/">react-redux源码分析</a>
-    </h1>
-  
-
-                    
-                        <a href="/2017/05/28/react-redux/" class="archive-article-date">
-  	<time datetime="2017-05-28T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-28</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <h2 id="react-redux-4-4-5"><a href="#react-redux-4-4-5" class="headerlink" title="react-redux(4.4.5)"></a>react-redux(4.4.5)</h2><p>react-reudx 5.0+的版本已经进行了比较大的重构，这里主要介绍v4的版本</p>
-<h3 id="provider"><a href="#provider" class="headerlink" title="provider"></a>provider</h3><p>provider主要做了传递store的事情，通过在parent组件内，使用getChildContext方法，这个方法可以把相应的属性隐式往下传，子组件及子组件的子组件都可以获得此属性</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Provider</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  getChildContext() &#123;</div><div class="line">    <span class="keyword">return</span> &#123; <span class="attr">store</span>: <span class="keyword">this</span>.store &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(props, context) &#123;</div><div class="line">    <span class="keyword">super</span>(props, context)</div><div class="line">    <span class="keyword">this</span>.store = props.store</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> Children.only(<span class="keyword">this</span>.props.children)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>从Provider的代码中可以看到在构造函数初始化的时候将store赋了值，之后通过getChildContext将值往下传递<br>还要注意<code>childContextTypes</code>需要声明出用到的属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">Index.childContextTypes=&#123;</div><div class="line">	name: React.PropTypes.string.isRequired</div><div class="line">&#125;</div><div class="line">*/</div><div class="line">Provider.childContextTypes = &#123;</div><div class="line">  <span class="attr">store</span>: storeShape.isRequired</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-                            
-                                <a class="article-more-a" href="/2017/05/28/react-redux/#more">
-                                    more >></a>
-                                
-                                    
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2017/05/28/react-redux/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1089,10 +1087,6 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">babel</a>
               </li>
              
@@ -1105,6 +1099,10 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -1113,15 +1111,19 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模式 mvvm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
+                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1133,11 +1135,11 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">编译 前端</a>
+                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">编译 前端</a>
               </li>
              
               <li class="article-tag-list-item">

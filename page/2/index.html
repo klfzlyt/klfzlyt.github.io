@@ -154,6 +154,74 @@
                             <div id="js-content" class="content-ll">
                                 
   
+    <article id="post-react-redux" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/28/react-redux/">react-redux源码分析</a>
+    </h1>
+  
+
+                    
+                        <a href="/2017/05/28/react-redux/" class="archive-article-date">
+  	<time datetime="2017-05-28T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-28</time>
+</a>
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                        <h2 id="react-redux-4-4-5"><a href="#react-redux-4-4-5" class="headerlink" title="react-redux(4.4.5)"></a>react-redux(4.4.5)</h2><p>react-reudx 5.0+的版本已经进行了比较大的重构，这里主要介绍v4的版本</p>
+<h3 id="provider"><a href="#provider" class="headerlink" title="provider"></a>provider</h3><p>provider主要做了传递store的事情，通过在parent组件内，使用getChildContext方法，这个方法可以把相应的属性隐式往下传，子组件及子组件的子组件都可以获得此属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Provider</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  getChildContext() &#123;</div><div class="line">    <span class="keyword">return</span> &#123; <span class="attr">store</span>: <span class="keyword">this</span>.store &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(props, context) &#123;</div><div class="line">    <span class="keyword">super</span>(props, context)</div><div class="line">    <span class="keyword">this</span>.store = props.store</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> Children.only(<span class="keyword">this</span>.props.children)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从Provider的代码中可以看到在构造函数初始化的时候将store赋了值，之后通过getChildContext将值往下传递<br>还要注意<code>childContextTypes</code>需要声明出用到的属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">Index.childContextTypes=&#123;</div><div class="line">	name: React.PropTypes.string.isRequired</div><div class="line">&#125;</div><div class="line">*/</div><div class="line">Provider.childContextTypes = &#123;</div><div class="line">  <span class="attr">store</span>: storeShape.isRequired</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+                            
+                                <a class="article-more-a" href="/2017/05/28/react-redux/#more">
+                                    more >></a>
+                                
+                                    
+
+                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                        
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2017/05/28/react-redux/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+
+            
+
+                        
+
+                                                
+  
     <article id="post-webpack流程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -867,103 +935,6 @@
 
                                                 
   
-    <article id="post-不一样的前端手指操" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/12/不一样的前端手指操/">不一样的前端手指操</a>
-    </h1>
-  
-
-                    
-                        <a href="/2016/06/12/不一样的前端手指操/" class="archive-article-date">
-  	<time datetime="2016-06-12T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-12</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <p>看见题目可能有点好奇，不过看下去你就知道什么叫手指操了~</p>
-<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
-<li><a href="#intro">引言</a></li>
-<li><a href="#thory">原理</a></li>
-<li><a href="#lib">核心库</a></li>
-<li><a href="#impl">实现</a><ul>
-<li><a href="#keyframe">关键帧/图片调整</a></li>
-<li><a href="#spritesheet">spritesheet </a></li>
-<li><a href="#progressbar">progressbar</a></li>
-</ul>
-</li>
-<li><a href="#problem">可能会遇到的问题</a></li>
-<li><a href="#tool">相关工具</a></li>
-<li><a href="#visit">访问地址</a>     </li>
-</ul>
-<ul>
-<li><h5 id="写在前面（特别注意）"><a href="#写在前面（特别注意）" class="headerlink" title="写在前面（特别注意）"></a><strong>写在前面（特别注意）</strong></h5>在移动端上做动画，一定不能用<strong><em>top</em></strong>,<strong><em>bottom</em></strong>,<strong><em>background-position</em></strong>等元素做动画,不管是JS动画还是CSS动画。主要是浏览器重排，重绘，合成等，只能用4个(需要加<strong>translateZ(0)</strong>开启GPU加速)：<strong>translate</strong>,<strong>scale</strong>,<strong>opacity</strong>,<strong>rotate</strong>。<br>详细资料参考：<blockquote>
-<ul>
-<li><a href="http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/" target="_blank" rel="external">高性能动画</a></li>
-<li><a href="https://docs.google.com/spreadsheets/d/1Hvi0nu2wG3oQ51XRHtMv-A_ZlidnwUYwgQsPQUg1R2s/pub?single=true&amp;gid=0&amp;output=html" target="_blank" rel="external">各CSS元素渲染情况</a></li>
-<li><a href="https://github.com/AlloyTeam/Mars/blob/master/performance/css-property-animation-performance.md" target="_blank" rel="external">高性能 Mobile Web 开发</a></li>
-<li><a href="http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/" target="_blank" rel="external">Rendering: repaint, reflow/relayout, restyle</a>       </li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<p><a name="intro"></a>          </p>
-<ul>
-<li><h5 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h5>毕业季没事做，一直都对视差滚动感兴趣，感觉很新鲜（虽然现在已经不火了）不过还是决定试试看，先看看效果。<ul>
-<li><strong>片段演示（<a href="#visit">完整版访问地址在最后</a>）</strong><br><a href="http://www.cnblogs.com/07lyt/p/5582231.html#3451493" target="_blank" rel="external">片段演示</a></li>
-</ul>
-</li>
-</ul>
-                            
-                                <a class="article-more-a" href="/2016/06/12/不一样的前端手指操/#more">
-                                    more >></a>
-                                
-                                    
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2016/06/12/不一样的前端手指操/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1061,10 +1032,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">babel</a>
               </li>
              
@@ -1077,6 +1044,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -1085,15 +1056,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模式 mvvm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
+                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1105,11 +1080,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">编译 前端</a>
+                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">编译 前端</a>
               </li>
              
               <li class="article-tag-list-item">
