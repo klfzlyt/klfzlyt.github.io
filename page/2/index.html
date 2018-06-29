@@ -857,19 +857,19 @@
 
                                                 
   
-    <article id="post-getBoundingClientRect" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-不一样的前端手指操" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/12/getBoundingClientRect/">domAPI/css</a>
+      <a class="article-title" href="/2016/06/12/不一样的前端手指操/">不一样的前端手指操</a>
     </h1>
   
 
                     
-                        <a href="/2016/06/12/getBoundingClientRect/" class="archive-article-date">
+                        <a href="/2016/06/12/不一样的前端手指操/" class="archive-article-date">
   	<time datetime="2016-06-12T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-12</time>
 </a>
                             
@@ -877,25 +877,44 @@
             
                 <div class="article-entry" itemprop="articleBody">
                     
-                                        <p>Reselect 解决selector中计算量过大的问题</p>
-<p>multireducer 解决state中多个list导致state过大的问题（拆分list到state）</p>
-<p>reducer enhance —- 高阶reducer</p>
-<p>acdlite/redux-actions 是actionCreactor的工厂方法</p>
-<p>javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call by share<br>ref:<a href="https://github.com/nodejh/nodejh.github.io/issues/32" target="_blank" rel="external">https://github.com/nodejh/nodejh.github.io/issues/32</a></p>
-<p>getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离<br>其bottom为盒模型下边缘与视口顶端的距离</p>
-<p>text-shadow: h-shadow v-shadow blur color;<br>水平方向，垂直方向</p>
-<p>Object.getOwnPropertyNames()方法返回一个由指定对象的所有自身属性的属性名（包括不可枚举属性）组成的数组。</p>
-<p>Object.getOwnPropertyNames 返回一个数组，该数组对元素是 obj 自身拥有的枚举或不可枚举属性名称字符串。 数组中枚举属性的顺序与通过 for…in 循环（或 Object.keys）迭代该对象属性时一致。 数组中不可枚举属性的顺序未定义。</p>
-<p>下面的例子演示了该方法不会获取到原型链上的属性：</p>
-<p>function ParentClass() {}<br>ParentClass.prototype.inheritedMethod = function() {};</p>
-<p>function ChildClass() {<br>  this.prop = 5;<br>  this.method = function() {};<br>}</p>
-<p>ChildClass.prototype = new ParentClass;<br>ChildClass.prototype.prototypeMethod = function() {};</p>
-<p>console.log(<br>  Object.getOwnPropertyNames(<br>    new ChildClass()  // [“prop”, “method”]<br>  )<br>);</p>
-<p>1.jquery.dotdotdot</p>
-<p>2：<br>.header{<br>  overflow : hidden;<br>  text-overflow: ellipsis;<br>  display: -webkit-box;<br>  -webkit-line-clamp: 2;<br>  -webkit-box-orient: vertical;<br>}</p>
-<p>单行<br>overflow: hidden;<br>white-space: nowrap;<br>text-overflow: ellipsis;</p>
-
-                                            
+                        <p>看见题目可能有点好奇，不过看下去你就知道什么叫手指操了~</p>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
+<li><a href="#intro">引言</a></li>
+<li><a href="#thory">原理</a></li>
+<li><a href="#lib">核心库</a></li>
+<li><a href="#impl">实现</a><ul>
+<li><a href="#keyframe">关键帧/图片调整</a></li>
+<li><a href="#spritesheet">spritesheet </a></li>
+<li><a href="#progressbar">progressbar</a></li>
+</ul>
+</li>
+<li><a href="#problem">可能会遇到的问题</a></li>
+<li><a href="#tool">相关工具</a></li>
+<li><a href="#visit">访问地址</a>     </li>
+</ul>
+<ul>
+<li><h5 id="写在前面（特别注意）"><a href="#写在前面（特别注意）" class="headerlink" title="写在前面（特别注意）"></a><strong>写在前面（特别注意）</strong></h5>在移动端上做动画，一定不能用<strong><em>top</em></strong>,<strong><em>bottom</em></strong>,<strong><em>background-position</em></strong>等元素做动画,不管是JS动画还是CSS动画。主要是浏览器重排，重绘，合成等，只能用4个(需要加<strong>translateZ(0)</strong>开启GPU加速)：<strong>translate</strong>,<strong>scale</strong>,<strong>opacity</strong>,<strong>rotate</strong>。<br>详细资料参考：<blockquote>
+<ul>
+<li><a href="http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/" target="_blank" rel="external">高性能动画</a></li>
+<li><a href="https://docs.google.com/spreadsheets/d/1Hvi0nu2wG3oQ51XRHtMv-A_ZlidnwUYwgQsPQUg1R2s/pub?single=true&amp;gid=0&amp;output=html" target="_blank" rel="external">各CSS元素渲染情况</a></li>
+<li><a href="https://github.com/AlloyTeam/Mars/blob/master/performance/css-property-animation-performance.md" target="_blank" rel="external">高性能 Mobile Web 开发</a></li>
+<li><a href="http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/" target="_blank" rel="external">Rendering: repaint, reflow/relayout, restyle</a>       </li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><a name="intro"></a>          </p>
+<ul>
+<li><h5 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h5>毕业季没事做，一直都对视差滚动感兴趣，感觉很新鲜（虽然现在已经不火了）不过还是决定试试看，先看看效果。<ul>
+<li><strong>片段演示（<a href="#visit">完整版访问地址在最后</a>）</strong><br><a href="http://www.cnblogs.com/07lyt/p/5582231.html#3451493" target="_blank" rel="external">片段演示</a></li>
+</ul>
+</li>
+</ul>
+                            
+                                <a class="article-more-a" href="/2016/06/12/不一样的前端手指操/#more">
+                                    more >></a>
+                                
+                                    
 
                                                 
         </div>
@@ -917,7 +936,7 @@
 
                             
                                 <p class="article-more-link">
-                                    <a class="article-more-a" href="/2016/06/12/getBoundingClientRect/">
+                                    <a class="article-more-a" href="/2016/06/12/不一样的前端手指操/">
                                         展开全文 >></a>
                                 </p>
                                 
@@ -1044,11 +1063,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color1">工具 d3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1056,15 +1079,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模式 mvvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1080,15 +1099,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">编译 前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
               </li>
             
             <div class="clearfix"></div>
