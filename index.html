@@ -154,6 +154,135 @@
                             <div id="js-content" class="content-ll">
                                 
   
+    <article id="post-route封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/01/route封装/">route封装工具</a>
+    </h1>
+  
+
+                    
+                        <a href="/2019/03/01/route封装/" class="archive-article-date">
+  	<time datetime="2019-03-01T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-01</time>
+</a>
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                                        <iframe src="https://codesandbox.io/embed/3yx16y1qq6?fontsize=14" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+                                            
+
+                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                        
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2019/03/01/route封装/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+
+            
+
+                        
+
+                                                
+  
+    <article id="post-ts" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/02/ts/">ts汇总</a>
+    </h1>
+  
+
+                    
+                        <a href="/2018/08/02/ts/" class="archive-article-date">
+  	<time datetime="2018-08-02T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
+</a>
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                                        <p>react-ts<br>[好的总结]<a href="https://github.com/piotrwitek/react-redux-typescript-guide" target="_blank" rel="external">https://github.com/piotrwitek/react-redux-typescript-guide</a></p>
+<ol>
+<li>类型分离（官方叫类型保护）</li>
+</ol>
+<p><a href="https://www.tslang.cn/docs/handbook/advanced-types.html" target="_blank" rel="external">相关章节</a></p>
+<p>2 .几类有用的类型变换</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> <span class="comment">//  条件类型</span></div><div class="line"></div><div class="line">declare <span class="function"><span class="keyword">function</span> <span class="title">createLabel</span>&lt;<span class="title">T</span>&gt;(<span class="params">idOrName: T</span>):</span></div><div class="line">    <span class="title">T</span> <span class="title">extends</span> <span class="title">number</span> ? <span class="title">number</span> : <span class="title">string</span>;</div><div class="line"></div><div class="line"><span class="title">let</span> <span class="title">a</span> = <span class="title">createLabel</span>(<span class="params"><span class="string">"typescript"</span></span>);   // <span class="title">string</span></div><div class="line"><span class="title">let</span> <span class="title">b</span> = <span class="title">createLabel</span>(<span class="params"><span class="number">2.8</span></span>);            // <span class="title">number</span></div><div class="line"><span class="title">let</span> <span class="title">c</span> = <span class="title">createLabel</span>(<span class="params"><span class="string">""</span> as any</span>);      // <span class="title">string</span> | <span class="title">number</span></div><div class="line"><span class="title">let</span> <span class="title">d</span> = <span class="title">createLabel</span>(<span class="params"><span class="string">""</span> as never</span>);    // <span class="title">never</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="title">type</span> <span class="title">numberType</span> = '<span class="title">a</span>' | '<span class="title">b</span>' <span class="title">extends</span> <span class="title">string</span> ? <span class="title">number</span> : <span class="title">never</span> // <span class="title">number</span> <span class="title">type</span></div><div class="line">//-------------- 类型变换 ------------------------//</div><div class="line">/**</div><div class="line"> * <span class="title">Make</span> <span class="title">all</span> <span class="title">properties</span> <span class="title">in</span> <span class="title">T</span> <span class="title">optional</span></div><div class="line"> */</div><div class="line"><span class="title">type</span> <span class="title">Partial</span>&lt;<span class="title">T</span>&gt; = &#123;</div><div class="line">    [P <span class="keyword">in</span> keyof T]?: T[P];</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">    这个比较容易理解，是把一个类型中所有的必选字段变化为非必选字段</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Make all properties in T required</div><div class="line"> */</div><div class="line">type Required&lt;T&gt; = &#123;</div><div class="line">    [P <span class="keyword">in</span> keyof T]-?: T[P];</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">    这个比较容易理解，是把一个类型中所有的字段变化为必选字段</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Make all properties in T readonly</div><div class="line"> */</div><div class="line">type Readonly&lt;T&gt; = &#123;</div><div class="line">    readonly [P <span class="keyword">in</span> keyof T]: T[P];</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">    这个比较容易理解，是把一个类型中所有的字段变化为只可读的字段</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * From T pick a set of properties K</div><div class="line"> */</div><div class="line">type Pick&lt;T, K extends keyof T&gt; = &#123;</div><div class="line">    [P <span class="keyword">in</span> K]: T[P];</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">从一个类型选择部分字段组成一个新类型</div><div class="line">const fff: Pick&lt;&#123;a:string,b:number&#125;, 'b' &gt; = &#123;b:33&#125;</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Construct a type with a set of properties K of type T</div><div class="line"> */</div><div class="line">type Record&lt;K extends keyof any, T&gt; = &#123;</div><div class="line">    [P <span class="keyword">in</span> K]: T;</div><div class="line">&#125;;</div><div class="line"><span class="comment">/**</span></div><div class="line">const vxxc : Record&lt;'prop1' | 'prop2' | 'prop3', string&gt;= &#123;prop1:'1',prop2:'2',prop3:'3'&#125;</div><div class="line">const fwfew: Record&lt;'b' ,&#123;count:number&#125;&gt; = &#123;b:&#123;count:1&#125;&#125;</div><div class="line">*/</div><div class="line"><span class="comment">/**</span></div><div class="line"> * Exclude from T those types that are assignable to U</div><div class="line"> */</div><div class="line">type Exclude&lt;T, U&gt; = T extends U ? never : T;</div><div class="line"><span class="comment">// result:boolean</span></div><div class="line">type Bar = Exclude&lt;boolean | string[] | number[], any</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Extract from T those types that are assignable to U</div><div class="line"> */</div><div class="line">type Extract&lt;T, U&gt; = T extends U ? T : never;</div><div class="line"></div><div class="line"><span class="comment">// result: string[] | number[]</span></div><div class="line">type Foo = Extract&lt;boolean | string[] | number[], any[]&gt;;</div><div class="line"><span class="comment">/**</span></div><div class="line"> * Exclude null and undefined from T</div><div class="line"> */</div><div class="line">type NonNullable&lt;T&gt; = T extends <span class="literal">null</span> | <span class="literal">undefined</span> ? never : T;</div><div class="line"><span class="comment">/**</span></div><div class="line">const f: NonNullable&lt;number | undefined | null&gt; = 1 // number</div><div class="line">*/</div><div class="line">type Nullable&lt;T&gt; = T extends <span class="literal">null</span> | <span class="literal">undefined</span> ? T : never;</div><div class="line">type Nullable1&lt;T&gt; = &#123; [P <span class="keyword">in</span> keyof T]: T[P] | <span class="literal">null</span> &#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">const  chageTypes: Nullable1&lt;&#123;a:string&#125;&gt; = &#123;a:null&#125;;</div><div class="line">*/</div><div class="line"><span class="comment">/**</span></div><div class="line"> * Obtain the return type of a function type</div><div class="line"> */</div><div class="line">type ReturnType&lt;T extends (...args: any[]) =&gt; any&gt; = T extends (...args: any[]) =&gt; infer R ? R : any;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Obtain the return type of a constructor function type</div><div class="line"> */</div><div class="line">type InstanceType&lt;T extends <span class="keyword">new</span> (...args: any[]) =&gt; any&gt; = T extends <span class="keyword">new</span> (...args: any[]) =&gt; infer R ? R : any;</div><div class="line"></div><div class="line"></div><div class="line">type Diff&lt;T extends string, U extends string&gt; = (&#123; [P <span class="keyword">in</span> T]: P &#125; &amp;</div><div class="line">     &#123; [P <span class="keyword">in</span> U]: never &#125; &amp; &#123; [x: string]: never &#125;)[T];</div><div class="line">type Omit&lt;T, K extends keyof T&gt; = Pick&lt;T, Diff&lt;keyof T, K&gt;&gt;;</div></pre></td></tr></table></figure>
+                                            
+
+                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ts</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                        
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2018/08/02/ts/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+
+            
+
+                        
+
+                                                
+  
     <article id="post-pylon" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -175,7 +304,7 @@
                 <div class="article-entry" itemprop="articleBody">
                     
                                         <p>做了一个工具，用于可视化形式分析项目依赖关系，分析文件结构，分析循环引用，查看指定依赖规则等<br>pylon名称取自星际争霸神族水晶塔，意在为项目提供支持<br><a href="https://github.com/PylonFE/Pylon" target="_blank" rel="external">https://github.com/PylonFE/Pylon</a></p>
-<p>demo:<br><img src="http://p1.meituan.net/dpgroup/7979e2d96f33ad2dd3bb01dacbec0ad84932521.gif" alt=""></p>
+<p>demo(gif):<br><img src="http://p1.meituan.net/dpgroup/7979e2d96f33ad2dd3bb01dacbec0ad84932521.gif" alt=""></p>
 <p>主要用到d3画图与typescript的api</p>
 <p>useage:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install pylonn</div><div class="line">or</div><div class="line">yarn add pylonn</div><div class="line">then</div><div class="line">dependence -p ./src</div></pre></td></tr></table></figure>
@@ -853,142 +982,6 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
 
                                                 
   
-    <article id="post-javascript纯函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/12/javascript纯函数/">JavaScript中存在纯函数吗？</a>
-    </h1>
-  
-
-                    
-                        <a href="/2017/06/12/javascript纯函数/" class="archive-article-date">
-  	<time datetime="2017-06-12T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-12</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <h3 id="JavaScript中存在纯函数吗-自译"><a href="#JavaScript中存在纯函数吗-自译" class="headerlink" title="JavaScript中存在纯函数吗?(自译)"></a>JavaScript中存在纯函数吗?(自译)</h3><p> <a href="https://hackernoon.com/do-pure-functions-exist-in-javascript-b128ed5f0ed2" target="_blank" rel="external">https://hackernoon.com/do-pure-functions-exist-in-javascript-b128ed5f0ed2</a></p>
-<h3 id="什么是纯函数？"><a href="#什么是纯函数？" class="headerlink" title="什么是纯函数？"></a>什么是纯函数？</h3><p>满足下面两个条件：<br>
-                            
-                                <a class="article-more-a" href="/2017/06/12/javascript纯函数/#more">
-                                    more >></a>
-                                
-                                    
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">自译</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2017/06/12/javascript纯函数/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
-    <article id="post-diff的o(m*n)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/04/diff的o(m*n)/">2个字符串的编辑距离（Levenshtein_distance）</a>
-    </h1>
-  
-
-                    
-                        <a href="/2017/06/04/diff的o(m*n)/" class="archive-article-date">
-  	<time datetime="2017-06-04T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-04</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <p>在react中，在render后的diff阶段，对一个列表进行了diff比较，react的实现比较高效，是o(n)量级，一种通用的diff是类似于求两个字符串的编辑距离(o(m*n)),参考：</p>
-<blockquote>
-<p><a href="https://en.wikipedia.org/wiki/Levenshtein_distance" target="_blank" rel="external">https://en.wikipedia.org/wiki/Levenshtein_distance</a></p>
-</blockquote>
-<p>比如要计算cafe和coffee的编辑距离，cafe→caffe→coffe→coffee，要经过3次转变。</p>
-<p>动态规划解决思路：<br>
-                            
-                                <a class="article-more-a" href="/2017/06/04/diff的o(m*n)/#more">
-                                    more >></a>
-                                
-                                    
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法 动态规划</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2017/06/04/diff的o(m*n)/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1004,7 +997,7 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
         <div id="footer-info">
             <div class="footer-left">
                 &copy;
-                2018
+                2019
                     lyt
             </div>
             <div class="footer-right">
@@ -1012,7 +1005,7 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
             </div>
         </div>
     </div>
-    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 </footer>
             </div>
@@ -1086,15 +1079,11 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">babel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1102,11 +1091,19 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">自译</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">自译</a>
+                <a href="javascript:void(0)" class="js-tag color1">babel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">工具 d3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1118,7 +1115,7 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">工具 d3</a>
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1126,19 +1123,19 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">编译 前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
               </li>
              
               <li class="article-tag-list-item">
