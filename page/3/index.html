@@ -154,48 +154,45 @@
                             <div id="js-content" class="content-ll">
                                 
   
-    <article id="post-koa-generator解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-getBoundingClientRect" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/28/koa-generator解析/">koa-generator解析</a>
+      <a class="article-title" href="/2016/06/12/getBoundingClientRect/">domAPI/css</a>
     </h1>
   
 
                     
-                        <a href="/2016/08/28/koa-generator解析/" class="archive-article-date">
-  	<time datetime="2016-08-28T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-28</time>
+                        <a href="/2016/06/12/getBoundingClientRect/" class="archive-article-date">
+  	<time datetime="2016-06-12T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-12</time>
 </a>
                             
             </header>
             
                 <div class="article-entry" itemprop="articleBody">
                     
-                        <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
-<li><a href="#intro">引言</a></li>
-<li><a href="#analyse">解析</a></li>
-<li><a href="#end">讨论</a></li>
-</ul>
-<p><div id="intro"></div></p>
-<h3 id="1-引言"><a href="#1-引言" class="headerlink" title="1.引言"></a>1.引言</h3><hr>
-<p>在koa中，存在着大量的中间件，koa并不绑定任何中间件，许多功能都要靠中间件来进行实现， @dp/node-server基于koa，koa-router作为koa的一个基础中间件，在很多web应用都有用到。在node-server中用到的==action==本质也是用到了koa-router，因此koa-router与我们的关系还是很紧密的，理解其原理对于我们写action有一定帮助。</p>
-<h4 id="1-1-回顾"><a href="#1-1-回顾" class="headerlink" title="1.1 回顾"></a>1.1 回顾</h4><h5 id="co-generator"><a href="#co-generator" class="headerlink" title="co+generator"></a>co+generator</h5><ul>
-<li><a href="http://koa.bootcss.com/" target="_blank" rel="external">koa</a>通过co来组合不同的generator,使得我们的中间件可以串行化执行，并提供downstrem，upstream回溯的能力。</li>
-<li>co这个库，将我们的异步操作都串行化，koa中间件执行核心，即是先把所有generator fuction反复包装，然后调用co.wrap同步化</li>
-<li>在<strong>图1</strong>中，橙色的箭头表示<code>yield</code>一个generator function或者是<code>yield</code>一个generator的点，通过co，我们得以递归的执行generator或者generator function。虚线的箭头表示控制权的交出与交回，绿色表示控制权在不在本函数内部，一个请求的经过所有中间件的时间等于图1中最下面的长条的时间。<br>在最后一个中间件之后不存在我们注册的中间件，yield会将控制权交给一个<code>noop</code>空的generator function。如果之前还有yield非generator的点，co会将相关array,object,thunkfunction转为promise,统一对promise进行处理，并等待promise的resolve，期间控制权在node中，直到resolve之后控制权才交回我们的函数。<br><img src="http://7xs6k5.com1.z0.glb.clouddn.com/image/4/f6/18f563a1ceb27e642901777339de6.png" alt="第一部分"><center>图1·co+generator 过程</center>
+                                        <p>Reselect 解决selector中计算量过大的问题</p>
+<p>multireducer 解决state中多个list导致state过大的问题（拆分list到state）</p>
+<p>reducer enhance —- 高阶reducer</p>
+<p>acdlite/redux-actions 是actionCreactor的工厂方法</p>
+<p>javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call by share<br>ref:<a href="https://github.com/nodejh/nodejh.github.io/issues/32" target="_blank" rel="external">https://github.com/nodejh/nodejh.github.io/issues/32</a></p>
+<p>getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离<br>其bottom为盒模型下边缘与视口顶端的距离</p>
+<p>text-shadow: h-shadow v-shadow blur color;<br>水平方向，垂直方向</p>
+<p>Object.getOwnPropertyNames()方法返回一个由指定对象的所有自身属性的属性名（包括不可枚举属性）组成的数组。</p>
+<p>Object.getOwnPropertyNames 返回一个数组，该数组对元素是 obj 自身拥有的枚举或不可枚举属性名称字符串。 数组中枚举属性的顺序与通过 for…in 循环（或 Object.keys）迭代该对象属性时一致。 数组中不可枚举属性的顺序未定义。</p>
+<p>下面的例子演示了该方法不会获取到原型链上的属性：</p>
+<p>function ParentClass() {}<br>ParentClass.prototype.inheritedMethod = function() {};</p>
+<p>function ChildClass() {<br>  this.prop = 5;<br>  this.method = function() {};<br>}</p>
+<p>ChildClass.prototype = new ParentClass;<br>ChildClass.prototype.prototypeMethod = function() {};</p>
+<p>console.log(<br>  Object.getOwnPropertyNames(<br>    new ChildClass()  // [“prop”, “method”]<br>  )<br>);</p>
+<p>1.jquery.dotdotdot</p>
+<p>2：<br>.header{<br>  overflow : hidden;<br>  text-overflow: ellipsis;<br>  display: -webkit-box;<br>  -webkit-line-clamp: 2;<br>  -webkit-box-orient: vertical;<br>}</p>
+<p>单行<br>overflow: hidden;<br>white-space: nowrap;<br>text-overflow: ellipsis;</p>
 
-</li>
-</ul>
-<h6 id="相关代码片段"><a href="#相关代码片段" class="headerlink" title="相关代码片段"></a>相关代码片段</h6><p>每app.use一次加入一个中间件generator function到<code>this.middleware</code>这个数组中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">app.use = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span> (!<span class="keyword">this</span>.experimental) &#123;</div><div class="line">    <span class="comment">// es7 async functions are not allowed,</span></div><div class="line">    <span class="comment">// so we have to make sure that `fn` is a generator function</span></div><div class="line">    assert(fn &amp;&amp; <span class="string">'GeneratorFunction'</span> == fn.constructor.name, <span class="string">'app.use() requires a generator function'</span>);</div><div class="line">  &#125;</div><div class="line">  debug(<span class="string">'use %s'</span>, fn._name || fn.name || <span class="string">'-'</span>);</div><div class="line">  <span class="keyword">this</span>.middleware.push(fn);<span class="comment">///////////加入一个中间件</span></div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>反复包装的过程，不断的将得到的generator作为参赛传递到==下一个 generator==中:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">compose</span>(<span class="params">middleware</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> *(<span class="params">next</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span> (!next) next = noop();</div><div class="line"></div><div class="line">    <span class="keyword">var</span> i = middleware.length;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (i--) &#123;</div><div class="line">      next = middleware[i].call(<span class="keyword">this</span>, next);<span class="comment">//反复包装</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">yield</span> *next;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-                            
-                                <a class="article-more-a" href="/2016/08/28/koa-generator解析/#more">
-                                    more >></a>
-                                
-                                    
+                                            
 
                                                 
         </div>
@@ -207,7 +204,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
         		</li>
       		
 		</ul>
@@ -217,7 +214,7 @@
 
                             
                                 <p class="article-more-link">
-                                    <a class="article-more-a" href="/2016/08/28/koa-generator解析/">
+                                    <a class="article-more-a" href="/2016/06/12/getBoundingClientRect/">
                                         展开全文 >></a>
                                 </p>
                                 
@@ -315,84 +312,6 @@
                             
                                 <p class="article-more-link">
                                     <a class="article-more-a" href="/2016/06/12/不一样的前端手指操/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
-    <article id="post-getBoundingClientRect" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/12/getBoundingClientRect/">domAPI/css</a>
-    </h1>
-  
-
-                    
-                        <a href="/2016/06/12/getBoundingClientRect/" class="archive-article-date">
-  	<time datetime="2016-06-12T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-12</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                                        <p>Reselect 解决selector中计算量过大的问题</p>
-<p>multireducer 解决state中多个list导致state过大的问题（拆分list到state）</p>
-<p>reducer enhance —- 高阶reducer</p>
-<p>acdlite/redux-actions 是actionCreactor的工厂方法</p>
-<p>javascript 可以说都是传值的，对于引用类型来说是应该叫传共享调用 call by share<br>ref:<a href="https://github.com/nodejh/nodejh.github.io/issues/32" target="_blank" rel="external">https://github.com/nodejh/nodejh.github.io/issues/32</a></p>
-<p>getBoundingClientRect的top的是盒模型上边缘与视口顶端的距离<br>其bottom为盒模型下边缘与视口顶端的距离</p>
-<p>text-shadow: h-shadow v-shadow blur color;<br>水平方向，垂直方向</p>
-<p>Object.getOwnPropertyNames()方法返回一个由指定对象的所有自身属性的属性名（包括不可枚举属性）组成的数组。</p>
-<p>Object.getOwnPropertyNames 返回一个数组，该数组对元素是 obj 自身拥有的枚举或不可枚举属性名称字符串。 数组中枚举属性的顺序与通过 for…in 循环（或 Object.keys）迭代该对象属性时一致。 数组中不可枚举属性的顺序未定义。</p>
-<p>下面的例子演示了该方法不会获取到原型链上的属性：</p>
-<p>function ParentClass() {}<br>ParentClass.prototype.inheritedMethod = function() {};</p>
-<p>function ChildClass() {<br>  this.prop = 5;<br>  this.method = function() {};<br>}</p>
-<p>ChildClass.prototype = new ParentClass;<br>ChildClass.prototype.prototypeMethod = function() {};</p>
-<p>console.log(<br>  Object.getOwnPropertyNames(<br>    new ChildClass()  // [“prop”, “method”]<br>  )<br>);</p>
-<p>1.jquery.dotdotdot</p>
-<p>2：<br>.header{<br>  overflow : hidden;<br>  text-overflow: ellipsis;<br>  display: -webkit-box;<br>  -webkit-line-clamp: 2;<br>  -webkit-box-orient: vertical;<br>}</p>
-<p>单行<br>overflow: hidden;<br>white-space: nowrap;<br>text-overflow: ellipsis;</p>
-
-                                            
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2016/06/12/getBoundingClientRect/">
                                         展开全文 >></a>
                                 </p>
                                 
@@ -577,11 +496,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color1">babel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,15 +512,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">自译</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">babel</a>
+                <a href="javascript:void(0)" class="js-tag color3">自译</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -613,19 +532,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">react-native</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础工具</a>
               </li>
              
               <li class="article-tag-list-item">
