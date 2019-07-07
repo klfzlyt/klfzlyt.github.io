@@ -161,13 +161,13 @@
                 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/07/Route(第4章)/">第四章Route路由端口样章（持续更新）</a>
+      <a class="article-title" href="/2019/07/04/Route(第4章)/">第四章Route路由端口样章（持续更新）</a>
     </h1>
   
 
                     
-                        <a href="/2019/07/07/Route(第4章)/" class="archive-article-date">
-  	<time datetime="2019-07-07T02:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-07</time>
+                        <a href="/2019/07/04/Route(第4章)/" class="archive-article-date">
+  	<time datetime="2019-07-04T02:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
 </a>
                             
             </header>
@@ -175,31 +175,32 @@
                 <div class="article-entry" itemprop="articleBody">
                     
                                         <p>第4章Route路由端口持续更新中</p>
-<h1 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h1><p>本章将系统介绍React-router的路由器端口Route，Route是react-router体系中极为重要的一个模块，在react-router中起到“引路”的作用，本章就将系统阐释react-route中的Route。</p>
-<h3 id="4-1-route是什么？"><a href="#4-1-route是什么？" class="headerlink" title="4.1.route是什么？"></a>4.1.route是什么？</h3><p>一般可认为route定义了路由路径匹配成功后的一系列动作。<br>route是一个react组件，定义了路由匹配成功后，该渲染的组件，其本质为一个高阶组件。</p>
+<h1 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h1><p>本章将系统介绍React-router的路由器端口Route，Route是React-Router体系中极为重要的一个模块，在React-Router中起到“引路”的作用，本章就将系统阐释React-Router中的Route。</p>
+<h3 id="4-1-Route是什么？"><a href="#4-1-Route是什么？" class="headerlink" title="4.1.Route是什么？"></a>4.1.Route是什么？</h3><p>一般可认为Route定义了路由路径匹配成功后的一系列动作。<br>Route是一个react组件，定义了路由匹配成功后，该渲染的组件，其本质为一个高阶组件。</p>
 <blockquote>
-<p>什么是高阶组件？<br>如果一个函数操作其他函数，即将其他函数作为参数或将函数作为返回值，将其称为高阶函数。高阶组件(high-order component)类似于高阶函数，接收 React 组件作为输入，输出一个新的 React 组件。高阶组件让代码更具有复用性、逻辑性与抽象特征。可以对 render 方法作劫持，也可以控制 props 与 state。<br>所以我们的Route只是做了一些路由的逻辑处理，他将严格渲染我们传入的组件。<br>在react-router第4版本以后，route的底层设计已经从静态配置的方式演化到动态渲染的方式，也就是在react-route第4版后，一切都是组件，这带来的是动态化的好处，现在是运行时进行路由匹配，我们可以在运行时改变路由属性，适配复杂场景，如media query动态改变路由，或者运行时移除路由，注入路由等。</p>
+<p>什么是高阶组件？<br>如果一个函数操作其他函数，即将其他函数作为参数或将函数作为返回值，将其称为高阶函数。高阶组件(high-order component)类似于高阶函数，接收 React 组件作为输入，输出一个新的 React 组件。高阶组件让代码更具有复用性、逻辑性与抽象特征。可以对 render 方法作劫持，也可以控制 props 与 state。<br>所以我们的Route只是做了一些路由的逻辑处理，他将严格渲染我们传入的组件。<br>在React-Router第4版本以后，route的底层设计已经从静态配置的方式演化到动态渲染的方式，也就是在React-Router第4版后，一切都是组件，这带来的是动态化的好处，现在是运行时进行路由匹配，我们可以在运行时改变路由属性，适配复杂场景，如media query动态改变路由，或者运行时移除路由，注入路由等。</p>
 </blockquote>
-<h3 id="4-2-route的两个基本要素"><a href="#4-2-route的两个基本要素" class="headerlink" title="4.2.route的两个基本要素"></a>4.2.route的两个基本要素</h3><p>路由器端口route有2个最基本的要素，分别是</p>
+<h3 id="4-2-Route的两个基本要素"><a href="#4-2-Route的两个基本要素" class="headerlink" title="4.2.Route的两个基本要素"></a>4.2.Route的两个基本要素</h3><p>路由器端口Route有2个最基本的要素，分别是</p>
 <blockquote>
-<p>1.path<br>2.组件渲染方式<br>在之前的章节中我们知道route写好path和component这2个属性之后，基本上roue的定义就结束了，其中path我们用来定义应该匹配哪个浏览器路径，component用来定义匹配路径成功后应该渲染的组件。<br>以上2个组件属性就构成了一个路由route最基本的要素。我们总结其本质为: 匹配进而渲染。</p>
+<p>1.path<br>2.组件渲染方式<br>在之前的章节中我们知道Route写好path和component这2个属性之后，Route的定义就结束了，其中path我们用来定义应该匹配哪个浏览器路径，component用来定义匹配路径成功后应该渲染的组件。<br>以上2个组件属性就构成了一个路由Route最基本的要素。我们总结其本质为: 匹配进而渲染。</p>
 </blockquote>
-<h3 id="4-3-Route的第一个要素：path路径"><a href="#4-3-Route的第一个要素：path路径" class="headerlink" title="4.3 Route的第一个要素：path路径"></a>4.3 Route的第一个要素：path路径</h3><p>react-router的path匹配按书写格式可有3三种方式，分别为</p>
+<h3 id="4-3-Route的第一个要素：path路径"><a href="#4-3-Route的第一个要素：path路径" class="headerlink" title="4.3 Route的第一个要素：path路径"></a>4.3 Route的第一个要素：path路径</h3><p>React-Router的path匹配按书写格式可有3三种方式，分别为</p>
 <blockquote>
-<p>1.符合express path格式的字符串<br>2.带参形式<br>3.综合形式</p>
+<p>1.符合Express路径格式的字符串<br>2.带参形式<br>3.综合形式</p>
+<p>Express 是什么？<br>Express 是一个基于 Node.js 平台的极简、灵活的 web 应用开发框架，它提供一系列强大的特性，帮助你创建各种 Web 和移动设备应用。<br>Express 不对 Node.js 已有的特性进行二次抽象，我们只是在它之上扩展了 Web 应用所需的基本功能。</p>
 </blockquote>
-<p>对于第一种基本的路径path，即为我们常用的location.pathname，浏览器的path部分，我们只需要定义好我们自己需要的path即可，并可适当加入一些正则表达式规则<br>对于第二种路径写法，react-router为我们规定好了在路由中带参的方式，只需要遵循一定的格式即可<br>对于第三种路径写法，可以在第二种的基础上带上一定的正则表达式约定，得到约束性强的path路径</p>
-<h4 id="4-3-1-path-to-regex"><a href="#4-3-1-path-to-regex" class="headerlink" title="4.3.1 path-to-regex"></a>4.3.1 path-to-regex</h4><p>Route自身没有实现路径匹配的逻辑，而是使用了一个成熟的三方库path-to-regex用来做路径匹配，这个库在node框架如express，nuxt中被广泛使用。我们写的path能被path-to-regex识别为一个合法path即可。本质上path-to-regex做的是路径的正则表达式匹配，但是其提供了方便的路径定义规则，其在内部帮我们做了路径到正则表达式的转换，使得我们不用关心复杂的正则表达式表达式就能写出一个灵活性高的匹配路径，我们以react-route使用的path-to-regex1.7版本为例：其typescript定义的path为<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> type Path = string | <span class="built_in">RegExp</span> | <span class="built_in">Array</span>&lt;string | <span class="built_in">RegExp</span>&gt;;</div></pre></td></tr></table></figure></p>
+<p>对于第一种基本的路径path，即为我们常用的location.pathname，浏览器的path部分，我们只需要定义好我们自己需要的path即可，并可适当加入一些正则表达式规则<br>对于第二种路径写法，React-Router为我们规定好了在路由中带参的方式，只需要遵循一定的格式即可<br>对于第三种路径写法，可以在第二种的基础上带上一定的正则表达式约定，得到约束性强的path路径</p>
+<h4 id="4-3-1-path-to-regex"><a href="#4-3-1-path-to-regex" class="headerlink" title="4.3.1 path-to-regex"></a>4.3.1 path-to-regex</h4><p>Route自身没有实现路径匹配的逻辑，而是使用了一个成熟的三方库path-to-regex用来做路径匹配，这个库在node框架如Express，nuxt中被广泛使用。我们写的path能被path-to-regex识别为一个合法path即可。本质上path-to-regex做的是路径的正则表达式匹配，但是其提供了方便的路径定义规则，其在内部帮我们做了路径到正则表达式的转换，使得我们不用关心复杂的正则表达式表达式就能写出一个灵活性高的匹配路径，我们以react-route使用的path-to-regex1.7版本为例：其typescript定义的path为<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> type Path = string | <span class="built_in">RegExp</span> | <span class="built_in">Array</span>&lt;string | <span class="built_in">RegExp</span>&gt;;</div></pre></td></tr></table></figure></p>
 <p>即为字符串与正则表达式表达式或者两者的混合数组<br>官方将path的类型限定为了string|string[],不可传正则表达式，减去了正则表达式的部分，并且对于数组类型的path，我们得到的是”或”的关系，所以数组中任意一个路径path匹配成功都将使得整个数组path匹配成功，如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=&#123;[<span class="string">"/users/info"</span>, <span class="string">"/profile/info"</span>]&#125; component=&#123;User&#125; /&gt;</div></pre></td></tr></table></figure></p>
 <p>只要任一/users/info或者/profile/info命中就可以。<br>所以我们介绍单个string类型的path即可</p>
-<h4 id="4-3-2-三种合法的path"><a href="#4-3-2-三种合法的path" class="headerlink" title="4.3.2 三种合法的path:"></a>4.3.2 三种合法的path:</h4><h5 id="4-3-2-1-符合express-path格式的字符串"><a href="#4-3-2-1-符合express-path格式的字符串" class="headerlink" title="4.3.2.1 符合express path格式的字符串"></a>4.3.2.1 符合express path格式的字符串</h5><p>1.基本匹配：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=<span class="string">"/user/info"</span> component=&#123;ReadMe&#125; /&gt;</div><div class="line">&lt;Route path="/a/b/c" component=&#123;ReadMe&#125; /&gt;</div><div class="line">&lt;Route path="/readme.md" component=&#123;ReadMe&#125; /&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="4-3-2-三种合法的path"><a href="#4-3-2-三种合法的path" class="headerlink" title="4.3.2 三种合法的path:"></a>4.3.2 三种合法的path:</h4><h5 id="4-3-2-1-符合Express路径格式的字符串"><a href="#4-3-2-1-符合Express路径格式的字符串" class="headerlink" title="4.3.2.1 符合Express路径格式的字符串"></a>4.3.2.1 符合Express路径格式的字符串</h5><p>1.基本匹配：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=<span class="string">"/user/info"</span> component=&#123;ReadMe&#125; /&gt;</div><div class="line">&lt;Route path="/a/b/c" component=&#123;ReadMe&#125; /&gt;</div><div class="line">&lt;Route path="/readme.md" component=&#123;ReadMe&#125; /&gt;</div></pre></td></tr></table></figure></p>
 <p>在这里path中的”.”字符不会认为是正则表达式中的”.”号规则，也就是能匹配浏览器的/readme.md路径</p>
 <blockquote>
 <p>对于 “-“ 和 “.”字符，这将作为常规路径字符，不作为正则表达式字符，不计入path-to-regex库的路由匹配的规则中。</p>
 </blockquote>
-<p>如果一个route的没有传入path参数，这个route将会永远匹配成功，如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Route component=&#123;About&#125; /&gt;</div></pre></td></tr></table></figure></p>
+<p>如果一个Route的没有传入path参数，这个Route将会永远匹配成功，如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Route component=&#123;About&#125; /&gt;</div></pre></td></tr></table></figure></p>
 <p>About组件将永远得到渲染，正在某些场景下会很有用，我们之后有章节会进行介绍。</p>
-<p>2.正则表达式匹配：<br>express path格式除了常用的路径完全匹配以外，还有正则表达式字符 ?, +, *, ()等作为路径的附属匹配，也就是说我们可用这些字符辅助我们的path匹配。</p>
+<p>2.正则表达式匹配：<br>Express路径格式除了常用的路径完全匹配以外，还有正则表达式字符 ?, +, *, ()等作为路径的附属匹配，也就是说我们可用这些字符辅助我们的path匹配。</p>
 <blockquote>
 <p>对于正则表达式字符 “*”，“(”，“)”， 如果我们也想对这些字符串进行匹配，需要进行转义，否则这将被视为正则表达式规则的一部分，不转义将与我们期望的结果相悖。</p>
 </blockquote>
@@ -216,7 +217,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">foo</span>:<span class="string">'abc'</span>,</div><div class="line">    <span class="attr">bar</span>:<span class="string">'1/2'</span>,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>3./:foo/:bar*，表示bar参数为0个或者多个，与+类似，但是它还能匹配命中/abc的情形，即为不匹配bar,<br>4.如我们需要限定/:foo/:bar中的bar为数字，可以将/:foo/:bar写为/:foo/:bar(\d+),这样/abc/efg将会匹配失败，只有/abc/1，第二个参数是数字时才能匹配成功，即为我们进行变量匹配规则限制。</p>
 <blockquote>
-<p>在express path的风格中，如果我们需要类似正则表达式关键字的字符串作为路由，需要加上转义符号\，不然这个这个字符串的正则表达式化将会报错，如<br>/<em>user 需写为 /\</em>user</p>
+<p>在Express的路径风格中，如果我们需要类似正则表达式关键字的字符串作为路由，需要加上转义符号\，不然这个这个字符串的正则表达式化将会报错，如<br>/<em>user 需写为 /\</em>user</p>
 <p>任何合法的path路径我们也可以在路由路径测试匹配页面进行测试<br><a href="http://forbeslindesay.github.io/express-route-tester/" target="_blank" rel="external">http://forbeslindesay.github.io/express-route-tester/</a></p>
 </blockquote>
 <h3 id="4-4-Route的第二个要素：渲染方式"><a href="#4-4-Route的第二个要素：渲染方式" class="headerlink" title="4.4 Route的第二个要素：渲染方式"></a>4.4 Route的第二个要素：渲染方式</h3><p>从我们能掌控的路由控制范围从小到大排序，分别是通过component属性渲染，通过render属性渲染，通过children属性渲染。<br>通过component属性渲染我们获得路由渲染的控制力度较小，通过render属性渲染能获得一定自由度，通过children属性渲染能获得完全开放的自由度</p>
@@ -228,7 +229,7 @@
 <p>这个时候我们的组件可以受到高阶组件Permission的控制</p>
 <h4 id="4-4-3-通过children属性渲染"><a href="#4-4-3-通过children属性渲染" class="headerlink" title="4.4.3 通过children属性渲染"></a>4.4.3 通过children属性渲染</h4><p>通过children属性渲染拥有最高的控制权，我们的组件将无条件被渲染，如下所示：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;Route children=&#123;(&#123; match,location,history &#125;) =&gt; (</div><div class="line">  &lt;Component/&gt;</div><div class="line">)&#125;/&gt;</div></pre></td></tr></table></figure></p>
 <p>或者<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;Route&gt;</div><div class="line">&#123;(&#123; match,location,history &#125;) =&gt; (</div><div class="line">  &lt;Component/&gt;</div><div class="line">)&#125;</div><div class="line">&lt;<span class="regexp">/Route&gt;</span></div></pre></td></tr></table></figure></p>
-<p>当我们返回Component组件，Component就会被渲染，Route只是给我们注入了三个参数match,location,history，渲染的工具交给我们，而不是有条件的渲染。<br>同时由于react-router把该注入的三个参数交给我们，这给了我们很大的发挥空间，我们可以用注入的三个参数做一些其他渲染方式没法做到的逻辑。<br>笔者一开始遇到一个业务逻辑，完全没有路由跳转，但是后面要加上路由跳转，怎么加？就可以使用children属性，假如我们已经写了一个通过visible属性来控制弹窗可见的组件，我们的一个父组件通过state来控制其弹出关闭，如果产品希望用户一打开就能弹窗，并且不改变原有url结构，只是新增如果要改成通过路由控制弹出关闭的话，非常简单，使用children进行渲染我们的这个组件，如下，我们为这个组件设置一个匹配path<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Modal visible=&#123;<span class="keyword">this</span>.state.visible&#125;/&gt;</div></pre></td></tr></table></figure></p>
+<p>当我们返回Component组件，Component就会被渲染，Route只是给我们注入了三个参数match,location,history，渲染的工具交给我们，而不是有条件的渲染。<br>同时由于React-Router把该注入的三个参数交给我们，这给了我们很大的发挥空间，我们可以用注入的三个参数做一些其他渲染方式没法做到的逻辑。<br>笔者一开始遇到一个业务逻辑，完全没有路由跳转，但是后面要加上路由跳转，怎么加？就可以使用children属性，假如我们已经写了一个通过visible属性来控制弹窗可见的组件，我们的一个父组件通过state来控制其弹出关闭，如果产品希望用户一打开就能弹窗，并且不改变原有url结构，只是新增如果要改成通过路由控制弹出关闭的话，非常简单，使用children进行渲染我们的这个组件，如下，我们为这个组件设置一个匹配path<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Modal visible=&#123;<span class="keyword">this</span>.state.visible&#125;/&gt;</div></pre></td></tr></table></figure></p>
 <p>通过改成路由形式，我们可以通过改变url进行弹窗控制<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;Route</div><div class="line">    path=&#123;<span class="string">`&#123;props.match.params.path&#125;/modal-A`</span>&#125;</div><div class="line">    children=&#123;(&#123;match&#125;)=&gt;&#123;</div><div class="line">        &lt;Modal visible=&#123;match&#125;/&gt;</div><div class="line">    &#125;&#125;</div><div class="line">/&gt;</div></pre></td></tr></table></figure></p>
 <p>这样也是动态路由，路由path不是静态配置好的<br>通过children渲染，我们可以有更多的控制，在一些页面间过渡方面，我们可以使用children。<br>假设我们当前的组件注入了路由传入的props,能获取到match参数，那么假如当前匹配渲染的路径path是/a/b，那么只需要把路径改成/a/b/modal-A，我们的弹窗便会弹出，且/a/b对应的原页面也存在并且不受路由变化影响。<br>后面我们可以使用这个属性做一些有趣的事，比如把switch改造为保留dom的switch</p>
 <h3 id="4-5-路由的三个props"><a href="#4-5-路由的三个props" class="headerlink" title="4.5 路由的三个props"></a>4.5 路由的三个props</h3><h4 id="4-5-1-match"><a href="#4-5-1-match" class="headerlink" title="4.5.1 match"></a>4.5.1 match</h4><h4 id="4-5-1-1-match的4个属性"><a href="#4-5-1-1-match的4个属性" class="headerlink" title="4.5.1.1 match的4个属性"></a>4.5.1.1 match的4个属性</h4><p>match一般从props.match获得，在render和children渲染方式上也可获得match对象，match对象具有如下4个属性：</p>
@@ -241,7 +242,7 @@
 </ol>
 <p>如果路由路径为/user/tom,则我们能从User的props中得到，props.match.params:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">name</span>:<span class="string">'tom'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>如果我们加上得有限制，比如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=<span class="string">"/ages/:age(\\d+)"</span> component=&#123;Age&#125; /&gt;</div></pre></td></tr></table></figure></p>
-<p>那么只有第二个参数是数字才能匹配上，如/ages/18，注意如果是非数字，如/ages/jim，则match为null,匹配视为失败。<br>2.match中的第二个属性为isExact，表示为是否是完全匹配中，如果我们路由注册的path是/a/b，那么在Route的exact是false的情况下，我们的路由在路径为/a/b/c的情况下也能匹配中，但是isExact为true的话，只能进行精确匹配了，路由path为/a/b将无法匹配中/a/b/c。<br>3.match中的第三个属性为path，即为路由的匹配path，不是真实的url，通常用于嵌套路由中，作为父子路由予以使用，如我们需要在某个子页面中使用子路由，但由于react-router从第4版开始，Route的path规则就需要完全路径形式，不能再像第3版一样，只要写子路由，如/a/b/c，只用写子路由/c部分，那么要满足这种场景我们可以使用父路由传入的match中的path字段，这个字段记录了父路由配置命中后，父路由的path部分，此刻我们可以使用props.match.path作为子路由完全路径中的父路由部分，如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;&gt;</div><div class="line">   &#123; props.match &amp;&amp; &lt;Route</div><div class="line">           path=&#123;`&#123;props.match.params.path&#125;/c`&#125;</div><div class="line">       component=&#123;SubComponent&#125;</div><div class="line">       /&gt;</div><div class="line">   &#125;</div><div class="line">&lt;/&gt;</div></pre></td></tr></table></figure></p>
+<p>那么只有第二个参数是数字才能匹配上，如/ages/18，注意如果是非数字，如/ages/jim，则match为null,匹配视为失败。<br>2.match中的第二个属性为isExact，表示为是否是完全匹配中，如果我们路由注册的path是/a/b，那么在Route的exact是false的情况下，我们的路由在路径为/a/b/c的情况下也能匹配中，但是isExact为true的话，只能进行精确匹配了，路由path为/a/b将无法匹配中/a/b/c。<br>3.match中的第三个属性为path，即为路由的匹配path，不是真实的url，通常用于嵌套路由中，作为父子路由予以使用，如我们需要在某个子页面中使用子路由，但由于React-Router从第4版开始，Route的path规则就需要完全路径形式，不能再像第3版一样，只要写子路由，如/a/b/c，只用写子路由/c部分，那么要满足这种场景我们可以使用父路由传入的match中的path字段，这个字段记录了父路由配置命中后，父路由的path部分，此刻我们可以使用props.match.path作为子路由完全路径中的父路由部分，如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;&gt;</div><div class="line">   &#123; props.match &amp;&amp; &lt;Route</div><div class="line">           path=&#123;`&#123;props.match.params.path&#125;/c`&#125;</div><div class="line">       component=&#123;SubComponent&#125;</div><div class="line">       /&gt;</div><div class="line">   &#125;</div><div class="line">&lt;/&gt;</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>注意：props.match可能为null，即为父路由没有匹配中的情况，我们可视情况判断</p>
 </blockquote>
@@ -249,7 +250,7 @@
 <p>如果当前路径为/a/b，这将会使浏览器导航到/a/b/c下</p>
 <h4 id="4-5-1-2-没有命中路由时match的情况"><a href="#4-5-1-2-没有命中路由时match的情况" class="headerlink" title="4.5.1.2 没有命中路由时match的情况"></a>4.5.1.2 没有命中路由时match的情况</h4><p>todo<br>考虑一种情况：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// location.pathname = '/matches'</span></div><div class="line">&lt;Route path=<span class="string">'/does-not-match'</span> children=&#123;(&#123; match &#125;) =&gt; (</div><div class="line">  <span class="comment">// match === null</span></div><div class="line">  &lt;Route render=&#123;(&#123; <span class="attr">match</span>:pathlessMatch &#125;) =&gt; (</div><div class="line">    <span class="comment">// pathlessMatch === ???</span></div><div class="line">  )&#125;/&gt;</div><div class="line">)&#125;/&gt;</div></pre></td></tr></table></figure></p>
 <h4 id="4-5-2-location"><a href="#4-5-2-location" class="headerlink" title="4.5.2 location:"></a>4.5.2 location:</h4><p>location一共有5个参数，如下对象所示:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"></div><div class="line">  <span class="attr">key</span>: <span class="string">'ac3df4'</span>,</div><div class="line">  <span class="attr">pathname</span>: <span class="string">'/somewhere'</span></div><div class="line">  search: <span class="string">'?some=search-string'</span>,</div><div class="line">  <span class="attr">hash</span>: <span class="string">'#howdy'</span>,</div><div class="line">  <span class="attr">state</span>: &#123;</div><div class="line">    [userDefined]: <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>其中key在hash路由下不存在，为null，在浏览器路由中为一个hash值，我们在后面的原理部分会描述key的作用及产生原理。<br>location顾名思义即为位置，pathname为浏览器路由的path部分，如<a href="https://www.github.com/a/b/c中的/a/b/c部分。" target="_blank" rel="external">https://www.github.com/a/b/c中的/a/b/c部分。</a><br>参数中search为路径的query部分，注意这里包括”?”号，hash为路由的hash部分，注意包括了”#“号，还有一个state，是作为pushState api中可以push的状态，在浏览器路由中，我们可以使用这个字段作为信息传递，<br>如果当前的路由模式为hash路由，情况稍有不同，我们的路由部分将从”#”号后开始计算，也就是忽略了location.pathname，只使用浏览器hash部分计算路由，如：<br><a href="https://www.github.com/a/b/c?d=1#/user,我们react-route中的location.pathname为/user,从“#”号后开始计算路由。" target="_blank" rel="external">https://www.github.com/a/b/c?d=1#/user,我们react-route中的location.pathname为/user,从“#”号后开始计算路由。</a><br>对于浏览器query,react-router并没有帮我们解析成一个对象，我们只能从路由中得到’?some=search-string’这样的字符串，不过我们可以借用URLSearchParams对象轻松实现，如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> params = <span class="keyword">new</span> URLSearchParams(location.search);</div></pre></td></tr></table></figure></p>
+<p>其中key在hash路由下不存在，为null，在浏览器路由中为一个hash值，我们在后面的原理部分会描述key的作用及产生原理。<br>location顾名思义即为位置，pathname为浏览器路由的path部分，如<a href="https://www.github.com/a/b/c中的/a/b/c部分。" target="_blank" rel="external">https://www.github.com/a/b/c中的/a/b/c部分。</a><br>参数中search为路径的query部分，注意这里包括”?”号，hash为路由的hash部分，注意包括了”#“号，还有一个state，是作为pushState api中可以push的状态，在浏览器路由中，我们可以使用这个字段作为信息传递，<br>如果当前的路由模式为hash路由，情况稍有不同，我们的路由部分将从”#”号后开始计算，也就是忽略了location.pathname，只使用浏览器hash部分计算路由，如：<br><a href="https://www.github.com/a/b/c?d=1#/user,React-Router中的location.pathname为/user,从“#”号后开始计算路由。" target="_blank" rel="external">https://www.github.com/a/b/c?d=1#/user,React-Router中的location.pathname为/user,从“#”号后开始计算路由。</a><br>对于浏览器query,React-Router并没有帮我们解析成一个对象，我们只能从路由中得到’?some=search-string’这样的字符串，不过我们可以借用URLSearchParams对象轻松实现，如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> params = <span class="keyword">new</span> URLSearchParams(location.search);</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>对于Route我们可以自行传递location给Route，那么什么情况下传递location下去呢？<br>有些场景可能在某些情况我们把Route置于某个父容器中，而这个父容器希望缓存我们Route的状态的时候，我们可以把当前拿到的location传入Route，父容器接管了Route后，由于父容器可以控制子容器的渲染，父容器可以先缓存location状态一段时间，再变化，如果不传入location进Route的话，那么Route将从context中取到最新的location,我们的状态也就无法缓存了，这个场景在实战部分路由动画中会有介绍</p>
 </blockquote>
@@ -257,7 +258,7 @@
 <blockquote>
 <p>什么是mutable?</p>
 </blockquote>
-<p>这里的history为browser history，hash history，memory history中的一种，我们在Router章节有介绍。这里的history即为Router中history透传下来的history，api接口与之前介绍的一致。</p>
+<p>这里的history为browser-history，hash-history，memory-history中的一种，我们在Router章节有介绍。这里的history即为Router中history透传下来的history，api接口与之前介绍的一致。</p>
 
                                             
 
@@ -281,7 +282,7 @@
 
                             
                                 <p class="article-more-link">
-                                    <a class="article-more-a" href="/2019/07/07/Route(第4章)/">
+                                    <a class="article-more-a" href="/2019/07/04/Route(第4章)/">
                                         展开全文 >></a>
                                 </p>
                                 
@@ -306,13 +307,13 @@
                 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/06/react-router大纲/">react-router初步写作大纲</a>
+      <a class="article-title" href="/2019/07/01/react-router大纲/">react-router初步写作大纲</a>
     </h1>
   
 
                     
-                        <a href="/2019/07/06/react-router大纲/" class="archive-article-date">
-  	<time datetime="2019-07-06T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-06</time>
+                        <a href="/2019/07/01/react-router大纲/" class="archive-article-date">
+  	<time datetime="2019-07-01T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
 </a>
                             
             </header>
@@ -353,7 +354,7 @@
 
                             
                                 <p class="article-more-link">
-                                    <a class="article-more-a" href="/2019/07/06/react-router大纲/">
+                                    <a class="article-more-a" href="/2019/07/01/react-router大纲/">
                                         展开全文 >></a>
                                 </p>
                                 
@@ -1098,8 +1099,8 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
             </div>
         </div>
     </div>
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+    <!-- <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span> -->
 </footer>
             </div>
             <script>
@@ -1176,6 +1177,10 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">babel</a>
               </li>
              
@@ -1188,10 +1193,6 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">自译</a>
               </li>
              
@@ -1200,11 +1201,11 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">工具 d3</a>
+                <a href="javascript:void(0)" class="js-tag color3">模式 mvvm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模式 mvvm</a>
+                <a href="javascript:void(0)" class="js-tag color1">工具 d3</a>
               </li>
              
               <li class="article-tag-list-item">

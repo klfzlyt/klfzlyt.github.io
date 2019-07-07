@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://07lyt.com">
-  <title>Tag: 计算机基础 | Vogel im Kafig</title>
+  <title>react-router初步写作大纲 | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="lyt的个人博客">
-<meta name="keywords" content="前端 js 程序员 音乐">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Vogel im Kafig">
-<meta property="og:url" content="http://07lyt.com/tags/计算机基础/index.html">
+  <meta name="description" content="前言react-router从2014年2月发布第一个版本以来，到2019年6月发布5.0.1，已经经历的大大小小130多个版本的迭代演进，从2019年6月github的数据来看,有超过7000的项目引用react-router,npm上依赖react-router的包超过4600个，2019年上半年react-router的周平均下载量超过200万次，react-router几乎已成为了reac">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-router初步写作大纲">
+<meta property="og:url" content="http://07lyt.com/2019/07/01/react-router大纲/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
-<meta property="og:description" content="lyt的个人博客">
+<meta property="og:description" content="前言react-router从2014年2月发布第一个版本以来，到2019年6月发布5.0.1，已经经历的大大小小130多个版本的迭代演进，从2019年6月github的数据来看,有超过7000的项目引用react-router,npm上依赖react-router的包超过4600个，2019年上半年react-router的周平均下载量超过200万次，react-router几乎已成为了reac">
+<meta property="og:updated_time" content="2019-07-07T13:57:46.053Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vogel im Kafig">
-<meta name="twitter:description" content="lyt的个人博客">
+<meta name="twitter:title" content="react-router初步写作大纲">
+<meta name="twitter:description" content="前言react-router从2014年2月发布第一个版本以来，到2019年6月发布5.0.1，已经经历的大大小小130多个版本的迭代演进，从2019年6月github的数据来看,有超过7000的项目引用react-router,npm上依赖react-router的包超过4600个，2019年上半年react-router的周平均下载量超过200万次，react-router几乎已成为了reac">
   
     <link rel="alternative" href="/atom.xml" title="Vogel im Kafig" type="application/atom+xml">
   
@@ -152,62 +153,169 @@
                                 <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
                             </div>
                             <div id="js-content" class="content-ll">
-                                
+                                <article id="post-react-router大纲" class="article article-type-post " itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/07/02/编译原理/" class="archive-article-date">
-  	<time datetime="2015-07-02T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/07/02/编译原理/">编译原理</a>
+    <h1 class="article-title" itemprop="name">
+      react-router初步写作大纲
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+                    
+                        <a href="/2019/07/01/react-router大纲/" class="archive-article-date">
+  	<time datetime="2019-07-01T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
+</a>
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                                        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>react-router从2014年2月发布第一个版本以来，到2019年6月发布5.0.1，已经经历的大大小小130多个版本的迭代演进，从2019年6月github的数据来看,有超过7000的项目引用react-router,npm上依赖react-router的包超过4600个，2019年上半年react-router的周平均下载量超过200万次，react-router几乎已成为了react生态路由的标准解决方案,本书基于react-router的5.0.1版本，第一章将首先引入react-router的介绍，以及相关的基础知识，使读者对react-router有一个了解。之后第二章将从一个简单例子出发，使读者能了解react-router的简单使用，并引出react-router三个要素，为后面章节的介绍做好铺垫。第三章到第六章将依次介绍react-router三要素的各模块以及附加模块，使读者对react-router有一个整体性认识。在之后的第七章节将引入react-router的具体实践场景，以及案例，读者可以了解到react-router在真实场景中是如何使用的。第八章将系统介绍react-router的运行机理，通过图表加深读者理解，读者将学习到react-router为何如此运行，及其背后的原理。第九章将以一个大型项目为原型，在学好以上各章知识的基础上，一步步基于react-router封装一个定制化路由模块，再基于定制化路由模块设计一个大型项目的路由系统，读者能清晰看到路由系统的全貌，且对react-router会有一个全面深刻的掌握。之后最后附录讨论路由的未来可能的变化以及官方的更新路线图，使读者掌握react-route路由系统以后的变化路线。<br>本书既帮助初学者快速上手，又帮助有一定基础的开发者深入react-router的设计实现，从而加深对路由系统的理解。<br>读完本书将使读者不仅从用法上清楚各大场景怎么使用react-router,更能深入react-router的设计原理，学习完本书能对react-router做出定制化的改造以面对日渐复杂的页面结构与需求。<br>阅读本书最好有一定的react和typescript或者javascript基础。 </p>
+<h3 id="第1章：初识react-router"><a href="#第1章：初识react-router" class="headerlink" title="第1章：初识react-router"></a>第1章：初识react-router</h3><p>依赖于浏览器pushState api的广泛普及，前端路由方案开始兴起，既有angular的路由配置，也有与vue搭配的vue-router，本章主要介绍react-router的起源历史背景，以及技术发展脉络，并提供学习react-router所需的基础知识，将介绍react-router是什么，能发挥什么作用，为什么要使用react-router，及其历史演进过程，让读者对react-router有一个基本的了解。<br>•    1.1 react-router是什么<br>•    1.2 各版本的react-router<br>    •    1.2.1 react版本更新给react-router带来的变化<br>•    1.3 静态路由与动态路由<br>•    1.4 开始学习react-router需要的准备<br>    •   1.4.1 react-router依赖的生命周期 </p>
+<h3 id="第2章-从一个基础示例开始"><a href="#第2章-从一个基础示例开始" class="headerlink" title="第2章: 从一个基础示例开始"></a>第2章: 从一个基础示例开始</h3><p>本章借助一个美食浏览模块的实现，为读者呈现react-router是如何融入进react生态中并发挥作用的，通过各模块循序渐进的引入，使得初学者能快速上手react-router的基本使用，并能理解使用react-router时的三大基本要素，为后续介绍各大要素的介绍做一个铺垫，最后通过在线代码巩固自身学习。<br>•    2.1 实现一个美食浏览模块<br>•    2.2基本布局<br>•    2.3 Router 路由器<br>•    2.4 Route 路由端口<br>•   2.5 Link 导航<br>    •   2.5.1 带参跳转<br>    •   2.5.2 条件跳转<br>    •   2.5.3 函数跳转<br>•    2.6 react-router基本三要素 </p>
+<h3 id="第3章-路由器Router"><a href="#第3章-路由器Router" class="headerlink" title="第3章: 路由器Router"></a>第3章: 路由器Router</h3><p>本章将全面介绍路由系统的第一个基本要素：路由器Router，将介绍路由器Router中一个基本的并常用到的模块history模块，并简要通过源码介绍其基本原理，学完本章将为理解整个路由系统的原理打好重要的基础，同时本章将对现有所有不同种类的路由器Router做出归纳总结以便读者能合理运用各路由器Router到具体场景，各种类路由器Router均有示例。<br>•    3.1 Router是什么<br>•    3.2 Router的一个基本要素<br>•    3.3 history对象<br>    •    3.3.1 history.push<br>    •    3.3.2 history.goBack<br>    •    3.3.3 ‘PUSH’ 和 ‘POP’ 及 ‘REPLACE’<br>    •    3.3.4 history对象使用注意事项<br>•    3.4 BrowserRouter 浏览器路由<br>•    3.5 HashRouter hash路由<br>•    3.6 StaticRouter 静态路由<br>•    3.7 MemoryRouter 内存路由<br>•    3.8 NativeRouter React Native路由<br>•    3.9 路由器Router基础应用 </p>
+<h3 id="第4章-路由端口Route"><a href="#第4章-路由端口Route" class="headerlink" title="第4章: 路由端口Route"></a>第4章: 路由端口Route</h3><p>本章将全面介绍react-router第二个基本要素，路由端口Route，作为路由系统中最重要的一个模块，本章将全面介绍Route的各种用法及对应的URl设计，能使得读者学习到Route在整个路由系统中的重要角色，以及如何组合使用Route，同时也能让我们学习到在用Route和业务关联时，如何更好的利用好Route给予我们的路由信息，帮助我们业务做路由判断等，并通过代码示例加深读者印象。<br>•    4.1 Route是什么<br>•    4.2 Route的两个基本要素<br>    • 4.2.1路径<br>    • 4.2.2组件<br>•    4.3 Route的一个要素：path路径<br>    •    4.3.1  基本写法<br>    •    4.3.2  带参数写法<br>    •    4.3.3  正则条件写法<br>•    4.4 Route的第二个要素：组件渲染方式<br>    •    4.4.1 render<br>    •    4.4.2 children<br>    •    4.4.3 component<br>•    4.5 业务组件能从Route得到的三个路由信息<br>    •    4.5.1 location<br>    •    4.5.2 match<br>    •    4.5.3 history<br>•    4.6 Route的其他配置<br>    •    4.6.1 exact<br>    •    4.6.2 strict<br>    •    4.6.3 sensitive<br>    •    4.6.4 location<br>•    4.7 路由端口基础应用举例 </p>
+<h3 id="第5章-路由导航"><a href="#第5章-路由导航" class="headerlink" title="第5章: 路由导航"></a>第5章: 路由导航</h3><p>本章将全面介绍路由系统的最后一个要素：导航，导航作为路由命令的发起者，是一个路由行为的开始，通过代码片段的介绍，读者将在本章学到如何在react-router中导航，以及学习到导航命令的多种发起方式，并能学到前端重定向等知识，学习完本章能使读者很好的掌握页面中菜单的设计，并将对整个react-route形成一个系统的认识。<br>•    5.1 导航是什么<br>    •    5.1.1 replace与push<br>•    5.2 Link<br>    •    5.2.1 to<br>•    5.3 NavLink<br>    •    5.3.1 激活样式<br>    •    5.3.2 激活逻辑<br>    •    5.3.3 劫持导航<br>•    5.4 Redirect<br>•    5.5 history<br>    •    5.5.1 history带参<br>•    5.6 路由导航基础应用举例 </p>
+<h3 id="第6章-其他路由模块"><a href="#第6章-其他路由模块" class="headerlink" title="第6章: 其他路由模块"></a>第6章: 其他路由模块</h3><p>本章将介绍除了路由三大要素外的路由辅助工具的使用以及相关组件源代码原理阐释，用好这类工具能大大提高路由系统的开发效率，也能为后续具体实践场景的学习提供基础知识支撑，为进阶使用react-router做好铺垫<br>•    6.1 switch切换器<br>•    6.2 Prompt确认器<br>•    6.3 matchPath方法<br>•    6.4 withRouter方法<br>•    6.5 各模块应用场景 </p>
+<h3 id="第7章-路由的常见实践场景"><a href="#第7章-路由的常见实践场景" class="headerlink" title="第7章: 路由的常见实践场景"></a>第7章: 路由的常见实践场景</h3><p>在介绍完react-router各模块后，本章将会引出react-router的真实运用案例，将会运用到以上各章的内容。本章将介绍实际情况下可能遇到的路由场景及对应的多个解决方案，涵盖绝大部分实战业务场景，为读者打开思路，结合真实使用场景能进一步提高对react-router的认识，读者可以直接将本章内容吸收运用到自身项目中。<br>•    7.1 代码分割<br>•    7.2 父子路由<br>•    7.3 嵌套路由<br>•    7.4 保留dom<br>•    7.5 404页面<br>•    7.6 滚动恢复<br>•    7.7 路由动画<br>•    7.8 弹窗路由<br>•    7.9 状态管理集成<br>    •    7.9.1 redux集成 </p>
+<h3 id="第8章-路由各模块原理解析"><a href="#第8章-路由各模块原理解析" class="headerlink" title="第8章: 路由各模块原理解析"></a>第8章: 路由各模块原理解析</h3><p>在以上章节完成之后，对react-router已经有了一个整体的认识，已经能掌握如何使用。本章将从源码设计角度系统阐释react-router的设计理念，通过关键源码解读，并辅以图表等方式，将react-router的实现全面剖析展示给读者，使得读者能通过原理的方式从本质上理解路由系统的原理，使得react-router运用起来更加自如，也为一些高阶定制化开发提供准备知识。<br>•    8.1 底层原理<br>    •    8.1.1 history地址管理<br>    •    8.1.2 path-to-regexp路径匹配<br>    •    8.1.3 react context路由信息传递<br>•    8.2 Link/NavLink-发令人<br>•    8.3 Router-接受人<br>•    8.4 Redirect-传递人<br>•    8.5 Switch-中间人<br>•    8.6 Route-执行人 </p>
+<h3 id="第9章-路由系统进阶综合实战"><a href="#第9章-路由系统进阶综合实战" class="headerlink" title="第9章: 路由系统进阶综合实战"></a>第9章: 路由系统进阶综合实战</h3><p>本章将通过实战方式，一步步，基于react-router，先封装实现一个高层应用框架，再设计实现一个大型B端系统的路由模块，读者将会看到以上各章知识的灵活应用，并将从零看到一个大型B端系统的路由建立过程，学完本章读者将会对react-router从原理到应用有一个全面深刻的认识，能达到透传掌握react-router，项目均有示例代码。<br>•    9.1 为系统设计路由系统<br>    •    9.1.1 路由配置<br>    •    9.1.2 组件渲染<br>•    9.2 大型B端系统PC端路由设计<br>    •    9.2.1 模块化<br>    •    9.2.2 页签设计<br>    •    9.2.3 跳转设计 </p>
+<h3 id="附录："><a href="#附录：" class="headerlink" title="附录："></a>附录：</h3><p>react-router未来版本路线 </p>
+
+                                            
+
+                                                
+                                                    <div class="page-reward">
+                                                        <a href="javascript:;" class="page-reward-btn tooltip-top">
+                                                            <div class="tooltip tooltip-east">
+                                                                <span class="tooltip-item">
+              赏
+            </span>
+                                                                <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                                                                
+                                                    </div>
+                                                    </span>
+                                                    </span>
+                                                    </span>
+                </div>
+                </a>
+    </div>
+    
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+                        
 
+                            
+
+                                    
+                                        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://07lyt.com/2019/07/01/react-router大纲/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+                                            
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
 </article>
-  
-  
-    </div></section>
-  
 
     
+<nav id="article-nav">
+  
+    <a href="/2019/07/04/Route(第4章)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          第四章Route路由端口样章（持续更新）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/03/01/route封装/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">route封装工具</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
+        
 
+            
+
+                        
+                            
+                                        <div class="duoshuo"></div>
+                                        
+                                            
+
+                                                
                             </div>
                         </div>
                     </div>
@@ -232,9 +340,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
