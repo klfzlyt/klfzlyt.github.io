@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://07lyt.com/2019/03/01/route封装/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
 <meta property="og:description" content="基于react-route封装了一个动态路由工具 1.路由初始化路由支持浏览器路由与hash路由：12345// 在页面render处引入，进行路由初始// config为路由配置接下来有说明// &quot;browser&quot;或者&quot;hash&quot;// AppLayout作为整个app的大骨架，一般是侧边栏，顶层导航等renderRoutes(config, &quot;browser&quot;, AppLayout) 2.路由配">
-<meta property="og:updated_time" content="2019-03-07T01:58:34.032Z">
+<meta property="og:updated_time" content="2019-07-06T11:13:29.062Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="route封装工具">
 <meta name="twitter:description" content="基于react-route封装了一个动态路由工具 1.路由初始化路由支持浏览器路由与hash路由：12345// 在页面render处引入，进行路由初始// config为路由配置接下来有说明// &quot;browser&quot;或者&quot;hash&quot;// AppLayout作为整个app的大骨架，一般是侧边栏，顶层导航等renderRoutes(config, &quot;browser&quot;, AppLayout) 2.路由配">
@@ -54,7 +54,7 @@
 		  <h1 class="header-author"><a href="/">lyt</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">谁在用琵琶弹奏，一曲too young too simple</p>
+		<p class="header-subtitle">就职于美团 个人邮箱：klfzlyt@outlook.com</p>
 		
 
 		<nav class="header-menu">
@@ -112,7 +112,7 @@
 			  <h1 class="header-author js-header-author">lyt</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>谁在用琵琶弹奏，一曲too young too simple<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>就职于美团 个人邮箱：klfzlyt@outlook.com<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -178,16 +178,12 @@
 <h2 id="2-路由配置"><a href="#2-路由配置" class="headerlink" title="2.路由配置"></a>2.路由配置</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Info <span class="keyword">from</span> <span class="string">"./pages/user/info/index"</span>;</div><div class="line"><span class="keyword">import</span> Tab <span class="keyword">from</span> <span class="string">"./tab"</span>;</div><div class="line"><span class="comment">/*</span></div><div class="line">  嵌套路由demo</div><div class="line">*/</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> [</div><div class="line">  &#123;</div><div class="line">    <span class="attr">path</span>: <span class="string">"/404"</span>,</div><div class="line">    <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">    <span class="attr">component</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">"./pages/404"</span>)</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="comment">// no match</span></div><div class="line">    path: <span class="string">"*"</span>,</div><div class="line">    <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">    <span class="attr">redirect</span>: <span class="string">"/404"</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">path</span>: <span class="string">"/"</span>,</div><div class="line">    <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">    <span class="attr">redirect</span>: <span class="string">"/user"</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">path</span>: <span class="string">"/table/print"</span>,</div><div class="line">    <span class="attr">Wrapper</span>: Tab,</div><div class="line">    <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">    <span class="attr">redirect</span>: <span class="string">"/table/print/list"</span>,</div><div class="line">    <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">component</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">"./pages/table-print/layout"</span>),</div><div class="line">    <span class="attr">routes</span>: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">path</span>: <span class="string">"list"</span>,</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">iframeSrc</span>: <span class="string">"https://www.baidu.com"</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">path</span>: <span class="string">"edit"</span>,</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">iframeSrc</span>: <span class="string">"//jsrun.net/z6XKp/embedded/all/light/"</span></div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">path</span>: <span class="string">"/table"</span>,</div><div class="line">    <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">    <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">Wrapper</span>: Tab,</div><div class="line">    <span class="attr">exact</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">iframeSrc</span>: <span class="string">"https://www.baidu.com"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// user</span></div><div class="line">  &#123;</div><div class="line">    <span class="attr">path</span>: <span class="string">"/user"</span>,</div><div class="line">    <span class="comment">// 会套在组件外面，作为Provider，可以省略</span></div><div class="line">    Wrapper: Tab,</div><div class="line">    <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">redirect</span>: <span class="string">"/user/category"</span>,</div><div class="line">    <span class="comment">// 权限码会注入到 Wrapper和 component中</span></div><div class="line">    AuthCode: [<span class="string">"user"</span>],</div><div class="line">    <span class="comment">// 可提供给menus使用 同样也会注入到 Wrapper和 component中</span></div><div class="line">    name: <span class="string">"用户"</span>,</div><div class="line">    <span class="comment">// 异步</span></div><div class="line">    component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">"./pages/user/layout"</span>),</div><div class="line">    <span class="attr">routes</span>: [</div><div class="line">      <span class="comment">// 子路由 import同步形式 路由： /user/category</span></div><div class="line">      &#123;</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">path</span>: <span class="string">"category"</span>,</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">exact</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"类别"</span>,</div><div class="line">        <span class="attr">component</span>: <span class="keyword">import</span>(<span class="string">"./pages/user/category"</span>)</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">path</span>: <span class="string">"category/detail"</span>,</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">exact</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"类别详情"</span>,</div><div class="line">        <span class="attr">component</span>: <span class="keyword">import</span>(<span class="string">"./pages/user/category/detail"</span>)</div><div class="line">      &#125;,</div><div class="line">      &#123; <span class="attr">path</span>: <span class="string">"info"</span>, <span class="attr">name</span>: <span class="string">"详情"</span>, <span class="attr">component</span>: Info &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="comment">// 路由： /user/goods</span></div><div class="line">        path: <span class="string">"goods/:id"</span>,</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">name</span>: <span class="string">"商品"</span>,</div><div class="line">        <span class="attr">component</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">"./pages/user/goods/index"</span>),</div><div class="line">        <span class="attr">routes</span>: [</div><div class="line">          &#123;</div><div class="line">            <span class="attr">path</span>: <span class="string">"unit"</span>,</div><div class="line">            <span class="attr">name</span>: <span class="string">"商品单位"</span>,</div><div class="line">            <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">            <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">            <span class="comment">// goods的嵌套路由 完整路由为 /user/goods/unit</span></div><div class="line">            component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">"./pages/user/goods/subpages/unit"</span>)</div><div class="line">          &#125;</div><div class="line">        ]</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">path</span>: <span class="string">"/report"</span>,</div><div class="line">    <span class="attr">Wrapper</span>: Tab,</div><div class="line">    <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">    <span class="attr">redirect</span>: <span class="string">"/report/purchase"</span>,</div><div class="line">    <span class="comment">//exact: true,</span></div><div class="line">    <span class="comment">// 可提供给menus使用 同样也会注入到 Wrapper和 component中</span></div><div class="line">    name: <span class="string">"报表"</span>,</div><div class="line">    <span class="attr">component</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">"./pages/report/layout"</span>),</div><div class="line">    <span class="attr">routes</span>: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">path</span>: <span class="string">"profit/detail"</span>,</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"detail_p"</span>,</div><div class="line">        <span class="attr">component</span>: <span class="keyword">import</span>(<span class="string">"./pages/report/profit/detail"</span>)</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">path</span>: <span class="string">"profit/list"</span>,</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"list_p"</span>,</div><div class="line">        <span class="attr">component</span>: <span class="keyword">import</span>(<span class="string">"./pages/report/profit/list"</span>)</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">path</span>: <span class="string">"profit/edit"</span>,</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"edit_p"</span>,</div><div class="line">        <span class="attr">component</span>: <span class="keyword">import</span>(<span class="string">"./pages/report/profit/edit"</span>)</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">path</span>: <span class="string">"purchase"</span>,</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"进货"</span>,</div><div class="line">        <span class="attr">component</span>: <span class="keyword">import</span>(<span class="string">"./pages/report/purchase"</span>)</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">path</span>: <span class="string">"refund"</span>,</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"退货"</span>,</div><div class="line">        <span class="attr">component</span>: <span class="keyword">import</span>(<span class="string">"./pages/report/refund"</span>)</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">];</div></pre></td></tr></table></figure>
 <h2 id="3-业务组件（路由参数中的component）说明"><a href="#3-业务组件（路由参数中的component）说明" class="headerlink" title="3.业务组件（路由参数中的component）说明"></a>3.业务组件（路由参数中的component）说明</h2><p>1.业务组件注入参数<br>继承使用了react router的参数，组件props可得到react-router的</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"></div><div class="line">   location,</div><div class="line"></div><div class="line">   history,</div><div class="line"></div><div class="line">   match,</div><div class="line"></div><div class="line">   matchQuery</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>参数，其中match可用于命中路由判断，路由变更统一使用this.props.history.push,this.props.history.replace等</p>
-<p>2.业务组件命中路由判断（比如在切换路由时，切换页签时）</p>
+<p>参数，其中match可用于命中路由判断，路由变更统一使用this.props.history.push,this.props.history.replace等<br>2.业务组件命中路由判断（比如在切换路由时，切换页签时）</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">componentDidMount()&#123;</div><div class="line"></div><div class="line"><span class="keyword">if</span>(<span class="keyword">this</span>.props.match)&#123;</div><div class="line"></div><div class="line"><span class="comment">// 命中了该组件对应的路由，可做对应操作</span></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 由于组件可能未销毁，会在命中其他路由时，也触发componentWillReceiveProps，所以要加命中判断</span></div><div class="line"></div><div class="line">componentWillReceiveProps(nextprops)&#123;</div><div class="line"></div><div class="line"><span class="keyword">if</span>(nextprops.props.match)&#123;</div><div class="line"></div><div class="line"><span class="comment">// 命中了该组件对应的路由，可做对应操作</span></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>3.业务组件获取路由参数，url query</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">componentWillReceiveProps/componentDidMount(nextprops)/()&#123;</div><div class="line"></div><div class="line"><span class="keyword">if</span>(nextprops.props.match)&#123;</div><div class="line"></div><div class="line"><span class="comment">// 获取路由参数，如goods/:id</span></div><div class="line"></div><div class="line">nextprops.props.match.prams.id</div><div class="line"></div><div class="line"><span class="comment">// 获取query参数 如goods/detail?id=3</span></div><div class="line"></div><div class="line">nextprops.props.matchQuery.id</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>4.子项目（iframe）组件通知主项目更改路由 ：<br>子项目在需要通知的位置使用postMessage进行，路由变更消息格式按照：${PROJECT_NAME}_EVENT_LOCATION_CHANGE</p>
-<p>参数说明:</p>
-<p>token:消息type[string]</p>
-<p>url: 变更url [string]</p>
-<p>data: 携带参数[object]</p>
+<p>参数说明:<br>token:消息type[string]<br>url: 变更url [string]<br>data: 携带参数[object]</p>
 <h2 id="4-demo"><a href="#4-demo" class="headerlink" title="4.demo:"></a>4.demo:</h2><iframe src="https://codesandbox.io/embed/3yx16y1qq6?fontsize=14&module=%2Fsrc%2FrenderRoutes.tsx" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
                                             
@@ -292,6 +288,15 @@
 
     
 <nav id="article-nav">
+  
+    <a href="/2019/07/06/Route(第4章)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          第四章Route路由端口样章（持续更新）
+        
+      </div>
+    </a>
   
   
     <a href="/2018/05/02/pylon/" id="article-nav-older" class="article-nav-link-wrap">
@@ -406,14 +411,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
@@ -422,11 +419,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">自译</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">工具 d3</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">自译</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -438,6 +439,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">工具 d3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
@@ -446,7 +455,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
+                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -455,10 +464,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
               </li>
             
             <div class="clearfix"></div>
@@ -513,7 +518,7 @@
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">&lt;a href=&quot;http://cv.07lyt.com&quot;&gt;毕业时的中二简历（移动端滑动观看）&lt;/a&gt;</div>
   	  	
     	</section>
     

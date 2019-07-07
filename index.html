@@ -53,7 +53,7 @@
 		  <h1 class="header-author"><a href="/">lyt</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">谁在用琵琶弹奏，一曲too young too simple</p>
+		<p class="header-subtitle">就职于美团 个人邮箱：klfzlyt@outlook.com</p>
 		
 
 		<nav class="header-menu">
@@ -111,7 +111,7 @@
 			  <h1 class="header-author js-header-author">lyt</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>谁在用琵琶弹奏，一曲too young too simple<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>就职于美团 个人邮箱：klfzlyt@outlook.com<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -154,6 +154,223 @@
                             <div id="js-content" class="content-ll">
                                 
   
+    <article id="post-react-router大纲" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/06/react-router大纲/">react-router初步写作大纲</a>
+    </h1>
+  
+
+                    
+                        <a href="/2019/07/06/react-router大纲/" class="archive-article-date">
+  	<time datetime="2019-07-06T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-06</time>
+</a>
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                                        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>react-router从2014年2月发布第一个版本以来，到2019年6月发布5.0.1，已经经历的大大小小130多个版本的迭代演进，从2019年6月github的数据来看,有超过7000的项目引用react-router,npm上依赖react-router的包超过4600个，2019年上半年react-router的周平均下载量超过200万次，react-router几乎已成为了react生态路由的标准解决方案,本书基于react-router的5.0.1版本，第一章将首先引入react-router的介绍，以及相关的基础知识，使读者对react-router有一个了解。之后第二章将从一个简单例子出发，使读者能了解react-router的简单使用，并引出react-router三个要素，为后面章节的介绍做好铺垫。第三章到第六章将依次介绍react-router三要素的各模块以及附加模块，使读者对react-router有一个整体性认识。在之后的第七章节将引入react-router的具体实践场景，以及案例，读者可以了解到react-router在真实场景中是如何使用的。第八章将系统介绍react-router的运行机理，通过图表加深读者理解，读者将学习到react-router为何如此运行，及其背后的原理。第九章将以一个大型项目为原型，在学好以上各章知识的基础上，一步步基于react-router封装一个定制化路由模块，再基于定制化路由模块设计一个大型项目的路由系统，读者能清晰看到路由系统的全貌，且对react-router会有一个全面深刻的掌握。之后最后附录讨论路由的未来可能的变化以及官方的更新路线图，使读者掌握react-route路由系统以后的变化路线。<br>本书既帮助初学者快速上手，又帮助有一定基础的开发者深入react-router的设计实现，从而加深对路由系统的理解。<br>读完本书将使读者不仅从用法上清楚各大场景怎么使用react-router,更能深入react-router的设计原理，学习完本书能对react-router做出定制化的改造以面对日渐复杂的页面结构与需求。<br>阅读本书最好有一定的react和typescript或者javascript基础。 </p>
+<h3 id="第1章：初识react-router"><a href="#第1章：初识react-router" class="headerlink" title="第1章：初识react-router"></a>第1章：初识react-router</h3><p>依赖于浏览器pushState api的广泛普及，前端路由方案开始兴起，既有angular的路由配置，也有与vue搭配的vue-router，本章主要介绍react-router的起源历史背景，以及技术发展脉络，并提供学习react-router所需的基础知识，将介绍react-router是什么，能发挥什么作用，为什么要使用react-router，及其历史演进过程，让读者对react-router有一个基本的了解。<br>•    1.1 react-router是什么<br>•    1.2 各版本的react-router<br>    •    1.2.1 react版本更新给react-router带来的变化<br>•    1.3 静态路由与动态路由<br>•    1.4 开始学习react-router需要的准备<br>    •   1.4.1 react-router依赖的生命周期 </p>
+<h3 id="第2章-从一个基础示例开始"><a href="#第2章-从一个基础示例开始" class="headerlink" title="第2章: 从一个基础示例开始"></a>第2章: 从一个基础示例开始</h3><p>本章借助一个美食浏览模块的实现，为读者呈现react-router是如何融入进react生态中并发挥作用的，通过各模块循序渐进的引入，使得初学者能快速上手react-router的基本使用，并能理解使用react-router时的三大基本要素，为后续介绍各大要素的介绍做一个铺垫，最后通过在线代码巩固自身学习。<br>•    2.1 实现一个美食浏览模块<br>•    2.2基本布局<br>•    2.3 Router 路由器<br>•    2.4 Route 路由端口<br>•   2.5 Link 导航<br>    •   2.5.1 带参跳转<br>    •   2.5.2 条件跳转<br>    •   2.5.3 函数跳转<br>•    2.6 react-router基本三要素 </p>
+<h3 id="第3章-路由器Router"><a href="#第3章-路由器Router" class="headerlink" title="第3章: 路由器Router"></a>第3章: 路由器Router</h3><p>本章将全面介绍路由系统的第一个基本要素：路由器Router，将介绍路由器Router中一个基本的并常用到的模块history模块，并简要通过源码介绍其基本原理，学完本章将为理解整个路由系统的原理打好重要的基础，同时本章将对现有所有不同种类的路由器Router做出归纳总结以便读者能合理运用各路由器Router到具体场景，各种类路由器Router均有示例。<br>•    3.1 Router是什么<br>•    3.2 Router的一个基本要素<br>•    3.3 history对象<br>    •    3.3.1 history.push<br>    •    3.3.2 history.goBack<br>    •    3.3.3 ‘PUSH’ 和 ‘POP’ 及 ‘REPLACE’<br>    •    3.3.4 history对象使用注意事项<br>•    3.4 BrowserRouter 浏览器路由<br>•    3.5 HashRouter hash路由<br>•    3.6 StaticRouter 静态路由<br>•    3.7 MemoryRouter 内存路由<br>•    3.8 NativeRouter React Native路由<br>•    3.9 路由器Router基础应用 </p>
+<h3 id="第4章-路由端口Route"><a href="#第4章-路由端口Route" class="headerlink" title="第4章: 路由端口Route"></a>第4章: 路由端口Route</h3><p>本章将全面介绍react-router第二个基本要素，路由端口Route，作为路由系统中最重要的一个模块，本章将全面介绍Route的各种用法及对应的URl设计，能使得读者学习到Route在整个路由系统中的重要角色，以及如何组合使用Route，同时也能让我们学习到在用Route和业务关联时，如何更好的利用好Route给予我们的路由信息，帮助我们业务做路由判断等，并通过代码示例加深读者印象。<br>•    4.1 Route是什么<br>•    4.2 Route的两个基本要素<br>    • 4.2.1路径<br>    • 4.2.2组件<br>•    4.3 Route的一个要素：path路径<br>    •    4.3.1  基本写法<br>    •    4.3.2  带参数写法<br>    •    4.3.3  正则条件写法<br>•    4.4 Route的第二个要素：组件渲染方式<br>    •    4.4.1 render<br>    •    4.4.2 children<br>    •    4.4.3 component<br>•    4.5 业务组件能从Route得到的三个路由信息<br>    •    4.5.1 location<br>    •    4.5.2 match<br>    •    4.5.3 history<br>•    4.6 Route的其他配置<br>    •    4.6.1 exact<br>    •    4.6.2 strict<br>    •    4.6.3 sensitive<br>    •    4.6.4 location<br>•    4.7 路由端口基础应用举例 </p>
+<h3 id="第5章-路由导航"><a href="#第5章-路由导航" class="headerlink" title="第5章: 路由导航"></a>第5章: 路由导航</h3><p>本章将全面介绍路由系统的最后一个要素：导航，导航作为路由命令的发起者，是一个路由行为的开始，通过代码片段的介绍，读者将在本章学到如何在react-router中导航，以及学习到导航命令的多种发起方式，并能学到前端重定向等知识，学习完本章能使读者很好的掌握页面中菜单的设计，并将对整个react-route形成一个系统的认识。<br>•    5.1 导航是什么<br>    •    5.1.1 replace与push<br>•    5.2 Link<br>    •    5.2.1 to<br>•    5.3 NavLink<br>    •    5.3.1 激活样式<br>    •    5.3.2 激活逻辑<br>    •    5.3.3 劫持导航<br>•    5.4 Redirect<br>•    5.5 history<br>    •    5.5.1 history带参<br>•    5.6 路由导航基础应用举例 </p>
+<h3 id="第6章-其他路由模块"><a href="#第6章-其他路由模块" class="headerlink" title="第6章: 其他路由模块"></a>第6章: 其他路由模块</h3><p>本章将介绍除了路由三大要素外的路由辅助工具的使用以及相关组件源代码原理阐释，用好这类工具能大大提高路由系统的开发效率，也能为后续具体实践场景的学习提供基础知识支撑，为进阶使用react-router做好铺垫<br>•    6.1 switch切换器<br>•    6.2 Prompt确认器<br>•    6.3 matchPath方法<br>•    6.4 withRouter方法<br>•    6.5 各模块应用场景 </p>
+<h3 id="第7章-路由的常见实践场景"><a href="#第7章-路由的常见实践场景" class="headerlink" title="第7章: 路由的常见实践场景"></a>第7章: 路由的常见实践场景</h3><p>在介绍完react-router各模块后，本章将会引出react-router的真实运用案例，将会运用到以上各章的内容。本章将介绍实际情况下可能遇到的路由场景及对应的多个解决方案，涵盖绝大部分实战业务场景，为读者打开思路，结合真实使用场景能进一步提高对react-router的认识，读者可以直接将本章内容吸收运用到自身项目中。<br>•    7.1 代码分割<br>•    7.2 父子路由<br>•    7.3 嵌套路由<br>•    7.4 保留dom<br>•    7.5 404页面<br>•    7.6 滚动恢复<br>•    7.7 路由动画<br>•    7.8 弹窗路由<br>•    7.9 状态管理集成<br>    •    7.9.1 redux集成 </p>
+<h3 id="第8章-路由各模块原理解析"><a href="#第8章-路由各模块原理解析" class="headerlink" title="第8章: 路由各模块原理解析"></a>第8章: 路由各模块原理解析</h3><p>在以上章节完成之后，对react-router已经有了一个整体的认识，已经能掌握如何使用。本章将从源码设计角度系统阐释react-router的设计理念，通过关键源码解读，并辅以图表等方式，将react-router的实现全面剖析展示给读者，使得读者能通过原理的方式从本质上理解路由系统的原理，使得react-router运用起来更加自如，也为一些高阶定制化开发提供准备知识。<br>•    8.1 底层原理<br>    •    8.1.1 history地址管理<br>    •    8.1.2 path-to-regexp路径匹配<br>    •    8.1.3 react context路由信息传递<br>•    8.2 Link/NavLink-发令人<br>•    8.3 Router-接受人<br>•    8.4 Redirect-传递人<br>•    8.5 Switch-中间人<br>•    8.6 Route-执行人 </p>
+<h3 id="第9章-路由系统进阶综合实战"><a href="#第9章-路由系统进阶综合实战" class="headerlink" title="第9章: 路由系统进阶综合实战"></a>第9章: 路由系统进阶综合实战</h3><p>本章将通过实战方式，一步步，基于react-router，先封装实现一个高层应用框架，再设计实现一个大型B端系统的路由模块，读者将会看到以上各章知识的灵活应用，并将从零看到一个大型B端系统的路由建立过程，学完本章读者将会对react-router从原理到应用有一个全面深刻的认识，能达到透传掌握react-router，项目均有示例代码。<br>•    9.1 为系统设计路由系统<br>    •    9.1.1 路由配置<br>    •    9.1.2 组件渲染<br>•    9.2 大型B端系统PC端路由设计<br>    •    9.2.1 模块化<br>    •    9.2.2 页签设计<br>    •    9.2.3 跳转设计 </p>
+<h3 id="附录："><a href="#附录：" class="headerlink" title="附录："></a>附录：</h3><p>react-router未来版本路线 </p>
+
+                                            
+
+                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                        
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2019/07/06/react-router大纲/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+
+            
+
+                        
+
+                                                
+  
+    <article id="post-Route(第4章)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/06/Route(第4章)/">第四章Route路由端口样章（持续更新）</a>
+    </h1>
+  
+
+                    
+                        <a href="/2019/07/06/Route(第4章)/" class="archive-article-date">
+  	<time datetime="2019-07-06T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-06</time>
+</a>
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                                        <p>第4章Route路由端口持续更新中</p>
+<h1 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h1><p>本章将系统介绍React-router的路由器端口Route，Route是react-router体系中极为重要的一个模块，在react-router中起到“引路”的作用，本章就将系统阐释react-route中的Route。</p>
+<h3 id="4-1-route是什么？"><a href="#4-1-route是什么？" class="headerlink" title="4.1.route是什么？"></a>4.1.route是什么？</h3><p>一般可认为route定义了路由路径匹配成功后的一系列动作。<br>route是一个react组件，定义了路由匹配成功后，该渲染的组件，其本质为一个高阶组件。</p>
+<blockquote>
+<p>什么是高阶组件？<br>如果一个函数操作其他函数，即将其他函数作为参数或将函数作为返回值，将其称为高阶函数。高阶组件(high-order component)类似于高阶函数，接收 React 组件作为输入，输出一个新的 React 组件。高阶组件让代码更具有复用性、逻辑性与抽象特征。可以对 render 方法作劫持，也可以控制 props 与 state。<br>所以我们的Route只是做了一些路由的逻辑处理，他将严格渲染我们传入的组件。<br>在react-router第4版本以后，route的底层设计已经从静态配置的方式演化到动态渲染的方式，也就是在react-route第4版后，一切都是组件，这带来的是动态化的好处，现在是运行时进行路由匹配，我们可以在运行时改变路由属性，适配复杂场景，如media query动态改变路由，或者运行时移除路由，注入路由等。</p>
+</blockquote>
+<h3 id="4-2-route的两个基本要素"><a href="#4-2-route的两个基本要素" class="headerlink" title="4.2.route的两个基本要素"></a>4.2.route的两个基本要素</h3><p>路由器端口route有2个最基本的要素，分别是</p>
+<blockquote>
+<p>1.path<br>2.组件渲染方式<br>在之前的章节中我们知道route写好path和component这2个属性之后，基本上roue的定义就结束了，其中path我们用来定义应该匹配哪个浏览器路径，component用来定义匹配路径成功后应该渲染的组件。<br>以上2个组件属性就构成了一个路由route最基本的要素。我们总结其本质为: 匹配进而渲染。</p>
+</blockquote>
+<h3 id="4-3-Route的第一个要素：path路径"><a href="#4-3-Route的第一个要素：path路径" class="headerlink" title="4.3 Route的第一个要素：path路径"></a>4.3 Route的第一个要素：path路径</h3><p>react-router的path匹配按书写格式可有3三种方式，分别为</p>
+<blockquote>
+<p>1.符合express path格式的字符串<br>2.带参形式<br>3.综合形式</p>
+</blockquote>
+<p>对于第一种基本的路径path，即为我们常用的location.pathname，浏览器的path部分，我们只需要定义好我们自己需要的path即可，并可适当加入一些正则表达式规则<br>对于第二种路径写法，react-router为我们规定好了在路由中带参的方式，只需要遵循一定的格式即可<br>对于第三种路径写法，可以在第二种的基础上带上一定的正则表达式约定，得到约束性强的path路径</p>
+<h4 id="4-3-1-path-to-regex"><a href="#4-3-1-path-to-regex" class="headerlink" title="4.3.1 path-to-regex"></a>4.3.1 path-to-regex</h4><p>Route自身没有实现路径匹配的逻辑，而是使用了一个成熟的三方库path-to-regex用来做路径匹配，这个库在node框架如express，nuxt中被广泛使用。我们写的path能被path-to-regex识别为一个合法path即可。本质上path-to-regex做的是路径的正则表达式匹配，但是其提供了方便的路径定义规则，其在内部帮我们做了路径到正则表达式的转换，使得我们不用关心复杂的正则表达式表达式就能写出一个灵活性高的匹配路径，我们以react-route使用的path-to-regex1.7版本为例：其typescript定义的path为<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> type Path = string | <span class="built_in">RegExp</span> | <span class="built_in">Array</span>&lt;string | <span class="built_in">RegExp</span>&gt;;</div></pre></td></tr></table></figure></p>
+<p>即为字符串与正则表达式表达式或者两者的混合数组<br>官方将path的类型限定为了string|string[],不可传正则表达式，减去了正则表达式的部分，并且对于数组类型的path，我们得到的是”或”的关系，所以数组中任意一个路径path匹配成功都将使得整个数组path匹配成功，如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=&#123;[<span class="string">"/users/info"</span>, <span class="string">"/profile/info"</span>]&#125; component=&#123;User&#125; /&gt;</div></pre></td></tr></table></figure></p>
+<p>只要任一/users/info或者/profile/info命中就可以。<br>所以我们介绍单个string类型的path即可</p>
+<h4 id="4-3-2-三种合法的path"><a href="#4-3-2-三种合法的path" class="headerlink" title="4.3.2 三种合法的path:"></a>4.3.2 三种合法的path:</h4><h5 id="4-3-2-1-符合express-path格式的字符串"><a href="#4-3-2-1-符合express-path格式的字符串" class="headerlink" title="4.3.2.1 符合express path格式的字符串"></a>4.3.2.1 符合express path格式的字符串</h5><p>1.基本匹配：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=<span class="string">"/user/info"</span> component=&#123;ReadMe&#125; /&gt;</div><div class="line">&lt;Route path="/a/b/c" component=&#123;ReadMe&#125; /&gt;</div><div class="line">&lt;Route path="/readme.md" component=&#123;ReadMe&#125; /&gt;</div></pre></td></tr></table></figure></p>
+<p>在这里path中的”.”字符不会认为是正则表达式中的”.”号规则，也就是能匹配浏览器的/readme.md路径</p>
+<blockquote>
+<p>对于 “-“ 和 “.”字符，这将作为常规路径字符，不作为正则表达式字符，不计入path-to-regex库的路由匹配的规则中。</p>
+</blockquote>
+<p>如果一个route的没有传入path参数，这个route将会永远匹配成功，如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Route component=&#123;About&#125; /&gt;</div></pre></td></tr></table></figure></p>
+<p>About组件将永远得到渲染，正在某些场景下会很有用，我们之后有章节会进行介绍。</p>
+<p>2.正则表达式匹配：<br>express path格式除了常用的路径完全匹配以外，还有正则表达式字符 ?, +, *, ()等作为路径的附属匹配，也就是说我们可用这些字符辅助我们的path匹配。</p>
+<blockquote>
+<p>对于正则表达式字符 “*”，“(”，“)”， 如果我们也想对这些字符串进行匹配，需要进行转义，否则这将被视为正则表达式规则的一部分，不转义将与我们期望的结果相悖。</p>
+</blockquote>
+<p>对于正则表达式匹配场景，我们可以在path中写上正则表达式字符所对应的规则，在需要正则表达式匹配成功的路径部分需要加上圆括号，如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=<span class="string">"/a(b)?cd"</span> component=&#123;ReadMe&#125; /&gt;</div></pre></td></tr></table></figure></p>
+<p>这将对b这个字符作正则表达式处理，匹配0个和1个b字符，即为能匹配到/acd和/abcd，同理：<br>/a(b)+cd能匹配1个和多个b字符，如/abcd,/abbcd,/abbbbcd等<br>/a(b)*cd能匹配0个和多个b字符，如/acd,/abcd,/abbbbcd等<br>在没有圆括号的情况下，*将匹配0个或者多个任意字符，注意也包括路径分割符“/”，如以下路由路径：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=<span class="string">"/ab*cd"</span> component=&#123;ReadMe&#125; /&gt;</div></pre></td></tr></table></figure></p>
+<p>将匹配/abcd,/abbcd,/abccd,/ab/acd等</p>
+<h5 id="4-3-2-2-参数匹配"><a href="#4-3-2-2-参数匹配" class="headerlink" title="4.3.2.2 参数匹配"></a>4.3.2.2 参数匹配</h5><p>1.命名参数匹配：<br>我们通过可以提供一个冒号加参数的形似，如/:foo/:bar，来进行参数化路径匹配，这样我们可以在路径中获得相关的路径信息，这种路径的设计方式在restful比较常用，如当我们路由到/abc/1时，/:foo/:bar会成功匹配并且得到如下的一个对象：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">foo</span>:<span class="string">'abc'</span>,</div><div class="line">    <span class="attr">bar</span>:<span class="string">'1'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在后面的章节我们会介绍，在props.match.params可以拿到我们最后匹配到的路由对象<br>2.非命名参数匹配：<br>如果我们在path中加入中括号“(”，“)”，里面写上我们需要的正则表达式，如我们想要匹配/a后面是数字的情况：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=<span class="string">"/a/(\d+)"</span> component=&#123;ReadMe&#125; /&gt;</div></pre></td></tr></table></figure></p>
+<p>这时我们的正则表达式匹配会生效，会匹配诸如/a/123,/a/456的路由路径，同时我们的得到的匹配变量会用下标代替：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /a/(\d+) 匹配 /a/123</span></div><div class="line">&#123;</div><div class="line">    <span class="number">0</span>:<span class="string">'123'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果我们使用之前所述过的*号，由于*将匹配0个或者多个任意字符，这里也会得到非命名参数，如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=<span class="string">"/a/*"</span> component=&#123;ReadMe&#125; /&gt;</div></pre></td></tr></table></figure></p>
+<p>那么对于路径/a/123,也会得到开始同样的匹配变量，但要注意，*号匹配会匹配任意的字符，包括路径分割“/”，如果我们有路径/a/b/c，那么对于/a/*的匹配，得到的非参数化对象将会是：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// /a/b/c 路径 匹配 /a/*</span></div><div class="line">&#123;</div><div class="line">    <span class="number">0</span>:<span class="string">'b/c'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这种情况需要注意。</p>
+<h5 id="4-3-2-3-综合匹配"><a href="#4-3-2-3-综合匹配" class="headerlink" title="4.3.2.3 综合匹配"></a>4.3.2.3 综合匹配</h5><p>此外在参数化路径匹配时，我们也可以结合正则表达式符号*，+，?做正则表达式扩展，如:<br>1./:foo/:bar?，表示bar参数为0个或者1个，即/abc或者/abc/1都将命中<br>2./:foo/:bar+，表示bar参数为1个或者多个，即/abc/1或者/abc/1/2都将命中这个参数路径，他们各自的命中产生的变量分别是:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">foo</span>:<span class="string">'abc'</span>,</div><div class="line">    <span class="attr">bar</span>:<span class="string">'1'</span>,</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">foo</span>:<span class="string">'abc'</span>,</div><div class="line">    <span class="attr">bar</span>:<span class="string">'1/2'</span>,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3./:foo/:bar*，表示bar参数为0个或者多个，与+类似，但是它还能匹配命中/abc的情形，即为不匹配bar,<br>4.如我们需要限定/:foo/:bar中的bar为数字，可以将/:foo/:bar写为/:foo/:bar(\d+),这样/abc/efg将会匹配失败，只有/abc/1，第二个参数是数字时才能匹配成功，即为我们进行变量匹配规则限制。</p>
+<blockquote>
+<p>在express path的风格中，如果我们需要类似正则表达式关键字的字符串作为路由，需要加上转义符号\，不然这个这个字符串的正则表达式化将会报错，如<br>/<em>user 需写为 /\</em>user</p>
+<p>任何合法的path路径我们也可以在路由路径测试匹配页面进行测试<br><a href="http://forbeslindesay.github.io/express-route-tester/" target="_blank" rel="external">http://forbeslindesay.github.io/express-route-tester/</a></p>
+</blockquote>
+<h3 id="4-4-Route的第二个要素：渲染方式"><a href="#4-4-Route的第二个要素：渲染方式" class="headerlink" title="4.4 Route的第二个要素：渲染方式"></a>4.4 Route的第二个要素：渲染方式</h3><p>从我们能掌控的路由控制范围从小到大排序，分别是通过component属性渲染，通过render属性渲染，通过children属性渲染。<br>通过component属性渲染我们获得路由渲染的控制力度较小，通过render属性渲染能获得一定自由度，通过children属性渲染能获得完全开放的自由度</p>
+<h4 id="4-4-1-通过component属性渲染"><a href="#4-4-1-通过component属性渲染" class="headerlink" title="4.4.1 通过component属性渲染"></a>4.4.1 通过component属性渲染</h4><p>每一次路径变化，都会进行一次渲染，如果路径匹配成功，就将传入的组件通过React.createElement方式进行创建，并且注入match,location,history变量，进行Route的渲染工作，如果路径匹配失败，高阶组件Route则会返回null,销毁我们传入的component组件，这时页面dom会消失。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=<span class="string">"/acd"</span> component=&#123;ReadMe&#125; /&gt;</div></pre></td></tr></table></figure></p>
+<p>当我们的路径如/abcc时，我们通过component渲染的组件将不会被渲染，例如我们有一个从路径/acb跳转到/abcc，那么们通过component渲染的组件将会执行componentWillUnmount生命周期，进而销毁，这在一些情况下可能是我们所期望的，因为再次回到这个页面的时候，组件会重新渲染，进行componentDidMount，这样我们得以再次进行初始化的操作。但是在一些情况，我们有可能不希望组件销毁，不希望dom消失，比如用户上传过大量图片已经通过createUrl展示了出来，如果销毁dom,我们需要在内存中保存这些url以便恢复的时候重新渲染,或着一些编辑程度很强的页面，如果我们让dom消失，比起保留dom,恢复dom的代价要远远大得多。这就需要我们考虑其他办法</p>
+<h4 id="4-4-2-通过render属性渲染"><a href="#4-4-2-通过render属性渲染" class="headerlink" title="4.4.2 通过render属性渲染"></a>4.4.2 通过render属性渲染</h4><p>通过render属性渲染我们能自行接管React.createElement的行为，在匹配成功后,我们可以通过函数组件的形式，渲染对应的组件。相对于1中的通过component进行渲染，我们能控制注入进组件中的props参数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;Route</div><div class="line">  path=<span class="string">"/a/b/c"</span></div><div class="line">  render=&#123;(props)=&gt;&#123;</div><div class="line">    &lt;Component &#123;...props&#125;/&gt;</div><div class="line">  &#125;&#125;</div><div class="line">/&gt;</div></pre></td></tr></table></figure></p>
+<p>如果某些情况我们需要更改传入进组件中的props参数的话，我们可以使用此种方式。比如我们此刻能拿到路由中的location，我们可以包装history.push，history.replace等方法，使得业务侧无感知，但是我们可以在跳转过程中加入hook等。<br>Hook示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;Route</div><div class="line">    path=<span class="string">"/a/b/c"</span></div><div class="line">    render=&#123;(&#123;history,...rest&#125;)=&gt;&#123;</div><div class="line">      <span class="keyword">const</span> newHistoryPush = <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</div><div class="line">          <span class="keyword">if</span>(<span class="keyword">typeof</span> args[<span class="number">0</span>] === <span class="string">'string'</span> &amp;&amp; args[<span class="number">0</span>] !== <span class="string">'/a/b/c'</span>)&#123;</div><div class="line">              <span class="comment">//这个时候就是我们离开/a/b/c的时候</span></div><div class="line">          &#125;</div><div class="line">          history.push(...args)</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">const</span> newHistory = &#123;</div><div class="line">          <span class="attr">push</span>: newHistoryPush,</div><div class="line">          ...history</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> &lt;Component &#123;...props&#125;/&gt;</div><div class="line">    &#125;&#125;</div><div class="line">  /&gt;</div></pre></td></tr></table></figure></p>
+<p>这样当我们调用history.push()离开当前路由的时候，就会执行newHistoryPush，我们可以在函数中插入想要的逻辑。<br>或者某些情况下需要屏蔽一些路由细节，我们可以修改this.props.location后再传入对应的业务组件中，这时对应的业务只能感知到我们修改之后的匹配信息，也可以套入统一的高阶组件，比如，权限等，比如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=<span class="string">"/home"</span> render=&#123;(props) =&gt; &lt;Permission code=&#123;123&#125;&gt;&lt;Component &#123;...props&#125;/&gt;&lt;/Permission&gt;&#125;/&gt;</div></pre></td></tr></table></figure></p>
+<p>这个时候我们的组件可以受到高阶组件Permission的控制</p>
+<h4 id="4-4-3-通过children属性渲染"><a href="#4-4-3-通过children属性渲染" class="headerlink" title="4.4.3 通过children属性渲染"></a>4.4.3 通过children属性渲染</h4><p>通过children属性渲染拥有最高的控制权，我们的组件将无条件被渲染，如下所示：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;Route children=&#123;(&#123; match,location,history &#125;) =&gt; (</div><div class="line">  &lt;Component/&gt;</div><div class="line">)&#125;/&gt;</div></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;Route&gt;</div><div class="line">&#123;(&#123; match,location,history &#125;) =&gt; (</div><div class="line">  &lt;Component/&gt;</div><div class="line">)&#125;</div><div class="line">&lt;<span class="regexp">/Route&gt;</span></div></pre></td></tr></table></figure></p>
+<p>当我们返回Component组件，Component就会被渲染，Route只是给我们注入了三个参数match,location,history，渲染的工具交给我们，而不是有条件的渲染。<br>同时由于react-router把该注入的三个参数交给我们，这给了我们很大的发挥空间，我们可以用注入的三个参数做一些其他渲染方式没法做到的逻辑。<br>笔者一开始遇到一个业务逻辑，完全没有路由跳转，但是后面要加上路由跳转，怎么加？就可以使用children属性，假如我们已经写了一个通过visible属性来控制弹窗可见的组件，我们的一个父组件通过state来控制其弹出关闭，如果产品希望用户一打开就能弹窗，并且不改变原有url结构，只是新增如果要改成通过路由控制弹出关闭的话，非常简单，使用children进行渲染我们的这个组件，如下，我们为这个组件设置一个匹配path<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Modal visible=&#123;<span class="keyword">this</span>.state.visible&#125;/&gt;</div></pre></td></tr></table></figure></p>
+<p>通过改成路由形式，我们可以通过改变url进行弹窗控制<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;Route</div><div class="line">    path=&#123;<span class="string">`&#123;props.match.params.path&#125;/modal-A`</span>&#125;</div><div class="line">    children=&#123;(&#123;match&#125;)=&gt;&#123;</div><div class="line">        &lt;Modal visible=&#123;match&#125;/&gt;</div><div class="line">    &#125;&#125;</div><div class="line">/&gt;</div></pre></td></tr></table></figure></p>
+<p>这样也是动态路由，路由path不是静态配置好的<br>通过children渲染，我们可以有更多的控制，在一些页面间过渡方面，我们可以使用children。<br>假设我们当前的组件注入了路由传入的props,能获取到match参数，那么假如当前匹配渲染的路径path是/a/b，那么只需要把路径改成/a/b/modal-A，我们的弹窗便会弹出，且/a/b对应的原页面也存在并且不受路由变化影响。<br>后面我们可以使用这个属性做一些有趣的事，比如把switch改造为保留dom的switch</p>
+<h3 id="4-5-路由的三个props"><a href="#4-5-路由的三个props" class="headerlink" title="4.5 路由的三个props"></a>4.5 路由的三个props</h3><h4 id="4-5-1-match"><a href="#4-5-1-match" class="headerlink" title="4.5.1 match"></a>4.5.1 match</h4><h4 id="4-5-1-1-match的4个属性"><a href="#4-5-1-1-match的4个属性" class="headerlink" title="4.5.1.1 match的4个属性"></a>4.5.1.1 match的4个属性</h4><p>match一般从props.match获得，在render和children渲染方式上也可获得match对象，match对象具有如下4个属性：</p>
+<ol>
+<li>params</li>
+<li>isExact</li>
+<li>path</li>
+<li>url<br>1.其中match中的一个属性params是一个对象，记录了参数化配置时，路由匹配出的键值对，如：<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=<span class="string">"/user/:name"</span> component=&#123;User&#125; /&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果路由路径为/user/tom,则我们能从User的props中得到，props.match.params:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">name</span>:<span class="string">'tom'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果我们加上得有限制，比如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=<span class="string">"/ages/:age(\\d+)"</span> component=&#123;Age&#125; /&gt;</div></pre></td></tr></table></figure></p>
+<p>那么只有第二个参数是数字才能匹配上，如/ages/18，注意如果是非数字，如/ages/jim，则match为null,匹配视为失败。<br>2.match中的第二个属性为isExact，表示为是否是完全匹配中，如果我们路由注册的path是/a/b，那么在Route的exact是false的情况下，我们的路由在路径为/a/b/c的情况下也能匹配中，但是isExact为true的话，只能进行精确匹配了，路由path为/a/b将无法匹配中/a/b/c。<br>3.match中的第三个属性为path，即为路由的匹配path，不是真实的url，通常用于嵌套路由中，作为父子路由予以使用，如我们需要在某个子页面中使用子路由，但由于react-router从第4版开始，Route的path规则就需要完全路径形式，不能再像第3版一样，只要写子路由，如/a/b/c，只用写子路由/c部分，那么要满足这种场景我们可以使用父路由传入的match中的path字段，这个字段记录了父路由配置命中后，父路由的path部分，此刻我们可以使用props.match.path作为子路由完全路径中的父路由部分，如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;&gt;</div><div class="line">   &#123; props.match &amp;&amp; &lt;Route</div><div class="line">           path=&#123;`&#123;props.match.params.path&#125;/c`&#125;</div><div class="line">       component=&#123;SubComponent&#125;</div><div class="line">       /&gt;</div><div class="line">   &#125;</div><div class="line">&lt;/&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：props.match可能为null，即为父路由没有匹配中的情况，我们可视情况判断</p>
+</blockquote>
+<p>由于Route是动态渲染，所以对应的Route组件也会得到渲染并进行一次路由匹配，当路由匹配命中后，对应的SubComponent就会进行实例化，作为组件进行渲染。<br>4.match中的第四个属性为url，为真实的url匹配中的部分. 在嵌套导航中 <link>我们可以使用<br>一方面这个url可以用来确认history.location.pathname有什么不同，另一个方面也可以用来作为二级Link导航的父导航部分，如果我们希望浏览器路由在当前路径下增加一级路径，但是我们不知道当前路径具体是如何的时候，可以使用match.params中的url，如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Link to=<span class="string">`<span class="subst">$&#123;props.match.params.url&#125;</span>/c`</span> /&gt;</div></pre></td></tr></table></figure></p>
+<p>如果当前路径为/a/b，这将会使浏览器导航到/a/b/c下</p>
+<h4 id="4-5-1-2-没有命中路由时match的情况"><a href="#4-5-1-2-没有命中路由时match的情况" class="headerlink" title="4.5.1.2 没有命中路由时match的情况"></a>4.5.1.2 没有命中路由时match的情况</h4><p>todo<br>考虑一种情况：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// location.pathname = '/matches'</span></div><div class="line">&lt;Route path=<span class="string">'/does-not-match'</span> children=&#123;(&#123; match &#125;) =&gt; (</div><div class="line">  <span class="comment">// match === null</span></div><div class="line">  &lt;Route render=&#123;(&#123; <span class="attr">match</span>:pathlessMatch &#125;) =&gt; (</div><div class="line">    <span class="comment">// pathlessMatch === ???</span></div><div class="line">  )&#125;/&gt;</div><div class="line">)&#125;/&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="4-5-2-location"><a href="#4-5-2-location" class="headerlink" title="4.5.2 location:"></a>4.5.2 location:</h4><p>location一共有5个参数，如下对象所示<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"></div><div class="line">  <span class="attr">key</span>: <span class="string">'ac3df4'</span>,</div><div class="line">  <span class="attr">pathname</span>: <span class="string">'/somewhere'</span></div><div class="line">  search: <span class="string">'?some=search-string'</span>,</div><div class="line">  <span class="attr">hash</span>: <span class="string">'#howdy'</span>,</div><div class="line">  <span class="attr">state</span>: &#123;</div><div class="line">    [userDefined]: <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其中key在hash路由下不存在，为null，在浏览器路由中为一个hash值，我们在后面的原理部分会描述key的作用及产生原理。<br>location顾名思义即为位置，pathname为浏览器路由的path部分，如<a href="https://www.github.com/a/b/c中的/a/b/c部分。" target="_blank" rel="external">https://www.github.com/a/b/c中的/a/b/c部分。</a><br>参数中search为路径的query部分，注意这里包括”?”号，hash为路由的hash部分，注意包括了”#“号，还有一个state，是作为pushState api中可以push的状态，在浏览器路由中，我们可以使用这个字段作为信息传递，<br>如果当前的路由模式为hash路由，情况稍有不同，我们的路由部分将从”#”号后开始计算，也就是忽略了location.pathname，只使用浏览器hash部分计算路由，如：<br><a href="https://www.github.com/a/b/c?d=1#/user,我们react-route中的location.pathname为/user,从“#”号后开始计算路由。" target="_blank" rel="external">https://www.github.com/a/b/c?d=1#/user,我们react-route中的location.pathname为/user,从“#”号后开始计算路由。</a><br>对于浏览器query,react-router并没有帮我们解析成一个对象，我们只能从路由中得到’?some=search-string’这样的字符串，不过我们可以借用URLSearchParams对象轻松实现，如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> params = <span class="keyword">new</span> URLSearchParams(location.search);</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>对于Route我们可以自行传递location给Route，那么什么情况下传递location下去呢？<br>有些场景可能在某些情况我们把Route置于某个父容器中，而这个父容器希望缓存我们Route的状态的时候，我们可以把当前拿到的location传入Route，父容器接管了Route后，由于父容器可以控制子容器的渲染，父容器可以先缓存location状态一段时间，再变化，如果不传入location进Route的话，那么Route将从context中取到最新的location,我们的状态也就无法缓存了，这个场景在实战部分路由动画中会有介绍</p>
+</blockquote>
+<h4 id="4-5-3-history"><a href="#4-5-3-history" class="headerlink" title="4.5.3 history:"></a>4.5.3 history:</h4><p>history，即为我们在Router中的history，注意history为可变mutable的，为什么history为可变mutable的？</p>
+<blockquote>
+<p>什么是mutable?</p>
+</blockquote>
+<p>这里的history为browser history，hash history，memory history中的一种，我们在Router章节有介绍。这里的history即为Router中history透传下来的history，api接口与之前介绍的一致。</p>
+
+                                            
+
+                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                        
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2019/07/06/Route(第4章)/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+
+            
+
+                        
+
+                                                
+  
     <article id="post-route封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -179,16 +396,12 @@
 <h2 id="2-路由配置"><a href="#2-路由配置" class="headerlink" title="2.路由配置"></a>2.路由配置</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Info <span class="keyword">from</span> <span class="string">"./pages/user/info/index"</span>;</div><div class="line"><span class="keyword">import</span> Tab <span class="keyword">from</span> <span class="string">"./tab"</span>;</div><div class="line"><span class="comment">/*</span></div><div class="line">  嵌套路由demo</div><div class="line">*/</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> [</div><div class="line">  &#123;</div><div class="line">    <span class="attr">path</span>: <span class="string">"/404"</span>,</div><div class="line">    <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">    <span class="attr">component</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">"./pages/404"</span>)</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="comment">// no match</span></div><div class="line">    path: <span class="string">"*"</span>,</div><div class="line">    <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">    <span class="attr">redirect</span>: <span class="string">"/404"</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">path</span>: <span class="string">"/"</span>,</div><div class="line">    <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">    <span class="attr">redirect</span>: <span class="string">"/user"</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">path</span>: <span class="string">"/table/print"</span>,</div><div class="line">    <span class="attr">Wrapper</span>: Tab,</div><div class="line">    <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">    <span class="attr">redirect</span>: <span class="string">"/table/print/list"</span>,</div><div class="line">    <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">component</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">"./pages/table-print/layout"</span>),</div><div class="line">    <span class="attr">routes</span>: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">path</span>: <span class="string">"list"</span>,</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">iframeSrc</span>: <span class="string">"https://www.baidu.com"</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">path</span>: <span class="string">"edit"</span>,</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">iframeSrc</span>: <span class="string">"//jsrun.net/z6XKp/embedded/all/light/"</span></div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">path</span>: <span class="string">"/table"</span>,</div><div class="line">    <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">    <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">Wrapper</span>: Tab,</div><div class="line">    <span class="attr">exact</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">iframeSrc</span>: <span class="string">"https://www.baidu.com"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// user</span></div><div class="line">  &#123;</div><div class="line">    <span class="attr">path</span>: <span class="string">"/user"</span>,</div><div class="line">    <span class="comment">// 会套在组件外面，作为Provider，可以省略</span></div><div class="line">    Wrapper: Tab,</div><div class="line">    <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">redirect</span>: <span class="string">"/user/category"</span>,</div><div class="line">    <span class="comment">// 权限码会注入到 Wrapper和 component中</span></div><div class="line">    AuthCode: [<span class="string">"user"</span>],</div><div class="line">    <span class="comment">// 可提供给menus使用 同样也会注入到 Wrapper和 component中</span></div><div class="line">    name: <span class="string">"用户"</span>,</div><div class="line">    <span class="comment">// 异步</span></div><div class="line">    component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">"./pages/user/layout"</span>),</div><div class="line">    <span class="attr">routes</span>: [</div><div class="line">      <span class="comment">// 子路由 import同步形式 路由： /user/category</span></div><div class="line">      &#123;</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">path</span>: <span class="string">"category"</span>,</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">exact</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"类别"</span>,</div><div class="line">        <span class="attr">component</span>: <span class="keyword">import</span>(<span class="string">"./pages/user/category"</span>)</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">path</span>: <span class="string">"category/detail"</span>,</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">exact</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"类别详情"</span>,</div><div class="line">        <span class="attr">component</span>: <span class="keyword">import</span>(<span class="string">"./pages/user/category/detail"</span>)</div><div class="line">      &#125;,</div><div class="line">      &#123; <span class="attr">path</span>: <span class="string">"info"</span>, <span class="attr">name</span>: <span class="string">"详情"</span>, <span class="attr">component</span>: Info &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="comment">// 路由： /user/goods</span></div><div class="line">        path: <span class="string">"goods/:id"</span>,</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">name</span>: <span class="string">"商品"</span>,</div><div class="line">        <span class="attr">component</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">"./pages/user/goods/index"</span>),</div><div class="line">        <span class="attr">routes</span>: [</div><div class="line">          &#123;</div><div class="line">            <span class="attr">path</span>: <span class="string">"unit"</span>,</div><div class="line">            <span class="attr">name</span>: <span class="string">"商品单位"</span>,</div><div class="line">            <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">            <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">            <span class="comment">// goods的嵌套路由 完整路由为 /user/goods/unit</span></div><div class="line">            component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">"./pages/user/goods/subpages/unit"</span>)</div><div class="line">          &#125;</div><div class="line">        ]</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">path</span>: <span class="string">"/report"</span>,</div><div class="line">    <span class="attr">Wrapper</span>: Tab,</div><div class="line">    <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">    <span class="attr">redirect</span>: <span class="string">"/report/purchase"</span>,</div><div class="line">    <span class="comment">//exact: true,</span></div><div class="line">    <span class="comment">// 可提供给menus使用 同样也会注入到 Wrapper和 component中</span></div><div class="line">    name: <span class="string">"报表"</span>,</div><div class="line">    <span class="attr">component</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">"./pages/report/layout"</span>),</div><div class="line">    <span class="attr">routes</span>: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">path</span>: <span class="string">"profit/detail"</span>,</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"detail_p"</span>,</div><div class="line">        <span class="attr">component</span>: <span class="keyword">import</span>(<span class="string">"./pages/report/profit/detail"</span>)</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">path</span>: <span class="string">"profit/list"</span>,</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"list_p"</span>,</div><div class="line">        <span class="attr">component</span>: <span class="keyword">import</span>(<span class="string">"./pages/report/profit/list"</span>)</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">path</span>: <span class="string">"profit/edit"</span>,</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"edit_p"</span>,</div><div class="line">        <span class="attr">component</span>: <span class="keyword">import</span>(<span class="string">"./pages/report/profit/edit"</span>)</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">path</span>: <span class="string">"purchase"</span>,</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"进货"</span>,</div><div class="line">        <span class="attr">component</span>: <span class="keyword">import</span>(<span class="string">"./pages/report/purchase"</span>)</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">AuthCode</span>: [<span class="string">"user"</span>],</div><div class="line">        <span class="attr">path</span>: <span class="string">"refund"</span>,</div><div class="line">        <span class="attr">standAlone</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">name</span>: <span class="string">"退货"</span>,</div><div class="line">        <span class="attr">component</span>: <span class="keyword">import</span>(<span class="string">"./pages/report/refund"</span>)</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">];</div></pre></td></tr></table></figure>
 <h2 id="3-业务组件（路由参数中的component）说明"><a href="#3-业务组件（路由参数中的component）说明" class="headerlink" title="3.业务组件（路由参数中的component）说明"></a>3.业务组件（路由参数中的component）说明</h2><p>1.业务组件注入参数<br>继承使用了react router的参数，组件props可得到react-router的</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"></div><div class="line">   location,</div><div class="line"></div><div class="line">   history,</div><div class="line"></div><div class="line">   match,</div><div class="line"></div><div class="line">   matchQuery</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>参数，其中match可用于命中路由判断，路由变更统一使用this.props.history.push,this.props.history.replace等</p>
-<p>2.业务组件命中路由判断（比如在切换路由时，切换页签时）</p>
+<p>参数，其中match可用于命中路由判断，路由变更统一使用this.props.history.push,this.props.history.replace等<br>2.业务组件命中路由判断（比如在切换路由时，切换页签时）</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">componentDidMount()&#123;</div><div class="line"></div><div class="line"><span class="keyword">if</span>(<span class="keyword">this</span>.props.match)&#123;</div><div class="line"></div><div class="line"><span class="comment">// 命中了该组件对应的路由，可做对应操作</span></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 由于组件可能未销毁，会在命中其他路由时，也触发componentWillReceiveProps，所以要加命中判断</span></div><div class="line"></div><div class="line">componentWillReceiveProps(nextprops)&#123;</div><div class="line"></div><div class="line"><span class="keyword">if</span>(nextprops.props.match)&#123;</div><div class="line"></div><div class="line"><span class="comment">// 命中了该组件对应的路由，可做对应操作</span></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>3.业务组件获取路由参数，url query</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">componentWillReceiveProps/componentDidMount(nextprops)/()&#123;</div><div class="line"></div><div class="line"><span class="keyword">if</span>(nextprops.props.match)&#123;</div><div class="line"></div><div class="line"><span class="comment">// 获取路由参数，如goods/:id</span></div><div class="line"></div><div class="line">nextprops.props.match.prams.id</div><div class="line"></div><div class="line"><span class="comment">// 获取query参数 如goods/detail?id=3</span></div><div class="line"></div><div class="line">nextprops.props.matchQuery.id</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>4.子项目（iframe）组件通知主项目更改路由 ：<br>子项目在需要通知的位置使用postMessage进行，路由变更消息格式按照：${PROJECT_NAME}_EVENT_LOCATION_CHANGE</p>
-<p>参数说明:</p>
-<p>token:消息type[string]</p>
-<p>url: 变更url [string]</p>
-<p>data: 携带参数[object]</p>
+<p>参数说明:<br>token:消息type[string]<br>url: 变更url [string]<br>data: 携带参数[object]</p>
 <h2 id="4-demo"><a href="#4-demo" class="headerlink" title="4.demo:"></a>4.demo:</h2><iframe src="https://codesandbox.io/embed/3yx16y1qq6?fontsize=14&module=%2Fsrc%2FrenderRoutes.tsx" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
                                             
@@ -333,7 +546,7 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
 <p>一个函数声明的语法树<br><img src="https://p1.meituan.net/dpgroup/5e74e7017aebae4043bae57e586578a3100615.jpg" alt=""></p>
 <p>每一个语句，都有具体的组成部分<br>我们先把语言拆开 可以得到下面的parse<br>有些是parse一个表达式，有些是parse一个标识符，有些是parse一个类型等，<br>还需要知道ast节点，如函数调用是，有callee和arguments两部分<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">CallExpression</span> </span>&#123;</div><div class="line">  <span class="comment">// readonly type: string;</span></div><div class="line">  <span class="comment">// readonly callee: Expression | Import;</span></div><div class="line">  <span class="comment">// readonly arguments: ArgumentListElement[];</span></div><div class="line">  <span class="keyword">constructor</span>(callee, args) &#123;</div><div class="line">    <span class="keyword">this</span>.type = Syntax.CallExpression;</div><div class="line">    <span class="keyword">this</span>.callee = callee;</div><div class="line">    <span class="keyword">this</span>.arguments = args;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>我们还要定义一些移动函数，用以移动token，输入进入语法解析器<br>我们在移动过程中跳过注释<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">move() &#123;</div><div class="line">    <span class="comment">// debugger</span></div><div class="line">    <span class="keyword">do</span> &#123;</div><div class="line">      <span class="keyword">this</span>.index++;</div><div class="line">      <span class="keyword">this</span>.lookahead = <span class="keyword">this</span>.tokens[<span class="keyword">this</span>.index] || &#123;&#125;;</div><div class="line">    <span class="comment">// 我们在移动过程中跳过注释  </span></div><div class="line">    &#125; <span class="keyword">while</span> (<span class="keyword">this</span>.lookahead.tag === Tag.COMMENT);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  error(s) &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(</div><div class="line">      <span class="string">'near line : '</span> + s + <span class="string">' '</span> + <span class="keyword">this</span>.lookahead.value || <span class="keyword">this</span>.lookahead.tag</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  match(t) &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.lookahead.tag == t) &#123;</div><div class="line">      <span class="comment">// 匹配成功 移动</span></div><div class="line">      <span class="keyword">this</span>.move();</div><div class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">this</span>.error(</div><div class="line">        <span class="string">'syntax error at '</span> + <span class="keyword">this</span>.lookahead.value || <span class="keyword">this</span>.lookahead.tag</div><div class="line">      );</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  next() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.tokens[<span class="keyword">this</span>.index + <span class="number">1</span>] || &#123;&#125;;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
-<p>把这些基础parse模块结合起来，就可以得到ast</p>
+<p>把这些基础parse模块结合起来，就可以得到ast的解析单元函数：</p>
 <ol>
 <li>parseFactorExpression</li>
 <li>parseFunctionDeclaration</li>
@@ -358,8 +571,7 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
 <li>parseVariableDeclaration</li>
 <li>parseIfStatement</li>
 </ol>
-<p>关于表达式的解析，我们这样来<br>我们规定三元运算符的优先级最低，因此假如出现一个三元表达式，那么所处的位置应该位于ast树的根附近，我们采用深度优先遍历 depth-first<br>三元表达式在表达式中的优先级最低</p>
-<p>关于二元表达式<br>//parseBinaryExpression<br>可以由 || &amp;&amp; == != 等，定义一个优先级，即为谁先该进行计算，由于是深度优先，越远离根节点的节点，其优先级越高， 因为他们将得到优先计算。<br>因此对于<code>()</code>中的部分，优先级最高，也应该放到叶子节点中<br>对于 a||b&amp;&amp;c<br>我们规定优先级从低到高</p>
+<p>关于表达式的解析，我们这样来：<br>我们规定三元运算符的优先级最低，因此假如出现一个三元表达式，那么所处的位置应该位于ast树的根附近，我们采用深度优先遍历 depth-first<br>三元表达式在表达式中的优先级最低。关于二元表达式parseBinaryExpression可以由 || &amp;&amp; == != 等，定义一个优先级，即为谁先该进行计算，由于是深度优先，越远离根节点的节点，其优先级越高， 因为他们将得到优先计算。<br>因此对于<code>()</code>中的部分，优先级最高，也应该放到叶子节点中对于 a||b&amp;&amp;c，我们规定优先级从低到高：</p>
 <ol>
 <li>|| </li>
 <li>&amp;&amp;</li>
@@ -863,139 +1075,6 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
 
                                                 
   
-    <article id="post-diff算法的简单实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/14/diff算法的简单实现/">diff算法的简单实现</a>
-    </h1>
-  
-
-                    
-                        <a href="/2017/06/14/diff算法的简单实现/" class="archive-article-date">
-  	<time datetime="2017-06-14T09:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-14</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> diffchange = diffList([&#123; <span class="attr">key</span>: <span class="number">1</span> &#125;, &#123; <span class="attr">key</span>: <span class="number">2</span> &#125;], [&#123; <span class="attr">key</span>: <span class="number">33</span> &#125;, &#123; <span class="attr">key</span>: <span class="number">1</span> &#125;, &#123; <span class="attr">key</span>: <span class="number">3</span> &#125;], <span class="string">'key'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'diffchange'</span>, diffchange);</div></pre></td></tr></table></figure>
-<p><img src="http://p1.meituan.net/dpgroup/0fe09be029636b209f5c40ac9f14484c128522.jpg" alt="img"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">第一步 add：[&#123;<span class="attr">key</span>:<span class="number">33</span>&#125;,&#123; <span class="attr">key</span>: <span class="number">1</span> &#125;, &#123; <span class="attr">key</span>: <span class="number">2</span> &#125;]</div><div class="line">第二步 add：[&#123;<span class="attr">key</span>:<span class="number">33</span>&#125;,&#123; <span class="attr">key</span>: <span class="number">1</span> &#125;,&#123; <span class="attr">key</span>: <span class="number">3</span> &#125;, &#123; <span class="attr">key</span>: <span class="number">2</span> &#125;],</div><div class="line">第三步 remove：[&#123;<span class="attr">key</span>:<span class="number">33</span>&#125;,&#123; <span class="attr">key</span>: <span class="number">1</span> &#125;,&#123; <span class="attr">key</span>: <span class="number">3</span> &#125;]</div></pre></td></tr></table></figure>
-                            
-                                <a class="article-more-a" href="/2017/06/14/diff算法的简单实现/#more">
-                                    more >></a>
-                                
-                                    
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2017/06/14/diff算法的简单实现/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
-    <article id="post-javascript纯函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/12/javascript纯函数/">JavaScript中存在纯函数吗？</a>
-    </h1>
-  
-
-                    
-                        <a href="/2017/06/12/javascript纯函数/" class="archive-article-date">
-  	<time datetime="2017-06-12T13:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-12</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                        <h3 id="JavaScript中存在纯函数吗-自译"><a href="#JavaScript中存在纯函数吗-自译" class="headerlink" title="JavaScript中存在纯函数吗?(自译)"></a>JavaScript中存在纯函数吗?(自译)</h3><p> <a href="https://hackernoon.com/do-pure-functions-exist-in-javascript-b128ed5f0ed2" target="_blank" rel="external">https://hackernoon.com/do-pure-functions-exist-in-javascript-b128ed5f0ed2</a></p>
-<h3 id="什么是纯函数？"><a href="#什么是纯函数？" class="headerlink" title="什么是纯函数？"></a>什么是纯函数？</h3><p>满足下面两个条件：<br>
-                            
-                                <a class="article-more-a" href="/2017/06/12/javascript纯函数/#more">
-                                    more >></a>
-                                
-                                    
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">自译</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2017/06/12/javascript纯函数/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-            
-
-                        
-
-                                                
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1097,14 +1176,6 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
@@ -1113,11 +1184,15 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">自译</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">工具 d3</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">自译</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1129,6 +1204,14 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">工具 d3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
@@ -1137,7 +1220,7 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">react-native</a>
+                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1146,10 +1229,6 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">前端基础</a>
               </li>
             
             <div class="clearfix"></div>
@@ -1204,7 +1283,7 @@ com/klfzlyt/parse_compiler" target="_blank" rel="external">parse_compiler</a><br
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">&lt;a href=&quot;http://cv.07lyt.com&quot;&gt;毕业时的中二简历（移动端滑动观看）&lt;/a&gt;</div>
   	  	
     	</section>
     
