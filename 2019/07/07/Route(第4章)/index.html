@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://07lyt.com/2019/07/07/Route(第4章)/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
 <meta property="og:description" content="第4章Route路由端口持续更新中 正文：本章将系统介绍React-router的路由器端口Route，Route是react-router体系中极为重要的一个模块，在react-router中起到“引路”的作用，本章就将系统阐释react-route中的Route。 4.1.route是什么？一般可认为route定义了路由路径匹配成功后的一系列动作。route是一个react组件，定义了路由匹">
-<meta property="og:updated_time" content="2019-07-07T03:41:51.181Z">
+<meta property="og:updated_time" content="2019-07-07T11:38:33.217Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第四章Route路由端口样章（持续更新）">
 <meta name="twitter:description" content="第4章Route路由端口持续更新中 正文：本章将系统介绍React-router的路由器端口Route，Route是react-router体系中极为重要的一个模块，在react-router中起到“引路”的作用，本章就将系统阐释react-route中的Route。 4.1.route是什么？一般可认为route定义了路由路径匹配成功后的一系列动作。route是一个react组件，定义了路由匹">
@@ -247,7 +247,7 @@
 <p>由于Route是动态渲染，所以对应的Route组件也会得到渲染并进行一次路由匹配，当路由匹配命中后，对应的SubComponent就会进行实例化，作为组件进行渲染。<br>4.match中的第四个属性为url，为真实的url匹配中的部分. 在嵌套导航中 <link>我们可以使用<br>一方面这个url可以用来确认history.location.pathname有什么不同，另一个方面也可以用来作为二级Link导航的父导航部分，如果我们希望浏览器路由在当前路径下增加一级路径，但是我们不知道当前路径具体是如何的时候，可以使用match.params中的url，如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Link to=<span class="string">`<span class="subst">$&#123;props.match.params.url&#125;</span>/c`</span> /&gt;</div></pre></td></tr></table></figure></p>
 <p>如果当前路径为/a/b，这将会使浏览器导航到/a/b/c下</p>
 <h4 id="4-5-1-2-没有命中路由时match的情况"><a href="#4-5-1-2-没有命中路由时match的情况" class="headerlink" title="4.5.1.2 没有命中路由时match的情况"></a>4.5.1.2 没有命中路由时match的情况</h4><p>todo<br>考虑一种情况：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// location.pathname = '/matches'</span></div><div class="line">&lt;Route path=<span class="string">'/does-not-match'</span> children=&#123;(&#123; match &#125;) =&gt; (</div><div class="line">  <span class="comment">// match === null</span></div><div class="line">  &lt;Route render=&#123;(&#123; <span class="attr">match</span>:pathlessMatch &#125;) =&gt; (</div><div class="line">    <span class="comment">// pathlessMatch === ???</span></div><div class="line">  )&#125;/&gt;</div><div class="line">)&#125;/&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="4-5-2-location"><a href="#4-5-2-location" class="headerlink" title="4.5.2 location:"></a>4.5.2 location:</h4><p>location一共有5个参数，如下对象所示<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"></div><div class="line">  <span class="attr">key</span>: <span class="string">'ac3df4'</span>,</div><div class="line">  <span class="attr">pathname</span>: <span class="string">'/somewhere'</span></div><div class="line">  search: <span class="string">'?some=search-string'</span>,</div><div class="line">  <span class="attr">hash</span>: <span class="string">'#howdy'</span>,</div><div class="line">  <span class="attr">state</span>: &#123;</div><div class="line">    [userDefined]: <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="4-5-2-location"><a href="#4-5-2-location" class="headerlink" title="4.5.2 location:"></a>4.5.2 location:</h4><p>location一共有5个参数，如下对象所示:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"></div><div class="line">  <span class="attr">key</span>: <span class="string">'ac3df4'</span>,</div><div class="line">  <span class="attr">pathname</span>: <span class="string">'/somewhere'</span></div><div class="line">  search: <span class="string">'?some=search-string'</span>,</div><div class="line">  <span class="attr">hash</span>: <span class="string">'#howdy'</span>,</div><div class="line">  <span class="attr">state</span>: &#123;</div><div class="line">    [userDefined]: <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>其中key在hash路由下不存在，为null，在浏览器路由中为一个hash值，我们在后面的原理部分会描述key的作用及产生原理。<br>location顾名思义即为位置，pathname为浏览器路由的path部分，如<a href="https://www.github.com/a/b/c中的/a/b/c部分。" target="_blank" rel="external">https://www.github.com/a/b/c中的/a/b/c部分。</a><br>参数中search为路径的query部分，注意这里包括”?”号，hash为路由的hash部分，注意包括了”#“号，还有一个state，是作为pushState api中可以push的状态，在浏览器路由中，我们可以使用这个字段作为信息传递，<br>如果当前的路由模式为hash路由，情况稍有不同，我们的路由部分将从”#”号后开始计算，也就是忽略了location.pathname，只使用浏览器hash部分计算路由，如：<br><a href="https://www.github.com/a/b/c?d=1#/user,我们react-route中的location.pathname为/user,从“#”号后开始计算路由。" target="_blank" rel="external">https://www.github.com/a/b/c?d=1#/user,我们react-route中的location.pathname为/user,从“#”号后开始计算路由。</a><br>对于浏览器query,react-router并没有帮我们解析成一个对象，我们只能从路由中得到’?some=search-string’这样的字符串，不过我们可以借用URLSearchParams对象轻松实现，如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> params = <span class="keyword">new</span> URLSearchParams(location.search);</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>对于Route我们可以自行传递location给Route，那么什么情况下传递location下去呢？<br>有些场景可能在某些情况我们把Route置于某个父容器中，而这个父容器希望缓存我们Route的状态的时候，我们可以把当前拿到的location传入Route，父容器接管了Route后，由于父容器可以控制子容器的渲染，父容器可以先缓存location状态一段时间，再变化，如果不传入location进Route的话，那么Route将从context中取到最新的location,我们的状态也就无法缓存了，这个场景在实战部分路由动画中会有介绍</p>
@@ -470,10 +470,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
@@ -483,6 +479,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法 动态规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
