@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://07lyt.com/2019/07/04/Route(第4章)/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
 <meta property="og:description" content="第4章Route路由端口持续更新中 正文：本章将系统介绍React-Router的路由器端口Route，Route是React-Router体系中极为重要的一个模块，在React-Router中起到“引路”的作用，本章就将系统阐释React-Router中的Route。 4.1.Route是什么？一般可认为Route定义了路由路径匹配成功后的一系列动作。Route是一个react组件，定义了路由">
-<meta property="og:updated_time" content="2019-07-08T03:29:43.557Z">
+<meta property="og:updated_time" content="2019-07-08T03:31:29.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第四章Route路由端口样章（持续更新）">
 <meta name="twitter:description" content="第4章Route路由端口持续更新中 正文：本章将系统介绍React-Router的路由器端口Route，Route是React-Router体系中极为重要的一个模块，在React-Router中起到“引路”的作用，本章就将系统阐释React-Router中的Route。 4.1.Route是什么？一般可认为Route定义了路由路径匹配成功后的一系列动作。Route是一个react组件，定义了路由">
@@ -255,7 +255,7 @@
 <blockquote>
 <p>对于Route我们可以自行传递location给Route，那么什么情况下传递location下去呢？<br>有些场景可能在某些情况我们把Route置于某个父容器中，而这个父容器希望缓存我们Route的状态的时候，我们可以把当前拿到的location传入Route，父容器接管了Route后，由于父容器可以控制子容器的渲染，父容器可以先缓存location状态一段时间，再变化，如果不传入location进Route的话，那么Route将从context中取到最新的location,我们的状态也就无法缓存了，这个场景在实战部分路由动画中会有介绍</p>
 </blockquote>
-<h4 id="4-5-3-history"><a href="#4-5-3-history" class="headerlink" title="4.5.3 history:"></a>4.5.3 history:</h4><p>history，即为我们在之前章节Router中介绍过的history，注意history为可变mutable的，在官方文档中，如果有以下匹配:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Comp</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line"> componentDidUpdate(prevProps) &#123;</div><div class="line">    <span class="comment">// 推荐使用 will be true 将会永远为true，表明每次得到的location是不同的，location是一个immutable对象</span></div><div class="line">    <span class="keyword">const</span> locationChanged = <span class="keyword">this</span>.props.location !== prevProps.location;</div><div class="line"></div><div class="line">    <span class="comment">// 不推荐这样使用，history是可变的，每次都是传递同一个history下来，建议不要轻易改变history，INCORRECT, will *always* be false because history is mutable.</span></div><div class="line">    <span class="keyword">const</span> locationChanged =</div><div class="line">      <span class="keyword">this</span>.props.history.location !== prevProps.history.location;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;Route component=&#123;Comp&#125;/&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="4-5-3-history"><a href="#4-5-3-history" class="headerlink" title="4.5.3 history:"></a>4.5.3 history:</h4><p>history，即为我们在之前章节Router中介绍过的history，注意history为可变mutable的，在官方文档中，如果有以下匹配：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Comp</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line"> componentDidUpdate(prevProps) &#123;</div><div class="line">    <span class="comment">// 推荐使用 will be true 将会永远为true，表明每次得到的location是不同的，location是一个immutable对象</span></div><div class="line">    <span class="keyword">const</span> locationChanged = <span class="keyword">this</span>.props.location !== prevProps.location;</div><div class="line"></div><div class="line">    <span class="comment">// 不推荐这样使用，history是可变的，每次都是传递同一个history下来，建议不要轻易改变history，INCORRECT, will *always* be false because history is mutable.</span></div><div class="line">    <span class="keyword">const</span> locationChanged =</div><div class="line">      <span class="keyword">this</span>.props.history.location !== prevProps.history.location;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;Route component=&#123;Comp&#125;/&gt;</div></pre></td></tr></table></figure></p>
 <p>由于history对象不由React-Router维护，也即为创建后便交给开发者使用，开发者可以改变history对象，对象是可变的，所以这个对象是mutable的。自history对象创建完毕，React-Router就将其透传到业务中，所以每次得到的history都是相同的，而不像props.location，是不可变immutable的，这确保了每次得到的都不同，由于React建议的状态管理都是immutable不可变的，因而建议在React-Router中获取location时可以使用Route的props的方式来替代history.location的方式。这样的方式会确保我们的流程处于React的生命周期中。</p>
 <blockquote>
 <p>什么是mutable对象?<br>一个在创建后可以改变的对象是mutable对象，反之在创建后不可改变的对象是immutable对象。</p>
@@ -474,6 +474,10 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">babel</a>
               </li>
              
@@ -482,7 +486,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">自译</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -490,11 +494,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">自译</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,11 +502,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模式 mvvm</a>
+                <a href="javascript:void(0)" class="js-tag color1">工具 d3</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">工具 d3</a>
+                <a href="javascript:void(0)" class="js-tag color3">模式 mvvm</a>
               </li>
              
               <li class="article-tag-list-item">
