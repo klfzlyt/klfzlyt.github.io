@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://07lyt.com">
   <title>第四章Route路由端口样章（持续更新） | Vogel im Kafig</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第4章Route路由端口持续更新中 正文：本章将系统介绍React-router的路由器端口Route，Route是React-Router体系中极为重要的一个模块，在React-Router中起到“引路”的作用，本章就将系统阐释React-Router中的Route。 4.1.Route是什么？一般可认为Route定义了路由路径匹配成功后的一系列动作。Route是一个react组件，定义了路由">
+  <meta name="description" content="第4章Route路由端口持续更新中 正文：本章将系统介绍React-Router的路由器端口Route，Route是React-Router体系中极为重要的一个模块，在React-Router中起到“引路”的作用，本章就将系统阐释React-Router中的Route。 4.1.Route是什么？一般可认为Route定义了路由路径匹配成功后的一系列动作。Route是一个react组件，定义了路由">
 <meta name="keywords" content="前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第四章Route路由端口样章（持续更新）">
 <meta property="og:url" content="http://07lyt.com/2019/07/04/Route(第4章)/index.html">
 <meta property="og:site_name" content="Vogel im Kafig">
-<meta property="og:description" content="第4章Route路由端口持续更新中 正文：本章将系统介绍React-router的路由器端口Route，Route是React-Router体系中极为重要的一个模块，在React-Router中起到“引路”的作用，本章就将系统阐释React-Router中的Route。 4.1.Route是什么？一般可认为Route定义了路由路径匹配成功后的一系列动作。Route是一个react组件，定义了路由">
-<meta property="og:updated_time" content="2019-07-07T14:35:56.079Z">
+<meta property="og:description" content="第4章Route路由端口持续更新中 正文：本章将系统介绍React-Router的路由器端口Route，Route是React-Router体系中极为重要的一个模块，在React-Router中起到“引路”的作用，本章就将系统阐释React-Router中的Route。 4.1.Route是什么？一般可认为Route定义了路由路径匹配成功后的一系列动作。Route是一个react组件，定义了路由">
+<meta property="og:updated_time" content="2019-07-08T03:08:31.370Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第四章Route路由端口样章（持续更新）">
-<meta name="twitter:description" content="第4章Route路由端口持续更新中 正文：本章将系统介绍React-router的路由器端口Route，Route是React-Router体系中极为重要的一个模块，在React-Router中起到“引路”的作用，本章就将系统阐释React-Router中的Route。 4.1.Route是什么？一般可认为Route定义了路由路径匹配成功后的一系列动作。Route是一个react组件，定义了路由">
+<meta name="twitter:description" content="第4章Route路由端口持续更新中 正文：本章将系统介绍React-Router的路由器端口Route，Route是React-Router体系中极为重要的一个模块，在React-Router中起到“引路”的作用，本章就将系统阐释React-Router中的Route。 4.1.Route是什么？一般可认为Route定义了路由路径匹配成功后的一系列动作。Route是一个react组件，定义了路由">
   
     <link rel="alternative" href="/atom.xml" title="Vogel im Kafig" type="application/atom+xml">
   
@@ -174,7 +174,7 @@
                 <div class="article-entry" itemprop="articleBody">
                     
                                         <p>第4章Route路由端口持续更新中</p>
-<h1 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h1><p>本章将系统介绍React-router的路由器端口Route，Route是React-Router体系中极为重要的一个模块，在React-Router中起到“引路”的作用，本章就将系统阐释React-Router中的Route。</p>
+<h1 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h1><p>本章将系统介绍React-Router的路由器端口Route，Route是React-Router体系中极为重要的一个模块，在React-Router中起到“引路”的作用，本章就将系统阐释React-Router中的Route。</p>
 <h3 id="4-1-Route是什么？"><a href="#4-1-Route是什么？" class="headerlink" title="4.1.Route是什么？"></a>4.1.Route是什么？</h3><p>一般可认为Route定义了路由路径匹配成功后的一系列动作。<br>Route是一个react组件，定义了路由匹配成功后，该渲染的组件，其本质为一个高阶组件。</p>
 <blockquote>
 <p>什么是高阶组件？<br>如果一个函数操作其他函数，即将其他函数作为参数或将函数作为返回值，将其称为高阶函数。高阶组件(high-order component)类似于高阶函数，接收 React 组件作为输入，输出一个新的 React 组件。高阶组件让代码更具有复用性、逻辑性与抽象特征。可以对 render 方法作劫持，也可以控制 props 与 state。<br>所以我们的Route只是做了一些路由的逻辑处理，他将严格渲染我们传入的组件。<br>在React-Router第4版本以后，route的底层设计已经从静态配置的方式演化到动态渲染的方式，也就是在React-Router第4版后，一切都是组件，这带来的是动态化的好处，现在是运行时进行路由匹配，我们可以在运行时改变路由属性，适配复杂场景，如media query动态改变路由，或者运行时移除路由，注入路由等。</p>
@@ -186,7 +186,8 @@
 <h3 id="4-3-Route的第一个要素：path路径"><a href="#4-3-Route的第一个要素：path路径" class="headerlink" title="4.3 Route的第一个要素：path路径"></a>4.3 Route的第一个要素：path路径</h3><p>React-Router的path匹配按书写格式可有3三种方式，分别为</p>
 <blockquote>
 <p>1.符合Express路径格式的字符串<br>2.带参形式<br>3.综合形式</p>
-<p>Express 是什么？<br>Express 是一个基于 Node.js 平台的极简、灵活的 web 应用开发框架，它提供一系列强大的特性，帮助你创建各种 Web 和移动设备应用。<br>Express 不对 Node.js 已有的特性进行二次抽象，我们只是在它之上扩展了 Web 应用所需的基本功能。</p>
+<p>Express 是什么？</p>
+<p>Express 是一个基于 Node.js 平台的极简、灵活的 web 应用开发框架，它提供一系列强大的特性，帮助你创建各种 Web 和移动设备应用。<br>Express 不对 Node.js 已有的特性进行二次抽象，我们只是在它之上扩展了 Web 应用所需的基本功能。</p>
 </blockquote>
 <p>对于第一种基本的路径path，即为我们常用的location.pathname，浏览器的path部分，我们只需要定义好我们自己需要的path即可，并可适当加入一些正则表达式规则<br>对于第二种路径写法，React-Router为我们规定好了在路由中带参的方式，只需要遵循一定的格式即可<br>对于第三种路径写法，可以在第二种的基础上带上一定的正则表达式约定，得到约束性强的path路径</p>
 <h4 id="4-3-1-path-to-regex"><a href="#4-3-1-path-to-regex" class="headerlink" title="4.3.1 path-to-regex"></a>4.3.1 path-to-regex</h4><p>Route自身没有实现路径匹配的逻辑，而是使用了一个成熟的三方库path-to-regex用来做路径匹配，这个库在node框架如Express，nuxt中被广泛使用。我们写的path能被path-to-regex识别为一个合法path即可。本质上path-to-regex做的是路径的正则表达式匹配，但是其提供了方便的路径定义规则，其在内部帮我们做了路径到正则表达式的转换，使得我们不用关心复杂的正则表达式表达式就能写出一个灵活性高的匹配路径，我们以react-route使用的path-to-regex1.7版本为例：其typescript定义的path为<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> type Path = string | <span class="built_in">RegExp</span> | <span class="built_in">Array</span>&lt;string | <span class="built_in">RegExp</span>&gt;;</div></pre></td></tr></table></figure></p>
@@ -247,15 +248,17 @@
 </blockquote>
 <p>由于Route是动态渲染，所以对应的Route组件也会得到渲染并进行一次路由匹配，当路由匹配命中后，对应的SubComponent就会进行实例化，作为组件进行渲染。<br>4.match中的第四个属性为url，为真实的url匹配中的部分. 在嵌套导航中 <link>我们可以使用<br>一方面这个url可以用来确认history.location.pathname有什么不同，另一个方面也可以用来作为二级Link导航的父导航部分，如果我们希望浏览器路由在当前路径下增加一级路径，但是我们不知道当前路径具体是如何的时候，可以使用match.params中的url，如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Link to=<span class="string">`<span class="subst">$&#123;props.match.params.url&#125;</span>/c`</span> /&gt;</div></pre></td></tr></table></figure></p>
 <p>如果当前路径为/a/b，这将会使浏览器导航到/a/b/c下</p>
-<h4 id="4-5-1-2-没有命中路由时match的情况"><a href="#4-5-1-2-没有命中路由时match的情况" class="headerlink" title="4.5.1.2 没有命中路由时match的情况"></a>4.5.1.2 没有命中路由时match的情况</h4><p>todo<br>考虑一种情况：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// location.pathname = '/matches'</span></div><div class="line">&lt;Route path=<span class="string">'/does-not-match'</span> children=&#123;(&#123; match &#125;) =&gt; (</div><div class="line">  <span class="comment">// match === null</span></div><div class="line">  &lt;Route render=&#123;(&#123; <span class="attr">match</span>:pathlessMatch &#125;) =&gt; (</div><div class="line">    <span class="comment">// pathlessMatch === ???</span></div><div class="line">  )&#125;/&gt;</div><div class="line">)&#125;/&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="4-5-1-2-没有命中路由时match的情况"><a href="#4-5-1-2-没有命中路由时match的情况" class="headerlink" title="4.5.1.2 没有命中路由时match的情况"></a>4.5.1.2 没有命中路由时match的情况</h4><p>考虑一种情况，利用children进行无条件渲染，同时子组件传入一个无path的Route组件，我们看看子Route的渲染情况：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// when location.pathname is /matches</span></div><div class="line">&lt;Route path=<span class="string">'/does-not-match'</span> children=&#123;(&#123; match &#125;) =&gt; &#123;</div><div class="line">  <span class="keyword">return</span>  &lt;Route render=&#123;(&#123; match:pathlessMatch &#125;) =&gt; &#123;</div><div class="line">      // can not render</div><div class="line">     return &lt;div&gt;123&lt;/div&gt; </div><div class="line">  &#125;&#125;/&gt;</div><div class="line">&#125;&#125;/&gt;</div></pre></td></tr></table></figure></p>
+<p>我们之前说过没有写path的情况下，Route将会视为匹配成功，即为Pathless的Route，将会渲染对应组件而不关心路由路径。但是在上述情况，我们嵌套的Route事实上是无法成功匹配的，即为在路由路径为/matches的情况下，我们并不会得到渲染得到123。这是因为对于无路径的Route，如果嵌套使用在一个父Route中，其match对象将会继承父Route的match对象，所以上述例子中父match对象为null，我们继承得到的pathlessMatch也是null，由于我们使用的是render渲染，是match不为空的时候才得到调用，所以我们的组件自然无法渲染出来，想要这种情况得到渲染，我们需要写明path，而不能写一个没有path属性的Route，或者这个时候我们使用children属性进行无条件渲染。</p>
 <h4 id="4-5-2-location"><a href="#4-5-2-location" class="headerlink" title="4.5.2 location:"></a>4.5.2 location:</h4><p>location一共有5个参数，如下对象所示:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"></div><div class="line">  <span class="attr">key</span>: <span class="string">'ac3df4'</span>,</div><div class="line">  <span class="attr">pathname</span>: <span class="string">'/somewhere'</span></div><div class="line">  search: <span class="string">'?some=search-string'</span>,</div><div class="line">  <span class="attr">hash</span>: <span class="string">'#howdy'</span>,</div><div class="line">  <span class="attr">state</span>: &#123;</div><div class="line">    [userDefined]: <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>其中key在hash路由下不存在，为null，在浏览器路由中为一个hash值，我们在后面的原理部分会描述key的作用及产生原理。<br>location顾名思义即为位置，pathname为浏览器路由的path部分，如<a href="https://www.github.com/a/b/c中的/a/b/c部分。" target="_blank" rel="external">https://www.github.com/a/b/c中的/a/b/c部分。</a><br>参数中search为路径的query部分，注意这里包括”?”号，hash为路由的hash部分，注意包括了”#“号，还有一个state，是作为pushState api中可以push的状态，在浏览器路由中，我们可以使用这个字段作为信息传递，<br>如果当前的路由模式为hash路由，情况稍有不同，我们的路由部分将从”#”号后开始计算，也就是忽略了location.pathname，只使用浏览器hash部分计算路由，如：<br><a href="https://www.github.com/a/b/c?d=1#/user,React-Router中的location.pathname为/user,从“#”号后开始计算路由。" target="_blank" rel="external">https://www.github.com/a/b/c?d=1#/user,React-Router中的location.pathname为/user,从“#”号后开始计算路由。</a><br>对于浏览器query,React-Router并没有帮我们解析成一个对象，我们只能从路由中得到’?some=search-string’这样的字符串，不过我们可以借用URLSearchParams对象轻松实现，如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> params = <span class="keyword">new</span> URLSearchParams(location.search);</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>对于Route我们可以自行传递location给Route，那么什么情况下传递location下去呢？<br>有些场景可能在某些情况我们把Route置于某个父容器中，而这个父容器希望缓存我们Route的状态的时候，我们可以把当前拿到的location传入Route，父容器接管了Route后，由于父容器可以控制子容器的渲染，父容器可以先缓存location状态一段时间，再变化，如果不传入location进Route的话，那么Route将从context中取到最新的location,我们的状态也就无法缓存了，这个场景在实战部分路由动画中会有介绍</p>
 </blockquote>
-<h4 id="4-5-3-history"><a href="#4-5-3-history" class="headerlink" title="4.5.3 history:"></a>4.5.3 history:</h4><p>history，即为我们在Router中的history，注意history为可变mutable的，为什么history为可变mutable的？</p>
+<h4 id="4-5-3-history"><a href="#4-5-3-history" class="headerlink" title="4.5.3 history:"></a>4.5.3 history:</h4><p>history，即为我们在之前章节Router中介绍过的history，注意history为可变mutable的，在官方文档中，如果有以下匹配<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Comp</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line"> componentDidUpdate(prevProps) &#123;</div><div class="line">    <span class="comment">// will be true 将会永远为true，表明每次得到的location是不同的，location是一个immutable对象</span></div><div class="line">    <span class="keyword">const</span> locationChanged = <span class="keyword">this</span>.props.location !== prevProps.location;</div><div class="line"></div><div class="line">    <span class="comment">// 不推荐这样使用，history是可变的，每次都是传递同一个history下来，建议不要轻易改变history，INCORRECT, will *always* be false because history is mutable.</span></div><div class="line">    <span class="keyword">const</span> locationChanged =</div><div class="line">      <span class="keyword">this</span>.props.history.location !== prevProps.history.location;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;Route component=&#123;Comp&#125;/&gt;</div></pre></td></tr></table></figure></p>
+<p>由于history是可变的，所以每次得到的history都是相同的，而不像props.location，确保了每次得到的都不同，因而建议在 React-Router 中获取 location 时可以使用 Route 的 props 的方式来替代 history.location 的方式。这样的方式会确保我们的流程处于React的生命周期中。</p>
 <blockquote>
-<p>什么是mutable?</p>
+<p>什么是mutable?<br>一个对象是可以由我们</p>
 </blockquote>
 <p>这里的history为browser-history，hash-history，memory-history中的一种，我们在Router章节有介绍。这里的history即为Router中history透传下来的history，api接口与之前介绍的一致。</p>
 
@@ -471,10 +474,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -487,11 +486,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">自译</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">工具 d3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,15 +510,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">工具 d3</a>
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">react-native</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
               <li class="article-tag-list-item">
